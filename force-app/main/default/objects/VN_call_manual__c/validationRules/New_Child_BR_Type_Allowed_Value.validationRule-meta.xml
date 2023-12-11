@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Child_BR_Type_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Lead&apos;, new_child_br_type__c), 
+CONTAINS(&apos;User&apos;, new_child_br_type__c),
+ISBLANK(new_child_br_type__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>new_child_br_type__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for New Child BR Type:
+Lead
+User</errorMessage>
+</ValidationRule>

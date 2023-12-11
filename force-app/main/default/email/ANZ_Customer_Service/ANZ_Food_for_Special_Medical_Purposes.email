@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,
+        <br/><br/>
+    
+        Thank you for contacting Abbott Nutrition.
+        <br/><br/>
+        
+        Please be advised that our products are not able to be purchased on our websites, and we are not able to supply you with Abbott Nutritional products directly. 
+        <br/><br/>
+        
+        Our products are FSMP (food for special medical purposes) and are sold through pharmacies and Healthcare professionals only.
+        <br/><br/>
+        
+        I wish you well on your future endeavours.
+
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

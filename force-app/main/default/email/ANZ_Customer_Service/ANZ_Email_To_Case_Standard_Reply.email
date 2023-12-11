@@ -1,0 +1,56 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear Customer,
+        <br/><br/>
+
+        Thank you for contacting the Abbott Nutrition Team.
+        <br/><br/>
+
+        Your correspondence will be attended to within 24-48 business hours.
+        <br/><br/>
+
+        Hens order queries please contact 1800 077 421 Option 1 > Option 4
+        D2MPCS@dhl.com
+        <br/><br/>
+
+        For any queries or assistance with purchasing Ensure, PediaSure, Glucerna
+        call 1800 225 311
+        <br/><br/>
+
+        Should you require other businesses within Abbott, please see contact details below.
+        <br/><br/>
+
+        Diagnostics queries contact 1800 659 554<br/>
+        add.orders.au@abbott.com<br/>
+        <br/><br/>
+
+        Vascular Abbott Medical contact 1800 839 259<br/>
+        acs@av.abbott.com<br/>
+        <br/><br/>
+
+        Diabetes queries contact 1800 801 478<br/>
+        adc-cs.au@abbott.com<br/>
+        <br/><br/>
+
+        Diagnostics queries contact 1800 659 554<br/>
+        add.orders.au@abbott.com<br/>
+        <br/><br/>
+
+        Abbott Vascular<br/>
+        acs@av.abbott.com<br/>
+        1800 550 959
+        <br/><br/>
+
+        Abbott Medical<br/>
+        anzcustomerservice@abbott.com<br/>
+        1800 839 259
+        <br/><br/>
+
+        Sincerely,<br/>
+        Abbott Nutrition Customer Service Team
+        
+        <c:ANZ_EmailTemplateSignature showSignature="false"/>
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

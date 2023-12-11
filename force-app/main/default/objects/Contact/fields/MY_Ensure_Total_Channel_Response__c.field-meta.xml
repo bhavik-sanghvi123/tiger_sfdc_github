@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MY_Ensure_Total_Channel_Response__c</fullName>
+    <description>MY Market Ensure Brand Total Channel Response</description>
+    <externalId>false</externalId>
+    <label>MY Ensure Total Channel Response</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>State__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>State</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>State</value>
+        </filterItems>
+        <infoMessage>Value should have a record type of State</infoMessage>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Cases (State)</relationshipLabel>
+    <relationshipName>Cases_State</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_Salutation</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Mr.&apos;, contact_salutation__c ), 
+CONTAINS(&apos;Ms.&apos;, contact_salutation__c ), 
+CONTAINS(&apos;Mrs.&apos;, contact_salutation__c ), 
+CONTAINS(&apos;Dr.&apos;, contact_salutation__c ), 
+CONTAINS(&apos;Prof.&apos;, contact_salutation__c ),
+ISBLANK(contact_salutation__c) 
+) )</errorConditionFormula>
+    <errorMessage>Only  Mr.|Ms.|Mrs.|Dr.|Prof. are allowed</errorMessage>
+</ValidationRule>

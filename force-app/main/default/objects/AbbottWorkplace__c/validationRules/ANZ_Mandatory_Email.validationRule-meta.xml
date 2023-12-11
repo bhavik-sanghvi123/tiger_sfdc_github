@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ANZ_Mandatory_Email</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(AbbottPartner__r.Market__c, &quot;ANZ&quot;),
+    ISBLANK(InstitutionEmail__c)
+)</errorConditionFormula>
+    <errorDisplayField>InstitutionEmail__c</errorDisplayField>
+    <errorMessage>Required field missing: Institution Email</errorMessage>
+</ValidationRule>

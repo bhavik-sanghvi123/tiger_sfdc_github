@@ -1,0 +1,94 @@
+<aura:component >
+    
+    <!-- sObject Attributes -->
+	<aura:attribute access="PUBLIC" name="primaryContact" type="Contact"  default="{ 'sobjectType' : 'Contact' }"/>
+    
+    <!-- Record Ids -->
+    <aura:attribute name="primaryContactId" type="String"/>
+    
+    <lightning:recordEditForm objectApiName="Contact">
+        <h1>&nbsp;&nbsp;&nbsp;<b>Contact Information</b></h1>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                <lightning:inputField fieldName="Salutation" aura:id="primarySalutation"/>
+                <lightning:inputField fieldName="FirstName" aura:id="primaryFirstName"/>
+                <lightning:inputField fieldName="MiddleName" aura:id="primaryMiddleName"/>
+                <lightning:inputField fieldName="LastName" aura:id="primaryLastName"/>
+                <lightning:inputField fieldName="Suffix" aura:id="primarySuffix"/>
+                <!--<lightning:inputField fieldName="Type__c" aura:id="primaryType"/>-->
+                <lightning:inputField fieldName="Birthdate" aura:id="primaryBirthdate"/>
+                <lightning:inputField fieldName="Profession__c" aura:id="primaryProfession"/>
+                <lightning:inputField fieldName="Email" aura:id="primaryEmail"/>
+                <lightning:inputField fieldName="HomePhone" aura:id="primaryHomePhone"/>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <!--<lightning:inputField fieldName="PrimaryContact__c" aura:id="primaryPrimary"/>-->
+                <lightning:inputField fieldName="Gender__c" aura:id="primaryGender"/>
+                <lightning:inputField fieldName="NationalID__c" aura:id="primaryNationalId"/>
+                <lightning:inputField fieldName="Ethnicity__c" aura:id="primaryEthnicity"/>
+                <lightning:inputField fieldName="PreferredLanguage__c" aura:id="primaryLanguage"/>
+                <lightning:inputField fieldName="MobilePhone" aura:id="primaryMobilePhone"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <br></br>
+        <div>&nbsp;&nbsp;&nbsp;<b>Communication Preferences</b></div>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="MasterOptOut__c" aura:id="primaryMasterOptOut"/>
+                <lightning:inputField fieldName="HasOptedOutOfEmail" aura:id="primaryEmailOptOut"/>
+                <lightning:inputField fieldName="WhatsappOptOut__c" aura:id="primaryWhatsAppOptOut"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="DoNotCall" aura:id="primaryDoNotCall"/>
+                <lightning:inputField fieldName="SMSOptOut__c" aura:id="primarySMSOptOut"/>
+                <lightning:inputField fieldName="DataSharingWithThirdPartyOptOut__c" aura:id="primaryDataShareOptOut"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <br></br>
+        <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="FirstChannelResponseDate__c" aura:id="primaryFirstChannelResponseDate"/>
+                <lightning:inputField fieldName="FirstContactedDate__c" aura:id="primaryFirstContactedDate"/>
+                <lightning:inputField fieldName="EndUser__c" aura:id="primaryEndUser"/>
+                <lightning:inputField fieldName="GiftGiver__c" aura:id="primaryGiftGiver"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="LatestChannelResponseDate__c" aura:id="primaryLatestChannelResponseDate"/>
+                <lightning:inputField fieldName="LastContactedDate__c" aura:id="primaryLastContactedDate"/>
+                <lightning:inputField fieldName="CareGiver__c" aura:id="primaryCareGiver"/>
+                <lightning:inputField fieldName="PreferredPaymentMethod__c" aura:id="primaryPreferredPaymentMethod"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <br></br>
+        <div>&nbsp;&nbsp;&nbsp;<b>Medical and Nutrition Information</b></div>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="Height__c" aura:id="primaryHeight"/>
+                <lightning:inputField fieldName="MainMedicalCondition__c" aura:id="primaryMainMedicalCondition"/>
+                <lightning:inputField fieldName="EstimatedDueDate__c" aura:id="primaryEstimatedDueDate"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="Weight__c" aura:id="primaryWeight"/>
+                <lightning:inputField fieldName="CaloriesDay__c" aura:id="primaryCaloriesDay"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <br></br>
+        <div>&nbsp;&nbsp;&nbsp;<b>Loyalty Information</b></div>
+        <lightning:layout>
+            <!--
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="MembershipID__c" aura:id="primaryMembershipID"/>
+            </lightning:layoutItem>
+			-->
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="MembershipStartDate__c" aura:id="primaryMembershipStartDate"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:recordEditForm>
+</aura:component>

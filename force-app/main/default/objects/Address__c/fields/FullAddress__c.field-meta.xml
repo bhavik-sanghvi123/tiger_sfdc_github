@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FullAddress__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(TEXT(Country__c) != &apos;Philippines&apos;,(
+IF(LEN(Street1__c)&gt;0, Street1__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(TEXT(Country__c) != &apos;Singapore&apos; &amp;&amp; LEN(Building__c)&gt;0, Building__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(Street2__c)&gt;0, Street2__c&amp; &quot;, &quot;  &amp;  BR(), &quot;&quot; )&amp;
+IF(TEXT(Country__c) == &apos;Singapore&apos; &amp;&amp; LEN(UnitNumber__c)&gt;0 &amp;&amp; LEN(Building__c)&gt;0, UnitNumber__c&amp; &quot; &quot; &amp; Building__c&amp;&quot;, &quot; , &quot;&quot; )&amp;
+IF(TEXT(Country__c) == &apos;Singapore&apos; &amp;&amp; LEN(UnitNumber__c)&gt;0 &amp;&amp; LEN(Building__c)==0, UnitNumber__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(TEXT(Country__c) == &apos;Singapore&apos; &amp;&amp; LEN(UnitNumber__c)==0 &amp;&amp; LEN(Building__c)&gt;0, Building__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(VillageNo__c)&gt;0, VillageNo__c &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(VillageName__c)&gt;0, VillageName__c &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(StateProvince__c)&gt;0, StateProvince__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(SuburbTown__c)&gt;0, SuburbTown__r.Name&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(State__c)&gt;0, State__r.Name&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(Ward2__c)&gt;0, Ward2__r.Name &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(Road__c)&gt;0, Road__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(SubDistrict__c)&gt;0, SubDistrict__r.Name&amp; &quot;, &quot; &amp;  BR(), &quot;&quot; )&amp;
+IF(LEN(District__c)&gt;0, District__r.Name &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(City2__c)&gt;0, City2__r.Name &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(PostalCode__c)&gt;0, PostalCode__c&amp; &quot;, &quot; &amp; BR(), &quot;&quot; )&amp;
+IF(LEN(TEXT(Country__c)) &gt;0, TEXT(Country__c)&amp; &quot; &quot; , &quot;&quot; )),
+
+(IF(LEN(Street1__c)&gt;0, Street1__c&amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(Street2__c)&gt;0, Street2__c&amp; &quot;, &quot;  &amp;  BR(), &quot;&quot; )&amp;
+IF(LEN(City2__c)&gt;0, City2__r.Name &amp; &quot;, &quot; , &quot;&quot; )&amp;
+IF(LEN(StateProvince__c)&gt;0, StateProvince__c&amp; &quot;, &quot;  &amp; BR(), &quot;&quot; )&amp;
+IF(LEN(TEXT(Country__c)) &gt;0, TEXT(Country__c)&amp; &quot; , &quot; , &quot;&quot; ) &amp;
+IF(LEN(PostalCode__c)&gt;0, PostalCode__c , &quot;&quot; )))</formula>
+    <label>Full Address</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

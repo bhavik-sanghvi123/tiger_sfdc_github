@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Product_Category1_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Conversion&apos;, order_product_category_1__c), 
+CONTAINS(&apos;Retention&apos;, order_product_category_1__c), 
+CONTAINS(&apos;Cross-Sell&apos;, order_product_category_1__c), 
+CONTAINS(&apos;Up-Sell&apos;, order_product_category_1__c),
+CONTAINS(&apos;Trial&apos;, order_product_category_1__c),
+ISBLANK(order_product_category_1__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>order_product_category_1__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for Order Product Category 1:
+Conversion
+Retention
+Cross-Sell
+Up-Sell
+Trial</errorMessage>
+</ValidationRule>

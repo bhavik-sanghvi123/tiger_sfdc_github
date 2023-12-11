@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable" controller ="addDeleteController">
+    
+    <!-- Aura Attribute for store single Contact[standard Object] Instance
+         And Store Index of Particular Instance --> 
+    <aura:attribute name="OrderItemInstance" type="OrderItem"/>
+    <aura:attribute name="rowIndex" type="String"/>
+    
+    <!-- Register 2 Lightning Event for handle add or Delete rows on Parent Component  --> 
+    <aura:registerEvent name="DeleteRowEvt" type="c:DeleteRowEvt"/> 
+    <aura:registerEvent name="AddRowEvt" type="c:AddNewRowEvt"/> 
+    
+    <!-- Table Row -->  
+    
+    <tr class="slds-text-title_caps">
+        <td> 
+            <!-- conditionally Display Add or Delete Icons
+                 if rowIndex is 0 then show Add New Row Icon else show delete Icon
+             --> 
+            <aura:if isTrue="{!v.rowIndex == 0}">
+                
+                <aura:set attribute="else">
+                    <a onclick="{!c.removeRow}">
+                        <center>
+                        <lightning:icon variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="icon"></lightning:icon>
+                        	<span class="slds-assistive-text">Delete Icons</span>
+                        </center>
+                    </a>
+                </aura:set> 
+            </aura:if>
+        </td>
+        <td>
+            <c:customLookup objectAPIName="Product2" IconName="standard:product" selectedRecord="{!v.selectedLookUpRecord}"></c:customLookup>
+        </td>
+        <td>
+            <ui:inputNumber class="slds-input" value="{!v.OrderItemInstance.Quantity}"></ui:inputNumber>
+        </td>
+        <td>
+            <ui:inputNumber class="slds-input" value="{!v.OrderItemInstance.UnitPrice}"></ui:inputNumber> 
+        </td>
+        <td>
+            <ui:outputNumber class="slds-output" value="{!v.OrderItemInstance.TotalPrice}"></ui:outputNumber>
+        </td>
+
+    </tr>
+    <br></br>
+    
+    
+    
+</aura:component>

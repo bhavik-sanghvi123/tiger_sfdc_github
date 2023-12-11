@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RAGstatus__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF (ISPICKVAL(Status, &apos;Completed&apos;) , 
+IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;green&quot;, 18, 22), 
+IF( DATEVALUE(LEFT(TEXT(DueDate__c), 10)) &lt; TODAY(), 
+IMAGE(&quot;/img/samples/flag_red.gif&quot;, &quot;red&quot;, 18, 22), 
+IF( AND(DATEVALUE(LEFT(TEXT(DueDate__c - CallDueDateWarningThreshold__c), 10)) &lt;=TODAY(), DATEVALUE(LEFT(TEXT(DueDate__c), 10)) &gt;= TODAY()), 
+IMAGE(&quot;/img/samples/flag_yellow.gif&quot;, &quot;yellow&quot;, 18, 22), 
+IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;green&quot;, 18, 22) 
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>RAG status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+.THIS .leftPaddingClass {
+    padding-left: 2rem;
+}
+ 
+.THIS .pillSize{
+    width:100%;
+}
+
+.THIS .list_overflow {
+    max-width:300%;
+    width:500px;
+}

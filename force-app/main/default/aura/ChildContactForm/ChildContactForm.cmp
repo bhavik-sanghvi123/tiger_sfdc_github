@@ -1,0 +1,39 @@
+<aura:component >
+	<aura:attribute access="PUBLIC" name="additionalContact" type="Contact"  default="{ 'sobjectType' : 'Contact' }"/>
+    
+    <lightning:recordEditForm objectApiName="Contact">
+        <div>&nbsp;&nbsp;&nbsp;<b>Contact Information</b></div>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">                    
+                <lightning:inputField fieldName="Salutation" aura:id="childSalutation"/>
+                <lightning:inputField fieldName="FirstName" aura:id="childFirstName"/>
+                <lightning:inputField fieldName="MiddleName" aura:id="childFirstName"/>
+                <lightning:inputField fieldName="LastName" aura:id="childLastName"/>
+                <lightning:inputField fieldName="Suffix" aura:id="childSuffix"/>
+                <lightning:inputField fieldName="Gender__c" aura:id="childGender"/>
+                <lightning:inputField fieldName="MilkCodeRestriction__c" aura:id="childMilkCodeRestriction"/>
+                <lightning:inputField fieldName="EndUser__c" aura:id="childEndUser"/>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="Birthdate" aura:id="childBirthdate"/>
+                <lightning:inputField fieldName="Type__c" aura:id="childType"/>
+                <lightning:inputField fieldName="Parent__c" aura:id="childParent"/>                    
+                <lightning:inputField fieldName="NationalID__c" aura:id="childNationalId"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <br></br>
+        <div>&nbsp;&nbsp;&nbsp;<b>Medical and Nutrition Information</b></div>
+        <lightning:layout>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="Height__c" aura:id="childtHeight"/>
+                <lightning:inputField fieldName="MainMedicalCondition__c" aura:id="childMainMedicalCondition"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                <lightning:inputField fieldName="Weight__c" aura:id="childWeight"/>
+                <lightning:inputField fieldName="CaloriesDay__c" aura:id="childCaloriesDay"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:recordEditForm>
+</aura:component>

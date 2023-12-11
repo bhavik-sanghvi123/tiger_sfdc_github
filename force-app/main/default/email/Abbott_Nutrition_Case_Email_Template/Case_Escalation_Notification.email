@@ -1,0 +1,11 @@
+*** CASE ESCALATION ALERT ***
+<br><br>
+Dear Person in Charge,
+<br><br>
+The Case {!Case.CaseNumber} is still pending with the status {!Case.Status}.Please login into your salesforce account and update the status for this case. 
+<br><br>
+{!Case.Link}
+<br><br>
+Customer Service Case Owner:
+<br>
+Owner: {!Case.OwnerFullName} - {!Case.OwnerEmail}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReasonofRequestforCallback__c</fullName>
+    <description>This should be captured under Case Comments by customer
+service agent and set status to &quot;Follow-Up Call Required&quot;.
+Activity task to schedule a call task can be created by
+customer service agent if he or she wants to set a due date for
+the call.</description>
+    <externalId>false</externalId>
+    <label>Reason of Request for Call back</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

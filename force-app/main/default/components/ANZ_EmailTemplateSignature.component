@@ -1,0 +1,66 @@
+<apex:component access="global">
+    <apex:attribute name="showSignature" description="show signature" type="Boolean" default="true"/>
+    <apex:attribute name="isMedical" description="Medical Rep" type="Boolean" default="false"/>
+    
+    <apex:outputPanel rendered="{!showSignature}">
+        <br/><br/>
+        Yours sincerely,<br/>
+        {!$User.FirstName}<br/>
+    </apex:outputPanel>
+    <div style="width:560px">
+        <hr align="left"/>
+        <table width="100%" style="font-color:gray;font-size: 10px;">
+            <tr>
+                <td width="25%">
+                    <img src="https://anitiger.file.force.com/servlet/servlet.ImageServer?id=0152j0000004lik&oid=00D0o000001CSAO" alt="Abbott Logo"/>
+                </td>
+                <td width="25%">
+                        <apex:outputPanel rendered="{!!isMedical}">
+                            <span style="color: #0099cc;font-weight: bold;">Customer Service Representative</span><br/>ANI ANZ
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!isMedical}">
+                            <span style="color: #0099cc;font-weight: bold;">Medical Information Representative</span><br/>ANI ANZ
+                        </apex:outputPanel>
+                </td>
+                <td width="25%">Abbott Nutrition<br/>299 Lane Cove Road<br/>Macquarie Park<br/>NSW, Australia, 2113</td>
+                <td width="25%">Tel: 1800225311<br/>
+                    <a href="mailto:nutritionanz@abbott.com">
+                        <apex:outputPanel rendered="{!!isMedical}">
+                            nutritionanz@abbott.com
+                        </apex:outputPanel>
+                    </a>
+                    <a href="mailto:medicalinformation@abbott.com">
+                        <apex:outputPanel rendered="{!isMedical}">
+                            medicalinformation@abbott.com
+                        </apex:outputPanel>
+                    </a>
+                    <br/>
+                    <a href="www.abbottnutrition.com.au">abbottnutrition.com.au</a>
+                </td>
+            </tr>
+        </table>
+    
+        <hr align="left"/>
+            <span style="font-size:9px;font-color:gray;">
+                This communication may contain information that is proprietary, confidential, or exempt from disclosure. If you are not the intended recipient, please note that any other dissemination, distribution, use or copying of this communication is strictly prohibited. Anyone who receives this message in error should notify the sender immediately by telephone or by return e-mail and delete it from his or her computer.
+            </span>
+            
+        <hr align="left"/>
+        <!--<table width="100%" style="font-color:gray;font-size: 10px;">
+            <tr>
+                <td width="25%">
+                    <a href="https://www.pediasure.com.au"> <img src="https://anitiger.file.force.com/servlet/servlet.ImageServer?id=0152j0000004qAn&oid=00D0o000001CSAO" alt="Pediasure Logo"/> </a>
+                </td>
+                <td width="25%">
+                    <a href="https://www.ensure.com.au"> <img src="https://anitiger.file.force.com/servlet/servlet.ImageServer?id=0152j0000004qBR&oid=00D0o000001CSAO" alt="Ensure Logo"/> </a>
+                </td>
+                <td width="25%">
+                    <a href="https://www.glucerna.com.au"> <img src="https://anitiger.file.force.com/servlet/servlet.ImageServer?id=0152j0000004qBW&oid=00D0o000001CSAO" alt="Glucerna Logo"/> </a>
+                </td>
+                <td width="25%">
+                    <a href="https://www.elecare.com.au"> <img src="https://anitiger.file.force.com/servlet/servlet.ImageServer?id=0152j0000004qA9&oid=00D0o000001CSAO" alt="Elecare Logo"/> </a>
+                </td>
+            </tr>
+        </table>-->
+    </div>
+</apex:component>

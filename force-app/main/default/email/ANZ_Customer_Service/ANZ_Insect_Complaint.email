@@ -1,0 +1,25 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,
+        <br/><br/>
+    
+        Thank you for contacting Abbott Nutrition.
+        <br/><br/>
+        <ul>
+            <li>Proof or purchase</li>
+            <li>Where was the tin originally purchased?</li>
+            <li>Where is the tin currently located (Region or country)? </li>
+            <li>What was the status of the insect(s) when found? Alive or dead?</li>
+            <li>When did you notice the insect(s)? in the powder or after the formula was prepared?</li>
+            <li>Where was the insect(s) noticed? Top of formula, middle or bottom?</li>
+            <li>How long had the tin been opened for when the insect(s) was noticed?</li>
+            <li>Where was the tin stored after opening?</li>
+            <li>How many insects were observed?</li>
+            <li>What was the condition of the tin when purchased?</li>
+            <li>Was the tin damaged or dented?</li>
+        </ul>
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

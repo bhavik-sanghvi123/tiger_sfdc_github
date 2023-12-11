@@ -1,0 +1,28 @@
+<project basedir="." default="validate" name="CIProject">
+	
+	<filterset id="project.properties" begintoken="@" endtoken="@">
+		<filtersfile file="properties/${sf.env}.properties" />
+	</filterset>
+
+	<target name="prepare">
+		<!-- Filter in the properties/${sf.env}.properties into the source code -->
+		<delete dir="tmp" />
+		<mkdir  dir="tmp/" />
+		<copy todir="tmp" encoding="ISO-8859-1">
+			<fileset dir="force-app/main/default">
+				<include name="*/**" />
+			</fileset>
+			<filterset refid="project.properties" />		
+		</copy>
+		
+		<copy todir="force-app/main/default" overwrite="true" encoding="ISO-8859-1">
+			<fileset dir="tmp">
+				<include name="*/**" />
+			</fileset>
+		</copy>
+
+		<!-- clean up -->
+		<delete dir="tmp" />
+	</target>
+
+</project>

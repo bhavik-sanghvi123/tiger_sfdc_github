@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Is_Active</fullName>
+    <active>true</active>
+    <description>Contact cannot be deceased if contact is active</description>
+    <errorConditionFormula>Active__c = True &amp;&amp;  Deceased_Contact__c  = True</errorConditionFormula>
+    <errorMessage>Contact is still active</errorMessage>
+</ValidationRule>

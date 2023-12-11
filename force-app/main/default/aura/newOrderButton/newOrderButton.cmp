@@ -1,0 +1,386 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction,force:hasSObjectName" access="global" controller ="NewOrderController" >
+    
+    <!-- sObject Attributes -->
+    <aura:attribute access="PUBLIC" name="primaryOrder" type="Order"  default="{'sobjectType' : 'Order' }"/>
+    <aura:attribute access="PUBLIC" name="primaryOrderItem" type="OrderItem"  default="{ 'sobjectType' : 'OrderItem' }"/>
+    <aura:attribute access="PUBLIC" name="pricebook" type="Pricebook2" default="{'sobjectType' : 'Pricebook2' }"/>
+    <aura:attribute name="orderItemList" type="OrderItem[]"/> 
+    <aura:attribute name="orderItemListFromPromo" type="OrderItem[]"/> 
+    <aura:attribute name="promotionItemList" type="PromotionItem__c[]"/> 
+    
+    <!-- Record Ids -->
+    <aura:attribute name="primaryOrderId" type="String"/>
+    <aura:attribute name="primaryOrderItemId" type="String"/>
+    <aura:attribute access="PUBLIC" name="orderId" type="String"/>
+    <aura:attribute access="PUBLIC" name="caseId" type="String"/>
+    <aura:attribute access="PUBLIC" name="contactId" type="String"/>
+    <aura:attribute access="PUBLIC" name="sObjectName" type="String"/>
+    <aura:attribute access="PUBLIC" name="finalGrandTotal" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="finalDiscountAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="finalGSTAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="pbeUnitPrice" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="pbeDiscount" type="Decimal"/>
+    <aura:attribute access="PUBLIC" name="pbeGST" type="Decimal"/>
+    <aura:attribute access="PUBLIC" name="userMarket" type="String"/>
+    <aura:attribute name="isSample" type="Boolean" default="false"/>
+    <aura:attribute name="whoOrdered" type="String"/>
+    <aura:attribute name="orderType" type="String"/>
+
+    <!-- Other attributes -->
+    <aura:attribute name="promotionList" type="List"/>
+	<aura:attribute name="promoValue" type="String" default="none"/>
+    <aura:attribute name="promoNameforDeletion" type="String"/>
+    <aura:attribute name="promoName" type="String"/>
+    <aura:attribute name="isVisible" type="Boolean" default="false"/>
+    <aura:attribute name="orderNotesValue" type="String" />
+    <aura:attribute name="orderTypeValue" type="String" />
+    <aura:attribute name="paymentValue" type="String" />
+    <aura:attribute name="vatValue" type="String" />
+    <aura:attribute name="taxIDValue" type="String" />
+    <aura:attribute name="taxNameValue" type="String" />
+    <aura:attribute name="abbottPartnerCodeValue" type="String" />
+    <aura:attribute name="promoterCodeValue" type="String" />
+    <aura:attribute name="promoterNameValue" type="String" />
+    <aura:attribute name="abbottSalesPersonValue" type="String" />
+    <aura:attribute name="salesPersonCodeValue" type="String" />
+    <aura:attribute name="salesPersonNameValue" type="String" />
+    <aura:attribute name="description" type="String" />
+    
+    <!-- OrderRowItem attribute -->
+    <aura:attribute access="PUBLIC" name="oQuantity" type="Integer"/>
+    <aura:attribute access="PUBLIC" name="oProduct" type="sObject"/>
+    <aura:attribute access="PUBLIC" name="oOrderedFor" type="sObject"/>
+    <aura:attribute access="PUBLIC" name="oProductId" type="String"/>
+    <aura:attribute access="PUBLIC" name="oOrderedForId" type="String"/>
+    <!-- <aura:attribute access="PUBLIC" name="oCategory" type="String"/> -->
+    <aura:attribute access="PUBLIC" name="oPackageCode" type="String"/>
+    <aura:attribute access="PUBLIC" name="oProductRecType" type="String"/>
+    <aura:attribute access="PUBLIC" name="oUnitPrice" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="oPromotionType" type="String"/>
+    <aura:attribute access="PUBLIC" name="oPromotionItemId" type="String"/>
+    <aura:attribute access="PUBLIC" name="oDiscountAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="oDiscountValue" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="oGSTValue" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="oGSTAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="oFinalPrice" type="Currency"/>
+    
+    <!-- Events -->
+    <aura:handler name="DeleteRowEvt" event="c:DeleteRowEvt" action="{!c.removeDeletedRow}"/>
+    <aura:handler name="AddRowEvt" event="c:AddNewRowEvt" action="{!c.addNewRow}"/>
+    <aura:handler name="GetPercentageGSTEvt" event="c:PricebookEntryGSTEvent" action="{!c.handleGSTEvent}"/>
+	<aura:handler name="GetUnitPriceEvt" event="c:PricebookEntryUnitPriceEvent" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="GetPercentageDiscountEvt" event="c:PricebookEntryDiscountEvent" action="{!c.handleDiscountEvent}"/>
+    <aura:handler name="UpdateGrandTotal" event="c:StoreGrandTotal" action="{!c.getGrandTotal}"/>
+    <aura:handler name="UpdateTotalDiscountAmount" event="c:StoreOrderTotalDiscountAmount" action="{!c.getTotalDiscountAmount}"/>
+    <aura:handler name="UpdateTotalGST" event="c:StoreOrderTotalGST" action="{!c.getTotalGST}"/>
+    <aura:registerEvent name="OrderItemListEvt" type="c:DeleteOrderItemListEvent"/>
+    <aura:handler name="change" value="{!v.orderTypeValue}" action="{!c.sampleOrderRequest}" />
+    <aura:handler name="cancelSummaryEvent" event="c:NewOrderSummaryEvent" action="{!c.cancelOrBackFunction}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:workspaceAPI aura:id="workspace" />
+    
+    <!-- Modal Related Atttibutes -->
+    <aura:attribute name="showModalforCancelButton" type="Boolean" default="false" description="to cancel Modal"/>
+    <aura:attribute name="addPromotion" type="Boolean" default="false" description="to cancel Modal"/>
+    <aura:attribute name="orderCancel" type="String"/>
+    <aura:attribute name="showModal" type="Boolean" default="false" description="to show child account form"/>
+    <aura:attribute name="removePromotion" type="Boolean" default="false" description="to cancel Modal"/>
+    
+    <!-- Summary Attributes -->
+    <aura:attribute name="showSummaryPage" type="Boolean" default="false" />
+
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!--<div id="mainForm" class="slds-theme_default">-->
+    <aura:renderIf isTrue="{!v.showSummaryPage == false}">
+        <div id="mainForm" class="slds-theme_default slds-p-bottom_x-small">
+            <br></br>
+            <lightning:recordEditForm objectApiName="Order" recordId ="{!v.orderId}" aura:id="mainOrderForm">
+                <h3 class="slds-section__title slds-theme_shade"> <b>&nbsp;&nbsp;&nbsp;ORDER INFORMATION </b> </h3>
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">           
+                        <lightning:outputField fieldName="OrderNumber" aura:id="orderNumber"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">           
+                        <lightning:outputField fieldName="Case__c" aura:id="orderCase"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:outputField fieldName="AccountId" aura:id="orderAccountId"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:outputField fieldName="OrderedBy__c" aura:id="orderOrderBy"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+                
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:inputField fieldName="Type" aura:id="orderType" onchange="{!c.orderTypeChanges}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:inputField fieldName="PaymentMethod__c" aura:id="orderPaymentMethod"  onchange="{!c.paymentChanges}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:outputField fieldName="Status" aura:id="orderStatus" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <lightning:outputField fieldName="EffectiveDate" aura:id="orderEffectiveDate"/>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+                <!-- Sean Cordova - Begin -->
+                <aura:If isTrue="{!v.userMarket == 'TW'}">
+                    <lightning:layout>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                            <lightning:inputField fieldName="VAT__c" aura:id="orderVAT" onchange="{!c.vatChanges}"/>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                            <lightning:inputField fieldName="TaxId__c" aura:id="orderTaxId" onchange="{!c.taxIDChanges}"/>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                            <lightning:inputField fieldName="TaxName__c" aura:id="orderTaxName" onchange="{!c.taxNameChanges}"/>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                            <lightning:inputField fieldName="Abbott_Partner_Code__c" aura:id="orderAbbottPartnerCode" onchange="{!c.abbottPartnerCodeChanges}"/>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                            <lightning:inputField fieldName="Abbott_Sales_Person__c" aura:id="orderAbbottSalesPerson" onchange="{!c.abbottSalesPersonChanges}"/>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </aura:If>
+                <!-- Sean Cordova - End -->
+
+                <lightning:layout class="slds-text-title_caps">
+                    <lightning:layoutItem flexibility="auto" padding="around-small" size="3">
+                        <p>Price Book</p>
+                        <c:LookupComponent IconName="standard:pricebook" label="Pricebook Selected" value="{!v.pricebook.Name}" reference="{!v.pricebook.Id}" objectName= "Pricebook2" isSample="{!v.isSample}" conId="{!v.whoOrdered}" isReadOnly="{!v.isReadOnly}" orderItemList="{!v.orderItemList}" finalGrandTotal="{!v.finalGrandTotal}" finalDiscountAmount="{!v.finalDiscountAmount}" finalGSTAmount="{!v.finalGSTAmount}"/>
+                    </lightning:layoutItem>
+
+                    <!-- Sean Cordova - Begin -->
+                    <aura:If isTrue="{!v.userMarket == 'TW'}">
+                        <lightning:layoutItem flexibility="auto" padding="around-small">
+                            <lightning:inputField fieldName="Description" aura:id="orderDescription" onchange="{!c.descriptionChanges}"/>
+                        </lightning:layoutItem>
+                    </aura:If>
+                    <!-- Sean Cordova - End -->
+
+                </lightning:layout>
+            </lightning:recordEditForm>
+            
+            <br></br>
+            <h3 class="slds-section__title slds-theme_shade"><b>&nbsp;&nbsp;&nbsp;PRODUCT LINE ITEMS</b></h3>
+            <div class="slds-table--header-fixed_container" style="height:450px;">
+                <div class="slds-scrollable_y" style="height:100%;">
+                    <table class="slds-table slds-table_bordered slds-table--header-fixed">
+                        <thead>
+                            <tr style="background-color:#6cbcd2;color:white;font-weight:bold" class="slds-text-title_caps">
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate"></div>
+                                </th>
+                                <th class="{!v.userMarket == 'SG' ? slds-size--1-of-12 : slds-size--2-of-12}" scope="col">
+                                    <div class="slds-truncate" title="ProductName">Product <b> *</b></div>
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="PackageCode">Product Code</div>
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="Quantity">Quantity <b> *</b></div>
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="UnitPrice">Unit Price</div>
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="GST">GST</div>
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="PromotionType">Promotion Type</div>
+                                </th>
+                                <th class="{!v.userMarket == 'SG' ? slds-size--1-of-12 : slds-size--2-of-12}" scope="col">
+                                    <div class="slds-truncate" title="OrderedFor">Ordered For</div>
+                                </th>
+                                <aura:if isTrue="{!v.userMarket == 'SG'}">
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate" title="Channel">Channel</div>
+                                    </th>
+                                </aura:if>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate" title="Category">Category</div>
+                                </th>
+                                <th class="slds-size--1-of-12"  scope="col">
+                                    <div class="slds-truncate" title="Price">Price</div>
+                                </th>
+                            </tr>
+                        </thead>   
+                        <tbody>
+                            <!--Iterate the child Component for display Table rows 
+                           with pass the List Item Index for track the Every child Component 
+                           and pass each List OrderItem Instance-->    
+                            <aura:iteration items="{!v.orderItemList}" var="item" indexVar="index" aura:id="orderItem">
+                                <!-- <aura:if isTrue="{!v.isVisible}"> -->
+                                <c:OrderItemRow orderItemInstance="{!item}" rowIndex="{!index}" referenceId="{!v.pricebook.Id}" householdId="{!v.primaryOrder.AccountId}" oQuantity="{!item.oQuantity}" oProduct="{!item.oProduct}" oUnitPrice="{!item.oUnitPrice}" oPromotionType="{!item.oPromotionType}" oFromSObject="{!item.oFromSObject}" oPromotionItemId="{!item.oPromotionItemId}" oDiscount="{!v.pbeDiscount}" oGST="{!v.pbeGST}" oPackageCode="{!item.oPackageCode}" oProductRecType="{!item.oProductRecType}" userMarket="{!v.userMarket}"/>
+                            </aura:iteration>
+                            <tr>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    <div class="slds-truncate"></div>
+                                </th>
+                                <th class="{!v.userMarket == 'SG' ? slds-size--1-of-12 : slds-size--2-of-12}" scope="col">
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                </th>
+                                <th class="slds-size--1-of-12" scope="col">
+                                </th>
+                                <th class="{!v.userMarket == 'SG' ? slds-size--1-of-12 : slds-size--2-of-12}" scope="col">
+                                </th>
+                                <aura:if isTrue="{!v.userMarket == 'SG'}">
+                                    <th class="slds-size--1-of-12" scope="col">
+                                    </th>
+                                </aura:if>
+                                <th class="slds-size--1-of-12" scope="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>GRAND TOTAL: </b>
+                                </th>
+                                <th class="slds-size--1-of-12"  scope="col">
+                                    <ui:outputCurrency class="slds-output" value="{!v.finalGrandTotal}"/>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Buttons -->
+            <br></br>
+            <center> 
+                <lightning:button label="Add Promotion"  onclick="{!c.showPromotionModal}" class="slds-button slds-button_neutral"/>
+                <lightning:button label="Add Line Item"  onclick="{!c.addNewRow}"  class="slds-button slds-button_neutral"/>
+            </center>
+            
+            
+            <lightning:recordEditForm objectApiName="Order" recordId ="{!v.orderId}" aura:id="orderNotesForm">
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="around-small">           
+                        <lightning:inputField fieldName="OrderNotes__c" aura:id="orderNotes"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small">   
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="around-small">   
+                    </lightning:layoutItem>
+                </lightning:layout>
+    		</lightning:recordEditForm>
+            
+            <br></br>
+            <center> 
+                <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.showModalforCancelButton}"/>
+                <lightning:button class="slds-button slds-button_brand" label="Next" onclick="{!c.saveDetails}"/>
+            </center>
+            
+            <!-- Show Modal for Promotion -->
+            <aura:if isTrue="{!v.addPromotion}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Select a Promotion to Add to the Order</h2>
+                        </header>
+                        
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <ui:inputText placeholder="Search" updateOn="keyup" keyup="{!c.keyPressController}" value="{!v.promoName}" class="slds-lookup__search-input slds-input leftPaddingClass"/>
+                            <br></br>
+                            <aura:if isTrue="{!v.promotionList.length > 0}">
+                                <lightning:radioGroup class="radioValue" 
+                                                      name="radioPromotion"
+                                                      options="{!v.promotionList}"  
+                                                      value="{!v.promoValue}"  
+                                                      type="radio"/>
+                                <aura:set attribute="else">
+                                    <div class="slds-modal__content slds-p-around_medium">
+                                    <center> No Promotion Available! </center>
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                        
+                        <footer class="slds-modal__footer">
+                            <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.closePromotionModal}"/> 
+                            <lightning:button class="slds-button slds-button_brand" label="Add to Order" onclick ="{!c.addToOrder}"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!-- End of Modal for Cancel -->   
+            </aura:if> 
+            
+            <!-- Show Modal for Removal of Promotion -->
+            <aura:if isTrue="{!v.removePromotion}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Remove Promotion</h2>
+                        </header>
+                        
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <center>
+                                <p>Removing this line item from the order will remove all line items added from <b>{!v.promoNameforDeletion}</b>.</p>
+                            </center>    
+                        </div>
+                        
+                        <footer class="slds-modal__footer">
+                            <center>
+                                <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.closeRemovePromotionModal}"/>
+                                <lightning:button class="slds-button slds-button_brand" label="Confirm" onclick="{!c.removeProductPromotions}"/>
+                            </center>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+                <!-- End of Modal for Cancel -->   
+            </aura:if>
+        </div>  
+    </aura:renderIf>
+
+    <aura:if isTrue="{!v.showSummaryPage}">
+        <c:NewOrderSummary orderItemList="{!v.orderItemList}" orderId="{!v.orderId}" caseId="{!v.caseId}" 
+            pricebookId="{!v.pricebook.Id}" contactId="{!v.contactId}" householdId="{!v.primaryOrder.AccountId}" 
+            finalGrandTotal="{!v.finalGrandTotal}" orderNotesValue="{!v.orderNotesValue}"
+            orderTypeValue="{!v.orderTypeValue}" paymentValue="{!v.paymentValue}" orderDiscount="{!v.pbeDiscount}"
+            finalDiscountAmount="{!v.finalDiscountAmount}" orderGST="{!v.pbeGST}" finalGSTAmount="{!v.finalGSTAmount}"
+            vatValue="{!v.vatValue}" taxIDValue="{!v.taxIDValue}" taxNameValue="{!v.taxNameValue}" abbottPartnerCodeValue="{!v.abbottPartnerCodeValue}"
+            promoterCodeValue="{!v.promoterCodeValue}" promoterNameValue="{!v.promoterNameValue}" abbottSalesPersonValue="{!v.abbottSalesPersonValue}"
+            salesPersonCodeValue="{!v.salesPersonCodeValue}" salesPersonNameValue="{!v.salesPersonNameValue}" description="{!v.description}"/>
+    </aura:if>    
+
+    <!-- Show Modal for Cancel -->
+    <aura:if isTrue="{!v.showModalforCancelButton}">
+        <div id="mainForm" class="slds-theme_default slds-p-bottom_x-small">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure you want to cancel the order?</h2>
+                    </header>
+                    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning:recordEditForm objectApiName="Order" recordId = "{!v.orderID}">
+                            <lightning:layoutItem flexibility="auto" padding="around-small">           
+                                <lightning:inputField fieldName="OrderCacellationReason__c" aura:id="primaryOrderCancel"/>
+                            </lightning:layoutItem>
+                        </lightning:recordEditForm>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button class="slds-button slds-button_neutral" label="Yes" onclick="{!c.submit}"/>
+                        <lightning:button class="slds-button slds-button_brand" label="No" onclick = "{!c.closeModalforCancelButton}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        <!-- End of Modal for Cancel -->   
+    </aura:if>
+</aura:component>

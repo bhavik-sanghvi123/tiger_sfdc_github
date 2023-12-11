@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BrandRelationship__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Brand Relationship</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3 AND ((4 OR 5) OR (6 AND 7))) OR 8</booleanFilter>
+        <filterItems>
+            <field>Product2.IsActive</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Product2.AvailableBrandRelationship__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Product2.CompetitorProduct__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.UserType</field>
+            <operation>equals</operation>
+            <value>AutomatedProcess</value>
+        </filterItems>
+        <filterItems>
+            <field>$Profile.Name</field>
+            <operation>equals</operation>
+            <value>System Administrator</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.UserType</field>
+            <operation>notEqual</operation>
+            <value>AutomatedProcess</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Market__c</field>
+            <operation>contains</operation>
+            <valueField>Product2.Market__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>$User.Bypass_Lookup_Filter__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Brand Relationships</relationshipLabel>
+    <relationshipName>Brand_Relationships</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

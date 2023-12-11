@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Abbott_Awareness_Date</fullName>
+    <active>true</active>
+    <description>Only for India</description>
+    <errorConditionFormula>AND(
+    TEXT(Account.Market__c) = &quot;IN&quot;,
+    RecordType.Name = &quot;Feedback&quot;,
+    NOT(IsSocialCase__c),
+    OR(
+        ISBLANK(AbbottAwarenessDate__c),
+        AbbottAwarenessDate__c &gt; TODAY()
+    )
+)</errorConditionFormula>
+    <errorDisplayField>AbbottAwarenessDate__c</errorDisplayField>
+    <errorMessage>Abbott Awareness Date&apos; field must only be populated with past date or present date.</errorMessage>
+</ValidationRule>

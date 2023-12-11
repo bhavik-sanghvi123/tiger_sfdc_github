@@ -1,0 +1,517 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="NewOrderController">
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <!-- order information ids -->
+    <aura:attribute name="orderId" type="String" />
+    <aura:attribute name="caseId" type="String" />    
+    <aura:attribute name="householdId" type="String" />
+    <aura:attribute name="contactId" type="String" />
+    <aura:attribute name="pricebookId" type="String" />
+    <!-- Product table value -->
+    <aura:attribute name="orderItemList" type="List" />
+    <aura:attribute name="finalGrandTotal" type="Currency"/>
+    <aura:attribute name="finalGrandTotalSummary" type="Currency"/>
+    <aura:attribute name="finalDiscountAmount" type="Currency" />
+    <aura:attribute name="finalGSTAmount" type="Currency" />
+    <!-- order fields -->
+    <aura:attribute name="orderNotesValue" type="String" />
+    <aura:attribute name="orderTypeValue" type="String" />
+    <aura:attribute name="paymentValue" type="String" />
+    <aura:attribute name="orderDeliveryDate" type="String" />
+    <aura:attribute name="orderDeliveryTime" type="String" />
+    <aura:attribute name="orderDiscount" type="Decimal" />
+    <aura:attribute name="orderGST" type="Decimal"/>
+    <aura:attribute name="userMarket" type="String" />
+    <aura:attribute name="searchKeyWord" type="String"/>
+    <aura:attribute name="unitNumber" type="String"/>
+    <aura:attribute name="vatValue" type="String" />
+    <aura:attribute name="taxIDValue" type="String" />
+    <aura:attribute name="taxNameValue" type="String" />
+    <aura:attribute name="abbottPartnerCodeValue" type="String" />
+    <aura:attribute name="promoterCodeValue" type="String" />
+    <aura:attribute name="promoterNameValue" type="String" />
+    <aura:attribute name="abbottSalesPersonValue" type="String" />
+    <aura:attribute name="salesPersonCodeValue" type="String" />
+    <aura:attribute name="salesPersonNameValue" type="String" />
+    
+    <aura:attribute name="invalidPostalCode" type="Boolean" default="false"/>
+    <aura:attribute name="invalidUnitNo" type="Boolean" default="false"/>
+    <aura:attribute access="PUBLIC" name="experianAddress" type="sObject" default="{}" description="Stores field values returned by Experian callout"/>
+    <aura:attribute name="addressValidationStatus" type="String" default="Pending"/>
+    <aura:attribute name="isTokenAvailable" type="Boolean" default="false"/>
+    <aura:attribute name="callingExperianAPI" type="Boolean" default="false"/>
+    <aura:attribute name="abbottPartnerCodeName" type="String" default="N/A"/>
+    <aura:attribute name="abbottSalesPersonName" type="String" default="N/A"/>
+    <aura:attribute name="pricebookName" type="String" default="N/A"/>
+    <aura:attribute name="description" type="String" default="N/A"/>
+    <aura:attribute name="preferredDeliveryTimePicklist" type="List" default="[]"/>
+
+    <!-- Address creation fields -->
+    <aura:attribute name="selectedAddress" type="sObject" default="{}"/>
+    <aura:attribute name="addressId" type="String" />
+    <aura:attribute name="countryPicklist" type="List" default="[]"/>
+    <aura:attribute name="countryValue" type="String" />
+    <aura:attribute name="showAddressCreation" type="boolean" default="false" />
+    <aura:attribute name="refreshEditForm" type="boolean" default="true" />   
+    <aura:attribute name="disabledWard" type="Boolean" default="true"/>
+    <aura:attribute name="disabledDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="disabledSubDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="disabledCity2" type="Boolean" default="true"/>
+    <aura:attribute name="wardValue" type="String"/>
+    <aura:attribute name="cityValue" type="String"/>
+    <aura:attribute name="districtValue" type="String"/>
+    <aura:attribute name="subDistrictValue" type="String"/>
+    <aura:attribute name="regionValue" type="String"/>
+
+	<!-- Contact Market -->
+    <aura:attribute name="marketField" type="String"/>
+    
+    
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <!-- Events -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="selectedAddressEvent" event="c:NewOrderSummaryEvent" action="{!c.handleSelectedAddress}"/>
+    <aura:handler name="oCancelRecordEvent" event="c:NewOrderSummaryEvent" action="{!c.refreshForm}"/>
+    <aura:registerEvent name="cancelSummaryEvent" type="c:NewOrderSummaryEvent"/>
+    
+    <div id="mainForm" class="slds-theme_default slds-p-bottom_x-small">
+        
+        <aura:renderIf isTrue="{!v.callingExperianAPI}">
+            <div class="slds-spinner_container" >
+                <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                    <span class="slds-assistive-text">Loading, Please Wait...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:renderIf>
+        
+        <br></br>
+        <lightning:recordEditForm objectApiName="Order" recordId ="{!v.orderId}" >
+            <h3 class="slds-section__title slds-theme_shade"> <b>&nbsp;&nbsp;&nbsp;ORDER SUMMARY </b> </h3>
+            <lightning:layout>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">           
+                    <lightning:outputField fieldName="OrderNumber" />
+                </lightning:layoutItem>            
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                    <lightning:outputField fieldName="AccountId" />
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                    <lightning:outputField fieldName="OrderedBy__c"/>
+                </lightning:layoutItem>
+                 <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                 	<label for="orderCase" class="slds-form-element__label">Call Number</label>    
+                    <lightning:outputField fieldName="Case__c"  label="Call Number" variant="label-hidden"/>
+                </lightning:layoutItem>        
+            </lightning:layout>
+            
+            <lightning:layout>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                    <label for="orderType" class="slds-form-element__label">Order Type</label>  
+                    <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{!v.orderTypeValue}</div>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                    <label for="orderPaymentMethod" class="slds-form-element__label">Payment Method</label>  
+                    <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{!v.paymentValue}</div>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                    <lightning:outputField fieldName="Status" />
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                	<label for="orderEffectiveDate" class="slds-form-element__label">Date</label>    
+                    <lightning:outputField fieldName="EffectiveDate" variant="label-hidden"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+
+            <!-- Sean Cordova - Begin -->
+            <aura:If isTrue="{!v.userMarket == 'TW'}">
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">VAT</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.vatValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Tax ID</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.taxIDValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Tax Name</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.taxNameValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Abbott Partner Code</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                {!v.abbottPartnerCodeName}
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                    
+                </lightning:layout>
+                
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Promoter Code</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.promoterCodeValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Promoter Name</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.promoterNameValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Abbott Sales Person</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                {!v.abbottSalesPersonName}
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Sales Person Code</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.salesPersonCodeValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Sales Person Name</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.salesPersonNameValue}</div>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+                <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Price Book</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.pricebookName}</div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto" padding="horizontal-medium">
+                        <label for="orderPaymentMethod" class="slds-form-element__label">Description</label>  
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.description}</div>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </aura:If>
+            <!-- Sean Cordova - End -->
+        </lightning:recordEditForm>
+        
+        <br></br>
+        <h3 class="slds-section__title slds-theme_shade">
+            <lightning:layout class="productHeader">
+                <lightning:layoutItem flexibility="auto">           
+                    <b>&nbsp;&nbsp;&nbsp;PRODUCTS</b>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </h3>
+        <div  style="min-height:100px;">
+            <lightning:layout >
+                <lightning:layoutItem  padding="around-small"  class="product-table">          
+                    <div class="slds-scrollable_y product-height">
+                        <table class="slds-table slds-table--header-fixed" flexibility="auto">
+                            <thead>
+                                <tr style="background-color:#6cbcd2;color:white;font-weight:bold" class="slds-text-title_caps">                                   
+                                    <th class="slds-size--1-of-12" scope="col" >
+                                        <div class="slds-truncate header-custom" title="ProductName">Product</div>
+                                    </th>
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="ProductCode">Product Code</div>
+                                    </th>
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Quantity">Quantity</div>
+                                    </th> 
+                                    
+                                    <!-- Sean Cordova - Begin -->
+                                    <!-- <th class="slds-size- -1-of-12" scope="col" >
+                                        <div class="slds-truncate header-custom" title="Promotion">Promotion</div>
+                                    </th>                     -->
+                                    <!-- Sean Cordova - End -->
+
+                                    <th class="slds-size--1-of-12"  scope="col">
+                                        <aura:if isTrue="{!v.orderGST > 0}">
+                                                <div class="slds-truncate padding-horizontal header-custom" title="Price Exclusive of GST">Price Exclusive of GST</div>
+                                            <aura:set attribute="else">
+                                                <div class="slds-truncate padding-horizontal header-custom" title="Unit Price">Unit Price</div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </th>
+
+                                    <!-- Sean Cordova - Begin -->
+                                    <!-- <th class="slds-size- -1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Discount Amount">Discount Amount</div>
+                                    </th>   -->
+                                    <!-- Sean Cordova - End -->
+
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="GST">GST</div>
+                                    </th>
+                                    
+                                    <!-- Sean Cordova - Begin -->
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Promotion Type">Promotion Type</div>
+                                    </th>
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Ordered For">Ordered For</div>
+                                    </th>
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Category">Category</div>
+                                    </th>
+                                    <!-- <th class="slds-size- -1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Final Price">Final Price</div>
+                                    </th> -->
+                                    <th class="slds-size--1-of-12" scope="col">
+                                        <div class="slds-truncate header-custom" title="Price">Price</div>
+                                    </th>
+                                    <!-- Sean Cordova - End -->
+
+                                </tr>
+                            </thead>   
+                            <tbody>                                
+                                <aura:iteration items="{!v.orderItemList}" var="item" indexVar="index" aura:id="orderItem">
+                                	<tr>
+	                                    <td class="padding-left-td">
+								            {!item.oProduct}
+								        </td>
+                                        <td  class="slds-p-left_x-small">
+                                            {!item.oPackageCode}
+                                        </td>
+								        <td  class="slds-p-left_x-small">
+								            {!item.oQuantity}
+								        </td>
+
+                                        <!-- Sean Cordova - Begin -->
+                                        <td class="padding-left-td">
+                                            <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oUnitPrice}"/>
+								        </td>
+                                        <td class="padding-left-td">                                        
+                                            <aura:if isTrue="{!and(v.orderGST > 0, item.oFromSObject == 'Product2')}">
+                                                <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oGSTAmount * item.oQuantity}"/>
+                                                <aura:set attribute="else">
+                                                    <ui:outputText class="slds-output" value="N/A"/>
+                                                </aura:set>
+                                            </aura:if>                         
+                                        </td>
+                                        <!-- Sean Cordova - End -->
+
+								        <td class="padding-left-td">
+								        	{!item.oPromotionType}
+								        </td>
+
+                                        <!-- Sean Cordova - Begin -->
+                                        <td class="padding-left-td">
+								        	{!item.oOrderedFor}
+								        </td>
+                                        <td class="padding-left-td">
+								        	{!item.Category__c}
+								        </td>
+								        <!-- <td class="padding-left-td">
+                                            <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oUnitPrice}"/>
+								        </td> -->
+                                        <!-- <td class="padding-left-td">
+                                            <aura:if isTrue="{!and(item.oFromSObject == 'Product2', v.orderDiscount > 0)}"> 
+                                            	<ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oDiscountAmount}"/>
+                                            </aura:if>
+                                        </td> -->
+                                        <!-- <td class="padding-left-td">                                        
+                                            <aura:if isTrue="{!and(v.orderGST > 0, item.oFromSObject == 'Product2')}">
+                                                <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oGSTAmount * item.oQuantity}"/>
+                                                <aura:set attribute="else">
+                                                    <ui:outputText class="slds-output" value="N/A"/>
+                                                </aura:set>
+                                            </aura:if>                         
+                                        </td> -->
+                                        <!-- Sean Cordova - End -->
+
+                                        <td class="padding-left-td">
+                                            <aura:if isTrue="{!item.oFromSObject == 'Product2'}">
+                                                <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oFinalPrice}"/>
+                                                <aura:set attribute="else">
+                                                    <ui:outputCurrency class="slds-output padding-horizontal" value="{!item.oUnitPrice}"/>
+                                                </aura:set>
+                                            </aura:if>
+                                        </td>
+							    	</tr>
+                                    <aura:if isTrue="{!item.oProductRecType == 'Package'}">
+                                        <aura:iteration items="{!item.oPackageItemList}" var="pkgItem" indexVar="index" aura:id="packageItem">
+                                            <tr class="slds-text-title_caps">
+                                                <td class="slds-size--1-of-12 td" scope="col">
+                                                    <ui:outputText class="slds-output" value="{!pkgItem.PackageItem__r.Name}" aura:id="ProductName"/>
+                                                </td>
+                                                <td class="slds-size--1-of-12 td" scope="col">
+                                                    <ui:outputText class="slds-output" value="{!pkgItem.ProductCode__c}" aura:id="ProductCode"/>
+                                                </td>
+                                                <td class="slds-size--1-of-12 td" scope="col">
+                                                    <ui:outputText class="slds-output" value="{!pkgItem.Quantity__c}" aura:id="Quantity"/>
+                                                </td>
+                                            </tr>
+                                        </aura:iteration>
+                                    </aura:if>
+                                </aura:iteration>
+                                <tr>                                                 
+                                    <td colspan="2">
+                                   	</td>
+                                    <td colspan="2">
+                                    </td>
+                                    <td colspan="1">
+                                    </td>
+                                    <td colspan="1">
+                                    </td>
+                                    <td class="padding-left-td ">
+                                        <b>GRAND TOTAL</b>
+                                    </td>
+                                    <td class="padding-left-td ">                                       	                        
+                                    	 <ui:outputCurrency class="slds-output slds-border_top slds-border_bottom padding-vertical padding-horizontal" value="{!v.finalGrandTotalSummary}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                        <br></br>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+        <br></br>
+        <h3 class="slds-section__title slds-theme_shade">
+            <lightning:layout class="productHeader">
+                <lightning:layoutItem flexibility="auto">           
+                    <b>&nbsp;&nbsp;&nbsp;DELIVERY ADDRESS</b>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </h3>
+        <div  style="min-height:100px;">
+            <lightning:layout >
+                  <lightning:layoutItem padding="around-small" class="edit-form-custom"> 
+                    <aura:if isTrue="{!v.refreshEditForm}">             	
+                    <lightning:recordEditForm objectApiName="Address__c" recordId ="{!v.selectedAddress.Id}" aura:id="addressForm" onsuccess="{!c.handleSuccess}" onerror="{c.handleError}" onload="{!c.handleLoad}" >                                                 
+                        <lightning:layout multipleRows="true">
+                            <lightning:layoutItem padding="around-small" size="6">                             
+                                 <c:NewOrderSummaryLookup aura:id="addressLookup" objectAPIName="Address__c" IconName="standard:contact" selectedRecord="{!v.selectedAddress}" contactId="{!v.contactId}"></c:NewOrderSummaryLookup>
+                                <lightning:inputField fieldName="Street1__c" aura:id="Street1__c" class="customRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="Street2__c" aura:id="Street2__c"></lightning:inputField>
+                                <aura:if isTrue="{!and(v.userMarket == 'SG', v.isTokenAvailable)}">
+                                    <ui:inputText aura:id="PostalCode2__c" label="Postal Code" change="{!c.postalCodeKeyPressController}" updateOn="change" value="{!v.searchKeyWord}" placeholder="6-digit Number" maxlength="6"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!v.userMarket != 'SG'}">
+	                                        <lightning:inputField fieldName="PostalCode__c" aura:id="PostalCode__c"/>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                                <lightning:combobox required="true" value="{!v.selectedAddress.Country__c}" name="Country__c" label="Country" placeholder="--None--" options="{! v.countryPicklist }" onchange="{!c.handleOptionSelected}" aura:id="countryField"/>
+                                <aura:if isTrue="{!and(v.userMarket == 'SG', v.isTokenAvailable)}">
+                                    <ui:inputText aura:id="addressUnitNo" label="Unit Number" change="{!c.unitNoKeyPressController}" updateOn="change" value="{!v.unitNumber}" placeholder="e.g. 01-01, 01-0A, 01-001, 01-01A, 01-0001, 01-001A, 01-00AA" maxlength="7"/>
+                                </aura:if>
+                                <lightning:inputField fieldName="Building__c" aura:id="Building__c"></lightning:inputField>
+                                <lightning:inputField fieldName="VillageNo__c" aura:id="VillageNo__c"></lightning:inputField>
+                                <lightning:inputField fieldName="VillageName__c" aura:id="VillageName__c"></lightning:inputField>
+                                <lightning:inputField fieldName="StateProvince__c" aura:id="StateProvince__c"></lightning:inputField>
+                                <lightning:inputField fieldName="Road__c" aura:id="Road__c"></lightning:inputField>
+
+                                <!-- Sean Cordova - Begin -->
+                                <!-- <aura:if isTrue="{!and(v.userMarket == 'SG', v.isTokenAvailable)}">
+                                    <ui:inputText aura:id="PostalCode2__c" label="Postal Code" change="{!c.postalCodeKeyPressController}" updateOn="change" value="{!v.searchKeyWord}" placeholder="6-digit Number" maxlength="6"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!v.userMarket != 'SG'}">
+	                                        <lightning:inputField fieldName="PostalCode__c" aura:id="PostalCode__c"></lightning:inputField>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                                <lightning:combobox required="true" value="{!v.selectedAddress.Country__c}" name="Country__c" label="Country" placeholder="- -None- -" options="{! v.countryPicklist }" onchange="{!c.handleOptionSelected}" aura:id="countryField"/> -->
+                                <!-- Sean Cordova - End -->
+
+                            </lightning:layoutItem>   
+                            <lightning:layoutItem padding="around-small" size="6">        
+                             	<lightning:button label="View All Household Addresses"  onclick="{!c.showAddress}" variant="brand"></lightning:button>
+                                <lightning:inputField fieldName="DefaultAddress__c" aura:id="DefaultAddress__c"></lightning:inputField>
+                                <lightning:inputField fieldName="State__c" aura:id="State__c" class="{!v.userMarket == 'IN' || !v.userMarket == 'ANZ' ? 'customRequired' : ''}"></lightning:inputField>
+                                <lightning:inputField fieldName="Region__c" aura:id="Region__c" onchange="{!c.stateChange}" class="{!v.userMarket == 'ID'? 'customRequired' : ''}"></lightning:inputField>
+                                <lightning:inputField fieldName="SuburbTown__c" aura:id="SuburbTown__c" class="{!v.userMarket == 'ANZ'? 'customRequired' : ''}"></lightning:inputField>
+                                <aura:if isTrue="{!and(v.userMarket != 'ANZ', v.userMarket != 'ID')}">
+                                    <lightning:inputField fieldName="City2__c" aura:id="City2__c" class="customRequired" onchange="{!c.stateChange}"></lightning:inputField>
+                                </aura:if>
+                                <aura:if isTrue="{!and(v.userMarket != 'ANZ', v.userMarket != 'IN')}">
+                                    <aura:renderIf isTrue="{!v.userMarket == 'ID'}">
+                                        <div class="customRequired"/>
+                                        <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="City" placeholder="Search City..." 
+                                                               predefineValue="{!v.selectedAddress.City2__c}" recordTypeName="City" parentValue="{!v.regionValue}" aura:id="addressCity2"
+                                                               parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledCity2}" selectedAddress="{!c.handleLookupAddress}"></c:AddressCustomLookup>
+                                    </aura:renderIf>
+                                    <aura:renderIf isTrue="{!v.userMarket != 'PH'}">
+                                    <div class="{!or(v.userMarket == 'ID', v.userMarket == 'TW')? 'customRequired' : ''}"/>
+                                    <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="District" placeholder="Search District..." 
+                                                        predefineValue="{!v.selectedAddress.District__c}" recordTypeName="District" parentValue="{!v.cityValue}" aura:id="addressDistrict"
+                                                        parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledDistrict}" selectedAddress="{!c.handleLookupAddress}"></c:AddressCustomLookup>
+                                    <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/>
+                                    <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="Sub-District" placeholder="Search Sub-District..."
+                                                        predefineValue="{!v.selectedAddress.SubDistrict__c}" recordTypeName="Sub-District" parentValue="{!v.districtValue}" aura:id="addressSubDistrict" 
+                                                        parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledWard}" selectedAddress="{!c.handleLookupAddress}"></c:AddressCustomLookup>
+                                    <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/>
+                                    <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="{!v.userMarket == 'ID'? 'Postal Code' : 'Ward'}" placeholder="Search Ward..."
+                                                        predefineValue="{!v.selectedAddress.Ward2__c}" recordTypeName="Ward" parentValue="{!v.districtValue}" aura:id="addressWard" 
+                                                        parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledWard}" selectedAddress="{!c.handleLookupAddress}"></c:AddressCustomLookup>
+                                    </aura:renderIf>
+                                </aura:if>
+                            </lightning:layoutItem>
+                            <div class="slds-hide">
+                                <lightning:inputField fieldName="ParentContact__c" aura:id="ParentContact__c" ></lightning:inputField>
+                                <lightning:inputField fieldName="ParentHousehold__c" value="{!v.householdId}" ></lightning:inputField>
+                            </div>                     		 
+                        </lightning:layout>
+                    </lightning:recordEditForm> 
+                    </aura:if>  
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+        <br></br>
+        <lightning:recordEditForm objectApiName="Order" recordId ="{!v.orderId}">     
+        	<h3 class="slds-section__title slds-theme_shade"> <b>&nbsp;&nbsp;&nbsp;DELIVERY INFORMATION </b> </h3>
+            <lightning:layout multipleRows="true">
+            	<lightning:layoutItem padding="around-small" size="6">
+                	<lightning:inputField fieldName="PreferredDeliveryDate__c" value="{!v.orderDeliveryDate}" aura:id="oPreferredDeliveryDate" required="{!v.userMarket == 'TW'}"/>
+                    <!-- <lightning:inputField fieldName="PreferredDeliveryTime__c" value="{!v.orderDeliveryTime}"/> -->
+                    <lightning:combobox required="false" value="{!v.orderDeliveryTime}" name="PreferredDeliveryTime__c" label="Preferred Delivery Time" placeholder="--None--" options="{! v.preferredDeliveryTimePicklist }"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6">
+                	<lightning:inputField fieldName="OrderNotes__c" value="{!v.orderNotesValue}"/>
+                </lightning:layoutItem>      
+            </lightning:layout>
+       </lightning:recordEditForm>
+       <lightning:recordEditForm objectApiName="Order" recordId ="{!v.orderId}">     
+            <h3 class="slds-section__title slds-theme_shade"> <b>&nbsp;&nbsp;&nbsp;RELATED CAMPAIGN</b> </h3>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem padding="around-small" size="3">
+                    <lightning:inputField fieldName="RelatedCampaign__c" aura:id="orderCampaign" onchange="{!c.campaignSelected}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="3">
+                    <lightning:inputField fieldName="Channel__c" aura:id="orderChannel"></lightning:inputField>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:recordEditForm>
+     
+        <br></br>
+        <center> 
+            <lightning:button label="Cancel"  onclick="{!c.showModalforCancelButton}" ></lightning:button>  
+            <lightning:button label="Back"  onclick="{!c.backToPreviousPage}"></lightning:button>  
+            <lightning:button label="Submit"  onclick="{!c.saveDetails}" variant="brand" disabled="{!v.callingExperianAPI}"></lightning:button>
+        </center>
+        <aura:if isTrue="{!v.showAddressCreation}">
+        	<c:NewOrderSummaryAddress householdId="{!v.householdId}" contactId="{!v.contactId}"/>
+    	</aura:if>
+    </div>       
+</aura:component>

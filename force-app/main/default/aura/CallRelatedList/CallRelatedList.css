@@ -1,0 +1,15 @@
+.THIS .image-margin{
+    margin-right:12px
+}
+
+.THIS .slds-table td:last-of-type{
+   padding-left:0;
+}
+
+.THIS .slds-table th:nth-of-type(1) .slds-truncate {
+   padding-left:24px;
+}
+
+.THIS .card-header, .THIS .slds-th__action {
+    font-weight: 700;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastReminderSentDate__c</fullName>
+    <description>Technical Field. Do not display in layout</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Technical Field. Do not display in layout</inlineHelpText>
+    <label>Last Reminder Sent Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

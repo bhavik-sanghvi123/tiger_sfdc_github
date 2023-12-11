@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agents_Cannot_Edit_Closed_Resolved_Cases</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ !ISNEW(),
+ OR(
+  RecordType.Name = &apos;Inquiry&apos;,
+  RecordType.Name = &apos;Feedback&apos;),
+  AND(
+    !ISCHANGED(Status),
+    ISPICKVAL(Status,&quot;Closed-Resolved&quot;)
+  ),
+ OR(
+    CONTAINS($Profile.Name, &apos;ANI Call Center Agent&apos;),
+    CONTAINS($Profile.Name, &apos;ANI Customer Service Agent&apos;)
+    )
+)</errorConditionFormula>
+    <errorMessage>You are restricted to modify Closed - Resolved cases.</errorMessage>
+</ValidationRule>

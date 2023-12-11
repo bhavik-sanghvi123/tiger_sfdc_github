@@ -1,0 +1,36 @@
+<aura:component>
+	<aura:attribute name="orderRec" type="sObject" />
+	 <tr class="slds-hint-parent">      
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderNumber}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderContactRefNo}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderName}</div></td>     
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderStreet1}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderStreet2}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderWard}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderDistrict}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderCity}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderHomePhone}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderMobile}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderOtherPhone}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderRelatedCampaign}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderProductNumber}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderProductCode}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderTotalQuantity}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderProductName}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderPromotion}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderUnitPrice}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderAmount }</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderStartDate}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderExportDate}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderCreatedBy}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderKeyBrand}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderNotes}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderRegion}</div></td>        
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderType}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderStatus}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderPaymentMethod}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderCaseNumber}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderOrderedFor}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderRec.sOrderCategory}</div></td>
+    </tr>
+</aura:component>

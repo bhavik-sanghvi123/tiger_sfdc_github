@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AssetService_LocalClassificationDate</fullName>
+        <field>LocalClassificationDate__c</field>
+        <formula>TODAY()</formula>
+        <name>AssetService:LocalClassificationDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AssetService_SMECloseOffDate</fullName>
+        <field>SMECloseOffDate__c</field>
+        <formula>TODAY()</formula>
+        <name>AssetService:SMECloseOffDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>AssetService %3A Auto Populate LocalClassificationDate</fullName>
+        <actions>
+            <name>AssetService_LocalClassificationDate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR(AND(ISNEW(), !ISNULL(LocalClassification__c )),      ISCHANGED( LocalClassification__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>AssetService %3A Auto Populate SMECloseOffDate</fullName>
+        <actions>
+            <name>AssetService_SMECloseOffDate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( NOT(ISNEW()) ,  AND( ISCHANGED(SMECloseOffBy__c )  ,NOT(ISNULL(SMECloseOffBy__c ))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

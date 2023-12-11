@@ -1,0 +1,36 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="false" controller="MINTEL_SurveyFormController">
+    <apex:includeLightning />
+
+	     
+    <body>
+        
+    <div id="Con" style="height:100vh;"/>
+        
+    <style>
+        body {
+        margin: 0px;
+        width: 100vw;
+        height: 100vh;
+        }
+    </style>
+    
+        
+    <script>
+         var mid = "{!$CurrentPage.parameters.lineId}";
+         var chanelId = "{!$CurrentPage.parameters.chanelId}";
+        $Lightning.use("c:MINTEL_SurveyFormApp", function() { 
+            $Lightning.createComponent(
+                "c:MINTEL_SurveyForm",
+                {"mid": mid,
+                "chanelId": chanelId},   
+                "Con",
+                function(cmp) {
+                    console.log("Component is created!");
+                    console.log(cmp);
+                });
+            });
+        
+     </script>
+    </body>
+    
+</apex:page>

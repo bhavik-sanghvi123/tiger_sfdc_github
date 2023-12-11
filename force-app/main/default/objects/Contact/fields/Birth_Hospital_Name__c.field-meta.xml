@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Birth_Hospital_Name__c</fullName>
+    <description>[16-Aug-21 Khai] This is a backend field created so that case can pull out birth hospital name as a formula field</description>
+    <externalId>false</externalId>
+    <formula>BirthHospital__r.Name__c</formula>
+    <inlineHelpText>Displays the Institution name of the Birth Hospital</inlineHelpText>
+    <label>Birth Hospital Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

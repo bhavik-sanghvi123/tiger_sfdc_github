@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Update_Order_Status</fullName>
+        <field>ApprovalStatus__c</field>
+        <formula>&quot;Approved&quot;</formula>
+        <name>Update Order Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_Rejected</fullName>
+        <field>ApprovalStatus__c</field>
+        <formula>&quot;Rejected&quot;</formula>
+        <name>Update Status Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_To_Activated</fullName>
+        <field>Status</field>
+        <literalValue>Activated</literalValue>
+        <name>Update Status To Activated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_To_Submitted</fullName>
+        <field>Status</field>
+        <literalValue>Submitted</literalValue>
+        <name>Update Status To Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Update Status To Activated</fullName>
+        <actions>
+            <name>Update_Status_To_Activated</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Order.Day_Before_Shipment_Day__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status To Submitted</fullName>
+        <actions>
+            <name>Update_Status_To_Submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Order.Day_Before_Shipment_Day__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Market__c</field>
+            <operation>equals</operation>
+            <value>TW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Order.Repeat_Order__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

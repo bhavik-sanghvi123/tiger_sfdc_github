@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sample_Influence__c</fullName>
+    <externalId>false</externalId>
+    <label>Sample Influence</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ads on Television/ Video-steaming Advertisement (Youtube, TV)</fullName>
+                <default>false</default>
+                <label>Ads on Television/ Video-steaming Advertisement (Youtube, TV)</label>
+            </value>
+            <value>
+                <fullName>Dietitian&apos;s recommendation</fullName>
+                <default>false</default>
+                <label>Dietitian&apos;s recommendation</label>
+            </value>
+            <value>
+                <fullName>Doctors’s recommendation</fullName>
+                <default>false</default>
+                <label>Doctors’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Friend’s recommendation</fullName>
+                <default>false</default>
+                <label>Friend’s recommendation</label>
+            </value>
+            <value>
+                <fullName>GP Program - Seen brand poster/brochure in clinic</fullName>
+                <default>false</default>
+                <label>GP Program - Seen brand poster/brochure in clinic</label>
+            </value>
+            <value>
+                <fullName>Gynecologist’s recommendation</fullName>
+                <default>false</default>
+                <label>Gynecologist’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Hosp Discharge - Received discharge card with QR code in the clinic</fullName>
+                <default>false</default>
+                <label>Hosp Discharge - Received discharge card with QR code in the clinic</label>
+            </value>
+            <value>
+                <fullName>Hosp Discharge - Received sample kit with QR code in the clinic</fullName>
+                <default>false</default>
+                <label>Hosp Discharge - Received sample kit with QR code in the clinic</label>
+            </value>
+            <value>
+                <fullName>Nurse’s recommendation</fullName>
+                <default>false</default>
+                <label>Nurse’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Other moms’ recommendation from Chat Groups (Pediatric only)</fullName>
+                <default>false</default>
+                <label>Other moms’ recommendation from Chat Groups (Pediatric only)</label>
+            </value>
+            <value>
+                <fullName>Others (Please specify)</fullName>
+                <default>false</default>
+                <label>Others (Please specify)</label>
+            </value>
+            <value>
+                <fullName>Pediatrician’s recommendation</fullName>
+                <default>false</default>
+                <label>Pediatrician’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Personal online research (e.g. for Health Supplement)</fullName>
+                <default>false</default>
+                <label>Personal online research (e.g. for Health Supplement)</label>
+            </value>
+            <value>
+                <fullName>Promoter’s recommendation</fullName>
+                <default>false</default>
+                <label>Promoter’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Relative’s recommendation</fullName>
+                <default>false</default>
+                <label>Relative’s recommendation</label>
+            </value>
+            <value>
+                <fullName>Seen brand in ecommerce channels</fullName>
+                <default>false</default>
+                <label>Seen brand in ecommerce channels</label>
+            </value>
+            <value>
+                <fullName>Seen brand in physical stores</fullName>
+                <default>false</default>
+                <label>Seen brand in physical stores</label>
+            </value>
+            <value>
+                <fullName>Seen brand on Social Media Advertisement (Facebook, Instagram)</fullName>
+                <default>false</default>
+                <label>Seen brand on Social Media Advertisement (Facebook, Instagram)</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Seen brand poster/brochure in clinic</fullName>
+                <default>false</default>
+                <label>(Inactive) Seen brand poster/brochure in clinic</label>
+            </value>
+            <value>
+                <fullName>GP’s recommendation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>GP’s recommendation</label>
+            </value>
+            <value>
+                <fullName>My children introduced to me</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>My children introduced to me</label>
+            </value>
+            <value>
+                <fullName>My older child drank before</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>My older child drank before</label>
+            </value>
+            <value>
+                <fullName>PG&apos;s recommendation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PG&apos;s recommendation</label>
+            </value>
+            <value>
+                <fullName>Trusted Brand</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trusted Brand</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accept_Call_Back__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>คุณต้องการให้เจ้าหน้าที่ Abbott Cares ให้ข้อมูลผลิตภัณฑ์เพิ่มหรือไม่</inlineHelpText>
+    <label>AcceptCallBack</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Need</fullName>
+                <default>false</default>
+                <label>ต้องการ</label>
+            </value>
+            <value>
+                <fullName>NoNeed</fullName>
+                <default>false</default>
+                <label>ไม่ต้องการ</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

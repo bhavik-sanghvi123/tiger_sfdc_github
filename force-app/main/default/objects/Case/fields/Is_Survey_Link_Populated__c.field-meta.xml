@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Survey_Link_Populated__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Filter Criteria for Adult Survey iframe. Populated from Trigger.</description>
+    <externalId>false</externalId>
+    <label>Is Survey Link Populated</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

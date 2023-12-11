@@ -1,0 +1,150 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="NewCaseController">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <!--attributes-->
+    <aura:attribute access="PUBLIC" name="openInquiryForm" type="Boolean"  default="false"/>
+    <aura:attribute access="PUBLIC" name="caseInquiryId" type="String"/>
+    <aura:attribute access="PUBLIC" name="disabled" type="Boolean" default="false"/>
+    <aura:attribute access="PUBLIC" name="systemErrorMessage" type="String" default=""/>
+    <aura:attribute name="sObjectName" type="String" default=""/>
+    
+    <!--prepopulated attributes-->
+    <aura:attribute access="PUBLIC" name="contactId" type="String"/>
+    <aura:attribute access="PUBLIC" name="householdId" type="String"/>
+    <aura:attribute access="PUBLIC" name="parentCaseId" type="String"/>
+    <aura:attribute access="PUBLIC" name="recordTypeId" type="String"/>
+    
+    <lightning:button label="New Inquiry" onclick="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.openInquiryForm}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container slds-scrollable_y">
+                    <header class="slds-modal__header"> 
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Case: Inquiry</h2>
+                    </header>
+                    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="text-align: left;">
+                        <lightning:recordEditForm objectApiName="Case" aura:id="mainInquiryForm">
+                            
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                                    <lightning:inputField fieldName="ContactId" aura:id="inquiryContactId" value="{!v.contactId}" disabled="true"></lightning:inputField>
+                                    <lightning:inputField fieldName="CaseRegarding__c" aura:id="inquiryCaseRegarding"></lightning:inputField>
+                                    <lightning:inputField fieldName="Classification__c" aura:id="inquiryClassification"></lightning:inputField>
+                                    <lightning:inputField fieldName="SubClassification__c" aura:id="inquirySubClassification"></lightning:inputField>
+                                    <lightning:inputField fieldName="EnquirerType__c" aura:id="inquiryEnquirerType"></lightning:inputField>
+                                    <lightning:inputField fieldName="Status" aura:id="inquiryStatus" class="customRequired"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReviewedBy__c" aura:id="inquiryReviewedBy"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="AccountId" aura:id="inquiryAccountId" value="{!v.householdId}" disabled="true"></lightning:inputField>
+                                    <lightning:inputField fieldName="Origin" aura:id="inquiryOrigin" class="customRequired"></lightning:inputField>
+                                    <lightning:inputField fieldName="Priority" aura:id="inquiryPriority"></lightning:inputField>
+                                    <lightning:inputField fieldName="Complexity__c" aura:id="inquiryComplexity"></lightning:inputField>
+                                    <lightning:inputField fieldName="IsSocialCase__c" aura:id="inquirySocialCase"></lightning:inputField>
+                                    <lightning:inputField fieldName="EscalatedTo__c" aura:id="inquiryEscalatedTo"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReviewedDate__c" aura:id="inquiryReviewedDate"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Case Description</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="12" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Subject" aura:id="inquirySubject"></lightning:inputField>
+                                    <lightning:inputField fieldName="Description" aura:id="inquiryDescription"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Contact and Consumption Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="EndUserName__c" aura:id="inquiryEndUserName"></lightning:inputField>
+                                    <lightning:inputField fieldName="CurrentBrandUsed__c" aura:id="inquiryCurrentBrandUsed"></lightning:inputField>
+									<lightning:inputField fieldName="ProductPackageSize__c" aura:id="inquiryPackageSize"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="CaregiverName__c" aura:id="inquiryCaregiverName"></lightning:inputField>
+                                    <lightning:inputField fieldName="ConsumptionperMonthNoofCans__c" aura:id="inquiryConsumption"></lightning:inputField>
+                                    <lightning:inputField fieldName="BatchNumber__c" aura:id="inquiryBatchNumber"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Order__c" aura:id="inquiryOrder"></lightning:inputField>
+                                    <aura:if isTrue="{!v.sObjectName == 'Case'}">
+                                    	<lightning:inputField fieldName="ParentId" aura:id="inquiryParentId" value="{!v.parentCaseId}" disabled="true"></lightning:inputField>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sObjectName == 'Contact'}">
+                                    	<lightning:inputField fieldName="ParentId" aura:id="inquiryParentId"></lightning:inputField>
+                                    </aura:if>
+                                    <lightning:inputField fieldName="MedicalDiagnosis__c" aura:id="inquiryNutritionHistory"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Product__c" aura:id="inquiryProduct"></lightning:inputField>
+                                    <lightning:inputField fieldName="LoyaltyCardNumber__c" aura:id="inquiryLoyaltyCardNumber"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Resolution Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ResolutionNotes__c" aura:id="inquiryResolutionNotes"></lightning:inputField>
+                                    <lightning:inputField fieldName="ResolvedUponOpening__c" aura:id="inquiryResolved"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReopenCount__c" aura:id="inquiryReopenCount"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ReplyVia__c" aura:id="inquiryReplyVia"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReopenNotes__c" aura:id="inquiryReopenNotes"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Follow Up Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="FollowUpCallRequired__c" aura:id="inquiryFollowUpCall"></lightning:inputField>
+                                    <lightning:inputField fieldName="PreferredDateTimeofCallback__c" aura:id="inquiryPreferredDateTime"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ReasonofRequestforCallback__c" aura:id="inquiryReasonForCallback"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReminderStatus__c" aura:id="inquiryReminderStatus"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>System Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="SourceCreatedDate__c" aura:id="inquirySourceCreatedDate"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <label for="inquiryWebEmail">Web Email</label>
+                                    <lightning:inputField variant="label-hidden" fieldName="SuppliedEmail" aura:id="inquiryWebEmail"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div class="slds-m-top_medium">
+                                <center>
+                                    <lightning:button disabled="{!v.disabled}" variant="brand" type="cancel" name="cancel" label="Cancel" onclick="{!c.onCancel}"></lightning:button>
+                                    <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Save" onclick="{!c.onSave}"></lightning:button>
+                                </center>
+                            </div>
+                        </lightning:recordEditForm>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

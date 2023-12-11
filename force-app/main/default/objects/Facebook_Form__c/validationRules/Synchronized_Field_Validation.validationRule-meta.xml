@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Synchronized_Field_Validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>Synchronized__c  = TRUE  &amp;&amp;  Active__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Synchronized__c</errorDisplayField>
+    <errorMessage>The Synchronized field must be unchecked if the Active field is unchecked</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EstimatedDueDateCondition</fullName>
+    <active>true</active>
+    <description>Estimated Delivery Date = GREATER THAN TODAY&apos;S DATE. Only System admin can by pass the rule
+        [29-Sep-21 Khai] Added logic to bypass this rule when contact is from TW as it was blocking TW surveys from completion.</description>
+    <errorConditionFormula>AND(
+            NOT($Profile.Name = &quot;System Administrator&quot;),
+            NOT( Market__c =  $Label.MarketTW ),
+            EstimatedDueDate__c &lt; TODAY()
+        )</errorConditionFormula>
+    <errorMessage>Estimated Due Date cannot be in the past</errorMessage>
+</ValidationRule>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RelatedPartner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Related Partner</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3) OR (4 AND 5) OR (6 AND 7) OR (8 AND 9)</booleanFilter>
+        <errorMessage>Dietician should have Doctor/HCP as Related Partner
+Doctor HCP should have Dietician as Related Partner
+Store Name or NA should have NA as Related Partner</errorMessage>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Dietician</value>
+        </filterItems>
+        <filterItems>
+            <field>AbbottPartner__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Dietician</value>
+        </filterItems>
+        <filterItems>
+            <field>AbbottPartner__c.DieticianLead__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Doctor/HCP</value>
+        </filterItems>
+        <filterItems>
+            <field>AbbottPartner__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Dietician</value>
+        </filterItems>
+        <filterItems>
+            <field>AbbottPartner__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Medical Representative</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Doctor/HCP</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Store Name, Nutritional Advisor / Promoter</value>
+        </filterItems>
+        <filterItems>
+            <field>AbbottPartner__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Nutritional Advisor / Promoter</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>AbbottPartner__c</referenceTo>
+    <relationshipLabel>Abbott Partners</relationshipLabel>
+    <relationshipName>Partners</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

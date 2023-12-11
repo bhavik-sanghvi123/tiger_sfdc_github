@@ -1,0 +1,31 @@
+<apex:page controller="MailSampleLabelController" contentType="application/vnd.ms-excel" standardStylesheets="false" showHeader="false">
+	<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	</head>
+    <apex:dataTable value="{!orderItemList}" var="orderItem" >
+      
+        <apex:column ><apex:facet name="header">Main Contact</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Related Contact/Child</apex:facet><apex:outputText value="{!orderItem.OrderedFor__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 1</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Street1__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 2</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Street2__c}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Unit Number</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.UnitNumber__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">City</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.City2__r.Name}"/></apex:column>
+    	<apex:column ><apex:facet name="header">Postal Code</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.PostalCode__c}"/></apex:column>       
+        <apex:column ><apex:facet name="header">Product Code</apex:facet><apex:outputText value="{!orderItem.PricebookEntry.ProductCode}"/></apex:column>
+        <apex:column ><apex:facet name="header">Quantity</apex:facet><apex:outputText value="{!orderItem.Quantity}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product</apex:facet><apex:outputText value="{!orderItem.PricebookEntry.Product2.Name}"/></apex:column>
+      	<apex:column ><apex:facet name="header">Source Campaign</apex:facet><apex:outputText value="{!orderItem.Order.RelatedCampaign__r.Name}"/></apex:column>
+        <apex:column style="mso-number-format:'m\/d\/yyyy\ h\:mm\ AM\/PM'">
+	       	<apex:facet name="header">Created On</apex:facet>
+	       	<apex:outputField value="{!orderItem.Order.CreatedDate}"/>
+    	</apex:column>
+        <apex:column style="mso-number-format:'m\/d\/yyyy\ h\:mm\ AM\/PM'">
+        	<apex:facet name="header">Modified On</apex:facet>
+        	<apex:outputField value="{!orderItem.Order.LastModifiedDate}"/>    	
+    	</apex:column>
+        <apex:column ><apex:facet name="header">Created By</apex:facet><apex:outputText value="{!orderItem.Order.CreatedBy.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">File Export Date</apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"> <apex:param value="{!orderItem.Order.FileExportDate__c}" /> </apex:outputText></apex:column>
+        
+      
+    </apex:dataTable>
+</apex:page>

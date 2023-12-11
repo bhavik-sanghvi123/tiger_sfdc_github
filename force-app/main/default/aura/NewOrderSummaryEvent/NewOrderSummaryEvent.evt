@@ -1,0 +1,7 @@
+<aura:event type="COMPONENT" description="by this event we are pass the selected record in the parent component">
+    <aura:attribute name="saveAddress" type="Boolean"/>
+    <aura:attribute name="cancelOrder" type="Boolean"/>
+    <aura:attribute name="adddressId" type="String"/>
+    <aura:attribute name="addressObj" type="sObject" />    
+    <aura:attribute name="refreshEdit" type="Boolean"/>
+</aura:event>

@@ -1,0 +1,33 @@
+<aura:component >
+	<aura:attribute access="PUBLIC" name="orderID" type="String"/>
+    <aura:attribute access="PUBLIC" name="contactId" type="String"/>
+    
+    <div>
+    <lightning:recordEditForm objectApiName="Order" recordId = "{!v.orderID}">
+            <h3 class="slds-section__title slds-theme_shade"> <b>&nbsp;&nbsp;&nbsp;ORDER INFORMATION </b> </h3>
+            <lightning:layout>
+                <lightning:layoutItem flexibility="auto" padding="around-small">           
+                    <lightning:outputField fieldName="OrderNumber" aura:id="primaryOrderNumber"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:outputField fieldName="AccountId" aura:id="primaryAccountId"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:outputField fieldName="OrderedBy__c" aura:id="primaryOrderedBy"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:inputField fieldName="Type" aura:id="primaryType"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:inputField fieldName="PaymentMethod__c" aura:id="primaryPaymentMethod"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:outputField fieldName="Status" aura:id="primaryStatus"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">
+                    <lightning:outputField fieldName="EffectiveDate" aura:id="primaryEffectiveDate"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+            </lightning:recordEditForm>
+    </div>
+</aura:component>

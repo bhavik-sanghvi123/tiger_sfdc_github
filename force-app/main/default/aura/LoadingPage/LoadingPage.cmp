@@ -1,0 +1,48 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+
+<aura:component  description="Panel that is showing a toolbar and a search bar, and can toggle a dial pad or search results"
+    implements="c:panel">
+    <aura:attribute name="Likedisable" type="Boolean" default="false" />
+    <aura:attribute name="showDialPad" type="Boolean" default="false" description="when True, show dial pad"/>
+    <aura:attribute name="callDisabled" type="Boolean" default="true" description="when True, Call button is disabled"/>
+    <aura:attribute name="inputValue" type="String" description="Value of the input field, can be phone number of search term"/>
+    <aura:attribute name="presence" type="String"  description="Could be Available, Busy or Unavailable"/>
+    <aura:attribute name="searchResults" type="Object[]" description="Array of contact records"/>
+    <aura:attribute name="message" type="String" default="Search for a contact" description="message that is shown on the screen"/>
+    <aura:attribute name="pausecode" type="String" default="withcode" description="message that is shown on the screen"/>
+    <aura:attribute name="userCred" type="String" description="Contain userID and password"/>
+    <aura:attribute name="careline" type="String" default="false" description="when True, End button enabled"/>
+    <aura:attribute name="count" type="Integer" default="0" description="Count for error report"/>
+    <aura:attribute name="LoadingText" type="String" default="Please wait while VICIDIAL change status to: " description="Count for error report"/>
+
+    <aura:import library="lightning:confirm" property="LightningConfirm" />
+    <aura:import library="lightning:prompt" property="LightningPrompt" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="onlinePresenceChanged" action="{!c.onOnlinePresenceChanged}" />
+    <aura:registerEvent name="onlinePresenceChanged" type="c:onlinePresenceChanged" />
+    
+    <div class="slds-panel">
+  
+
+<div aura:id="spinnerId" class="slds-spinner_container">
+    
+    <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <aura:if isTrue="{! v.LoadingText != 'Change Status Failed, Please Referesh Page.'}">
+        <span class="slds-assistive-text">Loading</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+        </aura:if>
+        <p style="transform: translate(-32%, -50%) rotate(-90deg);width: 320px;text-align: center;"> {!v.LoadingText} </p>
+    </div>
+</div>
+
+
+
+    </div>
+</aura:component>

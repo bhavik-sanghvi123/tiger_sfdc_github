@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HomePhone_Format</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+	OR(
+		ISNEW(),
+		ISCHANGED(HomePhone)
+	),
+	!ISBLANK(HomePhone),
+	AND(
+		Market__c != &apos;ANZ&apos;,
+		Market__c != &apos;IN&apos;,
+		Market__c != &apos;ID&apos;,
+		OR( 
+		   OR( 
+			   LEN(HomePhone) &lt; 7, 
+			   LEN(HomePhone) &gt; 12 
+		   ), 
+		   NOT(REGEX(HomePhone, &quot;[0-9]*&quot;)) 
+		)
+	)
+)</errorConditionFormula>
+    <errorDisplayField>HomePhone</errorDisplayField>
+    <errorMessage>Invalid Home Phone Number. Please enter 7 - 12 digit number.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,<br/><br/>
+        
+        Thank you for contacting Abbott Nutrition.<br/><br/>
+        
+        Yes, we are able to send sachet samples out for your child to try. However, as our products are only sold at pharmacies, it is recommended that you speak to your local Health Care Professional to discuss your child’s dietary needs to confirm if this product is suitable for them to consume.<br/><br/>
+        
+        PediaSure comes in three flavours of chocolate, strawberry or vanilla. Does your child have any preference for flavour?<br/><br/>
+        
+        It comes in handy 200ml reusable bottle for on the go and 850mg tin.<br/><br/>
+        
+        I will be more than happy to organise these samples to be sent out to you if you could please provide me your address details, so I can get them sent out to you as soon as possible.<br/><br/>
+        
+        Looking forward to hearing back from you, and I hope you have a great day.<br/>
+
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

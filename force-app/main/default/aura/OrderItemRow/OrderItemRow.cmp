@@ -1,0 +1,146 @@
+<aura:component implements="force:appHostable,force:hasRecordId" controller ="NewOrderController">
+    
+    <!-- Aura Attribute for store single instance andnd Store Index of Particular Instance --> 
+    <aura:attribute name="orderItemInstance" type="OrderItem"/>
+    <aura:attribute name="rowIndex" type="String"/>
+    <aura:attribute name="referenceId" type="String"/>
+    <aura:attribute name="householdId" type="String"/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="selectedContact" type="sObject" default="{}"/>
+    <aura:attribute name="selectedChannel" type="sObject" default="{}"/>
+    <aura:attribute name="pbeUnitPrice" type="Currency"/>
+    <aura:attribute name="computedGrandTotal" type="Currency"/>
+    <aura:attribute name="lineItemPrice" type="Currency"/>
+    <aura:attribute name="lineItemDiscount" type="Currency"/>
+    <aura:attribute name="lineItemGST" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="orderItemList" type="OrderItem[]"/>
+    <aura:attribute access="PUBLIC" name="packageItemList" type="PackageItem__c[]"/>
+    <aura:attribute access="PUBLIC" name="finalGrandTotal" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="finalDiscountAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="finalGSTAmount" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="userMarket" type="String"/>
+    
+    <aura:attribute name="oQuantity" type="Integer" default=""/>
+    <aura:attribute name="oProductId" type="String" default=""/>
+    <aura:attribute name="oProduct" type="String" default=""/>
+    <aura:attribute name="oPackageCode" type="String" default=""/>
+    <aura:attribute name="oProductRecType" type="String" default=""/>
+    <aura:attribute name="oUnitPrice" type="Currency" default=""/>
+    <aura:attribute name="oPromotionType" type="String" default=""/>
+    <aura:attribute name="oFromSObject" type="String" default=""/>
+    <aura:attribute name="oPromotionItemId" type="String" default=""/>
+    <aura:attribute name="oOrderedForId" type="String" default=""/>
+    <aura:attribute name="oChannelId" type="String" default=""/>
+    <aura:attribute name="oDiscount" type="Decimal"/>
+    <aura:attribute name="oGST" type="Decimal"/>
+    <aura:attribute name="oDiscountAmount" type="Currency"/>
+    <aura:attribute name="oDiscountValue" type="Currency"/>
+    <aura:attribute name="oFinalPrice" type="Currency"/>
+    <aura:attribute name="oGSTAmount" type="Currency"/>
+    <aura:attribute name="oGSTValue" type="Currency"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Register 2 Lightning Event for handle add or Delete rows on Parent Component  --> 
+    <aura:registerEvent name="DeleteRowEvt" type="c:DeleteRowEvt"/> 
+    <aura:registerEvent name="AddRowEvt" type="c:AddNewRowEvt"/>
+    <aura:handler name="UpdatePackageItemList" event="c:StorePackageItemList" action="{!c.fetchPackageItemList}"/>
+    <aura:handler name="UpdateSelectedProduct" event="c:StoreSelectedProduct" action="{!c.getProductDetails}"/>
+    <aura:handler name="UpdateSelectedContact" event="c:StoreSelectedContact" action="{!c.getContactDetails}"/>
+    <aura:handler name="UpdateSelectedChannel" event="c:StoreSelectedChannel" action="{!c.getChannelDetails}"/>
+    <aura:handler name="GetUnitPriceEvt" event="c:PricebookEntryUnitPriceEvent" action="{!c.getUnitPriceValue}"/>
+    <aura:handler name="GetCurrentGrandTotal" event="c:StoreGrandTotal" action="{!c.getGrandTotal}"/>
+    <aura:registerEvent name="UpdateGrandTotal" type="c:StoreGrandTotal"/>
+    <aura:registerEvent name="UpdateTotalDiscountAmount" type="c:StoreOrderTotalDiscountAmount"/>
+    <aura:registerEvent name="UpdateTotalGST" type="c:StoreOrderTotalGST"/>
+    
+    <!-- Table Row -->  
+    <tr class="slds-text-title_caps">
+        <td> 
+            <a onclick="{!c.removeRow}">
+                <center>
+                    <lightning:icon variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="icon"></lightning:icon>
+                    <span class="slds-assistive-text">Delete Icons</span>
+                </center>
+            </a>
+        </td>
+        <aura:if isTrue="{!v.oFromSObject == 'PromotionItem__c'}">
+            <td>
+                <lightning:input class="slds-output" disabled="true" type="reference" value="{!v.oProduct}" aura:id="oProduct"></lightning:input>
+            </td>
+            <td>
+                <ui:outputText class="slds-output" value="{!v.orderItemInstance.oPackageCode}" aura:id="oPackageCode"></ui:outputText>
+            </td>
+            <td>
+                <ui:outputNumber class="slds-output" value="{!v.oQuantity}" aura:id="oQuantity"></ui:outputNumber>
+            </td>
+            <td>
+                <ui:outputCurrency class="slds-output" value="{!v.oUnitPrice}" aura:id="oUnitPrice"></ui:outputCurrency>
+            </td>
+            <td>
+                N/A
+            </td>
+            <td>
+                <ui:outputText class="slds-output" value="{!v.oPromotionType}" aura:id="oPromotionType"></ui:outputText>
+            </td>
+            <aura:set attribute="else">
+                <td>
+                    <c:customLookup objectAPIName="Product2" IconName="standard:product" selectedRecord="{!v.selectedLookUpRecord}" pricebookId="{!v.referenceId}" householdId="{!v.householdId}" userMarket="{!v.userMarket}" aura:id="oProduct"/>
+                </td>
+                <td>
+                    <ui:outputText class="slds-output" value="{!v.orderItemInstance.oPackageCode}" aura:id="oPackageCode"/>
+                </td>
+                <td>
+                    <ui:inputNumber class="slds-input" value="{!v.orderItemInstance.oQuantity}" change="{!c.computePriceAndTotal}" aura:id="oQuantity"/>
+                </td>
+                <td>
+                    <ui:outputCurrency class="slds-output" value="{!v.pbeUnitPrice}" aura:id="oUnitPrice"/>
+                </td>
+                <td>
+                    <aura:if isTrue="{!v.oGST > 0}">
+                        <ui:outputCurrency class="slds-output" value="{!v.orderItemInstance.oGSTAmount}" aura:id="oGST"/>
+                        <aura:set attribute="else">
+                            N/A
+                        </aura:set>
+                    </aura:if>
+                </td>
+                <td>
+                    <ui:outputText class="slds-output" value="" aura:id="oPromotionType"/>
+                </td>
+            </aura:set>    
+        </aura:if>
+        
+        <td>
+            <c:customLookup objectAPIName="Contact" IconName="standard:contact" selectedRecord="{!v.selectedContact}" pricebookId="{!v.referenceId}" householdId="{!v.householdId}"  userMarket="{!v.userMarket}" productId="{!v.oProductId}" aura:id="oOrderedFor"/>
+        </td>
+        <aura:if isTrue="{!v.userMarket == 'SG'}">
+            <td>
+                <c:customLookup objectAPIName="Channel__c" IconName="custom:custom29" selectedRecord="{!v.selectedChannel}" pricebookId="{!v.referenceId}" householdId="{!v.householdId}" userMarket="{!v.userMarket}" aura:id="oChannel"/>
+            </td>
+        </aura:if>
+        <td>
+            <force:inputField value="{!v.orderItemInstance.Category__c}" aura:id="oCategory"></force:inputField>
+        </td>
+        <td>
+            <ui:outputCurrency class="slds-output" value="{!v.lineItemPrice}" aura:id="oTotalPrice"/>
+        </td>
+    </tr>
+
+    <aura:if isTrue="{!v.orderItemInstance.oProductRecType == 'Package'}">
+        <!--<c:PackageItemRow oProductId="{!v.oProductId}"/>-->
+        <aura:iteration items="{!v.orderItemInstance.oPackageItemList}" var="item" indexVar="index" aura:id="packageItem">
+        <tr class="slds-text-title_caps">
+            <td class="td"></td>
+            <td class="td">
+                <ui:outputText class="slds-output" value="{!item.PackageItem__r.Name}" aura:id="ProductName"></ui:outputText>
+            </td>
+            <td class="td">
+                <ui:outputText class="slds-output" value="{!item.ProductCode__c}" aura:id="ProductCode"></ui:outputText>
+            </td>
+            <td class="td">
+                <ui:outputText class="slds-output" value="{!item.Quantity__c}" aura:id="Quantity"></ui:outputText>
+            </td>
+        </tr>
+    </aura:iteration>
+    </aura:if>
+</aura:component>

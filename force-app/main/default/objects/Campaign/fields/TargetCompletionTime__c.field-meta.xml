@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TargetCompletionTime__c</fullName>
+    <defaultValue>if ( CONTAINS($UserRole.Name, &apos;Malaysia&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.MY.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;Philippines&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.PH.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;Singapore&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.SG.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;Thailand&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.TH.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;ANZ&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.ANZ.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;India&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.IN.DefaultCallTargetCompletionTime__c,
+if ( CONTAINS($UserRole.Name, &apos;Indonesia&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.ID.DefaultCallTargetCompletionTime__c,
+    0)))))))</defaultValue>
+    <externalId>false</externalId>
+    <label>Target Completion Time</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

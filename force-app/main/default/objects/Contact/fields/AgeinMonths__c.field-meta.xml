@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgeinMonths__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISBLANK(Birthdate)),
+        IF(DAY(Birthdate) &lt;= DAY(TODAY()),
+        (YEAR( TODAY())*12+MONTH(TODAY())) - (YEAR(Birthdate)*12+MONTH(Birthdate)),
+        (YEAR( TODAY())*12+MONTH(TODAY())) - (YEAR(Birthdate)*12+MONTH(Birthdate))-1
+        ),
+        0
+        )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Age (in Months)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

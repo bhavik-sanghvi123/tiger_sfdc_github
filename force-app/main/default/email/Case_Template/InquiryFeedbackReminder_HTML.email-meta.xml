@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Inquiry/Feedback Reminder</name>
+    <style>none</style>
+    <subject>{!Case.Subject} {!Case.Thread_Id}</subject>
+    <textOnly>Hi,
+
+Gentle Reminder. Request you to provide your contact number, in order to understand the type of query our Customer Service Team needs to get in touch with you.
+
+Customer Service
+Abbott Nutrition International  Abbott Healthcare Pvt. Ltd
+Floor 15, Godrej BKC,
+Plot No. C – 68, BKC,
+Newr MCA Club, Bandra (E)
+
+Mumbai – 400 051  Toll free: 1800 266 0448
+
+wecare.anindia@abbott.com
+
+This communication may contain information that is proprietary, confidential, or exempt from disclosure. If you are not the intended recipient, please note that any other dissemination, distribution, use or copying of this communication is strictly prohibited. Anyone who receives this message in error should notify the sender immediately by telephone or by return e-mail and delete it from his or her computer.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

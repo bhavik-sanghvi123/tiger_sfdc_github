@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomNotificationType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customNotifTypeName>Notification in Lightning - Desktop</customNotifTypeName>
+    <desktop>true</desktop>
+    <masterLabel>Notification in Lightning - Desktop</masterLabel>
+    <mobile>false</mobile>
+    <slack>false</slack>
+</CustomNotificationType>

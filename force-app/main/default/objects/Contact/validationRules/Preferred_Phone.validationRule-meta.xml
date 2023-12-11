@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Preferred_Phone</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR (
+AND(ISPICKVAL(  PreferredPhone__c , &apos;Home&apos;) ,  ISBLANK( HomePhone )),
+AND(ISPICKVAL(  PreferredPhone__c , &apos;Mobile&apos;) ,  ISBLANK(   Phone)),
+AND(ISPICKVAL(  PreferredPhone__c , &apos;Office&apos;) ,  ISBLANK(  Office_Phone__c )),
+AND(ISPICKVAL(  PreferredPhone__c , &apos;Other&apos;) ,  ISBLANK(  OtherPhone ))
+)</errorConditionFormula>
+    <errorMessage>This preferred phone number is not available. Please enter a phone number first.</errorMessage>
+</ValidationRule>

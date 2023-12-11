@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ANZ_OtherPhone_Format</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+	OR(
+		ISNEW(),
+		ISCHANGED(OtherPhone)
+	),
+	!ISBLANK(OtherPhone),
+	AND(
+		Market__c == &apos;ANZ&apos;,
+		NOT(AND( 
+			LEN(OtherPhone) &gt;= 9, 
+			LEN(OtherPhone) &lt;= 11,
+			REGEX(OtherPhone, &quot;[+][0-9]*&quot;)
+		)),
+		NOT(AND( 
+			LEN(OtherPhone) &gt;= 8, 
+			LEN(OtherPhone) &lt;= 10,
+			REGEX(OtherPhone, &quot;[0-9]*&quot;)
+		))
+	)
+)</errorConditionFormula>
+    <errorDisplayField>OtherPhone</errorDisplayField>
+    <errorMessage>Invalid Other Phone Number. Please enter 8 - 10 digit number.</errorMessage>
+</ValidationRule>

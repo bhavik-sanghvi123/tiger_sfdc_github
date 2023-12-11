@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ever_Joined_1M_Journey__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>[13-Aug-21 Khai] Part of US - 3249, a custom field for SFMC to update when contact has been in the MC journey for 1 month old contacts</description>
+    <externalId>false</externalId>
+    <label>Ever Joined 1M Journey</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

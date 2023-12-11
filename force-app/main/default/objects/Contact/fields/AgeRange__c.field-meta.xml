@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgeRange__c</fullName>
+    <externalId>false</externalId>
+    <label>Age Range</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0-6 Months</fullName>
+                <default>false</default>
+                <label>0-6 Months</label>
+            </value>
+            <value>
+                <fullName>6-12 Months</fullName>
+                <default>false</default>
+                <label>6-12 Months</label>
+            </value>
+            <value>
+                <fullName>1-2 Years</fullName>
+                <default>false</default>
+                <label>1-2 Years</label>
+            </value>
+            <value>
+                <fullName>2-3 Years</fullName>
+                <default>false</default>
+                <label>2-3 Years</label>
+            </value>
+            <value>
+                <fullName>3-4 Years</fullName>
+                <default>false</default>
+                <label>3-4 Years</label>
+            </value>
+            <value>
+                <fullName>4-5 Years</fullName>
+                <default>false</default>
+                <label>4-5 Years</label>
+            </value>
+            <value>
+                <fullName>5-6 Years</fullName>
+                <default>false</default>
+                <label>5-6 Years</label>
+            </value>
+            <value>
+                <fullName>6-8 Years</fullName>
+                <default>false</default>
+                <label>6-8 Years</label>
+            </value>
+            <value>
+                <fullName>6 Years and Above</fullName>
+                <default>false</default>
+                <label>6 Years and Above</label>
+            </value>
+            <value>
+                <fullName>3-5 Years</fullName>
+                <default>false</default>
+                <label>3-5 Years</label>
+            </value>
+            <value>
+                <fullName>9-12 years</fullName>
+                <default>false</default>
+                <label>9-12 years</label>
+            </value>
+            <value>
+                <fullName>13-18 years</fullName>
+                <default>false</default>
+                <label>13-18 years</label>
+            </value>
+            <value>
+                <fullName>6 and Above</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>6 and Above</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

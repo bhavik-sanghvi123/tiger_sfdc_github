@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Return_Quantity_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>Return_Quantity__c &gt;  Allocated_Quantity__c</errorConditionFormula>
+    <errorDisplayField>Return_Quantity__c</errorDisplayField>
+    <errorMessage>Return quantity must not be greater than the Allocated Quantity</errorMessage>
+</ValidationRule>

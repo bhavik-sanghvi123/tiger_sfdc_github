@@ -1,0 +1,126 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasSObjectName"
+                access="global" 
+                controller ="AddressFormController">
+    
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+	
+    <!--Object attributes-->
+    <aura:attribute access="PUBLIC" name="address" type="Address__c"  default="{ 'sobjectType' : 'Address__c' }"/>
+    <aura:attribute access="PUBLIC" name="experianAddress" type="sObject" default="{}" description="Stores field values returned by Experian callout"/>
+    
+    <!--Record Ids attributes-->
+    <aura:attribute name="addressId" type="String" default=""/>
+    <aura:attribute name="contactId" type="String"/>
+    <aura:attribute name="householdId" type="String"/>
+    
+    <!--Other attributes-->
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="selectedAddress" type="sObject" default="{}"/>
+    <aura:attribute name="userMarket" type="String"/>
+    <aura:attribute name="isCreate" type="Boolean" default="false"/>
+    <aura:attribute name="errorMsg" type="String"/>
+    <aura:attribute name="invalidPostalCode" type="Boolean" default="false"/>
+    <aura:attribute name="hasRecordAccess" type="Boolean" default="true"/>
+    <aura:attribute name="isTokenAvailable" type="Boolean" default="false"/>
+    <aura:attribute name="invalidUnitNo" type="Boolean" default="false"/>
+
+    <aura:attribute name="disabledCity2" type="Boolean" default="true"/>
+    <aura:attribute name="disabledWard" type="Boolean" default="true"/>
+    <aura:attribute name="disabledDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="disabledSubDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="wardValue" type="String"/>
+    <aura:attribute name="regionValue" type="String"/>
+    <aura:attribute name="cityValue" type="String"/>
+    <aura:attribute name="districtValue" type="String"/>
+    <aura:attribute name="subDistrictValue" type="String"/>
+    <aura:attribute name="addressValidationStatus" type="String"/>
+    <aura:attribute name="isCustomRequired" type="Boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <header class="slds-modal__header">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Address</h2>
+    </header>
+    <br></br>
+
+    <aura:if isTrue="{!v.hasRecordAccess}">
+        <lightning:recordEditForm aura:id="addressForm" objectApiName="Address__c" recordId ="{!v.addressId}" onerror="{!c.handleError}" onsuccess="{!c.handleSuccess}"  onsubmit="{!c.saveAddress}"  onload="{!c.handleLoad}"> 
+            <lightning:messages></lightning:messages>
+                
+            <div>&nbsp;&nbsp;&nbsp;<b>Address Information</b></div>
+            <lightning:layout>
+                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                    <lightning:inputField fieldName="DefaultAddress__c" aura:id="addressDefaultAddress"></lightning:inputField>
+                    <div style="margin-top: 25px"></div>
+                    <aura:if isTrue="{!v.sObjectName == 'Account'}">
+                    	<lightning:inputField fieldName="ParentHousehold__c" aura:id="addressHousehold"></lightning:inputField>
+                    </aura:if>
+                    <aura:if isTrue="{!v.sObjectName != 'Account'}">
+                    	<lightning:inputField fieldName="ParentContact__c" aura:id="addressContact"></lightning:inputField>
+                    </aura:if>
+                    <lightning:inputField fieldName="Street1__c" aura:id="addressStreet1" class="customRequired"></lightning:inputField>
+                    <lightning:inputField fieldName="Street2__c" aura:id="addressStreet2"></lightning:inputField>
+                    <lightning:inputField fieldName="UnitNumber__c" aura:id="addressUnitNo" label="Unit Number" onchange="{!c.unitNoKeyPressController}"></lightning:inputField>
+                    <lightning:inputField fieldName="Building__c" aura:id="addressBuilding"></lightning:inputField>
+                    <lightning:inputField fieldName="PostalCode__c" aura:id="addressPostalCode2" label="Postal Code" onchange="{!c.postalCodeKeyPressController}"></lightning:inputField>
+                    <lightning:inputField fieldName="VillageNo__c" aura:id="addressVillageNo"></lightning:inputField>
+                    <lightning:inputField fieldName="VillageName__c" aura:id="addressVillageName"></lightning:inputField>
+                    <lightning:inputField fieldName="StateProvince__c" aura:id="addressStateProvince"></lightning:inputField>
+                    <lightning:inputField fieldName="Road__c" aura:id="addressRoad"></lightning:inputField>
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                    <lightning:inputField fieldName="AddressType__c" aura:id="addressType"></lightning:inputField>
+                    <aura:if isTrue="{!v.sObjectName == 'Account'}">
+                    	<lightning:inputField fieldName="ParentContact__c" aura:id="addressContact"></lightning:inputField>
+                    </aura:if>
+                    <lightning:inputField fieldName="SuburbTown__c" aura:id="addressSuburbTown" class="{!v.userMarket == 'ANZ'? 'customRequired' : ''}"></lightning:inputField>
+                    <lightning:inputField fieldName="State__c" aura:id="addressState" class="{!v.userMarket == 'IN' || !v.userMarket == 'ANZ' ? 'customRequired' : ''}"></lightning:inputField>
+                    <lightning:inputField fieldName="Country__c" aura:id="addressCountry"></lightning:inputField>
+                    <lightning:inputField fieldName="Region__c" aura:id="addressRegion" onchange="{!c.stateChange}" class="{!v.userMarket == 'ID'? 'customRequired' : ''}"></lightning:inputField>
+                    <aura:if isTrue="{!v.userMarket != 'ID'}">
+                        <lightning:inputField fieldName="City2__c" aura:id="addressCity" class="customRequired" onchange="{!c.stateChange}"></lightning:inputField>
+                    </aura:if>
+                    <aura:if isTrue="{!and(v.userMarket != 'ANZ', v.userMarket != 'IN')}">
+                        <aura:renderIf isTrue="{!v.userMarket == 'ID'}">
+                            <div class="customRequired"></div>
+                            <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="City" aura:id="addressCity2" predefineValue="{!v.selectedAddress.City2__c}"
+                                                   recordTypeName="City" isDisabled="{!v.disabledCity2}" placeholder="Search City..." 
+                                                   parentValue="{!v.regionValue}" parentName="ParentAffiliateValue__c" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup> 
+                        </aura:renderIf>
+                        <aura:renderIf isTrue="{!v.userMarket != 'PH'}">
+                            <!-- <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/> -->
+                            <aura:renderIf isTrue="{!v.isCustomRequired}">
+                                <div class="customRequired"/>
+                            </aura:renderIf>
+                            <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="District" aura:id="addressDistrict" predefineValue="{!v.selectedAddress.District__c}"
+                                                recordTypeName="District" isDisabled="{!v.disabledDistrict}" placeholder="Search District..." 
+                                                parentValue="{!v.cityValue}" parentName="ParentAffiliateValue__c" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                            
+                            <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"></div>
+                            <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="Sub-District" aura:id="addressSubDistrict" predefineValue="{!v.selectedAddress.SubDistrict__c}"
+                                                recordTypeName="Sub-District" isDisabled="{!v.disabledSubDistrict}"  placeholder="Search Sub-District..."
+                                                parentValue="{!v.districtValue}" parentName="ParentAffiliateValue__c" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                            
+                            <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"></div>
+                            <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="{!v.userMarket == 'ID'? 'Postal Code' : 'Ward'}"  aura:id="addressWard" predefineValue="{!v.selectedAddress.Ward2__c}"
+                                                recordTypeName="Ward" isDisabled="{!v.disabledWard}" placeholder="Search Ward..."
+                                                parentValue="{!v.districtValue}" parentName="ParentAffiliateValue__c" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                        </aura:renderIf>
+                    </aura:if>
+                </lightning:layoutItem>
+            </lightning:layout>
+            <br></br>
+            <center>
+                <lightning:button class="slds-button slds-button--brand" variant="brand" label="Cancel" onclick="{!c.cancelCreation}"></lightning:button>
+                <lightning:button class="slds-button slds-button--brand" variant="brand" label="Save" type="Submit"></lightning:button>
+            </center>
+        </lightning:recordEditForm>
+        
+        <aura:set attribute="else">
+            <center> <b> Insufficient edit access to this record.</b></center>
+        </aura:set>
+    </aura:if>
+</aura:component>

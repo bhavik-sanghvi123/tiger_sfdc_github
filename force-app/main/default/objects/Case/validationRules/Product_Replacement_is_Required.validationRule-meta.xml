@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Replacement_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( OR(ISPICKVAL(Status,&quot;Closed-Resolved&quot;), ISPICKVAL(Status,&quot;Closed-Unresolved&quot;) ),
+  ProductReplacementRequired__c = True,
+  OR(
+  AND(CustomerCertificationAttached__c = False,
+  OR(ISPICKVAL( ProductReplacementStatus__c , &quot;Completed&quot;),
+     ISPICKVAL( ProductReplacementStatus__c , &quot;&quot;),
+     ISPICKVAL( ProductReplacementStatus__c , &quot;Pending&quot;),
+     ISPICKVAL( ProductReplacementStatus__c , &quot;In Progress&quot;))),
+  
+
+  AND(CustomerCertificationAttached__c = True,
+  AND(!ISPICKVAL( ProductReplacementStatus__c , &quot;Completed&quot;),
+  !ISPICKVAL( ProductReplacementStatus__c , &quot;Cancelled&quot;)))
+  )
+  
+)</errorConditionFormula>
+    <errorMessage>Please ensure that Customer Certification is attached and Product Replacement Status is set to Completed</errorMessage>
+</ValidationRule>

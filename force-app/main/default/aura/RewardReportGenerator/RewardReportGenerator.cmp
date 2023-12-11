@@ -1,0 +1,153 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="RewardReportGeneratorController">
+    <ltng:require scripts="{!$Resource.OrderExportDownload}" />
+    <aura:attribute name="rewardRecords" type="sObject" />
+    <aura:attribute name="currentList" type="List" />
+    <aura:attribute name="currentPageNumber" type="Integer" />
+    <aura:attribute name="maxPageNumber" type="Integer" default="1"/>
+    <aura:attribute name="noRecords" type="Boolean" default="true" />
+    <aura:attribute name="openModal" type="Boolean" default="false" />
+    <aura:attribute name="isExported" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="selectedRecordEvent" event="c:OrderReportEvent" action="{!c.downloadExcelFile}"/>
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" class="slds-hide"/>
+    
+    <lightning:card title="Reward Report">
+        <aura:set attribute="actions">
+            <lightning:button label="Export to Excel" onclick="{!c.confirmationExport}"></lightning:button>
+            <lightning:button label="Refresh" onclick="{!c.doInit}"></lightning:button>
+        </aura:set>
+        
+        <p class="slds-p-horizontal_small slds-scrollable_x slds-p-bottom_small">
+            <aura:if isTrue="{!v.noRecords == false}">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Full Name">Reward Ref No</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Full Name">Reward Date</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Type">Contact Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Start Date">Mobile Number</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Email">Email</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Loyalty ID</div>
+                            </th>
+                              <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Source Loyalty ID</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">National ID</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Status">Delivery Status</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Payment Method">Delivery Address</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Amount">Country</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Region</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">District</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">City</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Postal Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Ward</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Street 1</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Street 2</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">State/Province</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Product Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Product Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Quantity</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Points Amount</div>
+                            </th>
+                             <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Total Points Amount</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Price</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Created By</div>
+                            </th>	
+                             <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">File Export Date</div>
+                            </th>			     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.currentList}" var="item">
+                            <c:RewardReportGeneratorRow rewardItem="{!item}"></c:RewardReportGeneratorRow>		  
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <!-- Pagination Section -->
+                <aura:if isTrue="{!v.maxPageNumber > 1}">
+                    <br />
+                    <center>
+                        <div class="slds-button-group" role="group">
+                            <button onclick="{!c.firstPage}" class="slds-button slds-button--neutral">
+                                First
+                            </button>
+                            <button onclick="{!c.prevPage}" class="slds-button slds-button--neutral">
+                                Prev
+                            </button>
+                            <button class="slds-button slds-button--neutral display-button">
+                                {!v.currentPageNumber} / {!v.maxPageNumber}
+                            </button>
+                            <button onclick="{!c.nextPage}" class="slds-button slds-button--neutral">
+                                Next
+                            </button>
+                            <button onclick="{!c.lastPage}" class="slds-button slds-button--neutral">
+                                Last
+                            </button>
+                        </div>
+                    </center>
+                </aura:if>
+                <aura:set attribute="else">
+                    <h1 class="{!v.isExported == false ? '' :'slds-hide'}">There are currently no rewards in status “Submitted” - No rewards to export at the moment.</h1>
+                    <h1 class="{!v.isExported ? '' :'slds-hide'}">Please check File Libraries to access exported rewards.</h1>
+                </aura:set>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.openModal}">
+                <!-- reuse compoenent -->
+                <c:OrderReportGeneratorModal></c:OrderReportGeneratorModal>
+            </aura:if>
+            
+        </p>
+    </lightning:card>
+</aura:component>

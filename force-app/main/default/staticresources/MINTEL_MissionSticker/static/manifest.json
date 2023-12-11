@@ -1,0 +1,8 @@
+{
+  "name": "abbott-mission-sticker",
+  "short_name": "abbott-mission-sticker",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4DBA87"
+}

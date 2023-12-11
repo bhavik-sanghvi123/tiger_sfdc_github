@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PurchasingChannel__c</fullName>
+    <externalId>false</externalId>
+    <label>Purchasing Channel</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>宅配</fullName>
+                <default>false</default>
+                <label>宅配</label>
+            </value>
+            <value>
+                <fullName>Abbott Mall</fullName>
+                <default>false</default>
+                <label>Abbott Mall</label>
+            </value>
+            <value>
+                <fullName>藥局</fullName>
+                <default>false</default>
+                <label>藥局</label>
+            </value>
+            <value>
+                <fullName>賣場</fullName>
+                <default>false</default>
+                <label>賣場</label>
+            </value>
+            <value>
+                <fullName>杏一維康</fullName>
+                <default>false</default>
+                <label>杏一維康</label>
+            </value>
+            <value>
+                <fullName>全聯社</fullName>
+                <default>false</default>
+                <label>全聯社</label>
+            </value>
+            <value>
+                <fullName>網路</fullName>
+                <default>false</default>
+                <label>網路</label>
+            </value>
+            <value>
+                <fullName>朋友送</fullName>
+                <default>false</default>
+                <label>朋友送</label>
+            </value>
+            <value>
+                <fullName>其他</fullName>
+                <default>false</default>
+                <label>其他</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

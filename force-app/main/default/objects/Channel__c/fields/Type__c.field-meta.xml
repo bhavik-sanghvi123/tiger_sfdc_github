@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Brand Website</fullName>
+                <default>false</default>
+                <label>Brand Website</label>
+            </value>
+            <value>
+                <fullName>Campaign Website</fullName>
+                <default>false</default>
+                <label>Campaign Website</label>
+            </value>
+            <value>
+                <fullName>Corporate Website</fullName>
+                <default>false</default>
+                <label>Corporate Website</label>
+            </value>
+            <value>
+                <fullName>Web - Others</fullName>
+                <default>false</default>
+                <label>Web - Others</label>
+            </value>
+            <value>
+                <fullName>Modern</fullName>
+                <default>false</default>
+                <label>Modern</label>
+            </value>
+            <value>
+                <fullName>Traditional</fullName>
+                <default>false</default>
+                <label>Traditional</label>
+            </value>
+            <value>
+                <fullName>Trade - Others</fullName>
+                <default>false</default>
+                <label>Trade - Others</label>
+            </value>
+            <value>
+                <fullName>Hospital/Clinic</fullName>
+                <default>false</default>
+                <label>Hospital</label>
+            </value>
+            <value>
+                <fullName>Clinic</fullName>
+                <default>false</default>
+                <label>Clinic</label>
+            </value>
+            <value>
+                <fullName>Ethical - Others</fullName>
+                <default>false</default>
+                <label>Ethical - Others</label>
+            </value>
+            <value>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+                <label>Facebook</label>
+            </value>
+            <value>
+                <fullName>Social - Others</fullName>
+                <default>false</default>
+                <label>Social - Others</label>
+            </value>
+            <value>
+                <fullName>CRM</fullName>
+                <default>false</default>
+                <label>CRM</label>
+            </value>
+            <value>
+                <fullName>Digital</fullName>
+                <default>false</default>
+                <label>Digital</label>
+            </value>
+            <value>
+                <fullName>DM</fullName>
+                <default>false</default>
+                <label>DM</label>
+            </value>
+            <value>
+                <fullName>Drug Store</fullName>
+                <default>false</default>
+                <label>Drug Store</label>
+            </value>
+            <value>
+                <fullName>EC</fullName>
+                <default>false</default>
+                <label>EC</label>
+            </value>
+            <value>
+                <fullName>Ethical</fullName>
+                <default>false</default>
+                <label>Ethical</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>HCP</fullName>
+                <default>false</default>
+                <label>HCP</label>
+            </value>
+            <value>
+                <fullName>MMC</fullName>
+                <default>false</default>
+                <label>MMC</label>
+            </value>
+            <value>
+                <fullName>PX</fullName>
+                <default>false</default>
+                <label>PX</label>
+            </value>
+            <value>
+                <fullName>Trade</fullName>
+                <default>false</default>
+                <label>Trade</label>
+            </value>
+            <value>
+                <fullName>MKT - Others</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>MKT - Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

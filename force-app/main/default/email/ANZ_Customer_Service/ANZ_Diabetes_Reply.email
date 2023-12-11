@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,<br/><br/>
+
+        Thank you for contacting Abbott Nutrition.
+        <br/><br/>
+        
+        Glucerna is indicated for people with diabetes or impaired glucose tolerance.
+        <br/><br/>
+        
+        It is suggested that Glucerna be consumed as a snack replacement, as part of a diabetes management plan (including a healthy diet and exercise).
+        <br/><br/>
+        
+        The suggested number of serves is 2 serves per day, dependent on the individual's specific needs.
+        <br/><br/>
+        
+        As Glucerna is a food for special medical purpose, it must be used under the supervision of a heathcare professional eg .GP, specialist, dietitian or pharmacist, so please discuss Glucerna with your healthcare professional prior to consumption.
+        <br/><br/>
+        
+        For information on Glucerna , please visit glucerna.com.au
+        <br/><br/>
+        
+        Please let me know if you would like further assistance.
+        <br/>
+        
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

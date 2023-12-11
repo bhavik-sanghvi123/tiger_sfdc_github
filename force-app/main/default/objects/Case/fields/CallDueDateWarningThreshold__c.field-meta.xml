@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CallDueDateWarningThreshold__c</fullName>
+    <externalId>false</externalId>
+    <formula>if ( Market__c = &apos;MY&apos;, 
+$CustomMetadata.AffiliateMetadata__mdt.MY.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;PH&apos;, 
+$CustomMetadata.AffiliateMetadata__mdt.PH.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;SG&apos;, 
+$CustomMetadata.AffiliateMetadata__mdt.SG.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;TH&apos;, 
+$CustomMetadata.AffiliateMetadata__mdt.TH.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;VN&apos;, 
+    $CustomMetadata.AffiliateMetadata__mdt.VN.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;ANZ&apos;, 
+    $CustomMetadata.AffiliateMetadata__mdt.ANZ.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;IN&apos;, 
+    $CustomMetadata.AffiliateMetadata__mdt.IN.CallDueDateWarningThreshold__c,
+if ( Market__c = &apos;ID&apos;, 
+    $CustomMetadata.AffiliateMetadata__mdt.ID.CallDueDateWarningThreshold__c,
+    0))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Call Due Date Warning Threshold</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_HCP_Shared__c</fullName>
+    <externalId>false</externalId>
+    <label>What HCP Shared</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Sample_Influence__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Benefit - Bone/joint health</fullName>
+                <default>false</default>
+                <label>Benefit - Bone/joint health</label>
+            </value>
+            <value>
+                <fullName>Benefit – Completed Balance Nutrition</fullName>
+                <default>false</default>
+                <label>Benefit – Completed Balance Nutrition</label>
+            </value>
+            <value>
+                <fullName>Benefit - Healthy digestive system</fullName>
+                <default>false</default>
+                <label>Benefit - Healthy digestive system</label>
+            </value>
+            <value>
+                <fullName>Benefit – Heart friendly fat blend</fullName>
+                <default>false</default>
+                <label>Benefit – Heart friendly fat blend</label>
+            </value>
+            <value>
+                <fullName>Benefit – Help manage blood sugar level</fullName>
+                <default>false</default>
+                <label>Benefit – Help manage blood sugar level</label>
+            </value>
+            <value>
+                <fullName>Benefit – Higher calories &amp; protein</fullName>
+                <default>false</default>
+                <label>Benefit – Higher calories &amp; protein</label>
+            </value>
+            <value>
+                <fullName>Benefit – HMB for muscle strength</fullName>
+                <default>false</default>
+                <label>Benefit – HMB for muscle strength</label>
+            </value>
+            <value>
+                <fullName>Benefit – Multi-Vitamin &amp; Mineral</fullName>
+                <default>false</default>
+                <label>Benefit – Multi-Vitamin &amp; Mineral</label>
+            </value>
+            <value>
+                <fullName>Benefit -  Reduce tiredness/fatigue</fullName>
+                <default>false</default>
+                <label>Benefit -  Reduce tiredness/fatigue</label>
+            </value>
+            <value>
+                <fullName>Benefit – Support catch-up growth</fullName>
+                <default>false</default>
+                <label>Benefit – Support catch-up growth</label>
+            </value>
+            <value>
+                <fullName>Benefit - Weight management (used it as meal replacement)</fullName>
+                <default>false</default>
+                <label>Benefit - Weight management (used it as meal replacement)</label>
+            </value>
+            <value>
+                <fullName>Benefit – Others (Pls specify)</fullName>
+                <default>false</default>
+                <label>Benefit – Others (Pls specify)</label>
+            </value>
+            <value>
+                <fullName>Did not share anything</fullName>
+                <default>false</default>
+                <label>Did not share anything</label>
+            </value>
+            <value>
+                <fullName>Benefit – Fiber</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Benefit – Fiber</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit - Bone/joint health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Completed Balance Nutrition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit - Healthy digestive system</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Heart friendly fat blend</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Help manage blood sugar level</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Higher calories &amp; protein</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – HMB for muscle strength</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Multi-Vitamin &amp; Mineral</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit -  Reduce tiredness/fatigue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Support catch-up growth</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit - Weight management (used it as meal replacement)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Benefit – Others (Pls specify)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Did not share anything</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

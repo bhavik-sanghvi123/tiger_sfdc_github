@@ -1,0 +1,63 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasSObjectName" access="global" controller="NewOrderController">
+    
+    <!-- Record Ids Attribute-->
+	<aura:attribute access="PUBLIC" name="caseID" type="String"/>
+	<aura:attribute access="PUBLIC" name="orderID" type="String"/>
+    <aura:attribute access="PUBLIC" name="accountID" type="String"/>
+	<aura:attribute access="PUBLIC" name="contactID" type="String"/>
+    <aura:attribute access="PUBLIC" name="caseRecordType" type="String"/>
+    <aura:attribute access="PUBLIC" name="userMarket" type="String"/>
+    
+    <aura:attribute name="CaseObj" type="Case" default="{ 'sobjectType' : 'Case'}"/>
+    <aura:attribute name="ContactObj" type="Contact" default="{ 'sobjectType' : 'Contact'}"/>
+    <aura:attribute name="isPageAccessible" type="Boolean" default="true"/>
+    <aura:attribute access="PUBLIC" name="isAllowed" type="String"/>
+    <aura:attribute access="PUBLIC" name="nutritionalHistoryId" type="String" default=""/>
+    <aura:attribute name="showCallScript" type="boolean" default="false"/>
+    <aura:attribute access="PUBLIC" name="blacklistedStatus" type="Boolean"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <div class="slds-theme_default slds-align_absolute-right slds-box slds-m-top_xxx-small">
+        <div class="slds-grid">
+            <div class="slds-col slds-float--right" style="text-align: right;">
+                <aura:if isTrue="{!v.sObjectName == 'Case'}">
+                    <aura:if isTrue="{!v.caseRecordType != 'Call'}">
+                		<c:AcceptSocialCase recordId="{!v.recordId}"></c:AcceptSocialCase>
+                    </aura:if>
+                    <aura:if isTrue="{!v.caseRecordType == 'Call'}">
+                		<c:AcceptAgentWork recordId="{!v.recordId}"></c:AcceptAgentWork>
+                    </aura:if>  
+                </aura:if>
+                <c:NewInquiryButton recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"></c:NewInquiryButton>
+                <c:NewFeedbackButton recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"></c:NewFeedbackButton>
+                <lightning:button label="New Order" onclick="{!c.createOrder}"></lightning:button>
+                <aura:if isTrue="{!v.sObjectName == 'Case'}">
+                    <aura:if isTrue="{!v.caseRecordType != 'Call'}">
+                        <lightning:button label="Add Main Contact" onclick="{!c.createContact}"></lightning:button>
+                        <aura:set attribute="else">
+                            <c:TransferCallPage recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"></c:TransferCallPage>
+                        </aura:set>
+                    </aura:if>
+                </aura:if>
+                <aura:if isTrue="{!and(v.sObjectName == 'Case', v.showCallScript)}">
+                    <aura:if isTrue="{!v.caseRecordType == 'Call'}">
+                        <lightning:button label="Start Call Script" onclick="{!c.startCallScript}"></lightning:button>
+                    </aura:if>    
+                </aura:if>
+            </div>
+        </div>
+        <aura:if isTrue="{!and(v.sObjectName == 'Case', v.userMarket == 'TW')}">
+            <br></br>
+            <div class="slds-grid">
+                <b>Contact Blacklisted Status &nbsp; &nbsp;</b> 
+                <aura:if isTrue="{!v.blacklistedStatus}">
+                    <div style="height:20px; width:20px"> 
+                        <img src="{!$Resource.Red_Icon}" alt="red"/> 
+                    </div>
+                </aura:if>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

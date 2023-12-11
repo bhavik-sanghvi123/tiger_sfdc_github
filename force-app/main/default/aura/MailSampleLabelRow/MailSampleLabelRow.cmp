@@ -1,0 +1,26 @@
+<aura:component>
+	<aura:attribute name="orderItem" type="sObject" />
+	 <tr class="slds-hint-parent">      
+       
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.OrderedFor__r.Name}</div></td>     
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Street1__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Street2__c}</div></td>
+         <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.UnitNumber__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.City2__r.Name}</div></td>
+ 		<td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.PostalCode__c}</div></td>
+ 		<td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.PricebookEntry.ProductCode}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Quantity}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.PricebookEntry.Product2.Name}</div></td>        
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.RelatedCampaign__r.Name}</div></td>
+       
+        <td data-label=""><div class="slds-truncate" title="20%">
+        	<lightning:formattedDateTime value="{!v.orderItem.Order.CreatedDate}" year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"  hour12="true"/></div>
+        </td>
+        <td data-label=""><div class="slds-truncate" title="20%">
+        	<lightning:formattedDateTime value="{!v.orderItem.Order.LastModifiedDate}" year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"  hour12="true"/></div>
+        </td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.CreatedBy.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.FileExportDate__c}</div></td>
+    </tr>
+</aura:component>

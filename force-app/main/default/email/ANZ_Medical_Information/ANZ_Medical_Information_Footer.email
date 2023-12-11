@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        <i>Note: This information is provided to address your specific enquiry and is for your personal reference only. Please note that Abbott Australasia only recommends the use of its products in accordance with the Approved Product Label.</i>
+        
+        <c:ANZ_EmailTemplateSignature isMedical="true"/>
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

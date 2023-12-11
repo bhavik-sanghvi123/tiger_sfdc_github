@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Mobile_Format</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(
+ISNEW(),
+ISCHANGED(Phone)
+),
+!ISBLANK(Phone),
+Market__c = &quot;PH&quot;,
+NOT(AND(
+LEN(Phone) &gt;= 10,
+LEN(Phone) &lt;= 14,
+REGEX(Phone, &quot;[0-9]*&quot;)
+))
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Invalid PH Mobile Number format.. Please enter 10-14 digit number.</errorMessage>
+</ValidationRule>

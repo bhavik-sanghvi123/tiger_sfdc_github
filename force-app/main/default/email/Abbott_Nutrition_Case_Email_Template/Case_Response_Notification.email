@@ -1,0 +1,4 @@
+<p>Dear Service Agent,</p>
+<p>You have received an update on the following case: <a href= {!Case.Link}>{!Case.CaseNumber}</a></p>
+<p>Please take the required next action on this case.</p>
+<p>Thank you.</p>

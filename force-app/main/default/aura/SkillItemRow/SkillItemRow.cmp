@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,force:hasRecordId"
+                access="global" 
+                controller="AddMultipleSkillsController">
+    
+    <!--Variables-->
+    <aura:attribute name="skillInstance" type="ServiceResourceSkill"/>
+    <aura:attribute name="rowIndex" type="String"/>
+    <aura:attribute name="srId" type="String"/>
+    <aura:attribute name="selectedSkill" type="sObject" default="{}"/>
+    <aura:attribute name="skillId" type="String" default=""/>
+    <aura:attribute name="skillName" type="String" default=""/>
+    <!--Service Resource Skill related attributes-->
+    <aura:attribute name="srSkill" type="String"/>
+    <aura:attribute name="srStartDate" type="DateTime"/>
+    <aura:attribute name="srEndDate" type="DateTime"/>
+    
+    <!--Register Event-->
+    <aura:registerEvent name="DeleteRowEvt" type="c:DeleteRowEvt"/>
+    
+    <!--Evennt Handlers-->
+    <aura:handler name="UpdateSelectedRecord" event="c:StoreSelectedRecord" action="{!c.getSkillDetails}"/>
+    
+    <div class="slds-box">
+        <a onclick="{!c.removeRow}">
+            <div class="slds-float_right">
+                <lightning:icon iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="icon"/>
+                <span class="slds-assistive-text">Delete Icons</span>
+            </div>
+        </a>
+        <center>
+            <tr>
+                <td> 
+                    <div class="legend.slds-form-element__legend.slds-form-element__label customRequired">Skill</div>
+                    <c:ReusableLookupComponent label="Skill" objectAPIName="Skill" IconName="standard:skill" selectedRecord="{!v.selectedSkill}" userMarket="" aura:id="srSkill"></c:ReusableLookupComponent>
+                    <lightning:input type="datetime" label="Start Date" value="{!v.srStartDate}"></lightning:input>
+                    <lightning:input type="datetime" label="End Date" value="{!v.srEndDate}"></lightning:input>
+                </td>
+            </tr>
+        </center>
+    </div>
+</aura:component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DrugStoreRedemptionChoice__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Drug Store Redemption Choice</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Trade</value>
+        </filterItems>
+        <filterItems>
+            <field>Affiliate_Value__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Channel Responses</relationshipLabel>
+    <relationshipName>Channel_Responses_DS</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

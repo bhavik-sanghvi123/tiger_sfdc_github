@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MainBrandRelationship__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Main Brand Relationship (DEPRECATED)</label>
+    <referenceTo>BrandRelationship__c</referenceTo>
+    <relationshipLabel>Call Exports</relationshipLabel>
+    <relationshipName>Call_Exports2</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

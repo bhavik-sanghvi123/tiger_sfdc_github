@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Give_Up_Reason__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>[8-Sep-21 Khai] For data migration / integration, similar to the unsuccessful reason on the Case</description>
+    <externalId>false</externalId>
+    <label>Give Up Reason</label>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Contacts (Give Up Reason)</relationshipLabel>
+    <relationshipName>Contact_Give_Up_Reason</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

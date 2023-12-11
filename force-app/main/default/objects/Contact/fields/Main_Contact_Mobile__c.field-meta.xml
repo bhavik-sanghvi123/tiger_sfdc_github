@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Main_Contact_Mobile__c</fullName>
+    <description>[4-Oct-21 Khai] This field extracts the mobile number of the parent contact. Requested by TW market</description>
+    <externalId>false</externalId>
+    <formula>Parent__r.Phone</formula>
+    <inlineHelpText>This is the mobile number of the main contact, as child records don&apos;t have phone numbers</inlineHelpText>
+    <label>Main Contact Mobile</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

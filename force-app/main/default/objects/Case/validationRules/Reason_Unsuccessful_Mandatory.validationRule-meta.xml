@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Unsuccessful_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Call&apos;, (ISPICKVAL(CallOutcome__c, &apos;Unsuccessful&apos;)), ISBLANK(UnsuccessfulReason__c))</errorConditionFormula>
+    <errorDisplayField>UnsuccessfulReason__c</errorDisplayField>
+    <errorMessage>Unsuccessful Reason is mandatory if Call Outcome is equal to Unsuccessful</errorMessage>
+</ValidationRule>

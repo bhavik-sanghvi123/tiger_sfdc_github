@@ -1,0 +1,38 @@
+<apex:page controller="SummarizedOrderReportGeneratorController" contentType="application/vnd.ms-excel" standardStylesheets="false" showHeader="false">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    </head>
+    <apex:dataTable value="{!combinedOrderList}" var="orderItem" >
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Order Number</apex:facet><apex:outputText value="{!orderItem.sOrderNumber}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Contact Ref No</apex:facet><apex:outputText value="{!orderItem.sOrderContactRefNo}"/></apex:column>
+        <apex:column ><apex:facet name="header">Name</apex:facet><apex:outputText value="{!orderItem.sOrderName}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 1</apex:facet><apex:outputText value="{!orderItem.sOrderStreet1}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 2</apex:facet><apex:outputText value="{!orderItem.sOrderStreet2}"/></apex:column>
+        <apex:column ><apex:facet name="header">Ward</apex:facet><apex:outputText value="{!orderItem.sOrderWard}"/></apex:column>
+        <apex:column ><apex:facet name="header">District</apex:facet><apex:outputText value="{!orderItem.sOrderDistrict}"/></apex:column>
+        <apex:column ><apex:facet name="header">Province</apex:facet><apex:outputText value="{!orderItem.sOrderCity}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Home Phone</apex:facet><apex:outputText value="{!orderItem.sOrderHomePhone}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Mobile</apex:facet><apex:outputText value="{!orderItem.sOrderMobile}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Other Phone</apex:facet><apex:outputText value="{!orderItem.sOrderOtherPhone}"/></apex:column>
+        <apex:column ><apex:facet name="header">Related Campaign</apex:facet><apex:outputText value="{!orderItem.sOrderRelatedCampaign}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Order Product Number</apex:facet><apex:outputText value="{!orderItem.sOrderProductNumber}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product Code</apex:facet><apex:outputText value="{!orderItem.sOrderProductCode}"/></apex:column>
+        <apex:column ><apex:facet name="header">Total Quantity</apex:facet><apex:outputText value="{!orderItem.sOrderTotalQuantity}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product Name</apex:facet><apex:outputText value="{!orderItem.sOrderProductName}"/></apex:column>
+        <apex:column ><apex:facet name="header">Promotion</apex:facet><apex:outputText value="{!orderItem.sOrderPromotion}"/></apex:column>
+        <apex:column ><apex:facet name="header">Unit Price</apex:facet><apex:outputText value="{!orderItem.sOrderUnitPrice}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Amount</apex:facet><apex:outputText value="{!orderItem.sOrderAmount}"/></apex:column>
+        <apex:column style="mso-number-format:'Short Date'"><apex:facet name="header">Order Start Date</apex:facet><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!orderItem.sOrderStartDate}" /> </apex:outputText></apex:column>
+        <apex:column ><apex:facet name="header">File Export Date</apex:facet><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!TODAY()}" /> </apex:outputText></apex:column>
+        <apex:column ><apex:facet name="header">Created By</apex:facet><apex:outputText value="{!orderItem.sOrderCreatedBy}"/></apex:column>
+        <apex:column ><apex:facet name="header">Key Brand</apex:facet><apex:outputText value="{!orderItem.sOrderKeyBrand}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Notes</apex:facet><apex:outputText value="{!orderItem.sOrderNotes}"/></apex:column>
+        <apex:column ><apex:facet name="header">Region</apex:facet><apex:outputText value="{!orderItem.sOrderRegion}"/></apex:column>        
+        <apex:column ><apex:facet name="header">Order Type</apex:facet><apex:outputText value="{!orderItem.sOrderType}"/></apex:column>
+        <apex:column ><apex:facet name="header">Status</apex:facet><apex:outputText value="{!orderItem.sOrderStatus}"/></apex:column>
+        <apex:column ><apex:facet name="header">Payment Method</apex:facet><apex:outputText value="{!orderItem.sOrderPaymentMethod}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Case Number</apex:facet><apex:outputText value="{!orderItem.sOrderCaseNumber}"/></apex:column>
+        <apex:column ><apex:facet name="header">Ordered For</apex:facet><apex:outputText value="{!orderItem.sOrderOrderedFor}"/></apex:column>
+        <apex:column ><apex:facet name="header">Category</apex:facet><apex:outputText value="{!orderItem.sOrderCategory}"/></apex:column>    
+    </apex:dataTable>
+</apex:page>

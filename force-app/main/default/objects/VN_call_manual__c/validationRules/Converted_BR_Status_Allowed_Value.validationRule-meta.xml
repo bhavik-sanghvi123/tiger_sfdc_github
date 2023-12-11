@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Converted_BR_Status_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Uncontacted&apos;, converted_br_status__c), 
+CONTAINS(&apos;Contacted&apos;, converted_br_status__c),
+CONTAINS(&apos;Qualified&apos;, converted_br_status__c),
+CONTAINS(&apos;New&apos;, converted_br_status__c),
+CONTAINS(&apos;Existing&apos;, converted_br_status__c),
+CONTAINS(&apos;Lapsed&apos;, converted_br_status__c),
+ISBLANK(converted_br_status__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>converted_br_status__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for Converted BR Status:
+Uncontacted
+Contacted
+Qualified
+New
+Existing
+Lapsed</errorMessage>
+</ValidationRule>

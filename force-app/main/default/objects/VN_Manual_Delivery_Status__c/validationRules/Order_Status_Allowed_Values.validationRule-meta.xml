@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Status_Allowed_Values</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Draft&apos;,  order_status__c ),
+          CONTAINS(&apos;Submitted&apos;,  order_status__c ),
+          CONTAINS(&apos;Transferred&apos;,  order_status__c ),
+          CONTAINS(&apos;Out For Delivery&apos;,  order_status__c ),
+          CONTAINS(&apos;Completed&apos;,  order_status__c ),
+          CONTAINS(&apos;Cancelled - New Order Created&apos;,  order_status__c ),
+          CONTAINS(&apos;Cancelled - Before Delivery&apos;,  order_status__c ),
+          CONTAINS(&apos;Cancelled - Upon Delivery&apos;,  order_status__c ),
+          CONTAINS(&apos;Cancelled - Abandoned&apos;,  order_status__c )) )</errorConditionFormula>
+    <errorMessage>Below are the only allowed values for Order Status.
+Draft
+Submitted
+Transferred
+Out For Delivery
+Completed
+Cancelled - New Order Created
+Cancelled - Before Delivery
+Cancelled - Upon Delivery
+Cancelled - Abandoned</errorMessage>
+</ValidationRule>

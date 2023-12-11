@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Status__c</fullName>
+    <description>Lead Status based on Scoring</description>
+    <externalId>false</externalId>
+    <label>Lead Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hot</fullName>
+                <default>false</default>
+                <label>Hot</label>
+            </value>
+            <value>
+                <fullName>Cold</fullName>
+                <default>false</default>
+                <label>Cold</label>
+            </value>
+            <value>
+                <fullName>Warm</fullName>
+                <default>false</default>
+                <label>Warm</label>
+            </value>
+            <value>
+                <fullName>New Lead</fullName>
+                <default>false</default>
+                <label>New Lead</label>
+            </value>
+            <value>
+                <fullName>Existing Lead</fullName>
+                <default>false</default>
+                <label>Existing Lead</label>
+            </value>
+            <value>
+                <fullName>New User</fullName>
+                <default>false</default>
+                <label>New User</label>
+            </value>
+            <value>
+                <fullName>Retained User</fullName>
+                <default>false</default>
+                <label>Retained User</label>
+            </value>
+            <value>
+                <fullName>Lapsed User</fullName>
+                <default>false</default>
+                <label>Lapsed User</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

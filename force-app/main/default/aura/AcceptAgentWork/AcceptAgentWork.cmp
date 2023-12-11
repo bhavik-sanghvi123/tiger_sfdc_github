@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="AcceptAgentWorkController">
+    <lightning:omniToolkitAPI aura:id="omniToolkit"></lightning:omniToolkitAPI>
+    <lightning:notificationsLibrary aura:id="notifLib"></lightning:notificationsLibrary>
+    <ltng:require styles="{!$Resource.multilineToastCSS}"></ltng:require>
+    <lightning:button label="Accept Call" onclick="{!c.acceptWork}"></lightning:button>
+</aura:component>

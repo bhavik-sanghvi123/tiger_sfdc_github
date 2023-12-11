@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KeyMessageDriverforTrial__c</fullName>
+    <externalId>false</externalId>
+    <label>Key Message Driver for Trial</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ensure - Complete and Balanced Supplement</fullName>
+                <default>false</default>
+                <label>Ensure - Complete and Balanced Supplement</label>
+            </value>
+            <value>
+                <fullName>Ensure - Supports Muscle Tissue Building and Growth</fullName>
+                <default>false</default>
+                <label>Ensure - Supports Muscle Tissue Building and Growth</label>
+            </value>
+            <value>
+                <fullName>Ensure - Great-tasting almond flavoured drink</fullName>
+                <default>false</default>
+                <label>Ensure - Great-tasting almond flavoured drink</label>
+            </value>
+            <value>
+                <fullName>Ensure - Can be used as a  Meal Replacement</fullName>
+                <default>false</default>
+                <label>Ensure - Can be used as a  Meal Replacement</label>
+            </value>
+            <value>
+                <fullName>Ensure - With Plant Based Protein</fullName>
+                <default>false</default>
+                <label>Ensure - With Plant Based Protein</label>
+            </value>
+            <value>
+                <fullName>Ensure - For Everyday Strength</fullName>
+                <default>false</default>
+                <label>Ensure - For Everyday Strength</label>
+            </value>
+            <value>
+                <fullName>Ensure - With HMB</fullName>
+                <default>false</default>
+                <label>Ensure - With HMB</label>
+            </value>
+            <value>
+                <fullName>Ensure - Less Sugar</fullName>
+                <default>false</default>
+                <label>Ensure - Less Sugar</label>
+            </value>
+            <value>
+                <fullName>Ensure - Scientically formulated</fullName>
+                <default>false</default>
+                <label>Ensure - Scientically formulated</label>
+            </value>
+            <value>
+                <fullName>Ensure - No1 Nutritional Supplement Drink in the World</fullName>
+                <default>false</default>
+                <label>Ensure - No1 Nutritional Supplement Drink in the World</label>
+            </value>
+            <value>
+                <fullName>Ensure - High Quality protein</fullName>
+                <default>false</default>
+                <label>Ensure - High Quality protein</label>
+            </value>
+            <value>
+                <fullName>Ensure - Improve bone strength / for strong bones</fullName>
+                <default>false</default>
+                <label>Ensure - Improve bone strength / for strong bones</label>
+            </value>
+            <value>
+                <fullName>Ensure - Lactose free</fullName>
+                <default>false</default>
+                <label>Ensure - Lactose free</label>
+            </value>
+            <value>
+                <fullName>Ensure - Dairy alternative</fullName>
+                <default>false</default>
+                <label>Ensure - Dairy alternative</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Support Diabetes Management</fullName>
+                <default>false</default>
+                <label>Glucerna - Support Diabetes Management</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Low GI</fullName>
+                <default>false</default>
+                <label>Glucerna - Low GI</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Complete and Balanced Supplement</fullName>
+                <default>false</default>
+                <label>Glucerna - Complete and Balanced Supplement</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Can be used as a Meal Replacement</fullName>
+                <default>false</default>
+                <label>Glucerna - Can be used as a Meal Replacement</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Can be used as a Snack</fullName>
+                <default>false</default>
+                <label>Glucerna - Can be used as a Snack</label>
+            </value>
+            <value>
+                <fullName>Glucerna - For Dietary and Weight Management</fullName>
+                <default>false</default>
+                <label>Glucerna - For Dietary and Weight Management</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Replace Breakfast</fullName>
+                <default>false</default>
+                <label>Glucerna - Replace Breakfast</label>
+            </value>
+            <value>
+                <fullName>Glucerna - No Sucrose</fullName>
+                <default>false</default>
+                <label>Glucerna - No Sucrose</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Scientically formulated for People with Diabetes</fullName>
+                <default>false</default>
+                <label>Glucerna - Scientically formulated for People with Diabetes</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Improve bone strength / for strong bones</fullName>
+                <default>false</default>
+                <label>Glucerna - Improve bone strength / for strong bones</label>
+            </value>
+            <value>
+                <fullName>Glucerna - Lactose free</fullName>
+                <default>false</default>
+                <label>Glucerna - Lactose free</label>
+            </value>
+            <value>
+                <fullName>Others (Please specify)</fullName>
+                <default>false</default>
+                <label>Others (Please specify)</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

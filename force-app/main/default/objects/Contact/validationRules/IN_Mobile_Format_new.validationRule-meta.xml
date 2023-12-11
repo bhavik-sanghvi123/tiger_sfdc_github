@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IN_Mobile_Format_new</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+OR(
+ISNEW(),
+ISCHANGED(Phone)
+),
+!ISBLANK(Phone),
+AND(
+Market__c == &apos;IN&apos;,
+OR(
+LEN(Phone) != 10
+)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Invalid Mobile Number. Please enter 10 digit number.</errorMessage>
+</ValidationRule>

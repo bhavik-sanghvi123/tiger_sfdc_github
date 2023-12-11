@@ -1,0 +1,58 @@
+<apex:page controller="RewardReportGeneratorController" contentType="application/vnd.ms-excel" standardStylesheets="false" showHeader="false">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    </head>
+    <!-- <apex:pageBlock >
+        <apex:pageBlockTable value="{!rewardItemList}" var="rewardItem">
+            <apex:column value="{!rewardItem.Name}"/>
+            <apex:column value="{!rewardItem.RedemptionDate__c}"/>
+            <apex:column value="{!rewardItem.Contact__r.Name}"/>
+            <apex:column value="{!rewardItem.Contact__r.Phone}"/>
+            <apex:column value="{!rewardItem.DeliveryStatus__c}"/>
+            <apex:column value="{!rewardItem.DeliveryAddress__r.Name}"/>
+            <apex:column value="{!rewardItem.DeliveryAddress__r.Country__c}"/>
+            <apex:column headervalue="City" value="{!rewardItem.DeliveryAddress__r.City2__r.Name}"/>
+            <apex:column headervalue="Ward" value="{!rewardItem.DeliveryAddress__r.Ward2__r.Name}"/>
+            <apex:column headervalue="District" value="{!rewardItem.DeliveryAddress__r.District__r.Name}"/>
+            <apex:column headervalue="Region" value="{!rewardItem.DeliveryAddress__r.Region__r.Name}"/>
+            <apex:column value="{!rewardItem.DeliveryAddress__r.Street1__c}"/>
+            <apex:column value="{!rewardItem.DeliveryAddress__r.Street2__c}"/>
+            <apex:column value="{!rewardItem.ProductForRedemption__r.Name}"/>
+            <apex:column value="{!rewardItem.ProductForRedemption__r.ProductCode}"/>
+            <apex:column value="{!rewardItem.Quantity__c}"/>
+            <apex:column value="{!rewardItem.PointsAmount__c}"/>
+            <apex:column value="{!rewardItem.TotalPointsAmount__c}"/>
+            <apex:column value="{!rewardItem.Price__c}"/>            
+        </apex:pageBlockTable>
+    </apex:pageBlock> -->
+
+    <apex:dataTable value="{!rewardItemList}" var="rewardItem" >
+        <apex:column ><apex:facet name="header">Reward Ref No</apex:facet><apex:outputText value="{!rewardItem.Name}"/></apex:column>
+        <apex:column style="mso-number-format:'Short Date'"><apex:facet name="header">Reward Date</apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"> <apex:param value="{!rewardItem.RedemptionDate__c}" /> </apex:outputText></apex:column>
+        <apex:column ><apex:facet name="header">Contact Name</apex:facet><apex:outputText value="{!rewardItem.Contact__r.Name}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Mobile Number</apex:facet><apex:outputText value="{!rewardItem.Contact__r.Phone}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Email</apex:facet><apex:outputText value="{!rewardItem.Contact__r.Email}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Loyalty ID</apex:facet><apex:outputText value="{!rewardItem.Contact__r.LoyaltyID__c}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Source Loyalty ID</apex:facet><apex:outputText value="{!rewardItem.Contact__r.Source_Loyalty_Id__c}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">National ID</apex:facet><apex:outputText value="{!rewardItem.Contact__r.NationalID__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Delivery Status</apex:facet><apex:outputText value="{!rewardItem.DeliveryStatus__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Delivery Address</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Country</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Country__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Region</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Region__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">District</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.District__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">City</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.City2__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Postal Code</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.PostalCode__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Ward</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Ward2__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 1</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Street1__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Street 2</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.Street2__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">State/Province</apex:facet><apex:outputText value="{!rewardItem.DeliveryAddress__r.StateProvince__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product Name</apex:facet><apex:outputText value="{!rewardItem.ProductForRedemption__r.Name}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Product Code</apex:facet><apex:outputText value="{!rewardItem.ProductForRedemption__r.ProductCode}"/></apex:column>
+        <apex:column ><apex:facet name="header">Quantity</apex:facet><apex:outputText value="{!rewardItem.Quantity__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Points Amount</apex:facet><apex:outputText value="{!rewardItem.PointsAmount__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Total Points Amount</apex:facet><apex:outputText value="{!rewardItem.TotalPointsAmount__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Price</apex:facet><apex:outputText value="{!rewardItem.Price__c}"/></apex:column>            
+        <apex:column ><apex:facet name="header">Created By</apex:facet><apex:outputText value="{!rewardItem.CreatedBy.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">File Export Date</apex:facet><apex:outputText value="{0,date,MM/dd/yyyy}"> <apex:param value="{!TODAY()}" /> </apex:outputText></apex:column>
+    </apex:dataTable>
+</apex:page>

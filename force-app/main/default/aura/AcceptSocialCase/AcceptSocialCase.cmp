@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="AcceptSocialCaseController">
+    <lightning:notificationsLibrary aura:id="notifLib"></lightning:notificationsLibrary>
+    <ltng:require styles="{!$Resource.multilineToastCSS}"></ltng:require>
+    <aura:attribute access="PUBLIC" name="isSocial" type="Boolean"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <aura:if isTrue="{!v.isSocial}">
+		<lightning:button label="Accept Case" onclick="{!c.acceptCase}"></lightning:button>
+    </aura:if>
+</aura:component>

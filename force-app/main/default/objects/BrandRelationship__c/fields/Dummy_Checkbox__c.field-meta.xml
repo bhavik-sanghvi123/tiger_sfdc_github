@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dummy_Checkbox__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>[1-Oct-21 Khai] Dummy checkbox to trigger the PB: Update BR.Birth_Hospital_Desc</description>
+    <externalId>false</externalId>
+    <label>Dummy Checkbox</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

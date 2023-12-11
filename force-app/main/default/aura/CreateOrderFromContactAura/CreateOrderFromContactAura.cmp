@@ -1,0 +1,198 @@
+<aura:component implements="force:appHostable,lightning:isUrlAddressable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasSObjectName"
+                access="global" 
+                controller ="CreateOrderFromContactController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!--  FILTER FIELDS -->
+    <aura:attribute name="brName" type="String" default="" />
+    <aura:attribute name="crName" type="String" default="" />
+    <aura:attribute name="mainAge" type="Integer" default="null" />
+    <aura:attribute name="endAge" type="Integer" default="null" />
+    <aura:attribute name="campaign" type="List" default="[]"  />
+    <aura:attribute name="marketList" type="List" />
+    
+    <!-- OTHER FIELDS -->
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="modalCol" type="List"/>
+    <aura:attribute name="contactList" type="List" />
+    <aura:attribute name="isModalOpen" type="Boolean" default="false" />
+    <aura:attribute name="orderFields" type="String[]" default="['Type', 'Status', 'EffectiveDate', 'CurrencyIsoCode', 'Pricebook2Id','RelatedCampaign__c', 'PaymentMethod__c']" /> 
+    <aura:attribute name="orderProdFields" type="String[]" default="['Product2Id','Category__c', 'Quantity']" />
+    <aura:attribute name="newOrder" type="Boolean" default="true" />
+    <aura:attribute name="newItem" type="Boolean" default="true" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="tableMsg" type="String" />
+    <aura:attribute name="selectedRows" type="List" />
+    <aura:attribute name="orderRec" type="String" />
+    <aura:attribute name="orderHeader" type="String" default="ORDER CREATION" />
+    
+    <div class="pageHeader slds-box slds-page-header slds-page-header_record-home">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity">
+                            <lightning:icon iconName="standard:contact_list" size="large "/>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <div>
+                                        <lightning:formattedUrl value="/lightning/o/Contact/home" label="&lt; Back to Contacts" target="_top" />
+                                    </div>
+                                    <span class="pageTitle slds-page-header__title slds-truncate">ORDER CREATION FOR CONTACTS</span>
+                                    <div class="headerSub">Only Contacts with Brand relationship and Address are previewed.</div>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <lightning:buttonGroup>
+                            <lightning:button variant="brand-outline" iconName="utility:filterList" label="Filter" title="Filter" onclick="{! c.openFilterModal }"/>
+                            <lightning:button variant="brand-outline" iconName="utility:work_order_type" label="Create Order For Contacts" title="Create Order For Contacts" onclick="{! c.createOrderModal }"/>
+                        </lightning:buttonGroup>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div aura:id="filterModal" class="slds-hide">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="filterModal slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeFilterModal}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">FILTER CONTACTS</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-grid">
+                        <div class="filterTitle slds-col slds-size_1-of-5">
+                            Brand Relationship 
+                        </div>
+                        <div class="slds-col slds-size_4-of-5">
+                            <lightning:input class="filterInput" name="Brand Relationship" label="Brand Relationship" placeholder="Search Brand Relationship..." value="{!v.brName}" />
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="filterTitle slds-col slds-size_1-of-5">
+                            Main Contact 
+                        </div>
+                        <div class="slds-col slds-size_4-of-5">
+                            <lightning:input class="filterInput slds-size_1-of-3" type="number" label="Age" value="{!v.mainAge}" maxlength="3"/>
+                            <lightning:select class="filterInput slds-size_2-of-3" aura:id="mainMarket" label="Market" disabled="true" >
+                                 <option value="SG" text="SG" /> 
+                            </lightning:select>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="filterTitle slds-col slds-size_1-of-5">
+                            End User 
+                        </div>
+                        <div class="slds-col slds-size_4-of-5">
+                            <lightning:input class="filterInput slds-size_1-of-3" type="number" label="Age (Months)" value="{!v.endAge}" maxlength="3"/>
+                            <lightning:select class="filterInput slds-size_2-of-3" aura:id="endMarket" label="Market"  disabled="true" >
+                                <option value="SG" text="SG" />
+                            </lightning:select>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="filterTitle slds-col slds-size_1-of-5">
+                            Channel Response 
+                        </div>
+                        <div class="slds-col slds-size_4-of-5">
+                            <lightning:recordEditForm class="filterInput" objectApiName="ChannelResponse__c" >
+                                <lightning:inputField fieldName="Campaign__c" value="{!v.campaign}" />
+                            </lightning:recordEditForm>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <div class="filterTitle slds-col slds-size_1-of-5">
+                            Channel Response
+                        </div>
+                        <div class="slds-col slds-size_4-of-5">
+                            <lightning:input class="filterInput" name="Channel Response" label="Channel Response(Brand)" placeholder="Search Channel Response..." value="{!v.crName}" />
+                        </div>
+                    </div>
+                    <lightning:button class="slds-align_absolute-center filterButton" variant="brand-outline" label="Filter" title="Filter" onclick="{! c.filterContacts }"/>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    
+    <div class="slds-box slds-page-header slds-page-header_record-home pageBody">
+        <div aura:id="pageMsg" >
+            <h1 class="pageMessage">{!v.tableMsg}</h1>
+        </div>
+        
+        <div aura:id="contactTable" class="slds-hide" style="padding-top: 25px">
+            <lightning:datatable keyField="id" data="{!v.contactList }" columns="{!v.columns }" enable-infinite-loading="true" onrowselection="{!c.updateSelectedText}" />
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.isModalOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="orderModalTitle slds-text-heading_medium slds-hyphenate">{!v.orderHeader}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-col slds-size_2-of-3 orderForm">
+                            <aura:if isTrue="{!v.newOrder}">
+                                <div class="orderHeader slds-border_bottom">
+                                    CREATE ORDER
+                                </div>
+                                
+                                <div aura:id="newTable">
+                                    <lightning:recordForm aura:id="createOrderTable" objectApiName="Order" fields="{!v.orderFields}" columns="2" mode="edit" onsubmit="{!c.submitOrder}" />
+                                </div>
+                                
+                                <div aura:id="editTable" class="slds-hide" style="padding-top: 25px">
+                                    <lightning:recordForm objectApiName="Order" fields="{!v.orderFields}" columns="2" mode="edit" recordId="{!v.orderRec}" onsuccess="{!c.editedOrder}" />
+                                </div>
+                                
+                                <aura:set attribute="else"> 
+                                    <aura:if isTrue="{!v.newItem}">
+                                        <div>
+                                            <lightning:button variant="base" label="&lt; Back to Order Creation" onclick="{!c.backOrder }"/>
+                                            <div class="orderHeader slds-border_bottom">
+                                                CREATE ORDER PRODUCT
+                                            </div>
+                                            <lightning:recordForm objectApiName="OrderItem" fields="{!v.orderProdFields}" columns="2" mode="edit" onsubmit="{!c.submitOrderItem}" />
+                                        </div>
+                                        <aura:set attribute="else">
+                                            <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                                                <div class="slds-notify__content">
+                                                    <h2 class="slds-text-heading_small">Orders and order products successfully created!</h2>
+                                                </div>
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-col slds-size_1-of-3">
+                            ORDER WILL BE CREATED FOR EACH CONTACT:
+                            <lightning:datatable keyField="id" data="{!v.selectedRows}" columns="{!v.modalCol}" hideCheckboxColumn="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+    
+</aura:component>

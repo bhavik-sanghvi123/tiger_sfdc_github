@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invalid_CR_Registration_Date_Format</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT($User.LastName = &apos;Integration&apos;),NOT(Regex( CR_RegistrationDate__c ,&quot;^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$&quot;)))</errorConditionFormula>
+    <errorMessage>Please enter CR_RegistrationDate column with dd/mm/yyyy date format.</errorMessage>
+</ValidationRule>

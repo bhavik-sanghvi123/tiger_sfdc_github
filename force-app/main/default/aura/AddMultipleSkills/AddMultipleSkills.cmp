@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasSObjectName,lightning:actionOverride"
+                access="global" 
+                controller="AddMultipleSkillsController">
+	
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <!--Variables-->
+    <aura:attribute name="serviceResourceName" type="String"/>
+    <aura:attribute name="serviceResourceId" type="Id"/>
+    <aura:attribute name="skillList" type="ServiceResourceSkill[]"/>
+    <aura:attribute name="srSkill" type="String"/>
+    <aura:attribute name="srStartDate" type="DateTime"/>
+    <aura:attribute name="srEndDate" type="DateTime"/>
+    
+    <!--Event Register-->
+    <aura:registerEvent name="SkillListEvt" type="c:DeleteSkillItemListEvent"/>
+    
+    <!--Event Handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="DeleteRowEvt" event="c:DeleteRowEvt" action="{!c.removeDeletedRow}"/>
+    <aura:handler name="AddRowEvt" event="c:AddNewRowEvt" action="{!c.addNewRow}"/>
+    
+    <header class="slds-modal__header">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Skills</h2>
+    </header>
+    <br></br>
+    
+    <aura:iteration items="{!v.skillList}" var="item" indexVar="index" aura:id="skillItem">
+        <c:SkillItemRow skillInstance="{!item}" rowIndex="{!index}" srId="{!v.serviceResourceId}" srSkill="{!item.srSkill}" srStartDate="{!item.srStartDate}" srEndDate="{!item.srEndDate}"/>
+        <br></br>
+    </aura:iteration>
+    
+    <br></br>
+    <center> 
+        <lightning:button label="Add Another Skill"  onclick="{!c.addNewRow}" variant="brand" class="slds-button slds-button--brand"></lightning:button>
+        <lightning:button label="Cancel"  onclick="{!c.cancelCreation}" variant="brand" class="slds-button slds-button--brand"></lightning:button>
+        <lightning:button label="Save"  onclick="{!c.processSavingSkills}"  variant="brand" class="slds-button slds-button--brand"></lightning:button>
+    </center>
+</aura:component>

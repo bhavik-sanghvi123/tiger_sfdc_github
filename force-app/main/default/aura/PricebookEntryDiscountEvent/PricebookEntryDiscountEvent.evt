@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="by this event we are pass the discount percentage">
+    <aura:attribute name="pbeDiscount" type="Decimal"/>
+</aura:event>

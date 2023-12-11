@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VN_Team__c</fullName>
+    <externalId>false</externalId>
+    <label>VN_Team</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>N/A</fullName>
+                <default>true</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Deloitte</fullName>
+                <default>false</default>
+                <label>Deloitte</label>
+            </value>
+            <value>
+                <fullName>Operations</fullName>
+                <default>false</default>
+                <label>Operations</label>
+            </value>
+            <value>
+                <fullName>Similac T2</fullName>
+                <default>false</default>
+                <label>Similac T2</label>
+            </value>
+            <value>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+                <label>Consultant</label>
+            </value>
+            <value>
+                <fullName>Similac T1</fullName>
+                <default>false</default>
+                <label>Similac T1</label>
+            </value>
+            <value>
+                <fullName>Similac T4</fullName>
+                <default>false</default>
+                <label>Similac T4</label>
+            </value>
+            <value>
+                <fullName>Similac T3</fullName>
+                <default>false</default>
+                <label>Similac T3</label>
+            </value>
+            <value>
+                <fullName>Supporting Team</fullName>
+                <default>false</default>
+                <label>Supporting Team</label>
+            </value>
+            <value>
+                <fullName>Ensure T3</fullName>
+                <default>false</default>
+                <label>Ensure T3</label>
+            </value>
+            <value>
+                <fullName>Grow T2</fullName>
+                <default>false</default>
+                <label>Grow T2</label>
+            </value>
+            <value>
+                <fullName>Grow T1</fullName>
+                <default>false</default>
+                <label>Grow T1</label>
+            </value>
+            <value>
+                <fullName>Grow T3</fullName>
+                <default>false</default>
+                <label>Grow T3</label>
+            </value>
+            <value>
+                <fullName>Grow T4</fullName>
+                <default>false</default>
+                <label>Grow T4</label>
+            </value>
+            <value>
+                <fullName>Ensure T4</fullName>
+                <default>false</default>
+                <label>Ensure T4</label>
+            </value>
+            <value>
+                <fullName>Ensure T2</fullName>
+                <default>false</default>
+                <label>Ensure T2</label>
+            </value>
+            <value>
+                <fullName>Glucerna T4</fullName>
+                <default>false</default>
+                <label>Glucerna T4</label>
+            </value>
+            <value>
+                <fullName>Glucerna T2</fullName>
+                <default>false</default>
+                <label>Glucerna T2</label>
+            </value>
+            <value>
+                <fullName>Glucerna T1</fullName>
+                <default>false</default>
+                <label>Glucerna T1</label>
+            </value>
+            <value>
+                <fullName>Ensure T1</fullName>
+                <default>false</default>
+                <label>Ensure T1</label>
+            </value>
+            <value>
+                <fullName>Glucerna T3</fullName>
+                <default>false</default>
+                <label>Glucerna T3</label>
+            </value>
+            <value>
+                <fullName>Community Team</fullName>
+                <default>false</default>
+                <label>Community Team</label>
+            </value>
+            <value>
+                <fullName>CFH</fullName>
+                <default>false</default>
+                <label>CFH</label>
+            </value>
+            <value>
+                <fullName>Simiac T4</fullName>
+                <default>false</default>
+                <label>Simiac T4</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Merkle</fullName>
+                <default>false</default>
+                <label>Merkle</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

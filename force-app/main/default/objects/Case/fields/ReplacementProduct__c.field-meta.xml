@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReplacementProduct__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Replacement Product</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND ((3 OR 4) OR (5 AND 6))</booleanFilter>
+        <filterItems>
+            <field>Product2.IsActive</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Product2.ProductHierarchyLevel__c</field>
+            <operation>equals</operation>
+            <value>Product</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.UserType</field>
+            <operation>equals</operation>
+            <value>AutomatedProcess</value>
+        </filterItems>
+        <filterItems>
+            <field>$Profile.Name</field>
+            <operation>equals</operation>
+            <value>System Administrator</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.UserType</field>
+            <operation>notEqual</operation>
+            <value>AutomatedProcess</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Market__c</field>
+            <operation>contains</operation>
+            <valueField>Product2.Market__c</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Cases (Replacement Product)</relationshipLabel>
+    <relationshipName>Cases2</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

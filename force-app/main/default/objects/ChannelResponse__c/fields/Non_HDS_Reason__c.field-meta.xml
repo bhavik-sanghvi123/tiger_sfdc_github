@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_HDS_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Non HDS Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Available stock</fullName>
+                <default>false</default>
+                <label>Available stock</label>
+            </value>
+            <value>
+                <fullName>Expensive product</fullName>
+                <default>false</default>
+                <label>Expensive product</label>
+            </value>
+            <value>
+                <fullName>Can&apos;t mix variant</fullName>
+                <default>false</default>
+                <label>Can&apos;t mix variant</label>
+            </value>
+            <value>
+                <fullName>Small consumption</fullName>
+                <default>false</default>
+                <label>Small consumption</label>
+            </value>
+            <value>
+                <fullName>Alternating consumption</fullName>
+                <default>false</default>
+                <label>Alternating consumption</label>
+            </value>
+            <value>
+                <fullName>Expensive shipping</fullName>
+                <default>false</default>
+                <label>Expensive shipping</label>
+            </value>
+            <value>
+                <fullName>No gimmick</fullName>
+                <default>false</default>
+                <label>No gimmick</label>
+            </value>
+            <value>
+                <fullName>Buy on the monthly shopping</fullName>
+                <default>false</default>
+                <label>Buy on the monthly shopping</label>
+            </value>
+            <value>
+                <fullName>Buy when strolling around the Mall</fullName>
+                <default>false</default>
+                <label>Buy when strolling around the Mall</label>
+            </value>
+            <value>
+                <fullName>Credit card payment preference</fullName>
+                <default>false</default>
+                <label>Credit card payment preference</label>
+            </value>
+            <value>
+                <fullName>Buy at the store because it&apos;s close to home</fullName>
+                <default>false</default>
+                <label>Buy at the store because it&apos;s close to home</label>
+            </value>
+            <value>
+                <fullName>Order with PG (PG can deliver to home)</fullName>
+                <default>false</default>
+                <label>Order with PG (PG can deliver to home)</label>
+            </value>
+            <value>
+                <fullName>Not interested gimmick/already have</fullName>
+                <default>false</default>
+                <label>Not interested gimmick/already have</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

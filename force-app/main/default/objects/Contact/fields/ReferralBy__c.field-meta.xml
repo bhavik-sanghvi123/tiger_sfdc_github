@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReferralBy__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>[8-Jul-21 KSK] Used in Object Mapping - Data migration from Dynamics</description>
+    <externalId>false</externalId>
+    <label>Referral By</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Contacts (Referral By)</relationshipLabel>
+    <relationshipName>Contact_Referral</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Store Package Item List based on selected Package (Product)">
+	<aura:attribute access="PUBLIC" name="productId" type="String"/>
+    <aura:attribute access="PUBLIC" name="packageItemList" type="PackageItem__c[]"/>
+</aura:event>

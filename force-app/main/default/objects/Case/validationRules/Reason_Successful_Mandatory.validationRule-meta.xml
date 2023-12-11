@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Successful_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL( CallOutcome__c , &quot;Successful&quot;), 
+ISBLANK( SuccessfulReason__c ) 
+)</errorConditionFormula>
+    <errorDisplayField>SuccessfulReason__c</errorDisplayField>
+    <errorMessage>Successful Reason is mandatory if Call Outcome is equal to Successful</errorMessage>
+</ValidationRule>

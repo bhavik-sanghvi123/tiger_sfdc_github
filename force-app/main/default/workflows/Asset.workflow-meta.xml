@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Asset_UpdateLastActivityDate</fullName>
+        <field>LastActivityDate__c</field>
+        <formula>Today()</formula>
+        <name>Asset:UpdateLastActivityDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Asset_Update_External_Serial_Number</fullName>
+        <field>External_Serial_Number__c</field>
+        <formula>TEXT( Market__c ) + &apos;-&apos; +  SerialNumber</formula>
+        <name>Asset:Update External Serial Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Asset%3AExternalSerialNumber</fullName>
+        <actions>
+            <name>Asset_Update_External_Serial_Number</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>SerialNumber != null</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Asset%3ALastActivityDate</fullName>
+        <actions>
+            <name>Asset_UpdateLastActivityDate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( LocationId )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

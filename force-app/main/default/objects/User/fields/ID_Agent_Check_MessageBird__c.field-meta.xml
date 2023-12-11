@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ID_Agent_Check_MessageBird__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(OR(Profile.Name==&apos; PT1&apos;,Profile.Name==&apos;ID - ANI Call Center Agent&apos;,Profile.Name==&apos;ID - ANI Call Center Manager&apos;),TRUE,FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>ID_Agent_Check(MessageBird)</label>
+    <type>Checkbox</type>
+</CustomField>

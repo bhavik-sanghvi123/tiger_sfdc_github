@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Advertisement</fullName>
+        <default>false</default>
+        <label>Advertisement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Call Campaign</fullName>
+        <default>false</default>
+        <label>Call Campaign</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Direct Marketing</fullName>
+        <default>false</default>
+        <label>Direct Marketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hospital Community Outreach</fullName>
+        <default>false</default>
+        <label>Hospital Community Outreach</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hospital Sampling</fullName>
+        <default>false</default>
+        <label>Hospital Sampling</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In-store Sampling</fullName>
+        <default>false</default>
+        <label>In-store Sampling</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Nurturing Campaign</fullName>
+        <default>false</default>
+        <label>Nurturing Campaign</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Polyclinic Sampling</fullName>
+        <default>false</default>
+        <label>Polyclinic Sampling</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Radio Campaign</fullName>
+        <default>false</default>
+        <label>Radio Campaign</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social Media Marketing</fullName>
+        <default>false</default>
+        <label>Social Media Marketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trade Redemption</fullName>
+        <default>false</default>
+        <label>Trade Redemption</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trade Roadshow</fullName>
+        <default>false</default>
+        <label>Trade Roadshow</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Web</fullName>
+        <default>false</default>
+        <label>Web</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Web Marketing</fullName>
+        <default>false</default>
+        <label>Web Marketing</label>
+    </standardValue>
+</StandardValueSet>

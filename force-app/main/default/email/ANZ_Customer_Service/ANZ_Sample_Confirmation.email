@@ -1,0 +1,23 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,<br/><br/>
+
+        Thank you for contacting Abbott Nutrition.<br/><br/>
+
+        Thank you so much for providing that information, I will send you out some samples of “ENTER PRODUCT”  in our “FLAVOUR(S)” flavours to the address you have provided below.<br/><br/>
+
+        I have also provided you a link to our “ENTER PRODUCT NAME” website which provides you with all the nutritional information regarding our product, and it also has lots of recipe ideas that you can incorporate our product in which you may find useful.<br/><br/>
+
+        <a href="https://www.pediasure.com.au">https://www.pediasure.com.au</a><br/>
+        <a href="https://www.ensure.com.au">https://www.ensure.com.au</a><br/>
+        <a href="https://www.glucerna.com.au">https://www.glucerna.com.au</a><br/><br/>
+
+        If you find that your child does enjoy these products, your local pharmacy should stock them, if not they will be able to order them on your request.<br/><br/>
+
+        I hope this information has been helpful, do let me know if there is anything else I can do for you, I hope you have a great day.<br/>
+
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

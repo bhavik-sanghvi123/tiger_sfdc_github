@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Adult_BR_Status_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Uncontacted&apos;, new_adult_br_status__c), 
+CONTAINS(&apos;Contacted&apos;, new_adult_br_status__c),
+CONTAINS(&apos;Qualified&apos;, new_adult_br_status__c),
+CONTAINS(&apos;New&apos;, new_adult_br_status__c),
+CONTAINS(&apos;Existing&apos;, new_adult_br_status__c),
+CONTAINS(&apos;Lapsed&apos;, new_adult_br_status__c),
+ISBLANK(new_adult_br_status__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>new_adult_br_status__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for New Adult BR Status:
+Uncontacted
+Contacted
+Qualified
+New
+Existing
+Lapsed</errorMessage>
+</ValidationRule>

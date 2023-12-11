@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <externalId>false</externalId>
+    <label>Classification</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer Service</fullName>
+                <default>false</default>
+                <label>Customer Service</label>
+            </value>
+            <value>
+                <fullName>Device Service</fullName>
+                <default>false</default>
+                <label>Device Service</label>
+            </value>
+            <value>
+                <fullName>Medical - Non SME</fullName>
+                <default>false</default>
+                <label>Medical - Non SME</label>
+            </value>
+            <value>
+                <fullName>Medical Adverse Effect - Do not Service</fullName>
+                <default>false</default>
+                <label>Medical Adverse Effect - Do not Service</label>
+            </value>
+            <value>
+                <fullName>Medical No Adverse Effect</fullName>
+                <default>false</default>
+                <label>Medical No Adverse Effect</label>
+            </value>
+            <value>
+                <fullName>Non-Medical</fullName>
+                <default>false</default>
+                <label>Non-Medical</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Warehouse/Distribution</fullName>
+                <default>false</default>
+                <label>Warehouse/Distribution</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

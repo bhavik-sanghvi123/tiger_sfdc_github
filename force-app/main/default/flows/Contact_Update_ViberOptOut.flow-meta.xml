@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>DecisionDate</name>
+        <dataType>Date</dataType>
+        <expression>IF({!$Record.ViberOptOut__c} = true, DATEVALUE(NOW()), null)</expression>
+    </formulas>
+    <interviewLabel>Contact_Update_ViberOptOut {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact_Update_ViberOptOut</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Viber_Opt_Out_Date</name>
+        <label>Update Viber Opt Out Date</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>ViberOptOutDate__c</field>
+            <value>
+                <elementReference>DecisionDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Viber_Opt_Out_Date</targetReference>
+        </connector>
+        <filterFormula>OR(
+AND(ISNEW(), {!$Record.ViberOptOut__c} = true, {!$Record.Active__c} = true, ISPICKVAL({!$Record.Account.Market__c}, &quot;PH&quot;), {!$Record.RecordType.DeveloperName} = &quot;Adult&quot;),
+AND(ISCHANGED({!$Record.ViberOptOut__c}), {!$Record.Active__c} = true, ISPICKVAL({!$Record.Account.Market__c}, &quot;PH&quot;), {!$Record.RecordType.DeveloperName} = &quot;Adult&quot;)
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

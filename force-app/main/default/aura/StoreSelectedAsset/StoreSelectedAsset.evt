@@ -1,0 +1,11 @@
+<aura:event type="APPLICATION" description="Store Asset value from customLookup component of Product sObject">
+	<aura:attribute access="PUBLIC" name="assetId" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetProduct" type="String"/>
+    <aura:attribute access="PUBLIC" name="productName" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetQuantity" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetSerial" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetDesc" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetPrice" type="Currency"/>
+    <aura:attribute access="PUBLIC" name="assetModel" type="String"/>
+    <aura:attribute access="PUBLIC" name="assetName" type="String"/>
+</aura:event>

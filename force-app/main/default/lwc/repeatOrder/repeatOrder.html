@@ -1,0 +1,23 @@
+<!--
+    Author:         Sean Cordova
+    Description:    Edit Order record form.
+                    - to update the Delivery Pattern and Frequency fields for the Subscription Order.
+
+    History:
+    06/02/2021      scordova        Created.
+    06/17/2021      scordova        Removed the "title" attribute in the "lightning-card" tag.
+-->
+
+<template>
+    <lightning-card>
+        <div class="slds-box slds-theme_shade">
+            <lightning-record-edit-form record-id={OrderId} object-api-name="Order">
+                <lightning-output-field field-name="Id"></lightning-output-field>
+                <lightning-input-field field-name="Delivery_Pattern__c"></lightning-input-field>
+                <lightning-input-field field-name="Frequency__c" onchange={handleFrequencyChange}></lightning-input-field>
+                <lightning-button class="slds-var-m-top_small" variant="brand" type="submit" name="update" label="Update" onclick={closeQuickAction}>
+                </lightning-button>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

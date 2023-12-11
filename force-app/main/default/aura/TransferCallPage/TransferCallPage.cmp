@@ -1,0 +1,77 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                access="global" 
+                controller ="TransferCallPageController">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <!-- Events -->
+    <lightning:button label="Transfer Call" onclick="{!c.doInit}"/>
+    <aura:handler name="UpdateSelectedRecord" event="c:StoreSelectedRecord" action="{!c.getOwnerDetails}"/>
+    <aura:registerEvent name="StoreOwner" type="c:StoreSelectedRecord"/>
+    
+    <!-- Modal Attributes -->
+    <aura:attribute name="openTransferCallForm" type="Boolean" default="false" description="Tranfer call to other agents."/>
+    <aura:attribute name="isError" type="Boolean" default="false" description="True if required fields are not populated."/>
+    <aura:attribute name="isLanguageDefined" type="Boolean" default="false" description="True if required fields are not populated."/>
+    <aura:attribute name="errorMsg" type="String" default=""/>
+    
+    <!-- sObject Attibutes -->
+    <aura:attribute name="sObjectName" type="String" default=""/>
+    <aura:attribute name="selectedUser" type="sObject" default="{}"/>
+    <aura:attribute name="userMarket" type="String" default=""/>
+    <aura:attribute name="ownerName" type="String" default=""/>
+    <aura:attribute name="ownerId" type="String" default=""/>
+    <aura:attribute name="caseRec" type="Case"  default="{ 'sobjectType' : 'Case' }"/>
+    <aura:attribute name="contactId" type="String" default=""/>
+    <aura:attribute name="contactLanguage" type="String" default=""/>
+    
+    <!-- Id Attributes -->
+    <aura:attribute access="PUBLIC" name="recordId" type="String" default=""/>
+    
+    <aura:if isTrue="{!v.openTransferCallForm}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container slds-scrollable_y">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Transfer Call to Another Agent</h2>
+                </header>
+                
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="text-align: left;">
+					<!--
+                    <aura:if isTrue="{!v.isError}">
+                    	<div class="slds-text-color_error">{!v.errorMsg}</div>
+                        <br></br>
+                	</aura:if>
+					-->
+                    
+                    <lightning:recordEditForm objectApiName="Contact" recordId ="{!v.contactId}">
+                        <h2 id="modal-heading-01" class="slds-text-title">Contact Preferred Language</h2>
+                        <lightning:layoutItem flexibility="auto" padding="around-small">
+                            <lightning:inputField class="customRequired" fieldName="PreferredLanguage__c" aura:id="caseContactLanguage" onchange="{!c.populateFilter}"></lightning:inputField>
+                        </lightning:layoutItem>
+                    </lightning:recordEditForm>
+                    <aura:if isTrue="{!v.isLanguageDefined}">
+                        <lightning:recordEditForm objectApiName="{!v.sObjectName}" recordId ="{!v.caseId}">
+                            <h2 id="modal-heading-01" class="slds-text-title">Agent Transfer</h2>
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <div class="slds-text-body_regular slds-text-color_default slds-text-color_weak customRequired">Case Owner</div>
+                                <c:ReusableLookupComponent label="Case Owner" objectAPIName="Case" IconName="standard:user" selectedRecord="{!v.selectedUser}" userMarket="{!v.userMarket}" contactLanguage="{!v.contactLanguage}" aura:id="caseOwner"></c:ReusableLookupComponent>
+                                <lightning:inputField class="customRequired" fieldName="CallTransferReason__c" aura:id="caseCallReasonTransfer"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:recordEditForm>
+                    </aura:if>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                </div>
+                
+                <footer class="slds-modal__footer">
+                    <center>
+                        <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.onCancel}"></lightning:button> 
+                        <lightning:button class="slds-button slds-button_brand" label="Transfer Call" onclick ="{!c.saveDetails}" disabled="{!v.isLanguageDefined == false}"></lightning:button>
+                    </center>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if> 	
+</aura:component>

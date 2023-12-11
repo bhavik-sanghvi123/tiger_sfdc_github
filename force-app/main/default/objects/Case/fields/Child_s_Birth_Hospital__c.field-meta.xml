@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_s_Birth_Hospital__c</fullName>
+    <description>[15-Aug-21 Khai] PED require that Child&apos;s Birth Hospital be easily displayed on Case. If Call Regarding record is not a child then this field should be blank
+            [20-Sep-21 Khai] Updated the formula to take out the record type check due to formula limit on prod.</description>
+    <externalId>false</externalId>
+    <formula>CallRegarding__r.BirthHospital__r.Name__c</formula>
+    <label>Child&apos;s Birth Hospital</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

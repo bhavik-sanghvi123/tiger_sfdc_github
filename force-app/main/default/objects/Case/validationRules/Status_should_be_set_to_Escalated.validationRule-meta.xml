@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_should_be_set_to_Escalated</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR( 
+        AND(!ISPICKVAL( Status, &quot;Escalated&quot;),
+        ISNEW(),
+        !ISBLANK(EscalatedTo__c)),
+        AND( !ISPICKVAL( Status , &quot;Escalated&quot;),
+        ISCHANGED(EscalatedTo__c),
+        !ISBLANK(EscalatedTo__c) )
+        )</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Status should be Escalated when Escalated To is set.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,36 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasSObjectName" access="global" controller="NewOrderController">
+    
+    <!-- Record Ids Attribute-->
+	<aura:attribute access="PUBLIC" name="caseID" type="String"/>
+	<aura:attribute access="PUBLIC" name="orderID" type="String"/>
+    <aura:attribute access="PUBLIC" name="accountID" type="String"/>
+	<aura:attribute access="PUBLIC" name="contactID" type="String"/>
+    <aura:attribute access="PUBLIC" name="caseRecordType" type="String"/>
+    <aura:attribute access="PUBLIC" name="userMarket" type="String"/>
+    <aura:attribute access="PUBLIC" name="isReplacement" type="Boolean" default="false"/>
+    
+    <aura:attribute name="CaseObj" type="Case" default="{ 'sobjectType' : 'Case'}"/>
+    <aura:attribute name="ContactObj" type="Contact" default="{ 'sobjectType' : 'Contact'}"/>
+    <aura:attribute name="isPageAccessible" type="Boolean" default="true"/>
+    <aura:attribute access="PUBLIC" name="isAllowed" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <div class="slds-theme_default slds-align_absolute-right slds-box slds-m-top_xxx-small">
+        <div class="slds-grid">
+            <div class="slds-col slds-float--right" style="text-align: right;">
+                
+                <aura:if isTrue="{!v.sObjectName == 'Account'}">
+                    <lightning:button label="New Asset Order" onclick="{!c.createOrder}"/> 
+                </aura:if>
+                
+                <aura:if isTrue="{!v.sObjectName == 'Asset'}">
+                	<lightning:button label="New Replacement Asset Order" onclick="{!c.createReplacementOrder}"/>
+                </aura:if>
+               
+              
+            </div>
+        </div>
+    </div>
+</aura:component>

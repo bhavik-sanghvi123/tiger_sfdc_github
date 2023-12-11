@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Change_Membership_Type</fullName>
+        <field>Membership_Type__c</field>
+        <literalValue>Capillary</literalValue>
+        <name>Change Membership Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Number_of_Days_Dormant</fullName>
+        <field>NumberOfDaysDormant__c</field>
+        <formula>TODAY() - MembershipStartDate__c</formula>
+        <name>Populate Number of Days Dormant</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Change Membership Type</fullName>
+        <actions>
+            <name>Change_Membership_Type</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( Contact__r.Market__c == &apos;VN&apos;,  ISPICKVAL(Membership_Type__c, &apos;Tangent&apos;))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Membership%3A Update Number of Days Dormant</fullName>
+        <actions>
+            <name>Populate_Number_of_Days_Dormant</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Membership__c.MembershipStartDate__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Membership__c.NumberOfDaysDormant__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

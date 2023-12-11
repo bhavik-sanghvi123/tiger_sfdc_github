@@ -1,0 +1,119 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="ExportVNCallController">
+	<ltng:require scripts="{!$Resource.OrderExportDownload}" />
+	<aura:attribute name="callRecords" type="List" />
+	<aura:attribute name="currentList" type="List" />
+	<aura:attribute name="agentList" type="List" default="[]"/>
+	<aura:attribute name="agentValue" type="String" />
+    <aura:attribute name="currentPageNumber" type="Integer" />
+    <aura:attribute name="maxPageNumber" type="Integer" default="1"/>
+	<aura:attribute name="noRecords" type="Boolean" default="true" />
+	<aura:attribute name="openModal" type="Boolean" default="false" />
+	<aura:attribute name="isExported" type="Boolean" default="false" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:handler name="selectedRecordEvent" event="c:CallReportEvent" action="{!c.downloadExcelFile}"/>
+
+	<lightning:workspaceAPI aura:id="workspace" />
+	<lightning:notificationsLibrary aura:id="notifLib"/>
+	<lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" class="slds-hide"/>
+
+	<lightning:card title="Call Records">
+		<aura:set attribute="actions">
+            
+            <lightning:button label="Export to Excel" onclick="{!c.confirmationExport}"></lightning:button>
+            <lightning:button label="Refresh" onclick="{!c.handleOptionSelected}"></lightning:button>
+        </aura:set>
+       
+        <p class="slds-p-horizontal_small slds-scrollable_x slds-p-bottom_small">
+        	<aura:if isTrue="{!v.noRecords == false}">
+        		<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+				  <thead>
+				    <tr class="slds-line-height_reset">
+				    	<th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Call ID
+                        </th>
+				        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Contact
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            First Name
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Last Name
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Main Brand Relationship
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Child First Name
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Child Last Name
+                        </th>
+                        <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                            Child Brand Relationship
+                        </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<aura:iteration items="{!v.currentList}" var="item">
+				    	<tr class="slds-hint-parent">
+				    		 <td role="gridcell" class="slds-cell-wrap" data-label="Contact">
+                                <div class="">{!item.callID}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="Contact">
+                                <div class="">{!item.mainContactID}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="First Name">
+                                <div class="">{!item.mainContactFirstName}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="First Name">
+                                <div class="">{!item.mainContactLastName}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="mainBRSFID">
+                                <div class="">{!item.mainBRBrandName}</div>
+                            </td>
+                             <td role="gridcell" class="slds-cell-wrap" data-label="First Name">
+                                <div class="">{!item.callRgrdFirstName}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="First Name">
+                                <div class="">{!item.callRgrdLastName}</div>
+                            </td>
+                            <td role="gridcell" class="slds-cell-wrap" data-label="callRgrdContactBRSFID">
+                                <div class="">{!item.callRgrdBRBrandName}</div>
+                            </td>
+                        </tr>
+					</aura:iteration>
+				  </tbody>
+				</table>
+				 <!-- Pagination Section -->
+	            <aura:if isTrue="{!v.maxPageNumber > 1}">
+	                <br />
+	                <center>
+	                    <div class="slds-button-group" role="group">
+	                        <button onclick="{!c.firstPage}" class="slds-button slds-button--neutral">
+	                            First
+	                        </button>
+	                        <button onclick="{!c.prevPage}" class="slds-button slds-button--neutral">
+	                            Prev
+	                        </button>
+	                        <button class="slds-button slds-button--neutral display-button">
+	                            {!v.currentPageNumber} / {!v.maxPageNumber}
+	                        </button>
+	                        <button onclick="{!c.nextPage}" class="slds-button slds-button--neutral">
+	                            Next
+	                        </button>
+	                        <button onclick="{!c.lastPage}" class="slds-button slds-button--neutral">
+	                            Last
+	                        </button>
+	                    </div>
+	                </center>
+	            </aura:if>
+        	</aura:if>
+
+        	<aura:if isTrue="{!v.openModal}">
+        		<c:ExportVNCallDataModal></c:ExportVNCallDataModal>
+        	</aura:if>
+			
+		</p>
+	</lightning:card>
+</aura:component>

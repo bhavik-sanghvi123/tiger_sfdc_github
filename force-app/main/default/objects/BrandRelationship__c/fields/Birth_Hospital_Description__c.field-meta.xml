@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Birth_Hospital_Description__c</fullName>
+    <description>[13-Aug-21 Khai] Part of US-2955, To support the Trigger: Lookup to Institution&apos;s Description field and insert Description in Contact.Birth_Hospital</description>
+    <externalId>false</externalId>
+    <label>Birth Hospital Description</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

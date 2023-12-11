@@ -1,0 +1,53 @@
+<apex:page controller="OrderReportGeneratorController" contentType="application/vnd.ms-excel" standardStylesheets="false" showHeader="false">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    </head>
+    <apex:dataTable value="{!orderItemList}" var="orderItem" >
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Order Number</apex:facet><apex:outputText value="{!orderItem.Order.OrderNumber}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Contact Ref No</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.ContactRefNo__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Name</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Related Contact/Child</apex:facet><apex:outputText value="{!orderItem.OrderedFor__r.Name}"/></apex:column>
+        <apex:column rendered="{!IF(CONTAINS(market, 'SG'),true,false)}"><apex:facet name="header">Address Validation Status</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.AddressValidationStatus__c}"/></apex:column>
+        <apex:column rendered="{!IF(CONTAINS(market, 'SG'),true,false)}"><apex:facet name="header">Full Address</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.FullAddress__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">{!$Label.Street1}</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Street1__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">{!$Label.Street2}</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Street2__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">City</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.City2__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Building</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Building__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">District</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.District__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Sub-District</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.SubDistrict__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Village No</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.VillageNo__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Village Name</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.VillageName__c}"/></apex:column>        
+        <apex:column ><apex:facet name="header">Ward</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Ward2__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Road</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Road__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Postal Code</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.PostalCode__c}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Home Phone</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.HomePhone}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Mobile</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.Phone}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Other Phone</apex:facet><apex:outputText value="{!orderItem.Order.OrderedBy__r.OtherPhone}"/></apex:column>        
+        <apex:column ><apex:facet name="header">Related Campaign</apex:facet><apex:outputText value="{!orderItem.Order.RelatedCampaign__r.Name}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Order Product Number</apex:facet><apex:outputText value="{!orderItem.OrderItemNumber}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product Code</apex:facet><apex:outputText value="{!orderItem.PricebookEntry.ProductCode}"/></apex:column>
+        <apex:column ><apex:facet name="header">Quantity</apex:facet><apex:outputText value="{!orderItem.Quantity}"/></apex:column>
+        <apex:column ><apex:facet name="header">Product Name</apex:facet><apex:outputText value="{!orderItem.PricebookEntry.Product2.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Promotion</apex:facet><apex:outputText value="{!orderItem.Promotion__r.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Unit Price</apex:facet><apex:outputText value="{!orderItem.UnitPrice}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Amount</apex:facet><apex:outputText value="{!orderItem.TotalPrice}"/></apex:column>
+        <apex:column rendered="{!IF(CONTAINS(market, 'SG'),true,false)}"><apex:facet name="header">Total Price</apex:facet><apex:outputText value="{!orderItem.Order.TotalAmount}"/></apex:column>
+        <apex:column style="mso-number-format:'Short Date'"><apex:facet name="header">Preferred Delivery Date</apex:facet><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!orderItem.Order.PreferredDeliveryDate__c}" /> </apex:outputText></apex:column>
+        <apex:column ><apex:facet name="header">Preferred Delivery Time</apex:facet><apex:outputText value="{!orderItem.Order.PreferredDeliveryTime__c}"/></apex:column>
+        <apex:column style="mso-number-format:'Short Date'"><apex:facet name="header">Order Start Date</apex:facet><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!orderItem.Order.EffectiveDate}" /> </apex:outputText></apex:column>        
+        <apex:column ><apex:facet name="header">File Export Date</apex:facet><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!TODAY()}" /> </apex:outputText></apex:column>
+        <apex:column ><apex:facet name="header">Created By</apex:facet><apex:outputText value="{!orderItem.Order.CreatedBy.Name}"/></apex:column>
+        <apex:column ><apex:facet name="header">Key Brand</apex:facet><apex:outputText value="{!orderItem.PricebookEntry.Product2.KeyBrand__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Notes</apex:facet><apex:outputText value="{!orderItem.Order.OrderNotes__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Region</apex:facet><apex:outputText value="{!orderItem.Order.ShippingAddress__r.Region__r.Name}"/></apex:column>        
+        <apex:column ><apex:facet name="header">Order Type</apex:facet><apex:outputText value="{!orderItem.Order.Type}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Product Status</apex:facet><apex:outputText value="{!orderItem.Status__c}"/></apex:column>
+        <apex:column ><apex:facet name="header">Order Product Id</apex:facet><apex:outputText value="{!orderItem.Id}"/></apex:column>
+        <apex:column ><apex:facet name="header">Status</apex:facet><apex:outputText value="{!orderItem.Order.Status}"/></apex:column>
+        <apex:column ><apex:facet name="header">Cancellation Reason</apex:facet><apex:outputText value="{!orderItem.Order.OrderCacellationReason__r.Name}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Order End Date</apex:facet></apex:column>
+        <apex:column ><apex:facet name="header">Payment Method</apex:facet><apex:outputText value="{!orderItem.Order.PaymentMethod__c}"/></apex:column>
+        <apex:column style="mso-number-format:\@"><apex:facet name="header">Case Number</apex:facet><apex:outputText value="{!orderItem.Order.Case__r.CaseNumber}"/></apex:column>     
+        <apex:column ><apex:facet name="header">Salesforce Id</apex:facet><apex:outputText value="{!orderItem.OrderId}"/></apex:column>         
+    </apex:dataTable>
+</apex:page>

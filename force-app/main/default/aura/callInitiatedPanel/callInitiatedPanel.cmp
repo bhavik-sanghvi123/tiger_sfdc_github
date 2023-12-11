@@ -1,0 +1,297 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+<aura:component description="panel that is shown on dialing, incoming or transferring calls before being connected that displays basic contact info for the call." implements="c:panel">
+    <aura:attribute name="state" type="String" />
+    <aura:attribute name="label" type="String" />
+    <aura:attribute name="recordName" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="account" type="Object" />
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="phone" type="String" />
+    <aura:attribute name="called" type="String" default="default" />
+    <aura:attribute name="presence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <aura:attribute name="lastPresence" type="String" description="Could be Available, Busy or Unavailable"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="Likedisable" type="Boolean" default="false" />
+    <aura:attribute name="Enddisable" type="Boolean" default="false" />
+    <aura:attribute name="skipdisable" type="Boolean" default="false" />
+    <aura:attribute name="tickerDisable" type="Boolean" default="true" />
+    <aura:attribute name="ButtonText" type="String" default="Cancel" />
+	<aura:attribute name="myBool" type="Boolean" default="false"/>
+	<aura:attribute name="phone2" type="String" description="Could be Phone Number or just mention hungup"/>
+    <aura:attribute name="state2" type="String" description="Could be Dialing ,wrapup or empty"/> 
+    <aura:attribute name="flavorText" type="String" default="..."/> 
+	<aura:attribute name="userCred" type="String" description="Contain userID and password"/>
+    <aura:attribute name="transferState" type="String" default="false" description="Did the agent transfer?"/>
+    <aura:attribute name="transferDrop" type="String" default="false" description="Dropdown menu attribute"/>
+    <aura:attribute name="agentID" type="String" default="false" description="Agent ID"/>
+    <aura:attribute name="checkResult" type="String" default="false" description="Agent ID"/>
+    <aura:attribute name="grabPark" type="String" default="Hold Customer" description="Hold Customer line"/>
+    <aura:attribute name="flavorTransfer" type="String" default="Transfer" description="Hold Customer line"/>
+    <aura:attribute name="Survey_Transfer" type="String" default="Survey Transfer" description="Survey_Transfer"/>
+    <aura:attribute name="dispo" type="String" default="No" description="dispo"/>
+    <aura:attribute name="callbackTrigger" type="String" default="No" description="dispo"/>
+    <aura:attribute name="ownerID" type="String" default="" description="dispo"/>
+    <aura:attribute name="dispositionFreezer" type="String" default="false" description="dispo"/>
+
+    
+    <aura:attribute name="FeatureDisable" type="Boolean" default="true" />
+    <aura:attribute name="dispoDisable" type="Boolean" default="false" />
+    <aura:attribute name="careline" type="String" default="false" description="when True, End button enabled"/>
+    <aura:attribute name="ifcardselected" type="String" default="false" description="when True, End button enabled"/>
+    <aura:attribute name="showDialPad" type="Boolean" default="false" description="when True, show dial pad"/>
+    <aura:attribute name="inputValue" type="String" description="Value of the input field, can be phone number of search term"/>
+    <aura:attribute name="searchResults" type="Object[]" description="Array of contact records"/>
+    <aura:attribute name="message" type="String" default="Select Case" description="message that is shown on the screen"/>
+    <aura:attribute name="caseid" type="String" default="none" description="message that is shown on the screen"/>
+    <aura:attribute name="slCallBack" type="String" default="no" description="If call back option is choosed"/>
+    <aura:attribute name="testTime" type="String" default="Book call" />
+    <aura:attribute name="sldispoValue" type="String" default="no" description="If call back option is choosed"/>
+    <aura:attribute name="dispositionAFK" type="String" default="false" description="If call back option is choosed"/>
+    <aura:attribute name="Condition2" type="String" default="false" description="when True, Call button is disabled"/>
+    <aura:attribute name="Condition3" type="String" default="false" description="when True, Call button is disabled"/>
+    <aura:attribute name="conditionCalled" type="String" default="false" description="when True, Call button is disabled"/>
+    <aura:attribute name="ConditionCarelineSkip" type="String" default="false" description="when True, Call button is disabled"/>
+
+
+    <aura:attribute name="searchTypeID" type="Object[]" description="Array of typeID records"/>
+    <aura:attribute name="InvalidResult" type="Object[]" description="Array of Invalid records"/>
+    <aura:attribute name="SuccessResult" type="Object[]" description="Array of success records"/>
+    <aura:attribute name="UnsuccessResult" type="Object[]" description="Array of Unsuccess records"/>
+    <aura:attribute name="UncontactableResult" type="Object[]" description="Array of Uncontactable records"/>
+
+
+
+    <div class="slds-panel">
+        <!--  Top section: Information about the contact, including an avatar -->
+        <div class="slds-panel__section">
+            <span class="slds-col--padded--brand-header-contrast-warm-active"> INCALL </span>
+            <div class="avatar slds-align--absolute-center">
+                <div class="slds-avatar slds-avatar--circle slds-avatar--large">
+                    <img src="/resource/slds/assets/images/avatar1.jpg" alt="Contact" />
+                </div>
+            </div>
+            <div class="name slds-text-heading--large slds-text-color--weak slds-text-align--center">{!v.recordName}</div>
+            <div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center companyDetails">{!v.account.Name}</div>
+            <div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center companyDetails">{!v.title}</div>
+            <div class="incoming slds-text-heading--x-small slds-text-color--weak slds-text-align--center">{!v.state2}&nbsp;<ui:outputphone value="{!v.phone2}" />{!v.flavorText}</div>
+
+
+                <aura:if isTrue="{! v.dispo == 'dispo'}">
+                
+			<select class="slds-select slds-select_neutral" name="selectType" id="selectType">
+        <option value="">choose one...</option>
+        <option value="Uncontactable Reason">Uncontactable - Completed</option>
+        <option value="Successful Reason">Successful</option>
+        <option value="Invalid Reason">Invalid</option>
+        <option value="Unsuccessful Reason">Unsuccessful</option>
+        <option value="Uncontactable Reason">Manual Call back immediately</option>
+        <option value="Uncontactable Reason">Uncontactable - Pending Second Attempt</option>y
+        <option value="Uncontactable Reason">Uncontactable - Pending Third Attempt</option>
+        <option value="Uncontactable Reason">Uncontactable - Follow Up Required</option>
+
+                </select>
+                <lightning:button name="selectChange" label="Change" onclick="{!c.changeSelect}"/>
+
+			<select class="slds-select slds-select_neutral" name="selectReason" id="selectReason">
+        <option value="">-- None --</option>
+        <aura:iteration items="{!v.searchTypeID}" var="type">
+            <option value="{!type.Id}" text="{!type.Name}"></option>
+        </aura:iteration>
+            </select>
+			<label for="startTime">Start time: </label>
+            <input type="time" id="startTime" />
+            <label for="startDate">Start Date: </label>
+            <input type="date" id="startDate" />
+                    
+        	<aura:if isTrue="{! v.Condition2 == 'true'}">
+            <button class="slds-size--1-of-1 slds-button slds-button_outline-brand" onclick="{!c.testTimeSelect}">{!v.testTime}</button>   
+                    <aura:if isTrue="{! v.slCallBack == 'yes'}">
+            </aura:if>
+            </aura:if>
+
+                
+            </aura:if>
+            <aura:if isTrue="{! v.called == 'called'}">	
+               <aura:if isTrue="{! v.careline == 'false'}">	
+                <button title="Undo_and_Refresh" class="btn slds-button slds-button_brand" onclick="{!c.refreshCase}">
+                 <lightning:icon variant="inverse" iconName="utility:refresh" /> Refresh Case
+                </button>
+            </aura:if>
+
+        	<!--  RESERVED FOR NOTEPAD -->
+                <div class="slds-p-around--small slds-text-heading--label slds-truncate">{!v.message}</div>
+                <aura:iteration items="{!v.searchResults}" var="res" indexVar="i">
+                    <a data-value="{!i}" aura:id="{!i}" onclick="{!c.handleSelectCard}" href="javascript:void(0);">
+                        <div
+                            class="slds-p-around--small slds-card slds-grid slds-grid--vertical-align-center">
+                            <span class="slds-size--1-of-8 slds-avatar">
+                                <img class="contact" src="/resource/slds/assets/icons/standard/contact_120.png" alt="contact name"/>
+                            </span>
+                            <div class="slds-size--2-of-8 slds-text-body--small slds-text-align--left">{!res.CaseNumber}</div>
+                            <div class="slds-size--2-of-8 slds-text-body--small slds-text-align--center">{!res.Status}</div>
+                            <div class="slds-size--3-of-8 slds-text-body--small slds-text-align--right"><ui:outputPhone value="{!res.Owner.Name}"/></div>
+                        </div>
+                    </a>
+                </aura:iteration>
+                
+            <aura:if isTrue="{! v.presence == 'Paused'}">
+            <aura:if isTrue="{! v.phone2 != 'HungUp'}">
+            <aura:if isTrue="{! v.transferState == 'false'}">
+			<div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center"> <c:ticker /> </div>
+                
+
+                
+                <select class="slds-select slds-select_neutral" name="Transfer_Codes" id="Transfer_Codes">
+                     <option value="4">AGENT TRANSFER</option>
+                </select>
+                <aura:if isTrue="{! v.ifcardselected == 'true'}">
+                <select class="slds-select slds-select_neutral" name="Survey_Transfer" id="Survey_Transfer">
+                      <option value="No">Did not consent to survey</option>
+                      <option value="ABBOTT_MAN_TELE_SUR">Tele_MAN</option>
+                      <option value="ABBOTT_BM_TELE_SUR">TELE_BM</option>
+                      <option value="ABBOTT_EN_TELE_SUR">Tele_EN</option>
+				</select>
+
+                <button disabled="{!v.Enddisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.holdCustomer}">{!v.grabPark}</button>
+                <button disabled="{!v.FeatureDisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.transfer}">{!v.flavorTransfer}</button>
+            </aura:if>
+                <aura:if isTrue="{! v.careline == 'true'}">
+                <select class="slds-select slds-select_neutral" name="Survey_Transfer" id="Survey_Transfer">
+                      <option value="No">Did not consent to survey</option>
+                      <option value="ABBOTT_BM_CL_SUR">Careline_BM</option>
+                      <option value="ABBOTT_MAN_CL_SUR">Careline_MAN</option>
+                      <option value="ABBOTT_EN_CL_SUR">Careline_EN</option>
+				</select>
+
+                <button disabled="{!v.Enddisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.holdCustomer}">{!v.grabPark}</button>
+                <button disabled="{!v.FeatureDisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.transfer}">{!v.flavorTransfer}</button>
+            </aura:if>
+            </aura:if>
+            </aura:if>
+            </aura:if>
+            </aura:if>
+            <aura:if isTrue="{! v.transferState == 'true'}">
+			<div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center"> <c:ticker /> </div>
+                <button disabled="{!v.Enddisable}" class="slds-size--1-of-3 slds-button slds-button--destructive" onclick="{!c.AgentHangup}">>Grab Customer</button>
+            </aura:if>
+            <aura:if isTrue="{! v.state2 == 'Inbound'}">
+                            <aura:if isTrue="{! v.transferState == 'false'}">
+
+			<div class="slds-text-heading--x-small slds-text-color--weak slds-text-align--center"> <c:ticker /> </div>
+
+                <select class="slds-select slds-select_neutral" name="Transfer_Codes" id="Transfer_Codes">
+                     <option value="4">AGENT TRANSFER</option>
+				</select>
+                                
+                <aura:if isTrue="{! v.ifcardselected == 'true'}">
+                <select class="slds-select slds-select_neutral" name="Survey_Transfer" id="Survey_Transfer">
+                      <option value="No">Did not consent to survey</option>
+                      <option value="ABBOTT_MAN_TELE_SUR">Tele_MAN</option>
+                      <option value="ABBOTT_BM_TELE_SUR">TELE_BM</option>
+                      <option value="ABBOTT_EN_TELE_SUR">Tele_EN</option>
+				</select>
+                <button disabled="{!v.Enddisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.holdCustomer}">{!v.grabPark}</button>
+                <button disabled="{!v.FeatureDisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.transfer}">{!v.flavorTransfer}</button>
+            </aura:if>
+                                                <aura:if isTrue="{! v.careline == 'true'}">
+                <select class="slds-select slds-select_neutral" name="Survey_Transfer" id="Survey_Transfer">
+                      <option value="No">Did not consent to survey</option>
+                      <option value="ABBOTT_BM_CL_SUR">Careline_BM</option>
+                      <option value="ABBOTT_MAN_CL_SUR">Careline_MAN</option>
+                      <option value="ABBOTT_EN_CL_SUR">Careline_EN</option>
+				</select>
+
+                <button disabled="{!v.Enddisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.holdCustomer}">{!v.grabPark}</button>
+                <button disabled="{!v.FeatureDisable}" class="slds-size--2-of-5 slds-button slds-button--brand" onclick="{!c.transfer}">{!v.flavorTransfer}</button>
+            </aura:if>
+            </aura:if>
+            </aura:if>
+
+        
+        
+        <!--  RESERVED FOR SELECT PAUSE OR RESUME -->
+        <aura:if isTrue="{!or(v.called == 'Wrapup',v.called == 'notcalled') }">
+            
+            	<ui:inputCheckbox aura:id="checkbox" label="Check the box to pause after wrapup" change="{!c.onCheck}"/>
+            
+            <aura:if isTrue="{! v.myBool == true}">
+            	<select class="slds-select slds-select_neutral" name="Pause_Codes" id="Pause_Codes">
+              <option value="4">ADMFU-Admin Follow Up</option>
+              <option value="5">AVBL-Available</option>
+              <option value="6">Break1 - Break 1</option>
+              <option value="7">Break2 - Break2</option>
+              <option value="8">CC - Call Calibration</option>
+              <option value="9">CHGBB - Change of BucketBase</option>
+              <option value="10">CHTM - CoachingTM</option>
+              <option value="11">EWD - End of Working Day</option>
+              <option value="12">FLTY - Faulty</option>
+              <option value="13">HDSFTY - HeadsetsFaulty</option>
+              <option value="14">HRMTR - HRMTR - HR Matters</option>
+              <option value="15">IA - Internal Activity</option>
+              <option value="16">INCOS - INC Onsite Support</option>
+              <option value="17">Lunch - Lunch</option>
+              <option value="18">MTG - Meeting</option>
+              <option value="19">NR - Not_Ready</option>
+              <option value="20">PAROB - Parked, Outbound Call</option>
+              <option value="21">PRY - Prayers</option>
+              <option value="22">RNVCC - Responding to E-mails,Webchat</option>
+              <option value="23">SYMDWN - System Down</option>
+              <option value="24">Train - Training</option>
+              <option value="25">WR - Washroom</option>
+            </select>
+            </aura:if>
+        <aura:if isTrue="{! v.dispositionFreezer != 'true'}">
+        <aura:if isTrue="{!and(v.careline == 'true',v.ConditionCarelineSkip == 'true') }">
+        <button disabled="{!v.skipdisable}" class="slds-button slds-button--brand slds-size--1-of-1" onclick="{!c.skip}">Skip</button>
+        </aura:if>
+        <aura:if isTrue="{!and(v.careline == 'false',v.Condition3 == 'true') }">
+        <button disabled="{!v.skipdisable}" class="slds-button slds-button--brand slds-size--1-of-1" onclick="{!c.skip}">Skip</button>
+        </aura:if>
+        </aura:if>
+        </aura:if>
+        
+        
+       <!--  Bottom section: End button on Dialing; Decline and Accept buttons on Incoming or Transferring -->
+        <div class="bottom-panel slds-panel__section slds-align-bottom slds-grid">
+
+            <aura:if isTrue="{!and(v.called != 'Wrapup',v.state == 'Dialing') }">
+            <aura:if isTrue="{! v.phone2 != 'Wrapping Up'}">
+            	<aura:if isTrue="{!or(v.ifcardselected == 'true',v.ButtonText == 'Cancel') }">
+                <lightning:button disabled="{!v.Likedisable}"  class="slds-size--1-of-2 slds-button slds-button--success" onclick="{!c.call}">Call </lightning:button>
+            	<aura:if isTrue="{!or(v.conditionCalled == 'true',v.ButtonText == 'Cancel') }">
+                <button disabled="{!v.Enddisable}" class="slds-size--1-of-2 slds-button slds-button--destructive" onclick="{!c.end}">{!v.ButtonText}</button>
+                </aura:if>
+                </aura:if>
+                
+                <aura:if isTrue="{!and(v.careline == 'true',v.ButtonText != 'Cancel') }">
+  				<lightning:button disabled="{!v.Likedisable}"  class="slds-size--1-of-2 slds-button slds-button--success" onclick="{!c.call}">Call </lightning:button>
+            	<aura:if isTrue="{!or(v.conditionCalled == 'true',v.ButtonText == 'Cancel') }">
+                <button disabled="{!v.Enddisable}" class="slds-size--1-of-2 slds-button slds-button--destructive" onclick="{!c.end}">{!v.ButtonText}</button>
+                </aura:if>
+                </aura:if>
+            </aura:if>
+
+
+
+                
+                <aura:set attribute="else">
+            	<aura:if isTrue="{!or(v.ifcardselected == 'true',v.ButtonText == 'Cancel') }">
+
+                    <button disabled="{!v.Enddisable}" class="slds-size--1-of-1 slds-button slds-button--destructive" onclick="{!c.decline}">{!v.ButtonText}</button>
+                    </aura:if>
+                <aura:if isTrue="{!and(v.careline == 'true',v.ButtonText != 'Cancel') }">
+                    <button disabled="{!v.Enddisable}" class="slds-size--1-of-1 slds-button slds-button--destructive" onclick="{!c.decline}">{!v.ButtonText}</button>
+            </aura:if>
+                </aura:set>
+
+            </aura:if>
+        </div>
+    </div></div>
+    
+</aura:component>

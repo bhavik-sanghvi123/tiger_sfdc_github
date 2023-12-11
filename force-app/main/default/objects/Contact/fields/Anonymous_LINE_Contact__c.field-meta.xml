@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Anonymous_LINE_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>[7-Jul-21 KSK] Transformation Logic in LINE Agency
+        IF no Phone and Last Name THEN TRUE
+        IF provides Phone and Last Name THEN FALSE</description>
+    <externalId>false</externalId>
+    <label>Anonymous LINE Contact</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

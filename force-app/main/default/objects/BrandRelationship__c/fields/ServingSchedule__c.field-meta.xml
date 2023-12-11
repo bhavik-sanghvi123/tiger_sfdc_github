@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ServingSchedule__c</fullName>
+    <externalId>false</externalId>
+    <label>Serving Schedule</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Am Snack</fullName>
+                <default>false</default>
+                <label>Am Snack</label>
+            </value>
+            <value>
+                <fullName>PM Snack</fullName>
+                <default>false</default>
+                <label>PM Snack</label>
+            </value>
+            <value>
+                <fullName>Bedtime Snack</fullName>
+                <default>false</default>
+                <label>Bedtime Snack</label>
+            </value>
+            <value>
+                <fullName>Breakfast</fullName>
+                <default>false</default>
+                <label>Breakfast</label>
+            </value>
+            <value>
+                <fullName>Lunch</fullName>
+                <default>false</default>
+                <label>Lunch</label>
+            </value>
+            <value>
+                <fullName>Dinner</fullName>
+                <default>false</default>
+                <label>Dinner</label>
+            </value>
+            <value>
+                <fullName>Every 4 Hours</fullName>
+                <default>false</default>
+                <label>Every 4 Hours</label>
+            </value>
+            <value>
+                <fullName>Every 6 Hours</fullName>
+                <default>false</default>
+                <label>Every 6 Hours</label>
+            </value>
+            <value>
+                <fullName>Breakfast and Bedtime Snack</fullName>
+                <default>false</default>
+                <label>Breakfast and Bedtime Snack</label>
+            </value>
+            <value>
+                <fullName>Breakfast&amp; Lunch&amp; Dinner</fullName>
+                <default>false</default>
+                <label>Breakfast&amp; Lunch&amp; Dinner</label>
+            </value>
+            <value>
+                <fullName>Breakfast Only</fullName>
+                <default>false</default>
+                <label>Breakfast Only</label>
+            </value>
+            <value>
+                <fullName>Bedtime Snack Only</fullName>
+                <default>false</default>
+                <label>Bedtime Snack Only</label>
+            </value>
+            <value>
+                <fullName>Breakfast and Dinner</fullName>
+                <default>false</default>
+                <label>Breakfast and Dinner</label>
+            </value>
+            <value>
+                <fullName>AM Snack and Bedtime Snack</fullName>
+                <default>false</default>
+                <label>AM Snack and Bedtime Snack</label>
+            </value>
+            <value>
+                <fullName>AM Snack Only</fullName>
+                <default>false</default>
+                <label>AM Snack Only</label>
+            </value>
+            <value>
+                <fullName>Breakfast and PM Snack</fullName>
+                <default>false</default>
+                <label>Breakfast and PM Snack</label>
+            </value>
+            <value>
+                <fullName>AM Snack and PM Snack</fullName>
+                <default>false</default>
+                <label>AM Snack and PM Snack</label>
+            </value>
+            <value>
+                <fullName>Dinner and Bedtime Snack</fullName>
+                <default>false</default>
+                <label>Dinner and Bedtime Snack</label>
+            </value>
+            <value>
+                <fullName>AM Snack and Dinner</fullName>
+                <default>false</default>
+                <label>AM Snack and Dinner</label>
+            </value>
+            <value>
+                <fullName>Dinner Only</fullName>
+                <default>false</default>
+                <label>Dinner Only</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

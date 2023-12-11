@@ -1,0 +1,18 @@
+<aura:component >
+	<aura:attribute name="pathRecord" type="object" />
+	<aura:if isTrue="{!v.pathRecord.isCompleted}">
+		<li class="slds-path__item slds-is-complete " role="presentation">
+	        <a aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-1" role="option" tabindex="0">
+	            <span class="slds-path__title" style="transform : unset !important;color: white;">{!v.pathRecord.pathName}</span>
+	        </a>
+	    </li>    
+	</aura:if>
+	<aura:if isTrue="{!v.pathRecord.isCompleted==false}">
+		<li class="{!'slds-path__item ' + (v.pathRecord.isActive ? 'slds-is-current slds-is-active' : 'slds-is-incomplete')}" role="presentation">
+	        <a aria-selected="true" class="slds-path__link" href="javascript:void(0);" id="path-2" role="option" tabindex="1">
+	            <span class="slds-path__title">{!v.pathRecord.pathName} &nbsp;</span>
+	        </a>
+	    </li>    
+	</aura:if>
+
+</aura:component>

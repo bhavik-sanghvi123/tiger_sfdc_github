@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Feedback</fullName>
+    <active>true</active>
+    <businessProcess>Feedback</businessProcess>
+    <compactLayoutAssignment>Case_Highlights_Panel</compactLayoutAssignment>
+    <description>Cases for customers who have raised feedback or a grievance requiring action by one or more Abbott teams</description>
+    <label>Feedback</label>
+    <picklistValues>
+        <picklist>CallOutcome__c</picklist>
+        <values>
+            <fullName>Invalid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Successful</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uncontactable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsuccessful</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CallType__c</picklist>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Classification__c</picklist>
+        <values>
+            <fullName>Call Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campaign %26 Promotion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consultation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loyalty %26 Redemption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product %26 Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sample</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Complexity__c</picklist>
+        <values>
+            <fullName>Difficult</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intermediate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Simple</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tactical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Conversation_Type__c</picklist>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Direct_Selling__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EnquirerType__c</picklist>
+        <values>
+            <fullName>Aged Care Rep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dietician</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospital Pharmacist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospital Rep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nurse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patient%2FConsumer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharmacy Assistant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharmacy Rep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Pharmacist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialist</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>KeyMessageDriverforTrial__c</picklist>
+        <values>
+            <fullName>Ensure - Dairy alternative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - For Everyday Strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - High Quality protein</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - Improve bone strength %2F for strong bones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - Lactose free</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - Less Sugar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - No1 Nutritional Supplement Drink in the World</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - Scientically formulated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - With HMB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure - With Plant Based Protein</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Can be used as a Meal Replacement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Can be used as a Snack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Complete and Balanced Supplement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - For Dietary and Weight Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Improve bone strength %2F for strong bones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Lactose free</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Low GI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - No Sucrose</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Replace Breakfast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Scientically formulated for People with Diabetes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna - Support Diabetes Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others %28Please specify%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LatestCallOutcome__c</picklist>
+        <values>
+            <fullName>Invalid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Successful</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uncontactable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsuccessful</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LevelofEscalation__c</picklist>
+        <values>
+            <fullName>Level 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Level 3</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Market_MessageBird__c</picklist>
+        <values>
+            <fullName>ANZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VN</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>No_of_Scoop__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Person</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound Call</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Other_Request__c</picklist>
+        <values>
+            <fullName>Ensure Free Sample</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure Gold Loyalty Rewards card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna Free Sample</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna Loyalty Rewards card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Height Chart</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pediasure Free Sample</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pediasure Plus Loyalty Rewards card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Similac Free Sample</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Similac GainSchool Loyalty Rewards card</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Previous_No_Of_Scoop__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ProductReplacementStatus__c</picklist>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Purchase_Reason__c</picklist>
+        <values>
+            <fullName>Better nutrition during pregnancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better nutrition post pregnancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better sleep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blood sugar control %28Low GI%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bone health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catch up growth for height</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catch up growth for weight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Constipation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cow Milk Protein Allergy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diarrhea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feel energetic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gain weight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heart health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joint health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lactose free</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meal replacement %E2%80%93 hectic schedule</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meal replacement %E2%80%93 weight loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muscle strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suitable for Vegetarians</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tummy Comfort</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PurchasingChannel__c</picklist>
+        <values>
+            <fullName>Abbott Mall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>全聯社</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>其他</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>宅配</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>朋友送</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>杏一維康</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>網路</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>藥局</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>賣場</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_HCP_s_recommendation__c</picklist>
+        <values>
+            <fullName>Customer asks for recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feel fatigue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fussy %2F Picky eater</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lactose intolerance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leg%2Fjoint %28bone%29 pain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meal replacement for breakfast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meal replacement for weight management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muscle loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others %28Pls specify%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poor Appetite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Underweight %2F Losing weight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vitamin deficiency %28eg%3A calcium%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ReasonsforNoPurchase__c</picklist>
+        <values>
+            <fullName>不願轉牌</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>價格因素</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>其他%28請備註%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>家中仍有庫存</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>小孩不合%2E考慮轉換%28請備註品牌%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>已經滿意小孩現在的成長表現 %2E考慮轉換%28請備註轉換品牌%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>有固定服務的業務</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>有固定購買通路%28例如藥局%2E大賣場%2E醫院福利社%2E超商%29請備註</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>沒有試喝小安素</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>需與家人討論</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ReminderStatus__c</picklist>
+        <values>
+            <fullName>Closed - Reassigned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First Reminder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending - Uncontactable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Replied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Second Reminder</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ReplyVia__c</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Retention__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sample_Influence__c</picklist>
+        <values>
+            <fullName>Ads on Television%2F Video-steaming Advertisement %28Youtube%2C TV%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dietitian%27s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doctors%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Friend%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gynecologist%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nurse%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other moms%E2%80%99 recommendation from Chat Groups %28Pediatric only%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others %28Please specify%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pediatrician%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal online research %28e%2Eg%2E for Health Supplement%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Promoter%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relative%E2%80%99s recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seen brand in ecommerce channels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seen brand in physical stores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seen brand on Social Media Advertisement %28Facebook%2C Instagram%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seen brand poster%2Fbrochure in clinic</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sample_provided_in_Clinic__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wet Sampling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Feature Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Question</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>What_HCP_Shared__c</picklist>
+        <values>
+            <fullName>Benefit %E2%80%93 Completed Balance Nutrition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 HMB for muscle strength</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Heart friendly fat blend</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Help manage blood sugar level</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Higher calories %26 protein</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Multi-Vitamin %26 Mineral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Others %28Pls specify%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit %E2%80%93 Support catch-up growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit -  Reduce tiredness%2Ffatigue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit - Bone%2Fjoint health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit - Healthy digestive system</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benefit - Weight management %28used it as meal replacement%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Did not share anything</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wheredidyoureceivecompetitorproduct__c</picklist>
+        <values>
+            <fullName>MMC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>上網留資料即可贈</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>代發點</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>免費</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>家%2F親訪</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>床訪</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>業務提供</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>網路索取</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>親友贈</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>購買單購</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>醫院提供</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>電訪%2F郵寄</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

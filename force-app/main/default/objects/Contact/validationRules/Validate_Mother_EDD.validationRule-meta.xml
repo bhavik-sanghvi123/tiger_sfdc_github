@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Mother_EDD</fullName>
+    <active>true</active>
+    <description>If EDDCertificateStatus__c = True , EDD can&apos;t be updated</description>
+    <errorConditionFormula>AND(
+            EDDCertificateStatus__c,
+            ISCHANGED(EstimatedDueDate__c),
+            EstimatedDueDate__c!=  TODAY() ,
+            Market__c=$Label.MarketTW, 
+            RecordType.Name=$Label.AdultRecType
+        )</errorConditionFormula>
+    <errorDisplayField>EstimatedDueDate__c</errorDisplayField>
+    <errorMessage>EstimatedDueDate  can not be updated.</errorMessage>
+</ValidationRule>

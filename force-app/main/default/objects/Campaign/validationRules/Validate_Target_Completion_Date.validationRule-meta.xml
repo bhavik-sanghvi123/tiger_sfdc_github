@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Target_Completion_Date</fullName>
+    <active>true</active>
+    <description>Should not allow invalid value in Target Completion Date</description>
+    <errorConditionFormula>AND(
+NOT($Profile.Name = &quot;System Administrator&quot;),
+OR( TargetCompletionTime__c &lt;1, TargetCompletionTime__c &gt; 99)
+)</errorConditionFormula>
+    <errorMessage>Target Completion Time must be between 1 and 99 days</errorMessage>
+</ValidationRule>

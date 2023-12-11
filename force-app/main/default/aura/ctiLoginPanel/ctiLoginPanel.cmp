@@ -1,0 +1,124 @@
+<!--
+Copyright 2016 salesforce.com, inc. All rights reserved. 
+
+Use of this software is subject to the salesforce.com Developerforce Terms of Use and other applicable terms that salesforce.com may make available, as may be amended from time to time. You may not decompile, reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of this software, updates thereto, or any part thereof. You may not use the software to engage in any development activity that infringes the rights of a third party, including that which interferes with, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of salesforce.com or any third party.
+
+WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL SALESFORCE.COM HAVE ANY LIABILITY FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR DAMAGES BASED ON LOST PROFITS, DATA OR USE, IN CONNECTION WITH THE SOFTWARE, HOWEVER CAUSED AND, WHETHER IN CONTRACT, TORT OR UNDER ANY OTHER THEORY OF LIABILITY, WHETHER OR NOT YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+-->
+<aura:component description="Login panel for users to log into their CTI systems."  implements="c:panel" access="global">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    	<aura:attribute name="State" type="String" default="Vicidial" />
+    <aura:attribute name="Test" type="String"/>
+    <aura:attribute name="Likedisable" type="Boolean" default="true" />
+        <aura:attribute name="myBool" type="Boolean" default="true"/>
+       <aura:attribute name="autoStop" type="String" default="Checking" />
+       <aura:attribute name="switchText" type="String" default="Switch to Salesforce" />
+		<aura:attribute name="Start" type="String" default="no" />
+		<aura:attribute name="testTime" type="String" default="Whats the time" />
+
+    
+    <aura:attribute name="searchTypeID" type="Object[]" description="Array of typeID records"/>
+    <aura:attribute name="InvalidResult" type="Object[]" description="Array of Invalid records"/>
+    <aura:attribute name="SuccessResult" type="Object[]" description="Array of success records"/>
+    <aura:attribute name="UnsuccessResult" type="Object[]" description="Array of Unsuccess records"/>
+    <aura:attribute name="UncontactableResult" type="Object[]" description="Array of Uncontactable records"/>
+
+    <aura:if isTrue="{!v.Start == 'yes'}">
+
+    <div id="body2" style="background-color: #d3d3d3;">
+
+<table width="100%"><tr><td></td>
+<!-- INTERNATIONALIZATION-LINKS-PLACEHOLDER-VICIDIAL -->
+</tr></table>
+<form name="vicidial_form" id="vicidial_form" action="https://10.224.0.87/agc_old/vicidial.php" method="post">
+<input style="height: 1px" type="hidden" name="DB" id="DB" value="0" />
+<input style="height: 1px" type="hidden" name="JS_browser_height" id="JS_browser_height" value="" />
+<input style="height: 1px" type="hidden" name="JS_browser_width" id="JS_browser_width" value="" />
+<input style="height: 1px" type="hidden" name="admin_test" id="admin_test" value="" />
+<input style="height: 1px" type="hidden" name="LOGINvarONE" id="LOGINvarONE" value="" />
+<input style="height: 1px" type="hidden" name="LOGINvarTWO" id="LOGINvarTWO" value="" />
+<input style="height: 1px" type="hidden" name="LOGINvarTHREE" id="LOGINvarTHREE" value="" />
+<input style="height: 1px" type="hidden" name="LOGINvarFOUR" id="LOGINvarFOUR" value="" />
+<input style="height: 1px" type="hidden" name="LOGINvarFIVE" id="LOGINvarFIVE" value="" />
+<br /><br /><br /><center><table style="border-radius: 25px;" width="460px" cellpadding="0" cellspacing="0" bgcolor="white"><tr bgcolor="white"><td style="border-radius: 25px;" align="left" valign="bottom" bgcolor="#660066" width="170"></td></tr>
+<tr><td align="left" colspan="2"><h3 size="1"> &nbsp; </h3></td></tr>   
+    
+    <tr><td>
+            
+
+        <div>
+             <label for="uname"><b>Phone Login</b></label>
+        <input style="height: 35px ;background-color: #edf0f7;" class="test slds-m-around_xx-smalls" placeholder="Enter Phone Username" type="text" id ="phone_login" name="phone_login" size="20" maxlength="20" value="" required="true" />
+</div>
+        <div>
+      <label for="psw"><b>Phone Password</b></label>
+          <input style="height: 35px ;background-color: #edf0f7;" class="test slds-m-around_xx-small" placeholder="Enter Phone Password" type="password" id ="phone_pass" name="phone_pass" size="20" maxlength="100" value=""  required="true" />
+   </div>   
+        
+        <div>
+              <label for="psw"><b>User Login</b></label>
+          <input style="height: 35px ;background-color: #edf0f7;" class="test slds-m-around_xx-small" placeholder="Enter Username"  type="text" id ="VD_login" name="VD_login" size="20" maxlength="20" value=""  required="true" />
+         </div>
+        
+         <div>
+              <label for="psw"><b>User Password</b></label>
+          <input style="height: 35px ;background-color: #edf0f7;" class="test slds-m-around_xx-small" placeholder="Enter User Password" type="password" id ="VD_pass"  name="VD_pass" size="20" maxlength="100" value=""  required="true" />
+        </div>
+         <label for="psw"><b>Campaign</b></label>
+        <select style="height: 35px;border-radius: 25px;background-color: #edf0f7;" class="slds-size--1-of-1 slds-m-around_xx-small" size="1" name="VD_campaign" id="VD_campaign" onfocus="">
+        <option value=""></option>
+        <option value="ABOT_PRO" selected="selected">ABOT_PRO - ABBOTT_PROJECT</option>
+        <option value="ABOT_TEL" selected="selected">ABOT_TEL-ABOT_TELEMARKETING</option>
+        </select>
+        
+        </td></tr>
+
+    
+
+                <aura:if isTrue="{! v.State == 'Vicidial'}">
+				<tr><td class="slds-align_absolute-center"><input class="slds-size--1-of-2 slds-button slds-button_outline-brand"  type="submit" name="SUBMIT" value="Login" /><input class="slds-size--1-of-2 slds-button slds-button_outline-brand"  type="button" value="Refresh Campaign List" onclick="login_allowable_campaigns()"></input></td></tr>
+            </aura:if>
+
+<tr><td align="left" colspan="2"><br />VERSION: 2.14-651c &nbsp; &nbsp; &nbsp; BUILD: 211223-0906</td></tr>
+
+
+</table></center>
+      <aura:if isTrue="{! v.State == 'Salesforce'}">
+         
+    <input class="slds-size--1-of-1 slds-button slds-button_outline-brand"  type="button" value="Refresh Campaign List" onclick="login_allowable_campaigns()"></input>
+           </aura:if>
+</form>   
+        
+        <aura:if isTrue="{! v.State == 'Salesforce'}">
+   	<input class="slds-size--1-of-1 slds-button slds-button_outline-brand"  onclick="{!c.handleLogin}" type="submit" name="SUBMIT" value="LOGIN" />  
+
+    </aura:if>
+
+        
+<!-- <ui:inputCheckbox aura:id="checkbox" label="Select?" change="{!c.onCheck}"/>
+	<p>Selected:</p>
+	<p><ui:outputText class="result" aura:id="checkResult" value="false" /></p>
+	<p>The following checkbox uses a component attribute to bind its value.</p>
+	<ui:outputCheckbox aura:id="output" value="{!v.myBool}"/> 
+        <lightning:utilityBarAPI aura:id="utilitybar" />
+    <button label="Get Utility Info" onclick="{!c.getUtilityInfo }" />
+-->
+
+    </div>
+            <button class="slds-size--1-of-1 slds-button slds-button_outline-brand" onclick="{!c.backButton}">Back</button>
+
+        </aura:if>
+                        <aura:if isTrue="{! v.Start == 'no'}">
+						  <button class="slds-size--1-of-1 slds-button slds-button_outline-brand" onclick="{!c.selectWelcome}">Welcome to TDCX</button>
+						<select class="slds-select slds-select_neutral" name="Pause_Codes" id="Pause_Codes">
+                          <option value="Salesforce">Salesforce</option>
+                          <option value="Vicidial">Vicidial</option>
+            
+                        </select>
+
+                       
+                            </aura:if>
+
+
+</aura:component>

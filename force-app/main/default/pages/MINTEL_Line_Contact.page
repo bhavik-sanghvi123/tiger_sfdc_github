@@ -1,0 +1,161 @@
+<apex:page applyBodyTag="false"  action="{!onExtensionInit}">
+    <apex:includeScript value="{!URLFOR($Resource.streamingcometd_zip, 'jquery-1.5.1.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.streamingcometd_zip, 'cometd.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.streamingcometd_zip, 'json2.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.streamingcometd_zip, 'jquery.cometd.js')}"/>
+    
+    <apex:includeScript value="../../soap/ajax/21.0/connection.js" />
+    <apex:slds />
+    <body>
+                <apex:includeScript value="/support/console/42.0/integration.js"/>
+        <script type="text/javascript">
+          var masterId  = ''
+          var IconStatus = false ; 
+        function testFocusPrimaryTabById() {
+            //Get the value for 'scc-pt-0' from the openPrimaryTab method
+            //This value is for example purposes only
+            // console.log(sforce.console.getFocusedPrimaryTabId(showTabId))
+            //  sforce.console.getFocusedPrimaryTabId(showTabId)
+            sforce.console.getPrimaryTabIds(showTabId2); 
+            
+            //  sforce.console.focusPrimaryTabById('ctab1', focusSuccess);
+        }
+        
+        
+       
+            var showTabId2 = function showTabId2(result) {
+            result.ids.map(data=>{
+                        sforce.console.getTabLink(sforce.console.TabLink.TAB_ONLY, data,  function showTabLink(result) {
+                        
+                        console.log(result);
+                        if (result.success == true) {
+                        
+                        var link = result.tabLink;
+                        let linkArry = link.split("/"); 
+                        if( linkArry[5] == 'MINTEL_Line_Contact__c' && masterId ==linkArry[6]  ){
+                        setInterval(function(){ 
+                        if(!IconStatus){
+                        
+                        sforce.console.setTabIcon('custom:custom53', result.id, null);
+                    }
+                    }, 500);
+                        setInterval(function(){ 
+                        if(!IconStatus){
+                        sforce.console.setTabIcon(null, result.id, null);
+                    }
+                    }, 1000);
+                    }
+                    } else {
+                        
+                        return null ;               
+            }
+                
+            })
+            })
+                
+            };
+        
+        var showTabIdCloseIcon = function showTabId(result) {
+            console.log(result.id)
+            sforce.console.setTabIcon(null, result.id, null)
+            
+        };
+        var checkResult = function checkResult(result) {
+            
+            //Report whether going to the open primary tab was successful
+            if (result.success == true) {
+                
+                
+            } else {
+                console.log(result);  
+                alert('Going to the primary tab was not successful');
+            }
+        };
+        
+        function testFocusPrimaryTabByIdCloseIcon() {
+            sforce.console.getFocusedPrimaryTabId(showTabIdCloseIcon)
+        }
+        
+        
+        </script>
+        <div class="slds-scope">
+            <span id="outurl"></span>
+        
+            <iframe id="frame" style="border: 0px; width:100%; height:100vh"  />  
+            <div id="notready">
+                
+            </div>
+        </div>
+    </body>
+    
+    <script type="text/javascript">
+    var $jq = $.noConflict();
+    
+    sforce.connection.sessionId='{!GETSESSIONID()}';
+    var contact = new sforce.SObject("MINTEL_Line_Contact__c"); 
+    contact.Id = '{!$CurrentPage.parameters.Id}';
+    
+    // Get contact
+    var query = sforce.connection.query("SELECT Id, Name , mid__c  , Channel_ID__c  from MINTEL_Line_Contact__c where Id='" + contact.Id + "'");
+    var records = query.getArray("records"); 
+        masterId = records[0].Id ;
+    testFocusPrimaryTabById();
+    console.log(records);
+    
+    var dom = document.getElementById('frame');
+    var userSalesforce = '{!$User.Id}'; 
+    var userNameSalesforce = '{!$User.FirstName&' '&$User.lastname}';
+    
+    // media and dnis
+   
+    setupUrl();
+    
+    function randomNumber(len, arr) { 
+        var ans = ''; 
+        for (var i = len; i > 0; i--) { 
+            ans += Math.floor(Math.random() * 10);
+        } 
+        return ans; 
+    }
+    
+    function refreshPage() {
+        location.reload();
+    }
+    
+    function setupUrl(forceMediaId) {
+      var xhr = new XMLHttpRequest();
+
+
+     
+       
+        // Production dom.src = 'http://connect-x-frontback.herokuapp.com/chat/line?lineId='+records[0].mid__c+'&userId='+userSalesforce+'&userName='+userNameSalesforce+'&orgId=EmFSH0pDUW7KVCptYrWv';
+        dom.src = 'https://app.connect-x.tech/chat/line?lineId='+records[0].mid__c.replace(records[0].Channel_ID__c,'')+'&userId='+userSalesforce+'&userName='+userNameSalesforce+'&orgId=w7biAhDtkYEgs7CKJNtz&ui=C&channelId='+records[0].Channel_ID__c ;
+    }
+    
+    $jq(function() {
+        // Connect to the CometD endpoint
+       $jq.cometd.init({
+            url: window.location.protocol+'//'+window.location.hostname+'/cometd/48.0/',
+            requestHeaders: { Authorization: 'OAuth {!$Api.Session_ID}'}
+        });
+        $jq.cometd.subscribe('/topic/LineContact', function(message) {
+            console.log(message.data.sobject   );
+            if(message.data.sobject.Id ==contact.Id ){
+                if(message.data.sobject.readStatus__c == false){
+                    console.log('teb');
+                    IconStatus = false ;
+                     masterId = message.data.sobject.Id ;
+                    testFocusPrimaryTabById();
+                }else{
+                    IconStatus = true ;
+                    testFocusPrimaryTabByIdCloseIcon();
+                }
+            }
+            
+            
+        });
+    
+    })
+    
+    </script>
+</apex:page>

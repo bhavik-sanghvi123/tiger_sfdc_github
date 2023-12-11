@@ -1,0 +1,130 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="MailSampleLabelController">
+    <ltng:require scripts="{!$Resource.OrderExportDownload}" />
+    <aura:attribute name="orderRecords" type="sObject" />
+    <aura:attribute name="currentList" type="List" />
+    <aura:attribute name="currentPageNumber" type="Integer" />
+    <aura:attribute name="maxPageNumber" type="Integer" default="1"/>
+    <aura:attribute name="noRecords" type="Boolean" default="true" />
+    <aura:attribute name="openModal" type="Boolean" default="false" />
+    <aura:attribute name="isExported" type="Boolean" default="false" />
+    <aura:attribute name="startDate" type="Date" default=""/>
+    <aura:attribute name="endDate" type="Date" default=""/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="selectedRecordEvent" event="c:OrderReportEvent" action="{!c.downloadExcelFile}"/>
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" class="slds-hide"/>
+    
+    <lightning:card title="Mail Sample Label Report">
+        <aura:set attribute="actions">
+            <lightning:layout>
+                <lightning:layoutItem flexibility="auto" padding="around-small">  
+                    <lightning:input type="date" name="startDate" label="Start Date" value="{!v.startDate}" variant="label-hidden" placeholder="Start Date" autocomplete="off" />
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">  
+                    <lightning:input type="date" name="endDate" label="End Date" value="{!v.endDate}" variant="label-hidden" placeholder="End Date" autocomplete="off" />
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small">  
+                    <lightning:button label="Refresh" onclick="{!c.doInit}"></lightning:button>
+                    <lightning:button label="Export to Excel" onclick="{!c.confirmationExport}"></lightning:button>
+                </lightning:layoutItem>             
+            </lightning:layout>            
+        </aura:set>
+        
+        <p class="slds-p-horizontal_small slds-scrollable_x slds-p-bottom_small">
+            <aura:if isTrue="{!v.noRecords == false}">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Main Contact</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Related Contact/Child</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Street 1</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Street 2</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Unit Number</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">City</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Postal Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Product Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Quantity</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Product</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Source Campaign</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Created On</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Modified On</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Created By</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">File Export Date</div>
+                            </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.currentList}" var="item">
+                            <c:MailSampleLabelRow orderItem="{!item}"></c:MailSampleLabelRow>		  
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <!-- Pagination Section -->
+                <aura:if isTrue="{!v.maxPageNumber > 1}">
+                    <br />
+                    <center>
+                        <div class="slds-button-group" role="group">
+                            <button onclick="{!c.firstPage}" class="slds-button slds-button--neutral">
+                                First
+                            </button>
+                            <button onclick="{!c.prevPage}" class="slds-button slds-button--neutral">
+                                Prev
+                            </button>
+                            <button class="slds-button slds-button--neutral display-button">
+                                {!v.currentPageNumber} / {!v.maxPageNumber}
+                            </button>
+                            <button onclick="{!c.nextPage}" class="slds-button slds-button--neutral">
+                                Next
+                            </button>
+                            <button onclick="{!c.lastPage}" class="slds-button slds-button--neutral">
+                                Last
+                            </button>
+                        </div>
+                    </center>
+                </aura:if>
+                <aura:set attribute="else">
+                    <h1 class="{!v.isExported == false ? '' :'slds-hide'}">There are currently no orders in status “Submitted” - No records to export at the moment.</h1>
+                    <h1 class="{!v.isExported ? '' :'slds-hide'}">Please check File Libraries to access exported orders.</h1>
+                </aura:set>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.openModal}">
+                <c:MailSampleLabelModal></c:MailSampleLabelModal>
+            </aura:if>
+            
+        </p>
+    </lightning:card>
+</aura:component>

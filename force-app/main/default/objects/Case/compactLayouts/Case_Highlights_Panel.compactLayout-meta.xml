@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Highlights_Panel</fullName>
+    <fields>Subject</fields>
+    <fields>CaseNumber</fields>
+    <fields>Classification__c</fields>
+    <fields>SubClassification__c</fields>
+    <fields>Priority</fields>
+    <fields>Status</fields>
+    <fields>CreatedDate</fields>
+    <fields>CaseOwnerReadOnly__c</fields>
+    <label>Case Highlights Panel</label>
+</CompactLayout>

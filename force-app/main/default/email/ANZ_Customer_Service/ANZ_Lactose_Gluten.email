@@ -1,0 +1,24 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Dear,
+        <br/><br/>
+
+        Thank you for contacting Abbott Nutrition.
+        <br/><br/>
+
+        In regards, to your enquiry, by definition as defined by the FSANZ (food standard ANZ), low gluten is considered to be less than 20mg per 100g.
+        <br/><br/>
+
+        For Lactose, it is considered low if it is less than 2g per 100g.
+        <br/><br/>
+
+        To confirm, Abbott Nutrition products are classified as low gluten and low lactose as defined by the FSANZ standards.
+        <br/><br/>
+
+        I hope this information has been useful, please let me know if there is anything else I can assist you with.
+
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

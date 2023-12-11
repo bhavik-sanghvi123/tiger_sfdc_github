@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ward2__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Ward</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3) OR 4 OR 5</booleanFilter>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ward</value>
+        </filterItems>
+        <filterItems>
+            <field>Affiliate_Value__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>Affiliate_Value__c.ParentAffiliateValue__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.District__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>$Source.To_be_archived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Bypass_Lookup_Filter__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Addresses (Ward)</relationshipLabel>
+    <relationshipName>AddressesWard</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

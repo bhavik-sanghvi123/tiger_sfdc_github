@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CallTransferReason__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Call Transfer Reason</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Call Transfer Reason</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Cases (Call Transfer Reason)</relationshipLabel>
+    <relationshipName>Cases3</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

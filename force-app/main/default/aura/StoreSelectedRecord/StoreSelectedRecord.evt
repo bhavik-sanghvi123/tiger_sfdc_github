@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Store Record value from ResusableLookupComponent">
+	<aura:attribute access="PUBLIC" name="recordId" type="String"/>
+    <aura:attribute access="PUBLIC" name="recordName" type="String"/>
+</aura:event>

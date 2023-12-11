@@ -1,0 +1,48 @@
+*** CASE ESCALATION ALERT ***
+
+Dear Person in Charge,
+
+The following case has been escalated to you {!Case.EscalationPoint__c}. The details below,
+
+CASE OVERVIEW: 
+Escalation Reason: {!Case.EscalatedTo__c}
+Case: {!Case.CaseNumber}: {!Case.Subject}
+Priority: {!Case.Priority}
+Type: {!Case.RecordType}
+Complexity: {!Case.Complexity__c}
+Classfication: {!Case.Classification__c}: {!Case.SubClassification__c}: {!Case.Origin}
+Status: {!Case.Status}
+Store Where Purchased" {!Case.StoreWherePurchased__c}
+State: {!Case.State__c}
+Channel Type: {!Case.ChannelType__c}
+
+
+Description: {!Case.Description}
+
+PRODUCT INFORMATION (IF APPLICABLE): 
+Product: {!Case.Product__c}
+Batch Number: {!Case.BatchNumber__c}
+Manufacturing Date: {!Case.ManufacturingDate__c}
+Expiry Date: {!Case.ExpiryDate__c}
+Packaging Size: {!Case.ProductPackageSize__c}
+Product Replacement Required: {!Case.ProductReplacementRequired__c}
+Product Replacement Status: {!Case.ProductReplacementStatus__c}
+
+CUSTOMER CONTACT INFORMATION: 
+Contact Name: {!Case.Contact}
+Email Address: {!Case.ContactEmailAddress__c}
+Mobile Number: {!Case.ContactMobileNumber__c}
+Address:
+{!Case.Address__c}
+
+CUSTOMER SERVICE CASE OWNER: 
+Owner: {!Case.OwnerFullName} - {!Case.OwnerEmail}
+
+Please review the details and decide on the course of action required to resolve the case as quickly as possible.
+
+{!Case.Link}
+
+
+
+Salesforce Internal Id:
+ref: {!Case.Id}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_outcome_allowed_value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Successful&apos;,  call_outcome__c ),
+          CONTAINS(&apos;Unsuccessful&apos;,  call_outcome__c ),
+          CONTAINS(&apos;Uncontactable&apos;,  call_outcome__c ),
+          CONTAINS(&apos;Invalid&apos;,  call_outcome__c ),
+          ISBLANK(call_outcome__c)
+) )</errorConditionFormula>
+    <errorMessage>Below are the only allowed values for Call outcome.
+Successful
+Unsuccessful
+Uncontactable
+Invalid</errorMessage>
+</ValidationRule>

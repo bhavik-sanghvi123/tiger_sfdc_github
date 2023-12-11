@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ID_HomePhone_Format</fullName>
+    <active>true</active>
+    <description>Home phone format for Indonesia</description>
+    <errorConditionFormula>AND(
+	!ISBLANK(HomePhone),
+	Market__c = &quot;ID&quot;,
+	NOT(AND( 
+		LEN(HomePhone) &gt;= 9, 
+		LEN(HomePhone) &lt;= 15,
+		REGEX(HomePhone, &quot;[0-9]*&quot;)
+	))
+)</errorConditionFormula>
+    <errorDisplayField>HomePhone</errorDisplayField>
+    <errorMessage>Invalid Home Phone Number. Please enter 9 - 15 digit number.</errorMessage>
+</ValidationRule>

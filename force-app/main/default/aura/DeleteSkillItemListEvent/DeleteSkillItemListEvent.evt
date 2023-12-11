@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT">
+	<aura:attribute access="PUBLIC" name="skillItems" type="ServiceResourceSkill[]"/> 
+</aura:event>

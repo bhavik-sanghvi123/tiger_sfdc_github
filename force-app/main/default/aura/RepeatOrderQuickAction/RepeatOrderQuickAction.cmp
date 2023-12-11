@@ -1,0 +1,11 @@
+<!--
+    Author:         Sean Cordova
+    Description:    Container for LWC repatOrder.
+
+    History:
+    06/02/2021      scordova        Created.
+-->
+
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global">
+    <c:repeatOrder OrderId="{!v.recordId}" onclose="{!c.closeQA}"/>
+</aura:component>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>HbA1C</fullName>
+        <default>false</default>
+        <label>HbA1C</label>
+    </customValue>
+    <customValue>
+        <fullName>Random</fullName>
+        <default>false</default>
+        <label>Random</label>
+    </customValue>
+    <customValue>
+        <fullName>FPG/ PPG values</fullName>
+        <default>false</default>
+        <label>FPG/ PPG values</label>
+    </customValue>
+    <masterLabel>Blood Glucose</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

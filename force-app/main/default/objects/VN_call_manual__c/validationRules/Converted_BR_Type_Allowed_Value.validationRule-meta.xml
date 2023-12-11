@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Converted_BR_Type_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Lead&apos;, converted_br_type__c	), 
+CONTAINS(&apos;User&apos;, converted_br_type__c	),
+ISBLANK(converted_br_type__c	) 
+) )</errorConditionFormula>
+    <errorDisplayField>converted_br_type__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for Converted BR Type:
+Lead
+User</errorMessage>
+</ValidationRule>

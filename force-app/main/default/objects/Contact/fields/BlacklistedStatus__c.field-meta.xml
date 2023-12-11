@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BlacklistedStatus__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+            AND(
+                ISPICKVAL(Account.Market__c , &quot;TW&quot;),
+                        OR(
+                        MasterOptOut__c,
+                        Blacklisted__c
+                        )
+            ),
+            IMAGE(&quot;/resource/Red_Icon&quot;, &quot;Red&quot;, 20, 20),
+            &quot;&quot;
+        )</formula>
+    <label>Blacklisted Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,39 @@
+.THIS.mainForm {
+    margin: auto;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    bottom: 0; 
+    right: 50;
+}
+
+.THIS .customRequired{
+	font-weight: 400; 
+} 
+
+.THIS .customRequired:before{    
+	content: "*";
+	margin: 0.127rem 0.125rem 0 0.125rem;
+	color: rgb(194, 57, 52);
+	float: left; 
+}
+
+.THIS .custom-margin {
+	margin-top: 17px;
+}
+
+.THIS .custom-padding {
+    padding: 0 .25rem;
+    padding-top: 0px;
+    padding-right: 0.25rem;
+    padding-bottom: 0px;
+    padding-left: 0.25rem;
+}
+
+.THIS label.uiLabel {
+    font-size:12px;
+}
+
+.THIS .slds-section__title-action {
+    display:block;
+}

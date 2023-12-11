@@ -1,0 +1,86 @@
+<aura:component>
+    <aura:attribute name="rewardItem" type="sObject" />
+    <tr class="slds-hint-parent">
+        <th data-label="Opportunity Name" scope="row">
+            <div class="slds-truncate" >{!v.rewardItem.Name}</div>
+        </th>
+        <th data-label="Opportunity Name" scope="row">
+            <div class="slds-truncate" >{!v.rewardItem.RedemptionDate__c}</div>
+        </th>
+        <td data-label="Account Name">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.Name}</div>
+        </td>
+        <td data-label="Close Date">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.Phone}</div>
+        </td>
+        <td data-label="Email">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.Email}</div>
+        </td>
+        <td data-label="Contact">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.LoyaltyID__c}</div>
+        </td>
+        <td data-label="Contact">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.Source_Loyalty_Id__c}</div>
+        </td>
+        <td data-label="Contact">
+            <div class="slds-truncate" >{!v.rewardItem.Contact__r.NationalID__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryStatus__c}</div>
+        </td>
+        <td data-label="Confidence">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Name}</div>
+        </td>
+        <td data-label="Amount">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Country__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Region__r.Name}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.District__r.Name}</div>
+        </td>
+        <td data-label="Contact">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.City2__r.Name}</div>
+        </td>
+        <td data-label="Contact">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.PostalCode__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Ward2__r.Name}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Street1__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.Street2__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.DeliveryAddress__r.StateProvince__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.ProductForRedemption__r.Name}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.ProductForRedemption__r.ProductCode}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.Quantity__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.PointsAmount__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.TotalPointsAmount__c}</div>
+        </td>
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.Price__c}</div>
+        </td> 
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.CreatedBy.Name}</div>
+        </td> 
+        <td data-label="">
+            <div class="slds-truncate" >{!v.rewardItem.FileExportDate__c}</div>
+        </td>     
+    </tr>
+</aura:component>

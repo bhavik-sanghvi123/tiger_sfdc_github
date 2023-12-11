@@ -1,0 +1,934 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="HouseholdAndContactCreatePage_CC">
+    
+    <!--Handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    
+    <!-- sObject attributes -->
+    <aura:attribute access="PUBLIC" name="household" type="Account"  default="{ 'sobjectType' : 'Account' }"/>
+    <aura:attribute access="PUBLIC" name="primaryContact" type="Contact"  default="{ 'sobjectType' : 'Contact' }"/>
+    <aura:attribute access="PUBLIC" name="additionalContact" type="Contact"  default="{ 'sobjectType' : 'Contact' }"/>
+    <aura:attribute access="PUBLIC" name="address" type="Address__c"  default="{ 'sobjectType' : 'Address__c' }"/>
+    <aura:attribute access="PUBLIC" name="br" type="BrandRelationship__c"  default="{ 'sobjectType' : 'BrandRelationship__c' }"/>
+    <aura:attribute access="PUBLIC" name="user" type="User"  default="{ 'sobjectType' : 'User' }"/>
+    <aura:attribute access="PUBLIC" name="experianAddress" type="sObject" default="{}" description="Stores field values returned by Experian callout"/>
+    
+    <!-- Common attributes -->
+    <aura:attribute name="recordsCreated" type="Boolean" default="false"/>
+    <aura:attribute name="isPrimary" type="Boolean" default="false"/>
+    <aura:attribute name="customErrorMessage" type="String" default=""/>
+    <aura:attribute name="systemErrorMessage" type="String" default=""/>
+    <aura:attribute name="invalidUser" type="String" default="false"/> 
+    <aura:attribute name="sObjectName" type="String"/> 
+    <aura:attribute access="PUBLIC" name="isFromContact" type="Boolean" default="false"/> 
+    <aura:attribute name="dateToday" type="Date"/>
+    <aura:attribute name="adultDOBFormattedDate" type="Date"/>
+    <aura:attribute name="userMarket" type="String"/>
+    <aura:attribute name="userRoleName" type="String"/>
+    <aura:attribute name="searchKeyWord" type="String"/>
+    <aura:attribute name="unitNumber" type="String" default=""/>
+    <aura:attribute name="invalidPostalCode" type="Boolean" default="false"/>
+    <aura:attribute name="addressValidationStatus" type="String" default="Pending"/>
+    <aura:attribute name="isTokenAvailable" type="Boolean" default="false"/>
+    <aura:attribute name="isPrimaryWarning" type="Boolean" default="false"/>
+    <aura:attribute name="isAdultWarning" type="Boolean" default="false"/>
+    <aura:attribute name="isChildWarning" type="Boolean" default="false"/>
+    <aura:attribute name="invalidUnitNo" type="Boolean" default="false"/>
+    
+    <aura:attribute name="disabledWard" type="Boolean" default="true"/>
+    <aura:attribute name="disabledDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="disabledSubDistrict" type="Boolean" default="true"/>
+    <aura:attribute name="disabledCity2" type="Boolean" default="true"/>
+    <aura:attribute name="wardValue" type="String"/>
+    <aura:attribute name="cityValue" type="String"/>
+    <aura:attribute name="districtValue" type="String"/>
+    <aura:attribute name="subDistrictValue" type="String"/>
+    <aura:attribute name="regionValue" type="String"/>
+
+    <!-- Radio Button attributes -->
+    <!-- Secondary Contact Sectiond=-->
+    <aura:attribute name="adultRecordType" type="Boolean" default="false"/>
+    <aura:attribute name="childRecordType" type="Boolean" default="false"/>
+    <aura:attribute name="noSecondaryContact" type="Boolean" default="true"/>
+    <aura:attribute name="recordTypeOptions" type="List" default="[
+                                                                   {'label': 'Adult', 'value': 'adult'},
+                                                                   {'label': 'Child', 'value': 'child'},
+                                                                   {'label': 'None', 'value': 'none'}
+                                                                   ]"/>
+    <aura:attribute name="radioSecondaryConValue" type="String" default="none"/>
+
+    <!-- Child creation selection -->
+    <aura:attribute name="recordChildTypeOptions" type="List" default="[
+                                                                   {'label': 'Adult', 'value': 'adult'},
+                                                                   {'label': 'Child', 'value': 'child'}
+                                                                   ]"/>
+    <aura:attribute name="radioChildConValue" type="String" default="adult"/>
+  
+    
+    <!-- Address Section -->
+    <aura:attribute name="createAddress" type="Boolean" default="false"/>
+    <aura:attribute name="noAddress" type="Boolean" default="true"/>
+    <aura:attribute name="addressOptions" type="List" default="[
+                                                                   {'label': 'Add Address', 'value': 'addAddress'},
+                                                                   {'label': 'None', 'value': 'none'}
+                                                                   ]"/>
+    <aura:attribute name="radioAddressValue" type="String" default="none"/>
+    
+    <!-- Brand Relationship Section -->
+    <aura:attribute name="createBrandRelationship" type="Boolean" default="false"/>
+    <aura:attribute name="noBrandRelationship" type="Boolean" default="true"/>
+    <aura:attribute name="brandRelationshipOptions" type="List" default="[
+                                                                   {'label': 'Add Brand Relationship', 'value': 'addBrandRelationship'},
+                                                                   {'label': 'None', 'value': 'none'}
+                                                                   ]"/>
+    <aura:attribute name="radioBrandRelationshipValue" type="String" default="none"/>
+    
+    <!-- Brand Relationship Mapping Section -->
+    <aura:attribute name="mapToPrimaryContact" type="Boolean" default="true"/>
+    <aura:attribute name="mapToSecondaryContact" type="Boolean" default="false"/>
+    <aura:attribute name="brValue" type="String" default=""/>
+    <aura:attribute name="brMappingOptions" type="List" default="[
+                                                                   {'label': 'Select if \'Main Contact\' is the End User', 'value': 'primaryUser'},
+                                                                   {'label': 'Select if \'Secondary Contact\' is the End User', 'value': 'secondaryUser'}
+                                                                   ]"/>
+
+    <!-- Channel Response Section -->
+    <aura:attribute name="createChannelResponse" type="Boolean" default="false"/>
+    <aura:attribute name="noChannelResponse" type="Boolean" default="true"/>
+    <aura:attribute name="channelResponseOptions" type="List" default="[
+                                                                   {'label': 'Add Channel Response', 'value': 'addChannelResponse'},
+                                                                   {'label': 'None', 'value': 'none'}
+                                                                   ]"/>
+    <aura:attribute name="radioChannelResponseValue" type="String" default="none"/>
+
+    <!-- Case  Section -->
+    <aura:attribute name="feedBackRecordType" type="Boolean" default="false"/>
+    <aura:attribute name="inquiryRecordType" type="Boolean" default="false"/>
+    <aura:attribute name="noCaseRecord" type="Boolean" default="true"/>
+    <aura:attribute name="caseRecordTypeOptions" type="List" default="[
+                                                                   {'label': 'Feedback', 'value': 'Feedback'},
+                                                                   {'label': 'Inquiry', 'value': 'Inquiry'},
+                                                                   {'label': 'None', 'value': 'none'}
+                                                                   ]"/>
+    <aura:attribute name="radioCaseValue" type="String" default="none"/>
+    <aura:attribute name ="caseProductIsBrand" type="Boolean" default ="false"/>
+    
+    <!--Record Ids -->
+    <aura:attribute access="PUBLIC" name="primaryContactId" type="String" default=""/>
+    <aura:attribute access="PUBLIC" name="addressId" type="String"/>
+    <aura:attribute access="PUBLIC" name="additionalContactId" type="String"/>
+    <aura:attribute access="PUBLIC" name="brandRelationshipId" type="String"/>
+    <aura:attribute access="PUBLIC" name="accountId" type="String"/>
+    <aura:attribute access="PUBLIC" name="isChildCreation" type="Boolean" default="false"/>
+    <aura:attribute access="PUBLIC" name="mainContactId" type="String" default=""/>
+    <aura:attribute access="PUBLIC" name="caseId" type="String" default=""/>
+    <aura:attribute access="PUBLIC" name="channelResponseId" type="String" default=""/>
+    <aura:attribute access="PUBLIC" name="createdCaseId" type="String" default=""/>
+    
+    <!-- Workspace -->
+    <lightning:workspaceAPI aura:id="workspace" />
+    <aura:attribute name="currentTabId" type="String" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <div class="slds-grid slds-gutters"> 
+        <div class="slds-col"/>
+        <div class="slds-col"/>
+        <div class="slds-col">
+            <div id="mainForm" class="slds-box slds-size_xx-large slds-theme_default">
+                <aura:if isTrue="{!v.systemErrorMessage != ''}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="slds-notify slds-notify_toast slds-theme_error slds-size_4-of-5" href="page.htm"  target="_top">
+                        <span class="slds-assistive-text">error</span>
+                        <div class="slds-notify__content">
+                            <h5 class="slds-text-heading_small">Error Message</h5>
+                            <p class="slds-align_absolute-center">{!v.systemErrorMessage}</p>                
+                        </div>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.isChildCreation == false}">
+
+                    <c:CollapsibleHeader headerName="Main Contact Details">
+                        <lightning:recordEditForm objectApiName="Contact">
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">           
+                                    <div class="custom-padding">                            
+                                        <ui:inputSelect label="Salutation" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="primarySalutation"/>  
+                                    </div>                                 
+                                    <lightning:inputField fieldName="FirstName" aura:id="primaryFirstName"/>
+                                    <lightning:inputField fieldName="MiddleName" aura:id="primaryMiddleName"/>
+                                    <lightning:inputField fieldName="LastName" aura:id="primaryLastName"/>
+                                    <lightning:inputField fieldName="Suffix" aura:id="primarySuffix"/>
+                                    <lightning:inputField fieldName="Birthdate" aura:id="primaryBirthdate"/>
+                                    <lightning:inputField fieldName="PreferredLanguage__c" aura:id="primaryLanguage"/>
+                                    <lightning:inputField fieldName="BirthHospital__c" aura:id="primaryAfterBirthCareCenter"/>
+                                    <lightning:inputField fieldName="EnrolledBy__c" aura:id="primaryEnrolledBy"/>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">   
+                                    <div class="custom-padding">                               
+                                        <label for="primaryTagging" class="slds-form-element__label">Primary Contact</label>    
+                                        <lightning:inputField fieldName="PrimaryContact__c" aura:id="primaryTagging" variant="label-hidden" />
+                                    </div>
+                                    <div class=" custom-margin custom-padding">
+                                        <ui:inputSelect label="Gender" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small " aura:id="primaryGender"/>
+                                    </div> 
+                                    <lightning:inputField fieldName="Education_Level__c" aura:id="primaryEducationLevel"/>
+                                    <lightning:inputField fieldName="Ethnicity__c" aura:id="primaryEthnicity"/>
+                                        <lightning:inputField fieldName="Profession__c" aura:id="primaryProfession"/>
+                                    <lightning:inputField fieldName="Occupation__c" aura:id="primaryOccupation"/>
+                                    <lightning:inputField fieldName="Monthly_Expense__c" aura:id="primaryMonthlyExpense"/>
+                                    <lightning:inputField fieldName="Verified__c" aura:id="primaryVerified"/>                                 
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <h1>&nbsp;&nbsp;&nbsp;<b>Contact Information</b></h1>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="Email" aura:id="primaryEmail"/>
+                                    <lightning:inputField fieldName="HomePhone" aura:id="primaryHomePhone"/>
+                                    <lightning:inputField fieldName="Office_Phone__c" aura:id="primaryOfficePhone"/>
+                                    <lightning:inputField fieldName="PreferredPhone__c" aura:id="primaryPreferredPhone"/>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <div class="custom-padding">
+                                        <label for="primaryMobilePhone" class="slds-form-element__label"> <abbr class="slds-required" title="required">* </abbr>Mobile</label>    
+                                        <lightning:inputField fieldName="Phone" aura:id="primaryMobilePhone" variant="label-hidden"/>
+                                    </div>
+                                    <lightning:inputField fieldName="OtherPhone" aura:id="primaryOtherPhone"/>
+                                    <lightning:inputField fieldName="CarerPhone__c" aura:id="primaryCarerPhone"/>
+                                    <lightning:inputField fieldName="PreferredContactTime__c" aura:id="primaryPreferredContactTime"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Communication Preferences</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="MasterOptOut__c" aura:id="primaryMasterOptOut"/>
+                                    <lightning:inputField fieldName="DoNotCall" aura:id="primaryDoNotCall"/>
+                                    <lightning:inputField fieldName="HasOptedOutOfEmail" aura:id="primaryEmailOptOut"/>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="WhatsappOptOut__c" aura:id="primaryWhatsAppOptOut"/>
+                                    <lightning:inputField fieldName="SMSOptOut__c" aura:id="primarySMSOptOut"/>
+                                    <lightning:inputField fieldName="DataSharingWithThirdPartyOptOut__c" aura:id="primaryDataShareOptOut"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <aura:if isTrue="{!v.userMarket != 'ANZ'}">
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Medical and Nutrition Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Height__c" aura:id="primaryHeight"/>
+                                        <lightning:inputField fieldName="EstimatedDueDate__c" aura:id="primaryEstimatedDueDate"/>
+                                        <lightning:inputField fieldName="KCalDay__c" aura:id="primaryCaloriesDay"/>
+                                        <lightning:inputField fieldName="FamilyDiabetesHistory__c" aura:id="primaryFamilyDiabetesHistory"/>
+                                        <lightning:inputField fieldName="LungDiseaseName__c" aura:id="primaryLungDiseaseName"/>
+                                    </lightning:layoutItem>
+                                    
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Weight__c" aura:id="primaryWeight"/>
+                                        <lightning:inputField fieldName="RenalDiseaseType__c" aura:id="primaryRenalDiseaseType"/>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="PrimaryPurchaseChannel__c" aura:id="primaryPurchaseChannel"/>
+                                        <lightning:inputField fieldName="PreferredPaymentMethod__c" aura:id="primaryPreferredPaymentMethod"/>
+                                        <lightning:inputField fieldName="Consumer_Response__c" aura:id="primaryConsumerResponse"/>
+                                    </lightning:layoutItem>
+                                    
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="SecondaryPurchaseChannel__c" aura:id="primarySecondaryPurchaseChannel"/>     
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Loyalty Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="ExternalLoyaltyID__c" aura:id="primaryExternalLoyaltyID"/>
+                                        <lightning:inputField fieldName="MembershipStartDate__c" aura:id="primaryMembershipStartDate"/>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>System Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="SourceCreatedDate__c" aura:id="primarySourceCreatedDate"/>
+                                    </lightning:layoutItem>
+                                    
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="ExternalReferenceNumber__c" aura:id="primaryExternalReferenceNumber"/>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                            
+                        </lightning:recordEditForm>
+                    </c:CollapsibleHeader>
+                    
+                    <br></br>
+                    <c:CollapsibleHeader headerName="Address Details">
+                        <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                            <lightning:radioGroup name="radioAddress"
+                                                  options="{!v.addressOptions}"
+                                                  type="radio"
+                                                  onchange="{!c.handleRadioAddress}"
+                                                  value ="{!v.radioAddressValue}"></lightning:radioGroup>
+                        </lightning:layoutItem>
+                        
+                        <aura:if isTrue="{!v.createAddress}">
+                            <lightning:recordEditForm objectApiName="Address__c" onload="{!c.handleLoad}">
+                                <div>&nbsp;&nbsp;&nbsp;<b>Address Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">   
+                                        <lightning:inputField fieldName="AddressType__c" aura:id="addressType"></lightning:inputField>
+                                        <lightning:inputField fieldName="Street1__c" aura:id="addressStreet1" class="customRequired"/>
+                                        <lightning:inputField fieldName="Street2__c" aura:id="addressStreet2"></lightning:inputField>
+                                        <aura:if isTrue="{!and(v.userMarket == 'SG', v.isTokenAvailable)}">
+                                        	<ui:inputText aura:id="addressUnitNo" label="Unit Number" change="{!c.unitNoKeyPressController}" updateOn="change" value="{!v.unitNumber}" placeholder="e.g. 01-01, 01-0A, 01-001, 01-01A, 01-0001, 01-001A, 01-00AA" maxlength="7"></ui:inputText>
+                                        </aura:if>
+                                        <lightning:inputField fieldName="Building__c" aura:id="addressBuilding"></lightning:inputField>
+                                        <lightning:inputField fieldName="VillageNo__c" aura:id="addressVillageNo"></lightning:inputField>
+                                        <lightning:inputField fieldName="VillageName__c" aura:id="addressVillageName"></lightning:inputField>
+                                        <lightning:inputField fieldName="StateProvince__c" aura:id="addressStateProvince"></lightning:inputField>
+                                        <lightning:inputField fieldName="Road__c" aura:id="addressRoad"></lightning:inputField>
+                                        <aura:if isTrue="{!and(v.userMarket == 'SG', v.isTokenAvailable)}">
+                                            <ui:inputText aura:id="addressPostalCode" label="Postal Code" change="{!c.postalCodeKeyPressController}" updateOn="change" value="{!v.searchKeyWord}" placeholder="6-digit Number" maxlength="6"></ui:inputText>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!v.userMarket != 'SG'}">
+                                                	<lightning:inputField fieldName="PostalCode__c" aura:id="addressPostalCode"></lightning:inputField>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </lightning:layoutItem>
+                                    
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <div class=" custom-margin custom-padding">
+                                            <lightning:inputField fieldName="DefaultAddress__c" aura:id="addressDefaultAddress"></lightning:inputField>
+                                        </div>
+                                        <lightning:inputField fieldName="SuburbTown__c" aura:id="addressSuburbTown" class="{!v.userMarket == 'ANZ'? 'customRequired' : ''}"></lightning:inputField>
+                                        <aura:if isTrue="{!and(v.userMarket != 'ANZ', v.userMarket != 'ID')}">
+                                            <lightning:inputField fieldName="City2__c" aura:id="addressCity" class="customRequired" onchange="{!c.stateChange}"></lightning:inputField>
+                                        </aura:if>
+                                        <lightning:inputField fieldName="State__c" aura:id="addressState" class="{!v.userMarket == 'IN' || !v.userMarket == 'ANZ' ? 'customRequired' : ''}"></lightning:inputField>
+                                        <lightning:inputField fieldName="Region__c" aura:id="addressRegion" onchange="{!c.stateChange}" class="{!v.userMarket == 'ID'? 'customRequired' : ''}"></lightning:inputField>
+                                        <aura:if isTrue="{!and(v.userMarket != 'ANZ', v.userMarket != 'IN')}">
+                                            <aura:renderIf isTrue="{!v.userMarket == 'ID'}">
+                                                <div class="customRequired"/>
+                                                <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="City" placeholder="Search City..."
+                                                                       recordTypeName="City" parentValue="{!v.regionValue}" aura:id="addressCity2" 
+                                                                       parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledCity2}" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                                            </aura:renderIf>
+                                            <aura:renderIf isTrue="{!v.userMarket != 'PH'}">
+                                                <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/>
+                                                <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="District"  placeholder="Search District..." 
+                                                                    recordTypeName="District" parentValue="{!v.cityValue}" aura:id="addressDistrict"
+                                                                    parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledDistrict}" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                                                <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/>
+                                                <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="Sub-District" placeholder="Search Sub-District..."
+                                                                    recordTypeName="Sub-District" parentValue="{!v.districtValue}" aura:id="addressSubDistrict" 
+                                                                    parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledWard}" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                                                <div class="{!v.userMarket == 'ID'? 'customRequired' : ''}"/>
+                                                <c:AddressCustomLookup objectName="Affiliate_Value__c" fieldName="Name" label="{!v.userMarket == 'ID'? 'Postal Code' : 'Ward'}" placeholder="Search Ward..."
+                                                                    recordTypeName="Ward" parentValue="{!v.districtValue}" aura:id="addressWard"
+                                                                    parentName="ParentAffiliateValue__c" isDisabled="{!v.disabledWard}" selectedAddress="{!c.handleSelectedAddress}"></c:AddressCustomLookup>
+                                            </aura:renderIf>
+                                        </aura:if>
+                                        <lightning:inputField fieldName="Country__c" aura:id="addressCountry"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </lightning:recordEditForm>
+                        </aura:if>
+                        <aura:if isTrue="{!v.noAddress}">
+                        </aura:if>
+                    </c:CollapsibleHeader>
+                    
+                    <br></br>
+                </aura:if>
+                <c:CollapsibleHeader headerName="{!v.isChildCreation == false ? 'Secondary Contact' : 'Related Contact Details'}">
+                    <aura:if isTrue="{!v.isChildCreation == false}">
+                        <h2><i><b>&nbsp;&nbsp;&nbsp;&nbsp;Note: </b> This contact will be linked to the Main Contact created above. This person is under Main Contact's care.</i></h2>
+                    </aura:if>
+                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                        <lightning:radioGroup name="radioSecondaryContact"
+                                              options="{!v.isChildCreation ? v.recordChildTypeOptions : v.recordTypeOptions }"
+                                              type="radio"
+                                              onchange="{!c.handleRadioClick}"
+                                              value ="{!v.isChildCreation ? v.radioChildConValue : v.radioSecondaryConValue}"></lightning:radioGroup>
+                    </lightning:layoutItem>
+                    <aura:if isTrue="{!v.adultRecordType}">
+						<lightning:recordEditForm objectApiName="Contact">
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                                    <ui:inputSelect label="Salutation" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="adultSalutation"></ui:inputSelect>
+                                    <lightning:inputField fieldName="FirstName" aura:id="adultFirstName"></lightning:inputField>
+                                    <lightning:inputField fieldName="MiddleName" aura:id="adultMiddleName"></lightning:inputField>
+                                    <lightning:inputField fieldName="LastName" aura:id="adultLastName"></lightning:inputField>
+                                    <lightning:inputField fieldName="Suffix" aura:id="adultSuffix"></lightning:inputField>
+                                    <lightning:inputField fieldName="Birthdate" aura:id="adultBirthdate"></lightning:inputField>
+                                    <lightning:inputField fieldName="PreferredLanguage__c" aura:id="adultLanguage"></lightning:inputField>
+                                    <lightning:inputField fieldName="BirthHospital__c" aura:id="adultAfterBirthCareCenter"></lightning:inputField>
+                                    <lightning:inputField fieldName="EnrolledBy__c" aura:id="adultEnrolledBy"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <aura:if isTrue="{!and(v.isChildCreation, v.isFromContact == false)}">
+                                    	<lightning:inputField fieldName="Parent__c" aura:id="adultMainContact" class="customRequired"></lightning:inputField>
+                                    </aura:if>
+                                    <lightning:inputField fieldName="CustomerRelationship__c" aura:id="adultCustomerRelationship"></lightning:inputField>
+                                    <ui:inputSelect label="Gender" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="adultGender"></ui:inputSelect>
+                                    <lightning:inputField fieldName="Education_Level__c" aura:id="adultEducationLevel"></lightning:inputField>
+                                    <lightning:inputField fieldName="Ethnicity__c" aura:id="adultEthnicity"></lightning:inputField>
+                                    <lightning:inputField fieldName="Profession__c" aura:id="adultProfession"></lightning:inputField>
+                                    <lightning:inputField fieldName="Occupation__c" aura:id="adultOccupation"></lightning:inputField>
+                                    <lightning:inputField fieldName="Monthly_Expense__c" aura:id="adultMonthlyExpsense"></lightning:inputField>
+                                    <lightning:inputField fieldName="Verified__c" aura:id="adultSecondaryVerified"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Contact Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="Email" aura:id="adultEmail"/>
+                                    <lightning:inputField fieldName="HomePhone" aura:id="adultHomePhone"></lightning:inputField>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="PreferredContactTime__c" aura:id="adultPreferredContactTime" class="{!v.isChildCreation ? 'slds-hide' : ''}"></lightning:inputField>
+                                    <aura:if isTrue="{!v.userMarket == 'ANZ'}">
+                                    	<lightning:inputField fieldName="Phone" aura:id="adultMobilePhone"></lightning:inputField>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Communication Preferences</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="MasterOptOut__c" aura:id="adultMasterOptOut"></lightning:inputField>
+                                    <lightning:inputField fieldName="DoNotCall" aura:id="adultDoNotCall"></lightning:inputField>
+                                    <lightning:inputField fieldName="HasOptedOutOfEmail" aura:id="adultEmailOptOut"></lightning:inputField>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="WhatsappOptOut__c" aura:id="adultWhatsAppOptOut"></lightning:inputField>
+                                    <lightning:inputField fieldName="SMSOptOut__c" aura:id="adultSMSOptOut"></lightning:inputField>
+                                    <lightning:inputField fieldName="DataSharingWithThirdPartyOptOut__c" aura:id="adultDataShareOptOut"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <aura:if isTrue="{!v.userMarket != 'ANZ'}">
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Medical and Nutrition Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Height__c" aura:id="adultHeight"></lightning:inputField>
+                                        <lightning:inputField fieldName="EstimatedDueDate__c" aura:id="adultEstimatedDueDate"></lightning:inputField>
+                                        <lightning:inputField fieldName="KCalDay__c" aura:id="adultCaloriesDay"></lightning:inputField>
+                                        <lightning:inputField fieldName="FamilyDiabetesHistory__c" aura:id="adultFamilyDiabetesHistory"></lightning:inputField>
+                                        <lightning:inputField fieldName="LungDiseaseName__c" aura:id="adultLungDiseaseName"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Weight__c" aura:id="adultWeight"></lightning:inputField>
+                                        <lightning:inputField fieldName="RenalDiseaseType__c" aura:id="adultRenalDiseaseType"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="PrimaryPurchaseChannel__c" aura:id="adultPrimaryPurchaseChannel"></lightning:inputField>
+                                        <lightning:inputField fieldName="PreferredPaymentMethod__c" aura:id="adultPreferredPaymentMethod"></lightning:inputField>
+                                        <lightning:inputField fieldName="Consumer_Response__c" aura:id="adultConsumerResponse"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="SecondaryPurchaseChannel__c" aura:id="adultSecondaryPurchaseChannel"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Loyalty Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="MembershipStartDate__c" aura:id="adultMembershipStartDate"/>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                        </lightning:recordEditForm>                    
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.childRecordType}">
+                        <lightning:recordEditForm objectApiName="Contact">
+                            <div>&nbsp;&nbsp;&nbsp;<b>Contact Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">                    
+                                    <ui:inputSelect label="Salutation" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="childSalutation"></ui:inputSelect>
+                                    <lightning:inputField fieldName="FirstName" aura:id="childFirstName"></lightning:inputField>
+                                    <lightning:inputField fieldName="MiddleName" aura:id="childMiddleName"></lightning:inputField>
+                                    <lightning:inputField fieldName="LastName" aura:id="childLastName"></lightning:inputField>
+                                    <lightning:inputField fieldName="Suffix" aura:id="childSuffix"></lightning:inputField>
+                                    <lightning:inputField fieldName="Birthdate" aura:id="childBirthdate"></lightning:inputField>
+                                    <lightning:inputField fieldName="BirthHospital__c" aura:id="childBirthHospital"></lightning:inputField>
+                                    <lightning:inputField fieldName="EnrolledBy__c" aura:id="childEnrolledBy"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <ui:inputSelect label="Gender" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="childGender"></ui:inputSelect>
+                                    <aura:if isTrue="{!and(v.isChildCreation, v.isFromContact == false)}">
+                                    	<lightning:inputField fieldName="Parent__c" aura:id="childMainContact" class="customRequired"></lightning:inputField>
+                                    </aura:if>
+                                    <lightning:inputField fieldName="CustomerRelationship__c" aura:id="childCustomerRelationship"></lightning:inputField>
+                                    <ui:inputSelect label="Age Range" class="slds-form-element__label slds-no-flex slds-form-element__control slds-grow slds-m-bottom_xx-small" aura:id="childAgeRange"></ui:inputSelect>
+                                    <lightning:inputField fieldName="Verified__c" aura:id="childVerified"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <aura:if isTrue="{!v.userMarket != 'ANZ'}">
+                                <br></br>
+                                <div>&nbsp;&nbsp;&nbsp;<b>Medical and Nutrition Information</b></div>
+                                <lightning:layout>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Height__c" aura:id="childHeight"></lightning:inputField>
+                                        <lightning:inputField fieldName="HeightForAge__c" aura:id="childHeightForAge"></lightning:inputField>
+                                        <lightning:inputField fieldName="KCalDay__c" aura:id="childCaloriesDay"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                        <lightning:inputField fieldName="Weight__c" aura:id="childWeight"></lightning:inputField>
+                                        <lightning:inputField fieldName="WeightForAge__c" aura:id="childWeightForAge"></lightning:inputField>
+                                        <lightning:inputField fieldName="WeightForHeight__c" aura:id="childWeightForHeight"></lightning:inputField>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </aura:if>
+                        </lightning:recordEditForm>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.noSecondaryContact}">
+                    </aura:if>    
+                </c:CollapsibleHeader>
+                
+                <br></br>
+                <c:CollapsibleHeader headerName="Brand Relationship Details">
+                    
+                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                        <lightning:radioGroup name="radioNewBrandRelationship"
+                                              options="{!v.brandRelationshipOptions}"
+                                              type="radio"
+                                              onchange="{!c.handleRadioBrandRelationship}"
+                                              value ="{!v.radioBrandRelationshipValue}"/>
+                    </lightning:layoutItem>
+                    
+                    <aura:if isTrue="{!v.createBrandRelationship}">
+                        <aura:if isTrue="{!and(or(v.adultRecordType, v.childRecordType) , v.isChildCreation == false ) }">
+                            <br></br>
+                        	<b>&nbsp;&nbsp;&nbsp;Create Brand Relationship:</b>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:radioGroup name="radioBrandRelationship"
+                                                      options="{!v.brMappingOptions}"
+                                                      value="{!v.brValue}"
+                                                      type="radio"
+                                                      onchange="{!c.handleRadioBR}"/>
+                            </lightning:layoutItem>
+                        </aura:if>
+                        
+                        <br></br>
+                        <lightning:recordEditForm objectApiName="BrandRelationship__c">
+                            <div>&nbsp;&nbsp;&nbsp;<b>Brand Relationship Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="BrandRelationship__c" aura:id="brBrandRelationship"  class="customRequired"></lightning:inputField>
+                                    <lightning:inputField fieldName="Type__c" aura:id="brType"></lightning:inputField>
+                                    <lightning:inputField fieldName="CurrentBrand__c" aura:id="brCurrentPreviousBrand"></lightning:inputField>
+                                    <lightning:inputField fieldName="BrandSwitchReason__c" aura:id="brBrandSwitchReason"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductLoyaltyLength__c" aura:id="brProductLoyaltyLength"></lightning:inputField>
+                                    <lightning:inputField fieldName="WinBack__c" aura:id="brWinBack"></lightning:inputField>
+                                    <lightning:inputField fieldName="BrandOptOut__c" aura:id="brBrandOptOut"></lightning:inputField>
+                                    <lightning:inputField fieldName="IsProductBenefitsExplained__c" aura:id="brProductBenefitsExplained"></lightning:inputField>
+                                    <lightning:inputField fieldName="Remarks__c" aura:id="brRemarks"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <div style="margin-top: 62px"></div>
+                                    <lightning:inputField fieldName="Status__c" aura:id="brStatus"></lightning:inputField>
+                                    <lightning:inputField fieldName="PreviousBrand__c" aura:id="brPreviousBrand"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductExperience__c" aura:id="brProductExperience"></lightning:inputField>
+                                    <lightning:inputField fieldName="Rating__c" aura:id="brRating"></lightning:inputField>
+                                    <lightning:inputField fieldName="CareGiver__c" aura:id="brCareGiver"></lightning:inputField>
+                                    <lightning:inputField fieldName="GiftGiver__c" aura:id="brGiftGiver"></lightning:inputField>
+                                    <lightning:inputField fieldName="EndUser__c" aura:id="brEndUser"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div>&nbsp;&nbsp;&nbsp;<b>Brand Usage Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">                    
+                                    <lightning:inputField fieldName="DateFirstUsed__c" aura:id="brDateFirstUsed"></lightning:inputField>
+                                    <lightning:inputField fieldName="SKU__c" aura:id="brSKU"></lightning:inputField>
+                                    <lightning:inputField fieldName="ServingSchedule__c" aura:id="brServingSchedule"></lightning:inputField>
+                                    <lightning:inputField fieldName="Servingsperday__c" aura:id="brServingPerDay"></lightning:inputField>
+                                    <lightning:inputField fieldName="PreferredFlavour__c" aura:id="brPreferredFlavor"></lightning:inputField>
+                                    <lightning:inputField fieldName="Brand_Usage_Reason__c" aura:id="brBrandUsageReason"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="ScoopsPerServing__c" aura:id="brScoopPerServing"></lightning:inputField>
+                                    <lightning:inputField fieldName="RouteOfFeeding__c" aura:id="brRouteOfFeeding"></lightning:inputField>
+                                    <lightning:inputField fieldName="CansPerMonth__c" aura:id="brCanPerMonth"></lightning:inputField>
+                                    <lightning:inputField fieldName="MilkWaterMixturePercentage__c" aura:id="brMilkWaterMixture"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:recordEditForm>
+                    </aura:if>
+                </c:CollapsibleHeader>
+
+                <aura:if isTrue="{!v.createBrandRelationship}">
+                <br></br>
+                <c:CollapsibleHeader headerName="Channel Response Details">                    
+                    <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                        <lightning:radioGroup name="radioChannelResponse"
+                                              options="{!v.channelResponseOptions}"
+                                              type="radio"
+                                              onchange="{!c.handleRadioChannelResponse}"
+                                              value ="{!v.radioChannelResponseValue}"></lightning:radioGroup>
+                    </lightning:layoutItem>
+                    
+                    <aura:if isTrue="{!v.createChannelResponse}">
+                        <br></br>
+                        <lightning:recordEditForm objectApiName="ChannelResponse__c">
+                            <div>&nbsp;&nbsp;&nbsp;<b>Channel Response Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="RegistrationDate__c" aura:id="crRegistrationDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="Campaign__c" aura:id="crCampaign"></lightning:inputField>
+                                    <lightning:inputField fieldName="GrowthGuideAppSubmitted__c" aura:id="crGrowthGuideAppSubmitted"></lightning:inputField>
+                                    <lightning:inputField fieldName="BirthHospital__c" aura:id="crBirthHospital"></lightning:inputField>
+                                    <lightning:inputField fieldName="AfterBirthCareCenter__c" aura:id="crAfterBirthCareCenter"></lightning:inputField>
+                                    <lightning:inputField fieldName="ItemTypeRequested__c" aura:id="crItemTypeRequested"></lightning:inputField>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="Channel__c" aura:id="crChannel"></lightning:inputField>
+                                    <lightning:inputField fieldName="EnrolledBy__c" aura:id="crEnrolledBy"></lightning:inputField>
+                                    <lightning:inputField fieldName="SampleRedemptionMethod__c" aura:id="crSampleRedemptionMethod"></lightning:inputField>
+                                    <lightning:inputField fieldName="NonDeliveryRedemptionResult__c" aura:id="crNonDeliveryRedemptionResult"></lightning:inputField>
+                                    <lightning:inputField fieldName="NonDeliveryRedemptionDate__c" aura:id="crNonDeliveryRedemptionDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="DrugStoreRedemptionChoice__c" aura:id="crDrugStoreRedemptionChoice"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div>&nbsp;&nbsp;&nbsp;<b>Sample Request Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">                    
+                                    <lightning:inputField fieldName="IsSample_Requested__c" aura:id="crSampleRequested"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductSampleRequested__c" aura:id="crProductSampleRequested"></lightning:inputField>
+                                    <lightning:inputField fieldName="DeliveryAddress__c" aura:id="crDeliveryAddress"></lightning:inputField>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="OrderCreationStatus__c" aura:id="crOrderCreationStatus"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div>&nbsp;&nbsp;&nbsp;<b>Promoter Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">                    
+                                    <lightning:inputField fieldName="PromoterName__c" aura:id="crPromoterName"></lightning:inputField>
+                                    <lightning:inputField fieldName="SupervisorName__c" aura:id="crSupervisorName"></lightning:inputField>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="PromoterCode__c" aura:id="crPromoterCode"></lightning:inputField>
+                                    <lightning:inputField fieldName="SupervisorCode__c" aura:id="crSupervisorCode"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div>&nbsp;&nbsp;&nbsp;<b>HCP Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="HCPName__c" aura:id="crHCPName"></lightning:inputField>
+                                    <lightning:inputField fieldName="HCPClassification__c" aura:id="crHCPClassification"></lightning:inputField>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="CustomerSpeciality__c" aura:id="crCustomerSpecialty"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:recordEditForm>
+                    </aura:if>
+                </c:CollapsibleHeader>
+            </aura:if>
+            <aura:if isTrue="{!v.isChildCreation == false}">
+            <br></br>
+            <c:CollapsibleHeader headerName="Case Details">
+                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                    <lightning:radioGroup name="radioCaseResponse"
+                                          options="{!v.caseRecordTypeOptions}"
+                                          type="radio"
+                                          onchange="{!c.handleCaseResponse}"
+                                          value ="{!v.radioCaseValue}"></lightning:radioGroup>
+                </lightning:layoutItem>
+                <aura:if isTrue="{!and(v.feedBackRecordType == true, v.noCaseRecord == false , v.inquiryRecordType == false )}">
+                    <br></br>
+                    <b>&nbsp;&nbsp;&nbsp;New Case: Feedback</b>
+                    <lightning:recordEditForm objectApiName="Case">
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                                <lightning:inputField fieldName="CaseRegarding__c" aura:id="fbCaseRegarding"></lightning:inputField>
+                                <lightning:inputField fieldName="Classification__c" aura:id="fbClassification"></lightning:inputField>
+                                <lightning:inputField fieldName="SubClassification__c" aura:id="fbSubClassification"></lightning:inputField>
+                                <lightning:inputField fieldName="EnquirerType__c" aura:id="fbEnquirerType"></lightning:inputField>
+                                <lightning:inputField fieldName="Status" aura:id="fbStatus" class="customRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="ReviewedBy__c" aura:id="fbReviewedBy"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                <aura:if isTrue="{!and(v.accountId != '', v.accountId != null)}">
+                                    <lightning:inputField fieldName="AccountId" aura:id="fbAccountId" value="{!v.accountId}" disabled="true"></lightning:inputField>
+                                </aura:if>
+                                <lightning:inputField fieldName="Origin" aura:id="fbOrigin" class="customRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="Priority" aura:id="fbPriority"></lightning:inputField>
+                                <lightning:inputField fieldName="Complexity__c" aura:id="fbComplexity"></lightning:inputField>
+                                <lightning:inputField fieldName="IsSocialCase__c" aura:id="fbSocialCase"></lightning:inputField>
+                                <lightning:inputField fieldName="EscalatedTo__c" aura:id="fbEscalatedTo"></lightning:inputField>
+                                <lightning:inputField fieldName="ReviewedDate__c" aura:id="fbReviewedDate"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Case Description</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Subject" aura:id="fbSubject"></lightning:inputField>
+                                <lightning:inputField fieldName="Description" aura:id="fbDescription"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Product Replacement Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ProductReplacementRequired__c" aura:id="fbProductReplacement"></lightning:inputField>
+                                <lightning:inputField fieldName="ReplacementProduct__c" aura:id="fbReplacementProduct"></lightning:inputField>
+                                <lightning:inputField fieldName="Quantity__c" aura:id="fbQuantity"></lightning:inputField>
+                                <lightning:inputField fieldName="ProductReplacementStatus__c" aura:id="fbProductReplacementStatus"></lightning:inputField>
+                                <lightning:inputField fieldName="ProductReplacementDeliveredDate__c" aura:id="fbProductReplacementDeliveredDate"></lightning:inputField>
+                                <lightning:inputField fieldName="StoreWherePurchased__c" aura:id="fbStoreWherePurchased"></lightning:inputField>
+                                <lightning:inputField fieldName="DatePurchased__c" aura:id="fbDatePurchased"></lightning:inputField>
+                                <lightning:inputField fieldName="ManufacturingDate__c" aura:id="fbManufacturingDate"></lightning:inputField>
+                                <lightning:inputField fieldName="ProductPackageSize__c" aura:id="fbProductPackageSize"></lightning:inputField>
+                                <lightning:inputField fieldName="Variant__c" aura:id="fbVariant"></lightning:inputField>
+                                <lightning:inputField fieldName="AbbottAwarenessDate__c" aura:id="fbAbbottAwarenessDate"></lightning:inputField>
+                                <lightning:inputField fieldName="DateofPackaging__c" aura:id="fbDateofPackaging"></lightning:inputField>
+                                <lightning:inputField fieldName="TimeCode__c" aura:id="fbTimeCode"></lightning:inputField>
+                                <lightning:inputField fieldName="DateofIncident__c" aura:id="fbDateofIncident"></lightning:inputField>
+                                <lightning:inputField fieldName="PackCondition__c" aura:id="fbPackCondition"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="FiletoTrackwise__c" aura:id="fbFileToTrackwise"></lightning:inputField>
+                                <lightning:inputField fieldName="TrackwiseID__c" aura:id="fbTrackwiseID"></lightning:inputField>
+                                <lightning:inputField fieldName="Replacement_Notes__c" aura:id="fbReplacementNotes"></lightning:inputField>
+                                <lightning:inputField fieldName="CustomerCertificationAttached__c" aura:id="fbCustomerCertification"></lightning:inputField>
+                                <lightning:inputField fieldName="DateOpenedUsed__c" aura:id="fbDateOpenedUsed"></lightning:inputField>
+                                <lightning:inputField fieldName="ExpiryDate__c" aura:id="fbExpiryDate"></lightning:inputField>
+                                <lightning:inputField fieldName="BatchNumber__c" aura:id="fbBatchNumber"></lightning:inputField>
+                                <lightning:inputField fieldName="LotNumber__c" aura:id="fbLotNumber"></lightning:inputField>
+                                <lightning:inputField fieldName="RecommendedBy__c" aura:id="fbRecommendedBy"></lightning:inputField>
+                                <lightning:inputField fieldName="AdditionalObservation__c" aura:id="fbAdditionalObservation"></lightning:inputField>
+                                <lightning:inputField fieldName="SampleAvailability__c" aura:id="fbSampleAvailability"></lightning:inputField>
+                                <lightning:inputField fieldName="ResponseLetterisRequired__c" aura:id="fbResponseLetterisRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="UsageDetails__c" aura:id="fbUsageDetails"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Order__c" aura:id="fbOrder"></lightning:inputField>
+                                <lightning:inputField fieldName="ParentId" aura:id="fbParentId"></lightning:inputField>
+                                <lightning:inputField fieldName="MedicalDiagnosis__c" aura:id="fbNutritionHistory"></lightning:inputField>
+                                <lightning:inputField fieldName="LevelofEscalation__c" aura:id="fbLevelofEscalation"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Product__c" aura:id="fbProduct"></lightning:inputField>
+                                <lightning:inputField fieldName="Retention__c" aura:id="fbRetention"></lightning:inputField>
+                                <lightning:inputField fieldName="State__c" aura:id="fbState"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Resolution Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ResolutionNotes__c" aura:id="fbResolutionNotes"></lightning:inputField>
+                                <lightning:inputField fieldName="ResolvedUponOpening__c" aura:id="fbResolved"></lightning:inputField>
+                                <lightning:inputField fieldName="ReopenCount__c" aura:id="fbReopenCount"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                <lightning:inputField fieldName="ReplyVia__c" aura:id="fbReplyVia"></lightning:inputField>
+                                <lightning:inputField fieldName="ReopenNotes__c" aura:id="fbReopenNotes"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Follow Up Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="FollowUpCallRequired__c" aura:id="fbFollowUpCall"></lightning:inputField>
+                                <lightning:inputField fieldName="PreferredDateTimeofCallback__c" aura:id="fbPreferredDateTime"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ReasonofRequestforCallback__c" aura:id="fbReasonForCallback"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>System Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="SourceCreatedDate__c" aura:id="fbSourceCreatedDate"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                <label for="fbWebEmail">Web Email</label>
+                                <lightning:inputField variant="label-hidden" fieldName="SuppliedEmail" aura:id="fbWebEmail"></lightning:inputField>
+                                <lightning:inputField fieldName="ReminderStatus__c" aura:id="fbReminderStatus"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </lightning:recordEditForm>
+                </aura:if>
+
+                <aura:if isTrue="{!and(v.inquiryRecordType == true, v.noCaseRecord == false , v.feedBackRecordType == false)}">
+                    <br></br>
+                    <b>&nbsp;&nbsp;&nbsp;New Case: Inquiry</b>
+                    <lightning:recordEditForm objectApiName="Case">
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                                <lightning:inputField fieldName="CaseRegarding__c" aura:id="inquiryCaseRegarding"></lightning:inputField>
+                                <lightning:inputField fieldName="Classification__c" aura:id="inquiryClassification"></lightning:inputField>
+                                <lightning:inputField fieldName="SubClassification__c" aura:id="inquirySubClassification"></lightning:inputField>
+                                <lightning:inputField fieldName="EnquirerType__c" aura:id="inquiryEnquirerType"></lightning:inputField>
+                                <lightning:inputField fieldName="Status" aura:id="inquiryStatus" class="customRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="ReviewedBy__c" aura:id="inquiryReviewedBy"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                <aura:if isTrue="{!and(v.accountId != '', v.accountId != null)}">
+                                    <lightning:inputField fieldName="AccountId" aura:id="inquiryAccountId" value="{!v.accountId}" disabled="true"></lightning:inputField>
+                                </aura:if>
+                                <lightning:inputField fieldName="Origin" aura:id="inquiryOrigin" class="customRequired"></lightning:inputField>
+                                <lightning:inputField fieldName="Priority" aura:id="inquiryPriority"></lightning:inputField>
+                                <lightning:inputField fieldName="Complexity__c" aura:id="inquiryComplexity"></lightning:inputField>
+                                <lightning:inputField fieldName="IsSocialCase__c" aura:id="inquirySocialCase"></lightning:inputField>
+                                <lightning:inputField fieldName="EscalatedTo__c" aura:id="inquiryEscalatedTo"></lightning:inputField>
+                                <lightning:inputField fieldName="ReviewedDate__c" aura:id="inquiryReviewedDate"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Case Description</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="12" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Subject" aura:id="inquirySubject"></lightning:inputField>
+                                <lightning:inputField fieldName="Description" aura:id="inquiryDescription"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Contact and Consumption Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="EndUserName__c" aura:id="inquiryEndUserName"></lightning:inputField>
+                                <lightning:inputField fieldName="CurrentBrandUsed__c" aura:id="inquiryCurrentBrandUsed"></lightning:inputField>
+                                <lightning:inputField fieldName="ProductPackageSize__c" aura:id="inquiryPackageSize"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="CaregiverName__c" aura:id="inquiryCaregiverName"></lightning:inputField>
+                                <lightning:inputField fieldName="ConsumptionperMonthNoofCans__c" aura:id="inquiryConsumption"></lightning:inputField>
+                                <lightning:inputField fieldName="BatchNumber__c" aura:id="inquiryBatchNumber"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Order__c" aura:id="inquiryOrder"></lightning:inputField>
+                                <lightning:inputField fieldName="ParentId" aura:id="inquiryParentId"></lightning:inputField>
+                                <lightning:inputField fieldName="MedicalDiagnosis__c" aura:id="inquiryNutritionHistory"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="Product__c" aura:id="inquiryProduct"></lightning:inputField>
+                                <lightning:inputField fieldName="LoyaltyCardNumber__c" aura:id="inquiryLoyaltyCardNumber"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Resolution Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ResolutionNotes__c" aura:id="inquiryResolutionNotes"></lightning:inputField>
+                                <lightning:inputField fieldName="ResolvedUponOpening__c" aura:id="inquiryResolved"></lightning:inputField>
+                                <lightning:inputField fieldName="ReopenCount__c" aura:id="inquiryReopenCount"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ReplyVia__c" aura:id="inquiryReplyVia"></lightning:inputField>
+                                <lightning:inputField fieldName="ReopenNotes__c" aura:id="inquiryReopenNotes"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>Follow Up Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="FollowUpCallRequired__c" aura:id="inquiryFollowUpCall"></lightning:inputField>
+                                <lightning:inputField fieldName="PreferredDateTimeofCallback__c" aura:id="inquiryPreferredDateTime"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="ReasonofRequestforCallback__c" aura:id="inquiryReasonForCallback"></lightning:inputField>
+                                <lightning:inputField fieldName="ReminderStatus__c" aura:id="inquiryReminderStatus"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        
+                        <br></br>
+                        <div>&nbsp;&nbsp;&nbsp;<b>System Information</b></div>
+                        <lightning:layout>
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                <lightning:inputField fieldName="SourceCreatedDate__c" aura:id="inquirySourceCreatedDate"></lightning:inputField>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                <label for="inquiryWebEmail">Web Email</label>
+                                <lightning:inputField variant="label-hidden" fieldName="SuppliedEmail" aura:id="inquiryWebEmail"></lightning:inputField>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </lightning:recordEditForm>
+                </aura:if>
+            </c:CollapsibleHeader>
+        </aura:if>
+                
+                <center>
+                    <lightning:button class="slds-button slds-button--brand" variant="brand" label="Confirm" onclick="{!c.validateRecords}" disabled="{!v.invalidUser}"></lightning:button>
+                    <lightning:button class="slds-button slds-button--brand" variant="brand" label="Cancel" onclick="{!c.cancelCreation}" disabled="{!v.invalidUser}"></lightning:button>
+                </center>
+            </div>
+        </div>    
+        <div class="slds-col"/>
+    </div>
+</aura:component>

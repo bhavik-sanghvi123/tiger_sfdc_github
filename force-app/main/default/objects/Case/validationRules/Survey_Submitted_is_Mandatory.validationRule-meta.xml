@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Survey_Submitted_is_Mandatory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(ISCHANGED(Survey_Link__c),ISCHANGED(CallOutcome__c),ISNEW()),
+!ISBLANK(Survey_Link__c),
+Survey_Submitted__c = false,
+OR(ISPICKVAL(CallOutcome__c,&quot;Successful&quot;),ISPICKVAL(CallOutcome__c,&quot;Unsuccessful&quot;)),
+Market__c = &quot;SG&quot;
+)</errorConditionFormula>
+    <errorMessage>Survey Submitted must be checked when Survey Link is populated and Call Outcome is Successful / Unsuccessful</errorMessage>
+</ValidationRule>

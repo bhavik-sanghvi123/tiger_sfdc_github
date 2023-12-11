@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UncontactableReason__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Filtered lookup to Affiliate Value of record type Uncontactable Reason
+Outcome validation: If Outcome = Uncontactable, Uncontactable Reason is mandatory</description>
+    <externalId>false</externalId>
+    <label>Uncontactable Reason</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Uncontactable Reason</value>
+        </filterItems>
+        <filterItems>
+            <field>Affiliate_Value__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Cases (Uncontactable Reason)</relationshipLabel>
+    <relationshipName>UncontactableReason</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

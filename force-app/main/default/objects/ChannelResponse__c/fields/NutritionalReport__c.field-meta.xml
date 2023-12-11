@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NutritionalReport__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISPICKVAL(BrandRelationship__r.PrimaryContact__r.Account.Market__c,&quot;IN&quot;),
+    HYPERLINK(&quot;https://reports.pediasuregrowthguide.com/customer/details/index.html?id=&quot; +  ExternalAppId__c + &quot;#/growth-chart&quot;, &quot;Open Growth Guide&quot;, &quot;_blank&quot;),
+    &quot;&quot;
+)</formula>
+    <label>Nutritional Report</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

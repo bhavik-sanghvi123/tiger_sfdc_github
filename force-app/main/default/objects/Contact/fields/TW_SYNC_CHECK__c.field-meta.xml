@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TW_SYNC_CHECK__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(RecordType.Name = &apos;Adult&apos;,AND( OR(Phone != null,Email != null,LineUIDPediatric__c != null,  LineUIDAdult__c != null),PrimaryContact__c = True,LineOptOut__c = False ,Blacklisted__c = False, MasterOptOut__c = False ,Active__c = True,RecordType.Name = &apos;Adult&apos;,Market__c =  &apos;TW&apos;),true)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TW_SYNC_CHECK</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

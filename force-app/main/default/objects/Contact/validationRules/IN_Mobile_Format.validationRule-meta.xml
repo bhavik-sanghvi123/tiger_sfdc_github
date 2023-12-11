@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IN_Mobile_Format</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+	OR(
+		ISNEW(),
+		ISCHANGED(Phone)
+	),
+	!ISBLANK(Phone),
+	Market__c == &apos;IN&apos;,
+	OR(
+		AND(
+			LEN(Phone) != 10,
+			LEN(Phone) != 13
+		),
+		AND(
+			LEN(Phone) = 10,
+			NOT(REGEX(Phone, &quot;[6-9]{1}[0-9]{9}&quot;))
+		),
+		AND(
+			LEN(Phone) = 13,
+			NOT(REGEX(Phone, &quot;\\+91[6-9][0-9]{9}&quot;))
+		)
+	)
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Invalid Mobile Number. Please enter 10 or 13 digit number. 10 digit number should start with 6,7,8,9. 13 digit number should start with +91 followed by 10 digit number and should start with 6,7,8,9.</errorMessage>
+</ValidationRule>

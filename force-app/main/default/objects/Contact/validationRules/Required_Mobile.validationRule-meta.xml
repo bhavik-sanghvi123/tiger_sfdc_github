@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Mobile</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISPICKVAL(Account.Market__c,&quot;ANZ&quot;)),
+    ISBLANK(Parent__c),
+    ISBLANK(Phone),
+    PrimaryContact__c,
+    OR(
+     ISNEW(),
+     ISCHANGED(Phone)
+    ),
+    NOT(CONTAINS(Account.Name,&apos;Social Contacts&apos;)),
+    To_be_archived__c = false,
+    OR(
+	ISPICKVAL(ProfileStatus__c,&quot;Complete&quot;),
+	ISPICKVAL(ProfileStatus__c,&quot;&quot;)
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Required field missing: Mobile</errorMessage>
+</ValidationRule>

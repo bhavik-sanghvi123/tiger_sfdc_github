@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Product_Malaysia_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>MY</literalValue>
+        <name>Product: Malaysia Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Product_Philippines_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>PH</literalValue>
+        <name>Product: Philippines Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Product_Singapore_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>SG</literalValue>
+        <name>Product: Singapore Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Product_Taiwan_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TW</literalValue>
+        <name>Product: Taiwan Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Product_Thailand_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TH</literalValue>
+        <name>Product: Thailand Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Product_Vietnam_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>VN</literalValue>
+        <name>Product: Vietnam Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Malaysia</fullName>
+        <actions>
+            <name>Product_Malaysia_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Malaysia&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Philippines</fullName>
+        <actions>
+            <name>Product_Philippines_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Philippines&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Singapore</fullName>
+        <actions>
+            <name>Product_Singapore_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Singapore&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Taiwan</fullName>
+        <actions>
+            <name>Product_Taiwan_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Taiwan&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Thailand</fullName>
+        <actions>
+            <name>Product_Thailand_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Thailand&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Product%3A Auto Populate Market - Vietnam</fullName>
+        <actions>
+            <name>Product_Vietnam_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Vietnam&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

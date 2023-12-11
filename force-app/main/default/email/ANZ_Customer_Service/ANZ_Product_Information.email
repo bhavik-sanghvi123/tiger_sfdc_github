@@ -1,0 +1,127 @@
+<messaging:emailTemplate subject="{!RelatedTo.Subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+    <html>
+        Good Afternoon
+        <br/><br/>
+
+        It was great speaking to you today over the phone. I really appreciated your time today.
+        <br/><br/>
+        
+        I have included some key points on Ensure, Glucerna and PediaSure.  I hope this information will be helpful for you and your staff should you have any enquiries from customers regarding our products.
+        <br/>
+        
+        You can find more information on our websites which I have provided for you below:
+        <br/><br/>
+        
+        <a href="www.abbottnutrition.com.au">www.abbottnutrition.com.au</a><br/>
+        <a href="www.pediasure.com.au">www.pediasure.com.au</a><br/>
+        <a href="www.glucerna.com.au">www.glucerna.com.au</a><br/>
+        <a href="www.ensure.com.au">www.ensure.com.au</a>
+        <br/><br/>
+        
+        Abbott Nutrition brands are sold in Pharmacy only, whereas some brands in the category are also sold in supermarkets, which is a reflection of our high quality. All of our brands are backed by decades of clinical studies in Australia and overseas, and we continue to improve our nutritional offerings through the work of our R&amp;D centres based in Europe, USA and Asia.
+        <br/><br/>
+        
+        <b><u>Our Brands</u></b>
+        <br/><br/>
+        
+        <b><u>Ensure</u></b>
+        <br/>
+        <a href="www.ensure.com.au"> <img src="https://anitiger--c.documentforce.com/servlet/servlet.ImageServer?id=0152j0000004q9z&oid=00D0o000001CSAO" alt=""/> </a>
+        
+        <br/><br/>
+        
+        Chances are that some of your older customers may not be eating as well as they used to, because of medications, missed meals or simply a busy lifestyle. Ensure offers complete, balanced nutrition and a wide range of other benefits.
+        <br/><br/>
+
+        <ul>
+            <li>Ensure is a high quality health shake that contains 28 essential vitamins and minerals.</li>
+            <li>It is for anyone looking for that additional nutritional boost to help them maintain a healthy, active lifestyle.</li>
+            <li>Ensure contains protein muscle health, calcium and Vitamin D to help maintain bone health and B Vitamins for energy.</li>
+            <li>It’s low in saturated fat and cholesterol which is in line with key Heart Foundation recommendations.</li>
+            <li>Ensure is also beneficial for people with chronic conditions which could be affecting their food intake, and good nutrition has been shown to help in recovery following surgery and illness.</li>
+        </ul>
+        <br/>
+        <u>For those consumers looking for an alternative to lower GI product they can also use Glucerna.</u>
+        <br/><br/>
+        
+        An icy cold glass of Ensure with breakfast is an easy and delicious way to start each day!
+        <br/><br/>
+        
+        <b><u>Glucerna</u></b><br/>
+        <a href="www.glucerna.com.au"> <img src="https://anitiger--c.documentforce.com/servlet/servlet.ImageServer?id=0152j0000004qA4&oid=00D0o000001CSAO" alt=""/> </a>
+        <br/><br/>
+        
+        For your customers with Diabetes, nutrition is a vital part of their diabetes management plan. 
+        <br/><br/>
+        
+        Glucerna is a delicious, Low-GI shake-style drink specially developed for people with diabetes or people with impaired glucose tolerance.
+        <br/>
+        
+        Simply replacing one or two snacks per day with Glucerna mixed with cold water, will provide you with complete, balanced nutrition to help deliver the steady energy you need.
+        <br/><br/>
+        
+
+        <ul>
+            <li><b>Helps minimise blood sugar response</b></li>
+                <ul>
+                    <li>Low Glycaemic index (Powder GI=41, Liquid GI = 19)</li>
+                    <li>Slow-release carbohydrate system</li>
+                </ul>
+            <li><b>Healthy fat Blend</b></li>
+                <ul>
+                    <li>Low in cholesterol</li>
+                    <li>Low in saturated fat</li>
+                    <li>Contains Omega 3 &amp; Omega 6</li>
+                </ul>
+            <li><b>Supports Dietary management plan</b></li>
+                <ul>
+                    <li>Complete &amp; balanced nutrition</li>
+                    <li>Suitable as a dietary supplement</li>
+                </ul>
+            </ul>
+        <br/><br/>
+        
+        <b><u>PediaSure</u></b>
+        <br/>
+        <a href="www.pediasure.com.au"> <img src="https://anitiger--c.documentforce.com/servlet/servlet.ImageServer?id=0152j0000004q9u&oid=00D0o000001CSAO" alt=""/> </a>
+        <br/><br/>
+        
+        If your customer has a fussy eater at home, or just have nutritional gaps that need filling, why not recommend PediaSure, Australia’s leading health shake for kids*? PediaSure is a delicious shake-style drink for kids aged 1-10, that can be their perfect partner while mum works to introduce a wider range of foods. And if the child is not overly fussy, but mum is worried that they may just not be getting enough nutrients from their diet, serving a couple of glasses of PediaSure a day can give her the reassurance that her child is getting the vitamins, minerals and macronutrients that they might be missing out on. PediaSure is also a valuable source of nutrition when the child does not feel like eating, such as after dental surgery or illness.
+        <br/><br/>
+        
+        PediaSure offers so much:
+        <br/>
+
+        <ul>
+            <li>The Triple Sure System supports growth, promotes immunity and helps to build a healthy appetite.</li>
+            <li>Unique triple protein complex to help support growth and development</li>
+                <ul>
+                    <li>Sustained release of amino acids needed for growth and development</li>
+                    <li>Now with added DHA to support brain and central nervous system health</li>
+                </ul>
+            <li>Complete, Balanced nutrition with an added symbiotic to support immunity.</li>
+                <ul>
+                    <li>Contains Vitamin A, D, C Zinc plus and added symbiotic – prebiotic fructooloigosaccharide (FOS) and probiotic Lactobacillus acidophilus to help support immunity</li>
+                </ul>
+            <li>27 vitamins and minerals, including zinc and iron to help support a healthy appetite.</li>
+        </ul>
+        <br/>
+
+        We offer PediaSure in the popular 850g can in three delicious flavours (Vanilla, Strawberry and Chocolate), and it’s also available in 200mL bottles – perfect for school lunches. 
+        <br/><br/>
+        
+        
+        If you would like, I will be more than happy to send you out some samples of our products upon your request just by replying to this email. You and your staff can try the products, or if you like, even provide some of the samples to your customers whom you think may benefit. 
+        <br/><br/>
+        
+        Please don’t hesitate to contact me if you have any questions or need any more information. My contact details are below.
+        <br/><br/>
+        
+        
+        <i>This information is provided to address your specific enquiry and is for your personal reference only. Please note that Abbott Australasia only recommends the use of its products in accordance with the product labelling.</i>
+        
+        <c:ANZ_EmailTemplateSignature />
+    </html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

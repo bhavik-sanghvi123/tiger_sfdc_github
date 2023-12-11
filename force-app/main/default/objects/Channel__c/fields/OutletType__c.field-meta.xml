@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OutletType__c</fullName>
+    <externalId>false</externalId>
+    <label>Outlet Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aged Care</fullName>
+                <default>false</default>
+                <label>Aged Care</label>
+            </value>
+            <value>
+                <fullName>HTO</fullName>
+                <default>false</default>
+                <label>HTO</label>
+            </value>
+            <value>
+                <fullName>LSM</fullName>
+                <default>false</default>
+                <label>LSM</label>
+            </value>
+            <value>
+                <fullName>CMH</fullName>
+                <default>false</default>
+                <label>CMH</label>
+            </value>
+            <value>
+                <fullName>Babystores</fullName>
+                <default>false</default>
+                <label>Babystores</label>
+            </value>
+            <value>
+                <fullName>Event/Roadshow</fullName>
+                <default>false</default>
+                <label>Event/Roadshow</label>
+            </value>
+            <value>
+                <fullName>Private Hospital</fullName>
+                <default>false</default>
+                <label>Private Hospital</label>
+            </value>
+            <value>
+                <fullName>Government Hospital</fullName>
+                <default>false</default>
+                <label>Government Hospital</label>
+            </value>
+            <value>
+                <fullName>Paeds clinic</fullName>
+                <default>false</default>
+                <label>Paeds clinic</label>
+            </value>
+            <value>
+                <fullName>GP Clinic</fullName>
+                <default>false</default>
+                <label>GP Clinic</label>
+            </value>
+            <value>
+                <fullName>O&amp;G Centre</fullName>
+                <default>false</default>
+                <label>O&amp;G Centre</label>
+            </value>
+            <value>
+                <fullName>Pharmacy</fullName>
+                <default>false</default>
+                <label>Pharmacy</label>
+            </value>
+            <value>
+                <fullName>Polyclinic</fullName>
+                <default>false</default>
+                <label>Polyclinic</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

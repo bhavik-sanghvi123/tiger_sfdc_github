@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Get_Product_s_Reward_Points_Required</fullName>
+        <field>PointsAmount__c</field>
+        <formula>ProductForRedemption__r.RewardsPointsRequired__c</formula>
+        <name>Get Product&apos;s Reward Points Required</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Auto-populate Reward Points Required</fullName>
+        <actions>
+            <name>Get_Product_s_Reward_Points_Required</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Reward__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Redeem</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,8 @@
+<aura:component implements="lightning:isUrlAddressable,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:appHostable,force:hasRecordId,force:LightningQuickAction" access="global" controller="MINTEL_SurveyFormController">
+    <aura:attribute name="mid" type="String" />
+    <aura:attribute name="chanelId" type="String" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <div class="body">
+        <lightning:container src="{!$Resource.MINTEL_SurveyForm + '/index.html?mid=' + v.mid + '&amp;chanelId=' + v.chanelId }"/>
+    </div>
+</aura:component>

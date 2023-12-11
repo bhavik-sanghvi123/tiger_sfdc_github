@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mobile_with_CountryCode__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Phone &lt;&gt; null, 
+CASE(Market__c, 
+&quot;PH&quot;, &quot;+63&quot; &amp; RIGHT(Phone, 10), 
+&quot;MY&quot;, &quot;6&quot; &amp; Phone,
+null),
+null
+)</formula>
+    <label>Mobile (with Country Code)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

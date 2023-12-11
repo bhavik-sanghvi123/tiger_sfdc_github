@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Used_Product__c</fullName>
+    <description>Current Used Product</description>
+    <externalId>false</externalId>
+    <label>Current Used Product</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Preferred_Product__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ensure_Current</fullName>
+                <default>false</default>
+                <label>อาหารสูตรครบถ้วน</label>
+            </value>
+            <value>
+                <fullName>Glucerna SR_Current</fullName>
+                <default>false</default>
+                <label>อาหารทดแทนสำหรับผู้ป่วยเบาหวาน</label>
+            </value>
+            <value>
+                <fullName>Nepro HP_Current</fullName>
+                <default>false</default>
+                <label>อาหารสูตรสำหรับผู้ป่วยล้างไต</label>
+            </value>
+            <value>
+                <fullName>Prosure_Current</fullName>
+                <default>false</default>
+                <label>อาหารสูตรครบถ้วนให้โปรตีนและอีพีเอสูง สำหรับผู้ป่วยที่มีปัญหาน้ำหนักตัวลดลง</label>
+            </value>
+            <value>
+                <fullName>No_Current</fullName>
+                <default>false</default>
+                <label>ไม่มี</label>
+            </value>
+            <value>
+                <fullName>Ensure</fullName>
+                <default>false</default>
+                <label>Ensure</label>
+            </value>
+            <value>
+                <fullName>Glucerna</fullName>
+                <default>false</default>
+                <label>Glucerna</label>
+            </value>
+            <value>
+                <fullName>Nepro</fullName>
+                <default>false</default>
+                <label>Nepro</label>
+            </value>
+            <value>
+                <fullName>Prosure</fullName>
+                <default>false</default>
+                <label>Prosure</label>
+            </value>
+            <value>
+                <fullName>Protinex</fullName>
+                <default>false</default>
+                <label>Protinex</label>
+            </value>
+            <value>
+                <fullName>Anlene</fullName>
+                <default>false</default>
+                <label>Anlene</label>
+            </value>
+            <value>
+                <fullName>Boost Optimum</fullName>
+                <default>false</default>
+                <label>Boost Optimum</label>
+            </value>
+            <value>
+                <fullName>Once Complete</fullName>
+                <default>false</default>
+                <label>Once Complete</label>
+            </value>
+            <value>
+                <fullName>Blendera</fullName>
+                <default>false</default>
+                <label>Blendera</label>
+            </value>
+            <value>
+                <fullName>Boost Care</fullName>
+                <default>false</default>
+                <label>Boost Care</label>
+            </value>
+            <value>
+                <fullName>Gen-DM</fullName>
+                <default>false</default>
+                <label>Gen-DM</label>
+            </value>
+            <value>
+                <fullName>Once Pro</fullName>
+                <default>false</default>
+                <label>Once Pro</label>
+            </value>
+            <value>
+                <fullName>Once Dialyze</fullName>
+                <default>false</default>
+                <label>Once Dialyze</label>
+            </value>
+            <value>
+                <fullName>Once Renal</fullName>
+                <default>false</default>
+                <label>Once Renal</label>
+            </value>
+            <value>
+                <fullName>Oral Impact</fullName>
+                <default>false</default>
+                <label>Oral Impact</label>
+            </value>
+            <value>
+                <fullName>Neo-Mune</fullName>
+                <default>false</default>
+                <label>Neo-Mune</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <valueName>Ensure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Protinex</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Anlene</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Boost Optimum</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Once Complete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Blendera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ensure</controllingFieldValue>
+            <controllingFieldValue>Glucerna SR</controllingFieldValue>
+            <controllingFieldValue>Nepro HP</controllingFieldValue>
+            <controllingFieldValue>Prosure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Glucerna SR</controllingFieldValue>
+            <valueName>Glucerna</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Glucerna SR</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Boost Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Glucerna SR</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Gen-DM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Glucerna SR</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Once Pro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nepro HP</controllingFieldValue>
+            <valueName>Nepro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nepro HP</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Once Dialyze</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Nepro HP</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Once Renal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Prosure</controllingFieldValue>
+            <valueName>Prosure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Prosure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Oral Impact</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Prosure</controllingFieldValue>
+            <controllingFieldValue>No</controllingFieldValue>
+            <valueName>Neo-Mune</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

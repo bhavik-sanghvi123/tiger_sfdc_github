@@ -1,0 +1,174 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="NewCaseController">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <!--attributes-->
+    <aura:attribute access="PUBLIC" name="openFeebackForm" type="Boolean"  default="false"/>
+    <aura:attribute access="PUBLIC" name="caseFeedbackId" type="String"/>
+    <aura:attribute access="PUBLIC" name="disabled" type="Boolean" default="false"/>
+    <aura:attribute access="PUBLIC" name="systemErrorMessage" type="String" default=""/>
+    <aura:attribute name="sObjectName" type="String" default=""/>
+    
+    <!--prepopulated attributes-->
+    <aura:attribute access="PUBLIC" name="contactId" type="String"/>
+    <aura:attribute access="PUBLIC" name="householdId" type="String"/>
+    <aura:attribute access="PUBLIC" name="parentCaseId" type="String"/>
+    <aura:attribute access="PUBLIC" name="recordTypeId" type="String"/>
+    
+    <lightning:button label="New Feedback" onclick="{!c.doInit}"/>
+    
+    <aura:if isTrue="{!v.openFeebackForm}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container slds-scrollable_y">
+                    <header class="slds-modal__header"> 
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Case: Feedback</h2>
+                    </header>
+                    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="text-align: left;">
+                        <lightning:recordEditForm objectApiName="Case" aura:id="mainFeedbackForm">
+                            
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">  
+                                    <lightning:inputField fieldName="ContactId" aura:id="fbContactId" value="{!v.contactId}" disabled="true"></lightning:inputField>
+                                    <lightning:inputField fieldName="CaseRegarding__c" aura:id="fbCaseRegarding"></lightning:inputField>
+                                    <lightning:inputField fieldName="Classification__c" aura:id="fbClassification"></lightning:inputField>
+                                    <lightning:inputField fieldName="SubClassification__c" aura:id="fbSubClassification"></lightning:inputField>
+                                    <lightning:inputField fieldName="EnquirerType__c" aura:id="fbEnquirerType"></lightning:inputField>
+                                    <lightning:inputField fieldName="Status" aura:id="fbStatus" class="customRequired"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReviewedBy__c" aura:id="fbReviewedBy"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="AccountId" aura:id="fbAccountId" value="{!v.householdId}" disabled="true"></lightning:inputField>
+                                    <lightning:inputField fieldName="Origin" aura:id="fbOrigin" class="customRequired"></lightning:inputField>
+									<lightning:inputField fieldName="Priority" aura:id="fbPriority"></lightning:inputField>
+                                    <lightning:inputField fieldName="Complexity__c" aura:id="fbComplexity"></lightning:inputField>
+                                    <lightning:inputField fieldName="IsSocialCase__c" aura:id="fbSocialCase"></lightning:inputField>
+                                    <lightning:inputField fieldName="EscalatedTo__c" aura:id="fbEscalatedTo"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReviewedDate__c" aura:id="fbReviewedDate"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Case Description</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Subject" aura:id="fbSubject"></lightning:inputField>
+                                    <lightning:inputField fieldName="Description" aura:id="fbDescription"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Product Replacement Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ProductReplacementRequired__c" aura:id="fbProductReplacement"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReplacementProduct__c" aura:id="fbReplacementProduct"></lightning:inputField>
+                                    <lightning:inputField fieldName="Quantity__c" aura:id="fbQuantity"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductReplacementStatus__c" aura:id="fbProductReplacementStatus"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductReplacementDeliveredDate__c" aura:id="fbProductReplacementDeliveredDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="StoreWherePurchased__c" aura:id="fbStoreWherePurchased"></lightning:inputField>
+                                    <lightning:inputField fieldName="DatePurchased__c" aura:id="fbDatePurchased"></lightning:inputField>
+                                    <lightning:inputField fieldName="ManufacturingDate__c" aura:id="fbManufacturingDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="ProductPackageSize__c" aura:id="fbProductPackageSize"></lightning:inputField>
+                                    <lightning:inputField fieldName="Variant__c" aura:id="fbVariant"></lightning:inputField>
+                                    <lightning:inputField fieldName="AbbottAwarenessDate__c" aura:id="fbAbbottAwarenessDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="DateofPackaging__c" aura:id="fbDateofPackaging"></lightning:inputField>
+                                    <lightning:inputField fieldName="TimeCode__c" aura:id="fbTimeCode"></lightning:inputField>
+                                    <lightning:inputField fieldName="DateofIncident__c" aura:id="fbDateofIncident"></lightning:inputField>
+                                    <lightning:inputField fieldName="PackCondition__c" aura:id="fbPackCondition"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="FiletoTrackwise__c" aura:id="fbFileToTrackwise"></lightning:inputField>
+                                    <lightning:inputField fieldName="TrackwiseID__c" aura:id="fbTrackwiseID"></lightning:inputField>
+                                    <lightning:inputField fieldName="Replacement_Notes__c" aura:id="fbReplacementNotes"></lightning:inputField>
+                                    <lightning:inputField fieldName="CustomerCertificationAttached__c" aura:id="fbCustomerCertification"></lightning:inputField>
+                                    <lightning:inputField fieldName="DateOpenedUsed__c" aura:id="fbDateOpenedUsed"></lightning:inputField>
+                                    <lightning:inputField fieldName="ExpiryDate__c" aura:id="fbExpiryDate"></lightning:inputField>
+                                    <lightning:inputField fieldName="BatchNumber__c" aura:id="fbBatchNumber"></lightning:inputField>
+                                    <lightning:inputField fieldName="LotNumber__c" aura:id="fbLotNumber"></lightning:inputField>
+                                    <lightning:inputField fieldName="RecommendedBy__c" aura:id="fbRecommendedBy"></lightning:inputField>
+                                    <lightning:inputField fieldName="AdditionalObservation__c" aura:id="fbAdditionalObservation"></lightning:inputField>
+                                    <lightning:inputField fieldName="SampleAvailability__c" aura:id="fbSampleAvailability"></lightning:inputField>
+                                    <lightning:inputField fieldName="ResponseLetterisRequired__c" aura:id="fbResponseLetterisRequired"></lightning:inputField>
+                                    <lightning:inputField fieldName="UsageDetails__c" aura:id="fbUsageDetails"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Additional Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Order__c" aura:id="fbOrder"></lightning:inputField>
+                                    <aura:if isTrue="{!v.sObjectName == 'Case'}">
+                                    	<lightning:inputField fieldName="ParentId" aura:id="fbParentId" value="{!v.parentCaseId}" disabled="true"></lightning:inputField>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.sObjectName == 'Contact'}">
+                                    	<lightning:inputField fieldName="ParentId" aura:id="fbParentId"></lightning:inputField>
+                                    </aura:if>
+                                    <lightning:inputField fieldName="MedicalDiagnosis__c" aura:id="fbNutritionHistory"></lightning:inputField>
+                                    <lightning:inputField fieldName="LevelofEscalation__c" aura:id="fbLevelofEscalation"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="Product__c" aura:id="fbProduct"></lightning:inputField>
+                                    <lightning:inputField fieldName="Retention__c" aura:id="fbRetention"></lightning:inputField>
+                                    <lightning:inputField fieldName="State__c" aura:id="fbState"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Resolution Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ResolutionNotes__c" aura:id="fbResolutionNotes"></lightning:inputField>
+                                    <lightning:inputField fieldName="ResolvedUponOpening__c" aura:id="fbResolved"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReopenCount__c" aura:id="fbReopenCount"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <lightning:inputField fieldName="ReplyVia__c" aura:id="fbReplyVia"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReopenNotes__c" aura:id="fbReopenNotes"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>Follow Up Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="FollowUpCallRequired__c" aura:id="fbFollowUpCall"></lightning:inputField>
+                                    <lightning:inputField fieldName="PreferredDateTimeofCallback__c" aura:id="fbPreferredDateTime"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+                                    <lightning:inputField fieldName="ReasonofRequestforCallback__c" aura:id="fbReasonForCallback"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <br></br>
+                            <div>&nbsp;&nbsp;&nbsp;<b>System Information</b></div>
+                            <lightning:layout>
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small"> 
+									<lightning:inputField fieldName="SourceCreatedDate__c" aura:id="fbSourceCreatedDate"></lightning:inputField>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem size="6" flexibility="auto" padding="around-small">
+                                    <label for="fbWebEmail">Web Email</label>
+                                    <lightning:inputField variant="label-hidden" fieldName="SuppliedEmail" aura:id="fbWebEmail"></lightning:inputField>
+                                    <lightning:inputField fieldName="ReminderStatus__c" aura:id="fbReminderStatus"></lightning:inputField>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <div class="slds-m-top_medium">
+                                <center>
+                                    <lightning:button disabled="{!v.disabled}" variant="brand" type="cancel" name="cancel" label="Cancel" onclick="{!c.onCancel}"></lightning:button>
+                                    <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Save" onclick="{!c.onSave}"></lightning:button>
+                                </center>
+                            </div>
+                        </lightning:recordEditForm>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

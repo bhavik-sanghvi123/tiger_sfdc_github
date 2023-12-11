@@ -1,0 +1,9 @@
+<template>
+    <div class="slds-card" if:true={showSurvey}>
+        <lightning-layout>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <iframe src={surveyLink} frameborder="0" height="300px" width="100%"></iframe>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

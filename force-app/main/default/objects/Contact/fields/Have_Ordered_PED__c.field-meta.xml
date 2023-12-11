@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_Ordered_PED__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>[13-Aug-21 Khai] As part of US-2957, [PED] be able to recognize if a contact has a purchase of a standard priced PED product</description>
+    <externalId>false</externalId>
+    <label>Have Ordered PED</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

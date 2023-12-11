@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>TH</label>
+    <protected>false</protected>
+    <values>
+        <field>BPCSEntity__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>BPCSTradingPartner__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>BrandNewRegistrationInterval__c</field>
+        <value xsi:type="xsd:double">3.0</value>
+    </values>
+    <values>
+        <field>CallDueDateWarningThreshold__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ChannelNewRegistrationValidity__c</field>
+        <value xsi:type="xsd:double">12.0</value>
+    </values>
+    <values>
+        <field>CrossSellChannelReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DefaultCallTargetCompletionTime__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+    <values>
+        <field>DefaultSocialAccount__c</field>
+        <value xsi:type="xsd:string">TH Social Contacts</value>
+    </values>
+    <values>
+        <field>DefaultSocialChannel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DefaulteStoreChannel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EmailToCaseOrgWideEmailAddress__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EnableContactDetailRemindersonEmail__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>FeedbackEscalationOrgWideEmail__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>GSTRate__c</field>
+        <value xsi:type="xsd:double">7.0</value>
+    </values>
+    <values>
+        <field>MilkCodeRestrictionPeriod__c</field>
+        <value xsi:type="xsd:double">12.0</value>
+    </values>
+    <values>
+        <field>NextAttemptDueDateinDays__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>OrderCancellationReason__c</field>
+        <value xsi:type="xsd:string">TH-OCR-0006</value>
+    </values>
+    <values>
+        <field>OrderStatusItemLevel__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>PeriodtRequest__c</field>
+        <value xsi:type="xsd:double">12.0</value>
+    </values>
+    <values>
+        <field>PreferredDeliveryDateWaitTime__c</field>
+        <value xsi:type="xsd:double">3.0</value>
+    </values>
+    <values>
+        <field>RewardPointsValidPeriod__c</field>
+        <value xsi:type="xsd:double">4.0</value>
+    </values>
+    <values>
+        <field>RouteviaOmniChannel__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>SampleRequestPricebook__c</field>
+        <value xsi:type="xsd:string">TH Sample Pricebook</value>
+    </values>
+</CustomMetadata>

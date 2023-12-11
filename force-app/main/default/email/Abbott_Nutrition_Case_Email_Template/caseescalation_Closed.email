@@ -1,0 +1,12 @@
+Dear Person in Charge,
+
+Please be aware that Case - {!Case.CaseNumber} has been resolved and closed. Please let {!Case.OwnerFullName} - {!Case.OwnerEmail} know if there are any further questions.
+
+Case Number: {!Case.CaseNumber}
+Status: {!Case.Status}
+Date/Time Opened: {!DATETIMEVALUE(Case.CreatedDate)}
+Date/Time Closed: {!DATETIMEVALUE(Case.ClosedDate)}
+Resolution Notes: {!Case.ResolutionNotes__c}
+
+
+{!Case.Link}

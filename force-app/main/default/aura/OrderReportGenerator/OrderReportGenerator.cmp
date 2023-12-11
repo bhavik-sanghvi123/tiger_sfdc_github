@@ -1,0 +1,188 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="OrderReportGeneratorController">
+    <ltng:require scripts="{!$Resource.OrderExportDownload}" />
+    <aura:attribute name="orderRecords" type="sObject" />
+    <aura:attribute name="currentList" type="List" />
+    <aura:attribute name="currentPageNumber" type="Integer" />
+    <aura:attribute name="maxPageNumber" type="Integer" default="1"/>
+    <aura:attribute name="noRecords" type="Boolean" default="true" />
+    <aura:attribute name="openModal" type="Boolean" default="false" />
+    <aura:attribute name="isExported" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="selectedRecordEvent" event="c:OrderReportEvent" action="{!c.downloadExcelFile}"/>
+    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:spinner aura:id="mySpinner" alternativeText="Loading" size="medium" class="slds-hide"/>
+    
+    <lightning:card title="Order Report">
+        <aura:set attribute="actions">
+            <lightning:button label="Export to Excel" onclick="{!c.confirmationExport}"></lightning:button>
+            <lightning:button label="Refresh" onclick="{!c.doInit}"></lightning:button>
+        </aura:set>
+        
+        <p class="slds-p-horizontal_small slds-scrollable_x slds-p-bottom_small">
+            <aura:if isTrue="{!v.noRecords == false}">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Order Number</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Contact">Contact Ref No</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Name">Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Name">Related Contact/Child</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Street 1">{!$Label.c.Street1}</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Building">Building</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Village No">Village No</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Village Name">Village Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Street 2">{!$Label.c.Street2}</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Unit Number">Unit Number</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Ward">Ward</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Road">Road</div>
+                            </th>
+							<th class="" scope="col">
+                                <div class="slds-truncate" title="Sub District">Sub District</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="District">District</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="City">{!$Label.c.City}</div>
+                            </th>
+                             <th class="" scope="col">
+                                <div class="slds-truncate" title="City">Postal Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Home Phone">Home Phone</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Mobile">Mobile</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Other Phone">Other Phone</div>
+                            </th>                            
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Related Campaign">Related Campaign</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Product Number">Order Product Number</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Product Code">Product Code</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Total Quantity">Total Quantity</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Product Name">Product Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Promotion">Promotion</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Amount">Order Amount</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Other Phone">Preferred Delivery Date</div>
+                            </th>
+                             <th class="" scope="col">
+                                <div class="slds-truncate" title="Other Phone">Preferred Delivery Time</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Start Date">Order Start Date</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="File Export Date">File Export Date</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Created By">Created By</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Key Brand">Key Brand</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Notes">Order Notes</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Region">Region</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Order Type">Order Type</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Status">Status</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Payment Method">Payment Method</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Case Number">Case Number</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.currentList}" var="item">
+                            <c:OrderReportGeneratorRow orderItem="{!item}"/>			  
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <!-- Pagination Section -->
+                <aura:if isTrue="{!v.maxPageNumber > 1}">
+                    <br />
+                    <center>
+                        <div class="slds-button-group" role="group">
+                            <button onclick="{!c.firstPage}" class="slds-button slds-button--neutral">
+                                First
+                            </button>
+                            <button onclick="{!c.prevPage}" class="slds-button slds-button--neutral">
+                                Prev
+                            </button>
+                            <button class="slds-button slds-button--neutral display-button">
+                                {!v.currentPageNumber} / {!v.maxPageNumber}
+                            </button>
+                            <button onclick="{!c.nextPage}" class="slds-button slds-button--neutral">
+                                Next
+                            </button>
+                            <button onclick="{!c.lastPage}" class="slds-button slds-button--neutral">
+                                Last
+                            </button>
+                        </div>
+                    </center>
+                </aura:if>
+                <aura:set attribute="else">
+                    <h1 class="{!v.isExported == false ? '' :'slds-hide'}">There are currently no orders in status “Submitted” - No records to export at the moment.</h1>
+                    <h1 class="{!v.isExported ? '' :'slds-hide'}">Please check File Libraries to access exported orders.</h1>
+                </aura:set>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.openModal}">
+                <c:OrderReportGeneratorModal />
+            </aura:if>
+            
+        </p>
+    </lightning:card>
+</aura:component>

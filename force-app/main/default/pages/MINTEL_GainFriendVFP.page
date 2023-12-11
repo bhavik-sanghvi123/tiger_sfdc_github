@@ -1,0 +1,39 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="false" controller="MINTEL_GainFriendController">
+    <apex:includeLightning />
+
+	     
+    <body>
+        
+    <div id="Con" style="height:100vh;"/>
+        
+    <style>
+        body {
+        margin: 0px;
+        width: 100vw;
+        height: 100vh;
+        }
+    </style>
+    
+        
+    <script>
+        Visualforce.remoting.timeout = 120000; // Set timeout at page level
+        var mid = "{!$CurrentPage.parameters.lineId}";
+        var chanelId = "{!$CurrentPage.parameters.chanelId}";
+        var market = "{!$CurrentPage.parameters.Market}";
+        $Lightning.use("c:MINTEL_GainFriendApp", function() { 
+            $Lightning.createComponent(
+                "c:MINTEL_GainFriend",
+                {"mid": mid,
+                "chanelId": chanelId,
+                "Market": market},   
+                "Con",
+                function(cmp) {
+                    console.log("Component is created!");
+                    console.log(cmp);
+                });
+            });
+        
+     </script>
+    </body>
+    
+</apex:page>

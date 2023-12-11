@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Milestone_Identifier</fullName>
+        <field>DuplicateMilestone__c</field>
+        <formula>TEXT(Market__c) &amp; RecordType.DeveloperName &amp; TEXT(MilestoneValue__c)</formula>
+        <name>Milestone Identifier</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Milestone Identifier</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Milestone__c.MilestoneValue__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Milestone__c.IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>MilestoneIdentifier</fullName>
+        <actions>
+            <name>Milestone_Identifier</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Milestone__c.MilestoneValue__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Milestone__c.IsActive__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

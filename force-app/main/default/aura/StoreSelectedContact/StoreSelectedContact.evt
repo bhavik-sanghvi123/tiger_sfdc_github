@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Store Contact value from customLookup component of Contact sObject">
+	<aura:attribute access="PUBLIC" name="orderedForId" type="String"/>
+
+	<!-- Sean Cordova -->
+	<aura:attribute access="PUBLIC" name="orderedForName" type="String"/>
+</aura:event>

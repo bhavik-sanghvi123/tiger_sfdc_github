@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scoop_Successful_Call</fullName>
+    <active>true</active>
+    <description>Number of Scoop picklist become compulsory field when Call Outcome = Successful for Cases</description>
+    <errorConditionFormula>AND
+(
+ Contact.Market__c == &apos;SG&apos;,
+ ISPICKVAL(CallOutcome__c, &apos;Successful&apos;),
+ ISBLANK(TEXT(No_of_Scoop__c )),
+ OR
+ (
+   ISPICKVAL(RelatedCampaign__r.Brand__c, 
+  &quot;Glucerna&quot;),
+   ISPICKVAL(RelatedCampaign__r.Brand__c, 
+  &quot;Ensure&quot;)
+ )
+)</errorConditionFormula>
+    <errorDisplayField>No_of_Scoop__c</errorDisplayField>
+    <errorMessage>Number of Scoop is required when Call Outcome is equal to &quot;Successful&quot; and Product of Related Campaign is Ensure or Glucerna</errorMessage>
+</ValidationRule>

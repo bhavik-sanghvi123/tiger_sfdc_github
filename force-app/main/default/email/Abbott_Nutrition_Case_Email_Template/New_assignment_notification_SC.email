@@ -1,0 +1,10 @@
+*** NEW CASE ASSIGNMENT NOTIFICATION *** </br>
+</br>
+The following social case has been assigned to your queue </br>
+Contact Name: {!Contact.Name} </br>
+Case #: {!Case.CaseNumber} </br>
+Subject: {!Case.Subject} </br>
+Record Type: {!Case.RecordType} </br>
+Priority: {!Case.Priority} </br>
+</br>
+Click on the link to access the case: {!Case.Link}

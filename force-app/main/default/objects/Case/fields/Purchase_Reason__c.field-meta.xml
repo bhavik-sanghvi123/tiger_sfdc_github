@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Purchase Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>CallOutcome__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Better nutrition during pregnancy</fullName>
+                <default>false</default>
+                <label>Better nutrition during pregnancy</label>
+            </value>
+            <value>
+                <fullName>Better nutrition post pregnancy</fullName>
+                <default>false</default>
+                <label>Better nutrition post pregnancy</label>
+            </value>
+            <value>
+                <fullName>Better sleep</fullName>
+                <default>false</default>
+                <label>Better sleep</label>
+            </value>
+            <value>
+                <fullName>Blood sugar control (Low GI)</fullName>
+                <default>false</default>
+                <label>Blood sugar control (Low GI)</label>
+            </value>
+            <value>
+                <fullName>Bone health</fullName>
+                <default>false</default>
+                <label>Bone health</label>
+            </value>
+            <value>
+                <fullName>Catch up growth for height</fullName>
+                <default>false</default>
+                <label>Catch up growth for height</label>
+            </value>
+            <value>
+                <fullName>Catch up growth for weight</fullName>
+                <default>false</default>
+                <label>Catch up growth for weight</label>
+            </value>
+            <value>
+                <fullName>Constipation</fullName>
+                <default>false</default>
+                <label>Constipation</label>
+            </value>
+            <value>
+                <fullName>Cow Milk Protein Allergy</fullName>
+                <default>false</default>
+                <label>Cow Milk Protein Allergy</label>
+            </value>
+            <value>
+                <fullName>Diarrhea</fullName>
+                <default>false</default>
+                <label>Diarrhea</label>
+            </value>
+            <value>
+                <fullName>Feel energetic</fullName>
+                <default>false</default>
+                <label>Feel energetic</label>
+            </value>
+            <value>
+                <fullName>Gain weight</fullName>
+                <default>false</default>
+                <label>Gain weight</label>
+            </value>
+            <value>
+                <fullName>Health maintenance</fullName>
+                <default>false</default>
+                <label>Health maintenance</label>
+            </value>
+            <value>
+                <fullName>Heart health</fullName>
+                <default>false</default>
+                <label>Heart health</label>
+            </value>
+            <value>
+                <fullName>Immunity</fullName>
+                <default>false</default>
+                <label>Immunity</label>
+            </value>
+            <value>
+                <fullName>Joint health</fullName>
+                <default>false</default>
+                <label>Joint health</label>
+            </value>
+            <value>
+                <fullName>Lactose free</fullName>
+                <default>false</default>
+                <label>Lactose free</label>
+            </value>
+            <value>
+                <fullName>Meal replacement – hectic schedule</fullName>
+                <default>false</default>
+                <label>Meal replacement – hectic schedule</label>
+            </value>
+            <value>
+                <fullName>Meal replacement – weight loss</fullName>
+                <default>false</default>
+                <label>Meal replacement – weight loss</label>
+            </value>
+            <value>
+                <fullName>Muscle strength</fullName>
+                <default>false</default>
+                <label>Muscle strength</label>
+            </value>
+            <value>
+                <fullName>Suitable for Vegetarians</fullName>
+                <default>false</default>
+                <label>Suitable for Vegetarians</label>
+            </value>
+            <value>
+                <fullName>Tummy Comfort</fullName>
+                <default>false</default>
+                <label>Tummy Comfort</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Better intelligence</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Better intelligence</label>
+            </value>
+            <value>
+                <fullName>CMPA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CMPA</label>
+            </value>
+            <value>
+                <fullName>Catch up growth</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Catch up growth</label>
+            </value>
+            <value>
+                <fullName>Child likes the taste</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Child likes the taste</label>
+            </value>
+            <value>
+                <fullName>Dental issue – need soft diet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dental issue – need soft diet</label>
+            </value>
+            <value>
+                <fullName>Digestive health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Digestive health</label>
+            </value>
+            <value>
+                <fullName>Drinking since birth</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Drinking since birth</label>
+            </value>
+            <value>
+                <fullName>Easy to prepare and drink</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Easy to prepare and drink</label>
+            </value>
+            <value>
+                <fullName>Hair health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hair health</label>
+            </value>
+            <value>
+                <fullName>Key Nutrient (eg: 2FL / no palm oil)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Key Nutrient (eg: 2FL / no palm oil)</label>
+            </value>
+            <value>
+                <fullName>Key Nutrient (eg: HMB)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Key Nutrient (eg: HMB)</label>
+            </value>
+            <value>
+                <fullName>Like the taste</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Like the taste</label>
+            </value>
+            <value>
+                <fullName>Look younger</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Look younger</label>
+            </value>
+            <value>
+                <fullName>Meal replacement – weight management</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Meal replacement – weight management</label>
+            </value>
+            <value>
+                <fullName>Most expensive brand</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Most expensive brand</label>
+            </value>
+            <value>
+                <fullName>No Applicable</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Applicable</label>
+            </value>
+            <value>
+                <fullName>No Sucrose</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Sucrose</label>
+            </value>
+            <value>
+                <fullName>Old Age</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Old Age</label>
+            </value>
+            <value>
+                <fullName>Peer influence</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Peer influence</label>
+            </value>
+            <value>
+                <fullName>Promotion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Promotion</label>
+            </value>
+            <value>
+                <fullName>Recommended by doctor</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Recommended by doctor</label>
+            </value>
+            <value>
+                <fullName>Skin health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Skin health</label>
+            </value>
+            <value>
+                <fullName>Stomach health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Stomach health</label>
+            </value>
+            <value>
+                <fullName>Trusted brand</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trusted brand</label>
+            </value>
+            <value>
+                <fullName>Underweight</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Underweight</label>
+            </value>
+            <value>
+                <fullName>Want to see how Brand can benefit him/her</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Want to see how Brand can benefit him/her</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Better nutrition during pregnancy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Better nutrition post pregnancy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Better sleep</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Blood sugar control (Low GI)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Bone health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Catch up growth for height</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Catch up growth for weight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Constipation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Cow Milk Protein Allergy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Diarrhea</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Feel energetic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Gain weight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Health maintenance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Heart health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Immunity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Joint health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Lactose free</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Meal replacement – hectic schedule</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Meal replacement – weight loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Muscle strength</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Suitable for Vegetarians</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Tummy Comfort</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Successful</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

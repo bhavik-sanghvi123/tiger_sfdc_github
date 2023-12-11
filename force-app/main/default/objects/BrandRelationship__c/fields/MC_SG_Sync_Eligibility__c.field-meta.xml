@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MC_SG_Sync_Eligibility__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND( PrimaryContact__c != null , PrimaryContact__r.MC_SG_Sync_Eligibility__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MC SG Sync Eligibility</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

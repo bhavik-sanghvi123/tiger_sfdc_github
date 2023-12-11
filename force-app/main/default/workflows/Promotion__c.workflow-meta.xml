@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Promotion_Malaysia_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>MY</literalValue>
+        <name>Promotion: Malaysia Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Philippines_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>PH</literalValue>
+        <name>Promotion: Philippines Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Singapore_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>SG</literalValue>
+        <name>Promotion: Singapore Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Status_into_In_Progress</fullName>
+        <field>Status__c</field>
+        <literalValue>In Progress</literalValue>
+        <name>Promotion: Status into In Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Taiwan_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TW</literalValue>
+        <name>Promotion: Taiwan Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Thailand_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TH</literalValue>
+        <name>Promotion: Thailand Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Promotion_Vietnam_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>VN</literalValue>
+        <name>Promotion: Vietnam Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Malaysia</fullName>
+        <actions>
+            <name>Promotion_Malaysia_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Malaysia&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Philippines</fullName>
+        <actions>
+            <name>Promotion_Philippines_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Philippines&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Singapore</fullName>
+        <actions>
+            <name>Promotion_Singapore_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Singapore&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Taiwan</fullName>
+        <actions>
+            <name>Promotion_Taiwan_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Taiwan&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Thailand</fullName>
+        <actions>
+            <name>Promotion_Thailand_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Thailand&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Auto Populate Market - Vietnam</fullName>
+        <actions>
+            <name>Promotion_Vietnam_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Vietnam&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Promotion%3A Update the Status into In Progress</fullName>
+        <actions>
+            <name>Promotion_Status_into_In_Progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Promotion__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Planned</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Promotion__c.StartDate__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>GIVEN a Promotion is in Status = Planned
+WHEN the Start Date = Today
+THEN the Promotion status is updated to In Progress</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

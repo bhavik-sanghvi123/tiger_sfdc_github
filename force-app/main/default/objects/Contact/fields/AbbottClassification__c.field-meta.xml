@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AbbottClassification__c</fullName>
+    <description>[8-Jul-21 KSK] Used for target object mapping - Dynamics data migration</description>
+    <externalId>false</externalId>
+    <label>Abbott Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>865730001:A</fullName>
+                <default>false</default>
+                <label>865730001:A</label>
+            </value>
+            <value>
+                <fullName>865730002:B</fullName>
+                <default>false</default>
+                <label>865730002:B</label>
+            </value>
+            <value>
+                <fullName>865730003:C</fullName>
+                <default>false</default>
+                <label>865730003:C</label>
+            </value>
+            <value>
+                <fullName>865730000:N</fullName>
+                <default>false</default>
+                <label>865730000:N</label>
+            </value>
+            <value>
+                <fullName>865730006:E</fullName>
+                <default>false</default>
+                <label>865730006:E</label>
+            </value>
+            <value>
+                <fullName>865730007:F</fullName>
+                <default>false</default>
+                <label>865730007:F</label>
+            </value>
+            <value>
+                <fullName>865730008:H</fullName>
+                <default>false</default>
+                <label>865730008:H</label>
+            </value>
+            <value>
+                <fullName>865730009:P</fullName>
+                <default>false</default>
+                <label>865730009:P</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

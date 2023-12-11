@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MonthCreated__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(MONTH(DATEVALUE(CreatedDate)) = 1,
+&quot;January&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 2,
+&quot;February&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 3,
+&quot;March&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 4,
+&quot;April&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 5,
+&quot;May&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 6,
+&quot;June&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 7,
+&quot;July&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 8,
+&quot;August&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 9,
+&quot;September&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 10,
+&quot;October&quot;,
+IF(MONTH(DATEVALUE(CreatedDate)) = 11,
+&quot;November&quot;,
+&quot;December&quot;)))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Month Created</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

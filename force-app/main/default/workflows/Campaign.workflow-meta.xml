@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>CampaignUpdateStatusCompleted</fullName>
+        <field>Status</field>
+        <literalValue>Completed</literalValue>
+        <name>CampaignUpdateStatusCompleted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CampaignUpdateStatusInProgress</fullName>
+        <field>Status</field>
+        <literalValue>In Progress</literalValue>
+        <name>CampaignUpdateStatusInProgress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Auto_Populate_Market_Taiwan</fullName>
+        <field>Market__c</field>
+        <literalValue>TW</literalValue>
+        <name>Campaign: Auto Populate Market - Taiwan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Malaysia_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>MY</literalValue>
+        <name>Campaign: Malaysia Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Philippines_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>PH</literalValue>
+        <name>Campaign: Philippines Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Singapore_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>SG</literalValue>
+        <name>Campaign: Singapore Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Thailand_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TH</literalValue>
+        <name>Campaign: Thailand Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Update_External_Id</fullName>
+        <field>ExternalId__c</field>
+        <formula>ExternalCampaignReference__c</formula>
+        <name>Campaign Update External Id</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Campaign_Vietnam_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>VN</literalValue>
+        <name>Campaign: Vietnam Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Campaign Update External Id</fullName>
+        <actions>
+            <name>Campaign_Update_External_Id</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISPICKVAL(Market__c  , &apos;SG&apos;) ,NOT(ISNULL( ExternalCampaignReference__c )),ExternalCampaignReference__c != ExternalId__c  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Malaysia</fullName>
+        <actions>
+            <name>Campaign_Malaysia_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Malaysia&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Philippines</fullName>
+        <actions>
+            <name>Campaign_Philippines_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Philippines&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Singapore</fullName>
+        <actions>
+            <name>Campaign_Singapore_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Singapore&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Taiwan</fullName>
+        <actions>
+            <name>Campaign_Auto_Populate_Market_Taiwan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Taiwan&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Thailand</fullName>
+        <actions>
+            <name>Campaign_Thailand_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Thailand&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Campaign%3A Auto Populate Market - Vietnam</fullName>
+        <active>true</active>
+        <failedMigrationToolVersion>240.17.7</failedMigrationToolVersion>
+        <formula>CONTAINS($UserRole.Name,&quot;Vietnam&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CampaignUpdateStatusCompleted</fullName>
+        <actions>
+            <name>CampaignUpdateStatusCompleted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Campaign.EndDate</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Campaign.Status</field>
+            <operation>equals</operation>
+            <value>In Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Campaign.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>GIVEN a Campaign is being created / updated, and Start Date = Today, Status = Planned, Approval Status = Approved
+WHEN the Campaign is saved
+THEN the Status is immediately updated to In Progress</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CampaignUpdateStatusInProgress</fullName>
+        <actions>
+            <name>CampaignUpdateStatusInProgress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Campaign.StartDate</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Campaign.Status</field>
+            <operation>equals</operation>
+            <value>Planned</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Campaign.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>GIVEN a Campaign is being created / updated, and Start Date = Today, Status = Planned, Approval Status = Approved
+WHEN the Campaign is saved
+THEN the Status is immediately updated to In Progress</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

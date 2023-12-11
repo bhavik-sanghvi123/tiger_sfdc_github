@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ID_Invalid_Call_Outcome</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND
+    (
+        RecordType.Name = &apos;Call&apos;,
+        Market__c = &apos;ID&apos;,
+        OR(
+            ISCHANGED(Status),
+            ISCHANGED(CallOutcome__c),
+            ISNEW()
+        ),
+        OR(
+            ISPICKVAL(Status,&quot;Pending Second Attempt&quot;),
+            ISPICKVAL(Status,&quot;Pending Third Attempt&quot;),
+            ISPICKVAL(Status,&quot;Pending Fourth Attempt&quot;),
+            ISPICKVAL(Status,&quot;Follow-Up Call Required&quot;)
+        ),
+        !ISPICKVAL(CallOutcome__c,&quot;Unsuccessful&quot;),
+        !ISPICKVAL(CallOutcome__c,&quot;Uncontactable&quot;),
+        !ISPICKVAL(CallOutcome__c,&quot;Invalid&quot;)
+    )</errorConditionFormula>
+    <errorDisplayField>CallOutcome__c</errorDisplayField>
+    <errorMessage>Can only select Unsuccessful/Uncontactable/Invalid</errorMessage>
+</ValidationRule>

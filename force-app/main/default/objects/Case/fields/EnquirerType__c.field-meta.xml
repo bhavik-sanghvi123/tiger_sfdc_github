@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnquirerType__c</fullName>
+    <externalId>false</externalId>
+    <label>Enquirer Occupation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Aged Care Rep</fullName>
+                <default>false</default>
+                <label>Aged Care Rep</label>
+            </value>
+            <value>
+                <fullName>Dietician</fullName>
+                <default>false</default>
+                <label>Dietician</label>
+            </value>
+            <value>
+                <fullName>GP</fullName>
+                <default>false</default>
+                <label>GP</label>
+            </value>
+            <value>
+                <fullName>Hospital Pharmacist</fullName>
+                <default>false</default>
+                <label>Hospital Pharmacist</label>
+            </value>
+            <value>
+                <fullName>Hospital Rep</fullName>
+                <default>false</default>
+                <label>Hospital Rep</label>
+            </value>
+            <value>
+                <fullName>Nurse</fullName>
+                <default>false</default>
+                <label>Nurse</label>
+            </value>
+            <value>
+                <fullName>Patient/Consumer</fullName>
+                <default>false</default>
+                <label>Patient/Consumer</label>
+            </value>
+            <value>
+                <fullName>Pharmacy Assistant</fullName>
+                <default>false</default>
+                <label>Pharmacy Assistant</label>
+            </value>
+            <value>
+                <fullName>Pharmacy Rep</fullName>
+                <default>false</default>
+                <label>Pharmacy Rep</label>
+            </value>
+            <value>
+                <fullName>Retail Pharmacist</fullName>
+                <default>false</default>
+                <label>Retail Pharmacist</label>
+            </value>
+            <value>
+                <fullName>Specialist</fullName>
+                <default>false</default>
+                <label>Specialist</label>
+            </value>
+            <value>
+                <fullName>Veterinarian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Veterinarian</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

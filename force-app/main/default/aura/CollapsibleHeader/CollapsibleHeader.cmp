@@ -1,0 +1,19 @@
+<aura:component >
+    <aura:attribute name="headerName" type="string"/>
+    <aura:attribute name="body" type="Aura.Component[]"/>
+    <aura:attribute access="PUBLIC" name="household" type="Account"  default="{ 'sobjectType' : 'Account' }"/>
+
+    <div class="slds-section slds-is-open" aura:id="collapsibleSection">
+        <h3 class="slds-section__title slds-theme_shade">
+            <lightning:buttonStateful labelWhenOff="{!v.headerName}"
+                                      labelWhenOn="{!v.headerName}"
+                                      iconNameWhenOff="utility:chevrondown"
+                                      iconNameWhenOn="utility:chevronright"
+                                      onclick="{! c.handleSectionClick }"
+                                      class="slds-section__title-action"></lightning:buttonStateful>
+        </h3> 
+        <div class="slds-section__content">
+            {!v.body}
+        </div>
+    </div>
+</aura:component>

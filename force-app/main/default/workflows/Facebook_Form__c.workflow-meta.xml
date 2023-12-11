@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Facebook_Forms_Market</fullName>
+        <field>Market__c</field>
+        <formula>IF( $UserRole.Name = &apos;ANI - ANZ&apos; , &apos;ANZ&apos;,
+IF ($UserRole.Name = &apos;ANI - India&apos; , &apos;IN&apos;,
+IF ($UserRole.Name = &apos;ANI - Indonesia&apos; , &apos;ID&apos;,
+IF ($UserRole.Name = &apos;ANI - Malaysia&apos; , &apos;MY&apos;,
+IF ($UserRole.Name = &apos;ANI - Philippines&apos; , &apos;PH&apos;,
+IF ($UserRole.Name = &apos;ANI - Singapore&apos; , &apos;SG&apos;,
+IF ($UserRole.Name = &apos;ANI - Thailand&apos; , &apos;TH&apos;,
+IF ($UserRole.Name = &apos;ANI - Vietnam&apos; , &apos;VN&apos;,
+&apos;&apos;
+))))))))</formula>
+        <name>Facebook Forms: Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Facebook Forms%3A Auto Populate Market</fullName>
+        <actions>
+            <name>Facebook_Forms_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(NOT( ISBLANK( $User.Market__c ) ) , ISNEW() )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

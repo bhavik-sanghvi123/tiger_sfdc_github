@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Occupation__c</fullName>
+    <externalId>false</externalId>
+    <label>Occupation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dietician</fullName>
+                <default>false</default>
+                <label>Dietician</label>
+            </value>
+            <value>
+                <fullName>GP</fullName>
+                <default>false</default>
+                <label>GP</label>
+            </value>
+            <value>
+                <fullName>Hospital Pharmacist</fullName>
+                <default>false</default>
+                <label>Hospital Pharmacist</label>
+            </value>
+            <value>
+                <fullName>Nurse</fullName>
+                <default>false</default>
+                <label>Nurse</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Patient/Consumer</fullName>
+                <default>false</default>
+                <label>Patient/Consumer</label>
+            </value>
+            <value>
+                <fullName>Pharmacy Assistant</fullName>
+                <default>false</default>
+                <label>Pharmacy Assistant</label>
+            </value>
+            <value>
+                <fullName>Retail Pharmacist</fullName>
+                <default>false</default>
+                <label>Retail Pharmacist</label>
+            </value>
+            <value>
+                <fullName>Specialist</fullName>
+                <default>false</default>
+                <label>Specialist</label>
+            </value>
+            <value>
+                <fullName>Housewife</fullName>
+                <default>false</default>
+                <label>Housewife</label>
+            </value>
+            <value>
+                <fullName>Private Employee</fullName>
+                <default>false</default>
+                <label>Private Employee</label>
+            </value>
+            <value>
+                <fullName>Government Employee</fullName>
+                <default>false</default>
+                <label>Government Employee</label>
+            </value>
+            <value>
+                <fullName>Entrepreneur/Self-employed</fullName>
+                <default>false</default>
+                <label>Entrepreneur/Self-employed</label>
+            </value>
+            <value>
+                <fullName>Student/College Student</fullName>
+                <default>false</default>
+                <label>Student/College Student</label>
+            </value>
+            <value>
+                <fullName>Retired</fullName>
+                <default>false</default>
+                <label>Retired</label>
+            </value>
+            <value>
+                <fullName>Unwilling to answer</fullName>
+                <default>false</default>
+                <label>Unwilling to answer</label>
+            </value>
+            <value>
+                <fullName>Veterinarian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Veterinarian</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,59 @@
+<aura:component controller="CallRelatedListController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId">
+    <!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>  
+    <aura:attribute name="callRecordType" type="String" />
+    
+    <!--- enableInfiniteLoading  -->
+    <aura:attribute name="enableInfiniteLoading" type="Boolean" default="true"/>
+    <aura:attribute name="initialRows" type="Integer" default="15"/>
+    <aura:attribute name="rowsToLoad" type="Integer" default="5"/>
+    <aura:attribute name="totalNumberOfRows" type="Integer" default="5"/>
+    <aura:attribute name="rowNumberOffset" type="Integer" default="0"/>
+    <aura:attribute name="rowsToAdd" type="Integer" default="5"/>
+    <aura:attribute name="currentCount" type="Integer" default="5"/>
+    
+       
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Name,AccountId"
+                      targetFields="{!v.contactRecord}"
+                      targetError="{!v.recordLoadError}"
+                      />
+    
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    <lightning:workspaceAPI aura:id="workspace" />	
+    <aura:handler event="lightning:tabRefreshed" action="{! c.doInit }"/> 
+    
+    <!-- the container element determine the height of the datatable -->
+    <div class="related_list_themed_border_top" />
+    <lightning:card class="slds-card slds-card_boundary related_list_card_border_top ">
+        
+        <aura:set attribute="title">            
+            <lightning:icon iconName="custom:custom22" size="small" class="image-margin"/>            
+            <span class="slds-card__header-title slds-truncate slds-m-right--xx-small card-header">Call History</span>
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button label="New" onclick="{!c.createCall}"></lightning:button>
+        </aura:set>
+        <p>
+            <div style="height: 190px">
+                
+                <lightning:datatable columns="{! v.columns }"
+                                     data="{! v.data }"
+                                     keyField="id"
+                                     rowNumberOffset="0"
+                                     onrowaction="{! c.handleRowAction }"
+                                     hideCheckboxColumn="true"
+                                     resizeColumnDisabled="true"
+                                     enableInfiniteLoading="{! v.enableInfiniteLoading}"
+                                     loadMoreOffset="{! v.loadMoreOffset }" 
+                                     onloadmore="{! c.loadMoreData }"></lightning:datatable>
+            </div>
+        </p>
+    </lightning:card>    
+</aura:component>

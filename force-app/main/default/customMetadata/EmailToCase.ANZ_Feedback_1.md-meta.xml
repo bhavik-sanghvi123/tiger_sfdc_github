@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ANZ Feedback 1</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>CloseCase__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Email_Template_to_Send__c</field>
+        <value xsi:type="xsd:string">InquiryFeedbackUncontactable_HTML</value>
+    </values>
+    <values>
+        <field>FieldToUpdateAPI__c</field>
+        <value xsi:type="xsd:string">Status</value>
+    </values>
+    <values>
+        <field>FieldToUpdateType__c</field>
+        <value xsi:type="xsd:string">Text</value>
+    </values>
+    <values>
+        <field>FieldToUpdateValue__c</field>
+        <value xsi:type="xsd:string">Closed - Unresolved</value>
+    </values>
+    <values>
+        <field>Market__c</field>
+        <value xsi:type="xsd:string">ANZ</value>
+    </values>
+    <values>
+        <field>PrimaryComparison__c</field>
+        <value xsi:type="xsd:string">Not Equal</value>
+    </values>
+    <values>
+        <field>PrimaryFieldAPI__c</field>
+        <value xsi:type="xsd:string">Status</value>
+    </values>
+    <values>
+        <field>PrimaryValueType__c</field>
+        <value xsi:type="xsd:string">Text</value>
+    </values>
+    <values>
+        <field>PrimaryValue__c</field>
+        <value xsi:type="xsd:string">Completed</value>
+    </values>
+    <values>
+        <field>RecordType__c</field>
+        <value xsi:type="xsd:string">Feedback</value>
+    </values>
+    <values>
+        <field>SecondaryComparison__c</field>
+        <value xsi:type="xsd:string">Equal</value>
+    </values>
+    <values>
+        <field>SecondaryFieldAPI__c</field>
+        <value xsi:type="xsd:string">DaysOpen__c</value>
+    </values>
+    <values>
+        <field>SecondaryValueType__c</field>
+        <value xsi:type="xsd:string">Number</value>
+    </values>
+    <values>
+        <field>SecondaryValue__c</field>
+        <value xsi:type="xsd:string">14</value>
+    </values>
+</CustomMetadata>

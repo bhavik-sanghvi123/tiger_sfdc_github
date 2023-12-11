@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TH_Mobile_Format</fullName>
+    <active>true</active>
+    <description>Mobile Format for Thailand</description>
+    <errorConditionFormula>AND(
+OR(
+ISNEW(),
+ISCHANGED(Phone)
+),
+!ISBLANK(Phone),
+Market__c = &quot;TH&quot;,
+NOT(AND(
+LEN(Phone) &gt;= 9,
+LEN(Phone) &lt;= 10,
+REGEX(Phone, &quot;[0-9]*&quot;)
+))
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>Invalid TH Mobile Number format. Please enter 9-10 digit number.</errorMessage>
+</ValidationRule>

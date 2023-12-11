@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Request__c</fullName>
+    <externalId>false</externalId>
+    <label>Other Request</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ensure Gold Loyalty Rewards card</fullName>
+                <default>false</default>
+                <label>Ensure Gold Loyalty Rewards card</label>
+            </value>
+            <value>
+                <fullName>Glucerna Loyalty Rewards card</fullName>
+                <default>false</default>
+                <label>Glucerna Loyalty Rewards card</label>
+            </value>
+            <value>
+                <fullName>Similac GainSchool Loyalty Rewards card</fullName>
+                <default>false</default>
+                <label>Similac GainSchool Loyalty Rewards card</label>
+            </value>
+            <value>
+                <fullName>Pediasure Plus Loyalty Rewards card</fullName>
+                <default>false</default>
+                <label>Pediasure Plus Loyalty Rewards card</label>
+            </value>
+            <value>
+                <fullName>Ensure Free Sample</fullName>
+                <default>false</default>
+                <label>Ensure Free Sample</label>
+            </value>
+            <value>
+                <fullName>Glucerna Free Sample</fullName>
+                <default>false</default>
+                <label>Glucerna Free Sample</label>
+            </value>
+            <value>
+                <fullName>Pediasure Free Sample</fullName>
+                <default>false</default>
+                <label>Pediasure Free Sample</label>
+            </value>
+            <value>
+                <fullName>Similac Free Sample</fullName>
+                <default>false</default>
+                <label>Similac Free Sample</label>
+            </value>
+            <value>
+                <fullName>Height Chart</fullName>
+                <default>false</default>
+                <label>Height Chart</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

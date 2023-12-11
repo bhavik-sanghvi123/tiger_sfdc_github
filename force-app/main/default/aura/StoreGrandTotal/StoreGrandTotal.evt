@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="">
+	<aura:attribute access="PUBLIC" name="grandTotal" type="Currency"/>
+</aura:event>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReasonsforNoPurchase__c</fullName>
+    <externalId>false</externalId>
+    <label>Reasons for No Purchase</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>有固定購買通路(例如藥局.大賣場.醫院福利社.超商)請備註</fullName>
+                <default>false</default>
+                <label>有固定購買通路(例如藥局.大賣場.醫院福利社.超商)請備註</label>
+            </value>
+            <value>
+                <fullName>有固定服務的業務</fullName>
+                <default>false</default>
+                <label>有固定服務的業務</label>
+            </value>
+            <value>
+                <fullName>價格因素</fullName>
+                <default>false</default>
+                <label>價格因素</label>
+            </value>
+            <value>
+                <fullName>已經滿意小孩現在的成長表現 .考慮轉換(請備註轉換品牌)</fullName>
+                <default>false</default>
+                <label>已經滿意小孩現在的成長表現 .考慮轉換(請備註轉換品牌)</label>
+            </value>
+            <value>
+                <fullName>小孩不合.考慮轉換(請備註品牌)</fullName>
+                <default>false</default>
+                <label>小孩不合.考慮轉換(請備註品牌)</label>
+            </value>
+            <value>
+                <fullName>家中仍有庫存</fullName>
+                <default>false</default>
+                <label>家中仍有庫存</label>
+            </value>
+            <value>
+                <fullName>需與家人討論</fullName>
+                <default>false</default>
+                <label>需與家人討論</label>
+            </value>
+            <value>
+                <fullName>不願轉牌</fullName>
+                <default>false</default>
+                <label>不願轉牌</label>
+            </value>
+            <value>
+                <fullName>沒有試喝小安素</fullName>
+                <default>false</default>
+                <label>沒有試喝產品</label>
+            </value>
+            <value>
+                <fullName>其他(請備註)</fullName>
+                <default>false</default>
+                <label>其他(請備註)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

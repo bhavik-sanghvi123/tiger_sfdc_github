@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NDA_Campaign__c</fullName>
+    <description>ผู้เข้าร่วมกิจกรรมยินดีให้บริษัท แอ๊บบอต ลาบอแรตอริส จำกัด
+(&quot;บริษัทฯ“) ติดต่อทางโทรศัพท์ ข้อความ อีเมล และไปรษณีย์ เพื่อให้
+คำปรึกษาด้านโภชนาการ คำแนะนำเกี่ยวกับผลิตภัณฑ์ โปรโมชั่นพิเศษต่างๆ โดยบริษัทฯ จะเก็บรักษาข้อมูลของผู้เข้าร่วมกิจกรรมไว้เป็นความลับและไม่เผยแพร่ต่อบุคคลอื่น
+
+หมายเหตุ: ท่านสามารถแจ้งยกเลิกการติดต่อจากทางบริษัทฯ ได้
+ตลอดเวลา โดยโทรผ่านทาง Abbott Cares 0-2252-2448 ในเวลาทำการ (08:30 น.- 17:30 น.) จันทร์-ศุกร์ เว้นวันหยุดราชการ</description>
+    <externalId>false</externalId>
+    <label>NDA Campaign</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

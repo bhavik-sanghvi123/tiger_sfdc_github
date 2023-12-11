@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Household_ANZ_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>ANZ</literalValue>
+        <name>Household: ANZ Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_India_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>IN</literalValue>
+        <name>Household: India Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Indonesia_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>ID</literalValue>
+        <name>Household: Indonesia Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Malaysia_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>MY</literalValue>
+        <name>Household: Malaysia Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Philippines_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>PH</literalValue>
+        <name>Household: Philippines Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Singapre_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>SG</literalValue>
+        <name>Household: Singapre Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Taiwan_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TW</literalValue>
+        <name>Household: Taiwan Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Thailand_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>TH</literalValue>
+        <name>Household: Thailand Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Household_Vietnam_Market</fullName>
+        <field>Market__c</field>
+        <literalValue>VN</literalValue>
+        <name>Household: Vietnam Market</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - ANZ</fullName>
+        <actions>
+            <name>Household_ANZ_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;ANZ&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - India</fullName>
+        <actions>
+            <name>Household_India_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;India&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Indonesia</fullName>
+        <actions>
+            <name>Household_Indonesia_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Indonesia&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Malaysia</fullName>
+        <actions>
+            <name>Household_Malaysia_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Malaysia&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Philippines</fullName>
+        <actions>
+            <name>Household_Philippines_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Philippines&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Singapore</fullName>
+        <actions>
+            <name>Household_Singapre_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Singapore&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Taiwan</fullName>
+        <actions>
+            <name>Household_Taiwan_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Taiwan&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Thailand</fullName>
+        <actions>
+            <name>Household_Thailand_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Thailand&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Household%3A Auto Populate Market - Vietnam</fullName>
+        <actions>
+            <name>Household_Vietnam_Market</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>CONTAINS($UserRole.Name,&quot;Vietnam&quot;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

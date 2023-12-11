@@ -1,0 +1,44 @@
+<aura:component>
+	<aura:attribute name="orderItem" type="sObject" />
+	 <tr class="slds-hint-parent">      
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderNumber}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.ContactRefNo__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.Name}</div></td>     
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.OrderedFor__r.Name}</div></td>     
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Street1__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Building__c}</div></td> 
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.VillageNo__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.VillageName__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Street2__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.UnitNumber__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Ward2__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Road__c}</div></td>
+		<td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.SubDistrict__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.District__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.City2__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.PostalCode__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.HomePhone}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.Phone}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderedBy__r.OtherPhone}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.RelatedCampaign__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.v.orderItemNumber}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.PricebookEntry.ProductCode}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Quantity}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.PricebookEntry.Product2.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Promotion__r.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.UnitPrice}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.TotalPrice}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.PreferredDeliveryDate__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.PreferredDeliveryTime__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.EffectiveDate}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.FileExportDate__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.CreatedBy.Name}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.PricebookEntry.Product2.KeyBrand__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.OrderNotes__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.ShippingAddress__r.Region__r.Name}</div></td>        
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.Type}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.Status}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.PaymentMethod__c}</div></td>
+        <td data-label=""><div class="slds-truncate" title="20%">{!v.orderItem.Order.Case__r.CaseNumber}</div></td>
+    </tr>
+</aura:component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Outcome_Mandatory</fullName>
+    <active>true</active>
+    <description>If Call Status is &apos;Pending Second Attempt&apos;, &apos;Pending Third Attempt&apos;, &apos;Pending Fourth Attempt&apos;, or &apos;Completed&apos; then Call Outcome is Mandatory</description>
+    <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Call&apos;, OR(ISPICKVAL(Status, &apos;Pending Second Attempt&apos;), ISPICKVAL(Status, &apos;Pending Third Attempt&apos;), ISPICKVAL(Status, &apos;Pending Fourth Attempt&apos;), ISPICKVAL(Status, &apos;Completed&apos;)), ISBLANK( TEXT(CallOutcome__c)))</errorConditionFormula>
+    <errorMessage>Call Outcome is mandatory if Status is &apos;Pending Second Attempt&apos;, &apos;Pending Third Attempt&apos;, &apos;Pending Fourth Attempt&apos;, or &apos;Completed&apos;</errorMessage>
+</ValidationRule>

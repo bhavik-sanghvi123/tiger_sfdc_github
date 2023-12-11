@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gain_Friends_General_form</fullName>
+    <active>true</active>
+    <label>Gain Friends (General form)</label>
+    <picklistValues>
+        <picklist>Accept_Call_Back__c</picklist>
+        <values>
+            <fullName>Need</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NoNeed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Brand_and_Product__c</picklist>
+        <values>
+            <fullName>Anlene</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blendera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boost Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boost Optimum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gen-DM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glucerna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Neo-Mune</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nepro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Dialyze</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Pro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Renal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oral Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protinex</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

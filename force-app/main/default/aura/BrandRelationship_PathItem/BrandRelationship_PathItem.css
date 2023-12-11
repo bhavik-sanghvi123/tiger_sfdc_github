@@ -1,0 +1,13 @@
+.THIS .slds-path__nav .slds-is-complete .remove-tranform, .THIS.slds-path__nav.slds-is-complete.remove-transform {
+	transform : unset !important;
+	color: white;
+}
+
+.THIS .slds-path__link, .THIS.slds-path__link {
+	cursor: default !important;
+	pointer-events: none;
+}
+
+.THIS .slds-path__item , .THIS.slds-path__item {
+	pointer-events: none;
+}

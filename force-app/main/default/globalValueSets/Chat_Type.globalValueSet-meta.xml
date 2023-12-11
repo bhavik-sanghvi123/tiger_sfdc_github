@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Inquiry</fullName>
+        <default>false</default>
+        <label>Inquiry</label>
+    </customValue>
+    <customValue>
+        <fullName>Complaint</fullName>
+        <default>false</default>
+        <label>Complaint</label>
+    </customValue>
+    <masterLabel>Chat Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

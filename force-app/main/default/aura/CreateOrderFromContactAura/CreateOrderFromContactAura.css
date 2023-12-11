@@ -1,0 +1,95 @@
+/*.THIS #recordForm lightning-button {
+    display : none;
+}
+
+.THIS#block_container {
+    display: inline-flex;
+    padding: 0 0 5px 0;
+}*/
+
+.THIS.pageHeader {
+    background: rgb(243, 242, 242);
+}
+
+.THIS.pageBody {
+    background: white;
+    margin-top: 10px;
+}
+
+.THIS .pageMessage {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.THIS .orderHeader {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.THIS .lightning-record-form-cancel {
+    display : none;
+}
+
+.THIS .backUrl {
+    padding-bottom: 5px;
+}
+
+.THIS .headerSub {
+    padding-top: 5px;
+}
+
+.THIS .backbutton {
+    padding: 9px 0 0 0;
+}
+
+.THIS .pageTitle {
+    font-weight: bolder;
+}
+
+.THIS #filterTitle {
+    font-weight: bold;
+}
+
+.THIS .filterTitle {
+    padding: 39px 0 0 0;
+    font-weight: bold;
+}
+
+.THIS .block {
+    display: inline;
+}
+
+.THIS .filterInput {
+    padding-left: 10px;
+    padding-top: 10px;
+    float: left;
+}
+
+.THIS .filterBox {
+    padding: 30px;
+    float: left;
+}
+
+.THIS .filterButton {
+    padding: 0 60px 0 60px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.THIS .createOrderButton {
+    margin: 30px 70px 30px 30px;
+    float: right;
+    padding: 0 60px 0 60px;
+}
+
+.THIS .orderForm {
+    padding: 0 30px 0 0;
+}
+
+.THIS .filterModal {
+    padding: 0 100px 0 100px;
+}
+
+.THIS .orderModalTitle {
+    font-weight: bold;
+}

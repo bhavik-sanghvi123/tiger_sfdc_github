@@ -1,0 +1,24 @@
+<aura:component>
+	<aura:attribute name="summaryRecord" type="sObject" />
+  <aura:registerEvent name="selectedAddressEvent" type="c:NewOrderSummaryEvent"/>
+	<tr >
+		<td  class="padding-left-td">
+             <lightning:button variant="brand" 
+                                  label="Select"
+                                  title="Select"
+                                  onclick="{! c.handleSelected }"></lightning:button>
+		</td>
+        <td  class="padding-left-td">
+            {!v.summaryRecord.Name}
+        </td>
+        <td  class="padding-left-td">
+            <aura:unescapedHtml value="{!v.summaryRecord.FullAddress__c}" />
+        </td>
+        <td class="padding-left-td">
+            <lightning:input type="checkbox" label="default address" checked="{!v.summaryRecord.DefaultAddress__c}" disabled="true"  variant="label-hidden"></lightning:input>
+        </td>
+        <td class="padding-left-td">								        
+    		{!v.summaryRecord.ParentContact__r.Name}				        
+        </td>
+	</tr>
+</aura:component>

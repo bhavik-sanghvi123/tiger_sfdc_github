@@ -1,0 +1,49 @@
+.THIS .productHeader{
+	width: 100%;
+}
+
+.THIS .padding-left-td {
+	padding-left: 0px;
+}
+
+.THIS .padding-horizontal {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.THIS .padding-vertical {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.THIS .header-custom {
+	font-size: medium;
+	background-color: white;
+}
+
+.THIS .edit-form-custom {
+	min-height: 484px;
+}
+
+.THIS .product-table {
+	max-height:470px;
+}
+
+.THIS .product-height {
+	height: 100%;
+}
+
+.THIS .customRequired{
+	font-weight: 400; 
+} 
+
+.THIS .customRequired:before{    
+	content: "*";
+	margin: 0.127rem 0.125rem 0 0.125rem;
+	color: rgb(194, 57, 52);
+	float: left; 
+}
+
+.THIS label.uiLabel {
+    font-size:12px;
+}

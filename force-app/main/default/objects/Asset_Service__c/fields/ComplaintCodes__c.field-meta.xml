@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComplaintCodes__c</fullName>
+    <externalId>false</externalId>
+    <label>Complaint Codes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>001 Rotor will not turn</fullName>
+                <default>false</default>
+                <label>001 Rotor will not turn</label>
+            </value>
+            <value>
+                <fullName>002 Rotor noise</fullName>
+                <default>false</default>
+                <label>002 Rotor noise</label>
+            </value>
+            <value>
+                <fullName>004 Stuck roller on rotor</fullName>
+                <default>false</default>
+                <label>004 Stuck roller on rotor</label>
+            </value>
+            <value>
+                <fullName>006 Rotor Damaged</fullName>
+                <default>false</default>
+                <label>006 Rotor Damaged</label>
+            </value>
+            <value>
+                <fullName>007 Rotor loose</fullName>
+                <default>false</default>
+                <label>007 Rotor loose</label>
+            </value>
+            <value>
+                <fullName>09A Rotor - verbiage required</fullName>
+                <default>false</default>
+                <label>09A Rotor - verbiage required</label>
+            </value>
+            <value>
+                <fullName>09J Rotor not seated</fullName>
+                <default>false</default>
+                <label>09J Rotor not seated</label>
+            </value>
+            <value>
+                <fullName>011 Motor will not turn</fullName>
+                <default>false</default>
+                <label>011 Motor will not turn</label>
+            </value>
+            <value>
+                <fullName>012 Motor noise</fullName>
+                <default>false</default>
+                <label>012 Motor noise</label>
+            </value>
+            <value>
+                <fullName>052 Pump case broken</fullName>
+                <default>false</default>
+                <label>052 Pump case broken</label>
+            </value>
+            <value>
+                <fullName>055 Pole clamp broken/stripped</fullName>
+                <default>false</default>
+                <label>055 Pole clamp broken/stripped</label>
+            </value>
+            <value>
+                <fullName>082 Battery access panel damaged</fullName>
+                <default>false</default>
+                <label>082 Battery access panel damaged</label>
+            </value>
+            <value>
+                <fullName>52G Pump case broken - front</fullName>
+                <default>false</default>
+                <label>52G Pump case broken - front</label>
+            </value>
+            <value>
+                <fullName>52H Pump case broken - rear</fullName>
+                <default>false</default>
+                <label>52H Pump case broken - rear</label>
+            </value>
+            <value>
+                <fullName>54A Excessive spillage - verbiage necessary</fullName>
+                <default>false</default>
+                <label>54A Excessive spillage - verbiage necessary</label>
+            </value>
+            <value>
+                <fullName>55A Broke pole clamp knob</fullName>
+                <default>false</default>
+                <label>55A Broke pole clamp knob</label>
+            </value>
+            <value>
+                <fullName>55B Pole clamp loose</fullName>
+                <default>false</default>
+                <label>55B Pole clamp loose</label>
+            </value>
+            <value>
+                <fullName>59A Pump case - verbiage required</fullName>
+                <default>false</default>
+                <label>59A Pump case - verbiage required</label>
+            </value>
+            <value>
+                <fullName>59L Rattle inside pump</fullName>
+                <default>false</default>
+                <label>59L Rattle inside pump</label>
+            </value>
+            <value>
+                <fullName>59M Infested</fullName>
+                <default>false</default>
+                <label>59M Infested</label>
+            </value>
+            <value>
+                <fullName>021* Shock</fullName>
+                <default>false</default>
+                <label>021* Shock</label>
+            </value>
+            <value>
+                <fullName>022 On/Off switch cannot turn off</fullName>
+                <default>false</default>
+                <label>022 On/Off switch cannot turn off</label>
+            </value>
+            <value>
+                <fullName>023 Damanged cord</fullName>
+                <default>false</default>
+                <label>023 Damanged cord</label>
+            </value>
+            <value>
+                <fullName>024 Fuse</fullName>
+                <default>false</default>
+                <label>024 Fuse</label>
+            </value>
+            <value>
+                <fullName>025 Power shuts off while running</fullName>
+                <default>false</default>
+                <label>025 Power shuts off while running</label>
+            </value>
+            <value>
+                <fullName>093 No power</fullName>
+                <default>false</default>
+                <label>093 No power</label>
+            </value>
+            <value>
+                <fullName>21E Electrical short</fullName>
+                <default>false</default>
+                <label>21E Electrical short</label>
+            </value>
+            <value>
+                <fullName>21F* Overheats</fullName>
+                <default>false</default>
+                <label>21F* Overheats</label>
+            </value>
+            <value>
+                <fullName>21L* Sparking and/or Arcing</fullName>
+                <default>false</default>
+                <label>21L* Sparking and/or Arcing</label>
+            </value>
+            <value>
+                <fullName>21M* Smoke and/or Fire</fullName>
+                <default>false</default>
+                <label>21M* Smoke and/or Fire</label>
+            </value>
+            <value>
+                <fullName>21N* Explosion</fullName>
+                <default>false</default>
+                <label>21N* Explosion</label>
+            </value>
+            <value>
+                <fullName>22A Control knob malfunction</fullName>
+                <default>false</default>
+                <label>22A Control knob malfunction</label>
+            </value>
+            <value>
+                <fullName>22B On/Off switch broken</fullName>
+                <default>false</default>
+                <label>22B On/Off switch broken</label>
+            </value>
+            <value>
+                <fullName>23A Damaged/missing prongs</fullName>
+                <default>false</default>
+                <label>23A Damaged/missing prongs</label>
+            </value>
+            <value>
+                <fullName>23B Cut cord</fullName>
+                <default>false</default>
+                <label>23B Cut cord</label>
+            </value>
+            <value>
+                <fullName>26B Broken LCD</fullName>
+                <default>false</default>
+                <label>26B Broken LCD</label>
+            </value>
+            <value>
+                <fullName>26D Lights do not illuminate</fullName>
+                <default>false</default>
+                <label>26D Lights do not illuminate</label>
+            </value>
+            <value>
+                <fullName>26E Scrolling (stuck)</fullName>
+                <default>false</default>
+                <label>26E Scrolling (stuck)</label>
+            </value>
+            <value>
+                <fullName>26F Missing segments</fullName>
+                <default>false</default>
+                <label>26F Missing segments</label>
+            </value>
+            <value>
+                <fullName>26G Selection pads not operative, inoperative buttons (not stuck)</fullName>
+                <default>false</default>
+                <label>26G Selection pads not operative, inoperative buttons (not stuck)</label>
+            </value>
+            <value>
+                <fullName>26J Touch panel - other - verbiage required</fullName>
+                <default>false</default>
+                <label>26J Touch panel - other - verbiage required</label>
+            </value>
+            <value>
+                <fullName>26P Display light other - verbiage required</fullName>
+                <default>false</default>
+                <label>26P Display light other - verbiage required</label>
+            </value>
+            <value>
+                <fullName>29A Electrical - verbiage required</fullName>
+                <default>false</default>
+                <label>29A Electrical - verbiage required</label>
+            </value>
+            <value>
+                <fullName>031* Over delivery</fullName>
+                <default>false</default>
+                <label>031* Over delivery</label>
+            </value>
+            <value>
+                <fullName>032* Under delivery</fullName>
+                <default>false</default>
+                <label>032* Under delivery</label>
+            </value>
+            <value>
+                <fullName>39A* Inaccurate delivery</fullName>
+                <default>false</default>
+                <label>39A* Inaccurate delivery</label>
+            </value>
+            <value>
+                <fullName>49A Missing parts - verbiage required</fullName>
+                <default>false</default>
+                <label>49A Missing parts - verbiage required</label>
+            </value>
+            <value>
+                <fullName>49D Missing pole clamp knob</fullName>
+                <default>false</default>
+                <label>49D Missing pole clamp knob</label>
+            </value>
+            <value>
+                <fullName>49F Missing rotor</fullName>
+                <default>false</default>
+                <label>49F Missing rotor</label>
+            </value>
+            <value>
+                <fullName>49G Missing battery</fullName>
+                <default>false</default>
+                <label>49G Missing battery</label>
+            </value>
+            <value>
+                <fullName>49H Missing control knob</fullName>
+                <default>false</default>
+                <label>49H Missing control knob</label>
+            </value>
+            <value>
+                <fullName>49I Missing pole clamp assembly</fullName>
+                <default>false</default>
+                <label>49I Missing pole clamp assembly</label>
+            </value>
+            <value>
+                <fullName>49J Missing serial number</fullName>
+                <default>false</default>
+                <label>49J Missing serial number</label>
+            </value>
+            <value>
+                <fullName>063 No audible alarm</fullName>
+                <default>false</default>
+                <label>063 No audible alarm</label>
+            </value>
+            <value>
+                <fullName>064 No flow alarm</fullName>
+                <default>false</default>
+                <label>064 No flow alarm</label>
+            </value>
+            <value>
+                <fullName>065 Does not alarm dose complete</fullName>
+                <default>false</default>
+                <label>065 Does not alarm dose complete</label>
+            </value>
+            <value>
+                <fullName>29B Steady audible alarm</fullName>
+                <default>false</default>
+                <label>29B Steady audible alarm</label>
+            </value>
+            <value>
+                <fullName>62A False occlusion alarm</fullName>
+                <default>false</default>
+                <label>62A False occlusion alarm</label>
+            </value>
+            <value>
+                <fullName>62B False Alarm Empty</fullName>
+                <default>false</default>
+                <label>62B False Alarm Empty</label>
+            </value>
+            <value>
+                <fullName>62C False dose complete alarm</fullName>
+                <default>false</default>
+                <label>62C False dose complete alarm</label>
+            </value>
+            <value>
+                <fullName>69B Alarm - verbiage required</fullName>
+                <default>false</default>
+                <label>69B Alarm - verbiage required</label>
+            </value>
+            <value>
+                <fullName>69H False door/cover</fullName>
+                <default>false</default>
+                <label>69H False door/cover</label>
+            </value>
+            <value>
+                <fullName>69J Does not alarm &quot;&quot;no flow&quot;&quot;</fullName>
+                <default>false</default>
+                <label>69J Does not alarm &quot;&quot;no flow&quot;&quot;</label>
+            </value>
+            <value>
+                <fullName>69L Alarms while in the &quot;&quot;Off&quot;&quot; position</fullName>
+                <default>false</default>
+                <label>69L Alarms while in the &quot;&quot;Off&quot;&quot; position</label>
+            </value>
+            <value>
+                <fullName>69M Does not alarm &quot;&quot;Hold&quot;&quot; position alert</fullName>
+                <default>false</default>
+                <label>69M Does not alarm &quot;&quot;Hold&quot;&quot; position alert</label>
+            </value>
+            <value>
+                <fullName>69N Alarms No Door/Cassette</fullName>
+                <default>false</default>
+                <label>69N Alarms No Door/Cassette</label>
+            </value>
+            <value>
+                <fullName>081 Battery failure</fullName>
+                <default>false</default>
+                <label>081 Battery failure</label>
+            </value>
+            <value>
+                <fullName>81B Low battery</fullName>
+                <default>false</default>
+                <label>81B Low battery</label>
+            </value>
+            <value>
+                <fullName>81E Discharged battery</fullName>
+                <default>false</default>
+                <label>81E Discharged battery</label>
+            </value>
+            <value>
+                <fullName>89A Battery - verbiage required</fullName>
+                <default>false</default>
+                <label>89A Battery - verbiage required</label>
+            </value>
+            <value>
+                <fullName>083 Fault code present</fullName>
+                <default>false</default>
+                <label>083 Fault code present</label>
+            </value>
+            <value>
+                <fullName>99A Pump broken/not working</fullName>
+                <default>false</default>
+                <label>99A Pump broken/not working</label>
+            </value>
+            <value>
+                <fullName>99I Rust/corrosion</fullName>
+                <default>false</default>
+                <label>99I Rust/corrosion</label>
+            </value>
+            <value>
+                <fullName>99T Problem other - verbiage required</fullName>
+                <default>false</default>
+                <label>99T Problem other - verbiage required</label>
+            </value>
+            <value>
+                <fullName>RCL Recall</fullName>
+                <default>false</default>
+                <label>RCL Recall</label>
+            </value>
+            <value>
+                <fullName>D1101 Instructions not followed</fullName>
+                <default>false</default>
+                <label>D1101 Instructions not followed</label>
+            </value>
+            <value>
+                <fullName>D1102 Misuse and/or Abuse</fullName>
+                <default>false</default>
+                <label>D1102 Misuse and/or Abuse</label>
+            </value>
+            <value>
+                <fullName>D1103 Misuse and/or Abuse</fullName>
+                <default>false</default>
+                <label>D1103 Misuse and/or Abuse</label>
+            </value>
+            <value>
+                <fullName>D1104 Instructions not followed</fullName>
+                <default>false</default>
+                <label>D1104 Instructions not followed</label>
+            </value>
+            <value>
+                <fullName>D1105 Customer continues using device when a fault is identified</fullName>
+                <default>false</default>
+                <label>D1105 Customer continues using device when a fault is identified</label>
+            </value>
+            <value>
+                <fullName>D1106 Instructions not followed</fullName>
+                <default>false</default>
+                <label>D1106 Instructions not followed</label>
+            </value>
+            <value>
+                <fullName>D1107 Misuse and/or Abuse</fullName>
+                <default>false</default>
+                <label>D1107 Misuse and/or Abuse</label>
+            </value>
+            <value>
+                <fullName>D11 Instructions not followed</fullName>
+                <default>false</default>
+                <label>D11 Instructions not followed</label>
+            </value>
+            <value>
+                <fullName>071 AC Adaptor</fullName>
+                <default>false</default>
+                <label>071 AC Adaptor</label>
+            </value>
+            <value>
+                <fullName>072 Adult/Pediatric Backpack</fullName>
+                <default>false</default>
+                <label>072 Adult/Pediatric Backpack</label>
+            </value>
+            <value>
+                <fullName>074 UK/EU Extension Cord</fullName>
+                <default>false</default>
+                <label>074 UK/EU Extension Cord</label>
+            </value>
+            <value>
+                <fullName>075 Nurse Call Cable Accessory</fullName>
+                <default>false</default>
+                <label>075 Nurse Call Cable Accessory</label>
+            </value>
+            <value>
+                <fullName>076 RS232 Data Cable Accessory</fullName>
+                <default>false</default>
+                <label>076 RS232 Data Cable Accessory</label>
+            </value>
+            <value>
+                <fullName>077 Table Drip Stand</fullName>
+                <default>false</default>
+                <label>077 Table Drip Stand</label>
+            </value>
+            <value>
+                <fullName>99D Prime Cycle Malfunction</fullName>
+                <default>false</default>
+                <label>99D Prime Cycle Malfunction</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

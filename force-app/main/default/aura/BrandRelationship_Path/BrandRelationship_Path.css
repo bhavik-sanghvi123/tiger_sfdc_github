@@ -1,0 +1,10 @@
+.THIS .slds-path__nav, .THIS.slds-path__nav {
+	margin-right: 0 !important;
+}
+
+.THIS.slds-path {
+    background: rgb(255, 255, 255);    
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    border: 1px solid rgb(221, 219, 218);
+    border-radius: .25rem;
+}

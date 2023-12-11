@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Status_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;First Level Investigation&apos;, call_status__c), 
+CONTAINS(&apos;Escalated&apos;, call_status__c), 
+CONTAINS(&apos;On Hold&apos;, call_status__c),
+CONTAINS(&apos;Pending Second Attempt&apos;, call_status__c),
+CONTAINS(&apos;Pending Third Attempt&apos;, call_status__c), 
+CONTAINS(&apos;Follow-Up Call Required&apos;, call_status__c), 
+CONTAINS(&apos;Closed - Resolved&apos;, call_status__c), 
+CONTAINS(&apos;Closed - Unresolved&apos;, call_status__c),
+CONTAINS(&apos;Completed&apos;, call_status__c),
+CONTAINS(&apos;Cancelled&apos;, call_status__c),
+ISBLANK(call_status__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>call_status__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for Call Status:
+First Level Investigation
+Escalated
+On Hold
+Pending Second Attempt
+Pending Third Attempt
+Follow-Up Call Required
+Closed - Resolved
+Closed - Unresolved
+Completed
+Cancelled</errorMessage>
+</ValidationRule>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_must_be_Accepted</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    (LastModifiedDate-CreatedDate)*24*60 &gt;= 3,
+	AutoAssignCalls__c,
+    OR(
+        CONTAINS($Profile.Name, &quot;ANI Call Center Agent&quot;),
+        CONTAINS($Profile.Name, &quot;ANI Call Center Manager&quot;),
+        CONTAINS($Profile.Name, &quot;ANI Customer Service Agent&quot;)
+    ),
+    RecordType.Name = &quot;Call&quot;,
+    NOT(CallAccepted__c),
+    NOT(ISCHANGED(LatestCallOutcome__c)),
+    NOT(ISCHANGED(Order_Count__c)),
+    NOT(ISCHANGED(TotalNumberoftheProductsOrdered__c)),
+    NOT(ISCHANGED(NumberofConversion__c)),
+    NOT(ISCHANGED(NumberofRetention__c)),
+    NOT(ISCHANGED(NumberofCrossSell__c)),
+    NOT(ISCHANGED(NumberofTrial__c)),
+    NOT(ISCHANGED(NumberofWinBack__c)),
+    NOT(ISCHANGED(NumberofUpSell__c)),
+    NOT(ISCHANGED(OwnerId))
+)</errorConditionFormula>
+    <errorMessage>Call must be accepted before making any changes.</errorMessage>
+</ValidationRule>

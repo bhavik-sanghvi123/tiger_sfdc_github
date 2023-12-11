@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Write_off_Quantity_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>Write_off_Quantity__c &gt;  Allocated_Quantity__c</errorConditionFormula>
+    <errorDisplayField>Write_off_Quantity__c</errorDisplayField>
+    <errorMessage>Write-off quantity must not be greater than Allocated quantity</errorMessage>
+</ValidationRule>

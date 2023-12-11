@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoctorHCP__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Doctor/HCP</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Value should be with record type Doctor/HCP</errorMessage>
+        <filterItems>
+            <field>AbbottPartner__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Doctor/HCP</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>AbbottPartner__c</referenceTo>
+    <relationshipLabel>Channel Responses (Doctor/HCP)</relationshipLabel>
+    <relationshipName>Channel_Responses1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

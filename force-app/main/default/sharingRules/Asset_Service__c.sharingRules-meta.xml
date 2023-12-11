@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_ANZ</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - ANZ</label>
+        <sharedTo>
+            <role>ANI_ANZ</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_ANZ</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_ID</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - ID</label>
+        <sharedTo>
+            <role>ANI_Indonesia</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Indonesia</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_IN</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - IN</label>
+        <sharedTo>
+            <role>ANI_India</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_India</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_MY</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - MY</label>
+        <sharedTo>
+            <role>ANI_Malaysia</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Malaysia</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_PH</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - PH</label>
+        <sharedTo>
+            <role>ANI_Philippines</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Philippines</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_SG</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - SG</label>
+        <sharedTo>
+            <role>ANI_Singapore</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Singapore</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_TH</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - TH</label>
+        <sharedTo>
+            <role>ANI_Thailand</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Thailand</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Asset_Service_Sharing_VN</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Asset Service Sharing - VN</label>
+        <sharedTo>
+            <role>ANI_Vietnam</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>ANI_Vietnam</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

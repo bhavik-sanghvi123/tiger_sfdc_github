@@ -1,0 +1,32 @@
+<aura:component controller="BrandRelationship_PathController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="statusPathList" type="object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="BrandRelationship" type="Object"/>
+    <aura:attribute name="recordSaveError" type="String" default=""/>
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, Status__c, Type__c"
+                      targetFields="{!v.BrandRelationship}"
+                      targetError="{!v.recordSaveError}"
+                      mode="EDIT"
+                      recordUpdated="{!c.handleRecordUpdated}" />
+                  
+        <div class="slds-path" style="margin-top:0">
+            <div class="slds-grid slds-path__track" style="top:0">
+                <div class="slds-grid slds-path__scroller-container">
+                    <div class="slds-path__scroller" role="application">
+                        <div class="slds-path__scroller_inner">
+                            <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                <aura:iteration items="{!v.statusPathList}" var="escalateItem">
+                                    <c:BrandRelationship_PathItem pathRecord="{!escalateItem}"/>
+                                </aura:iteration>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+</aura:component>

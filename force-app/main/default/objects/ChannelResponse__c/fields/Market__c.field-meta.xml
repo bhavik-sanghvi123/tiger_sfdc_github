@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Market__c</fullName>
+    <description>[1-Sep-21 Khai] This field is for troubleshooting by extracting out the market of the Contact</description>
+    <externalId>false</externalId>
+    <formula>Contact__r.Market__c</formula>
+    <label>Market</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

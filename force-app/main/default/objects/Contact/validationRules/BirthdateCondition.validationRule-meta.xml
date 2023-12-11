@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BirthdateCondition</fullName>
+    <active>true</active>
+    <description>Birthdate = LESSER THAN EQUAL TODAY&apos;S DATE</description>
+    <errorConditionFormula>AND(
+            NOT($Profile.Name = &quot;System Administrator&quot;),
+            Birthdate &gt; TODAY(),
+            Market__c != $Label.MarketTW
+        )</errorConditionFormula>
+    <errorMessage>Value of the Birthdate should be in the past</errorMessage>
+</ValidationRule>

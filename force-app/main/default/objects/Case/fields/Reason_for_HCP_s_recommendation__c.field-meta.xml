@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_HCP_s_recommendation__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason for HCP&apos;s recommendation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Sample_Influence__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Better blood sugar control</fullName>
+                <default>false</default>
+                <label>Better blood sugar control</label>
+            </value>
+            <value>
+                <fullName>Customer asks for recommendation</fullName>
+                <default>false</default>
+                <label>Customer asks for recommendation</label>
+            </value>
+            <value>
+                <fullName>Feel fatigue</fullName>
+                <default>false</default>
+                <label>Feel fatigue</label>
+            </value>
+            <value>
+                <fullName>Fussy / Picky eater</fullName>
+                <default>false</default>
+                <label>Fussy / Picky eater</label>
+            </value>
+            <value>
+                <fullName>Lactose intolerance</fullName>
+                <default>false</default>
+                <label>Lactose intolerance</label>
+            </value>
+            <value>
+                <fullName>Leg/joint (bone) pain</fullName>
+                <default>false</default>
+                <label>Leg/joint (bone) pain</label>
+            </value>
+            <value>
+                <fullName>Meal replacement for breakfast</fullName>
+                <default>false</default>
+                <label>Meal replacement for breakfast</label>
+            </value>
+            <value>
+                <fullName>Meal replacement for weight management</fullName>
+                <default>false</default>
+                <label>Meal replacement for weight management</label>
+            </value>
+            <value>
+                <fullName>Muscle loss</fullName>
+                <default>false</default>
+                <label>Muscle loss</label>
+            </value>
+            <value>
+                <fullName>Poor Appetite</fullName>
+                <default>false</default>
+                <label>Poor Appetite</label>
+            </value>
+            <value>
+                <fullName>Underweight / Losing weight</fullName>
+                <default>false</default>
+                <label>Underweight / Losing weight</label>
+            </value>
+            <value>
+                <fullName>Vitamin deficiency (eg: calcium)</fullName>
+                <default>false</default>
+                <label>Vitamin deficiency (eg: calcium)</label>
+            </value>
+            <value>
+                <fullName>Others (Pls specify)</fullName>
+                <default>false</default>
+                <label>Others (Pls specify)</label>
+            </value>
+            <value>
+                <fullName>As supplementation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>As supplementation</label>
+            </value>
+            <value>
+                <fullName>Losing weight recently</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Losing weight recently</label>
+            </value>
+            <value>
+                <fullName>Malnutrition</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Malnutrition</label>
+            </value>
+            <value>
+                <fullName>Not eating well</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not eating well</label>
+            </value>
+            <value>
+                <fullName>Not gaining weight recently</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not gaining weight recently</label>
+            </value>
+            <value>
+                <fullName>Underweight</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Underweight</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Better blood sugar control</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Customer asks for recommendation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Feel fatigue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Fussy / Picky eater</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Lactose intolerance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Leg/joint (bone) pain</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Meal replacement for breakfast</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Meal replacement for weight management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Muscle loss</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Poor Appetite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Underweight / Losing weight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Vitamin deficiency (eg: calcium)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pediatrician’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Gynecologist’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Dietitian&apos;s recommendation</controllingFieldValue>
+            <controllingFieldValue>Doctors’s recommendation</controllingFieldValue>
+            <controllingFieldValue>Nurse’s recommendation</controllingFieldValue>
+            <valueName>Others (Pls specify)</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

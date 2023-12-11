@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="HouseholdAndContactCreatePage_CC">
+    <aura:attribute name="accountId" type="String" access="public"/>
+    <aura:attribute access="PUBLIC" name="primaryContact" type="Contact"  default="{ 'sobjectType' : 'Contact' }"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.navigateToMyComponent}"/>
+    <center>Redirecting to Record Creation Page... </center>
+</aura:component>

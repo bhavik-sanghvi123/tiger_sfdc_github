@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PreferredContactMethod</fullName>
+                <default>false</default>
+                <label>PreferredContactMethod</label>
+            </value>
+            <value>
+                <fullName>Customer Purchased from store</fullName>
+                <default>false</default>
+                <label>Customer Purchased from store</label>
+            </value>
+            <value>
+                <fullName>AdultBrandUsed</fullName>
+                <default>false</default>
+                <label>AdultBrandUsed</label>
+            </value>
+            <value>
+                <fullName>CNSbrandused</fullName>
+                <default>false</default>
+                <label>CNSbrandused</label>
+            </value>
+            <value>
+                <fullName>Have you taken PediaSure</fullName>
+                <default>false</default>
+                <label>Have you taken PediaSure</label>
+            </value>
+            <value>
+                <fullName>BuyingFor</fullName>
+                <default>false</default>
+                <label>BuyingFor</label>
+            </value>
+            <value>
+                <fullName>DiabeticTreatment</fullName>
+                <default>false</default>
+                <label>DiabeticTreatment</label>
+            </value>
+            <value>
+                <fullName>DurationSupplement</fullName>
+                <default>false</default>
+                <label>DurationSupplement</label>
+            </value>
+            <value>
+                <fullName>Childfacingproblem</fullName>
+                <default>false</default>
+                <label>Childfacingproblem</label>
+            </value>
+            <value>
+                <fullName>lossOfStrength</fullName>
+                <default>false</default>
+                <label>lossOfStrength</label>
+            </value>
+            <value>
+                <fullName>How often do you consume HFD?</fullName>
+                <default>false</default>
+                <label>How often do you consume HFD?</label>
+            </value>
+            <value>
+                <fullName>Current Brand Rating</fullName>
+                <default>false</default>
+                <label>Current Brand Rating</label>
+            </value>
+            <value>
+                <fullName>DurationofDiabetes_c</fullName>
+                <default>false</default>
+                <label>DurationofDiabetes_c</label>
+            </value>
+            <value>
+                <fullName>PreferredFlavor</fullName>
+                <default>false</default>
+                <label>PreferredFlavor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

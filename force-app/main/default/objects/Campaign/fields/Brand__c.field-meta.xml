@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand__c</fullName>
+    <externalId>false</externalId>
+    <label>Key Brand</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Elecare</fullName>
+                <default>false</default>
+                <label>Elecare</label>
+            </value>
+            <value>
+                <fullName>Ensure</fullName>
+                <default>false</default>
+                <label>Ensure</label>
+            </value>
+            <value>
+                <fullName>Ensure Diabetes Care</fullName>
+                <default>false</default>
+                <label>Ensure Diabetes Care</label>
+            </value>
+            <value>
+                <fullName>Flexifo</fullName>
+                <default>false</default>
+                <label>Flexifo</label>
+            </value>
+            <value>
+                <fullName>Freego</fullName>
+                <default>false</default>
+                <label>Freego</label>
+            </value>
+            <value>
+                <fullName>Glucerna</fullName>
+                <default>false</default>
+                <label>Glucerna</label>
+            </value>
+            <value>
+                <fullName>Grow</fullName>
+                <default>false</default>
+                <label>Grow</label>
+            </value>
+            <value>
+                <fullName>IMF</fullName>
+                <default>false</default>
+                <label>IMF</label>
+            </value>
+            <value>
+                <fullName>Jevity</fullName>
+                <default>false</default>
+                <label>Jevity</label>
+            </value>
+            <value>
+                <fullName>Multi-Brand</fullName>
+                <default>false</default>
+                <label>Multi-Brand</label>
+            </value>
+            <value>
+                <fullName>Pediasure</fullName>
+                <default>false</default>
+                <label>Pediasure</label>
+            </value>
+            <value>
+                <fullName>Similac</fullName>
+                <default>false</default>
+                <label>Similac</label>
+            </value>
+            <value>
+                <fullName>Similac Core</fullName>
+                <default>false</default>
+                <label>Similac Core</label>
+            </value>
+            <value>
+                <fullName>Similac Mom</fullName>
+                <default>false</default>
+                <label>Similac Mom</label>
+            </value>
+            <value>
+                <fullName>Similac Total Comfort</fullName>
+                <default>false</default>
+                <label>Similac Total Comfort</label>
+            </value>
+            <value>
+                <fullName>Nepro</fullName>
+                <default>false</default>
+                <label>Nepro</label>
+            </value>
+            <value>
+                <fullName>Osmolite</fullName>
+                <default>false</default>
+                <label>Osmolite</label>
+            </value>
+            <value>
+                <fullName>RCF</fullName>
+                <default>false</default>
+                <label>RCF</label>
+            </value>
+            <value>
+                <fullName>Twocal</fullName>
+                <default>false</default>
+                <label>Twocal</label>
+            </value>
+            <value>
+                <fullName>Vital 1.5Kcal</fullName>
+                <default>false</default>
+                <label>Vital 1.5Kcal</label>
+            </value>
+            <value>
+                <fullName>Other MND</fullName>
+                <default>false</default>
+                <label>Other MND</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Isomil</fullName>
+                <default>false</default>
+                <label>Isomil</label>
+            </value>
+            <value>
+                <fullName>Prosure</fullName>
+                <default>false</default>
+                <label>Prosure</label>
+            </value>
+            <value>
+                <fullName>Nepro HP</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nepro HP</label>
+            </value>
+            <value>
+                <fullName>Nepro LP</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nepro LP</label>
+            </value>
+            <value>
+                <fullName>Similac 3</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Similac 3</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

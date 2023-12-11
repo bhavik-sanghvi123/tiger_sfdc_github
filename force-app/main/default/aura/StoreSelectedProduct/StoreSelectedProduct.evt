@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Store Product value from customLookup component of Product sObject">
+	<aura:attribute access="PUBLIC" name="productId" type="String"/>
+    <aura:attribute access="PUBLIC" name="productName" type="String"/>
+    <aura:attribute access="PUBLIC" name="productCode" type="String"/>
+    <aura:attribute access="PUBLIC" name="productRecordType" type="String"/>
+</aura:event>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Treatment_Allowed_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Chemotherapy&apos;, current_treatment__c), 
+CONTAINS(&apos;Diet &amp; Insulin&apos;, current_treatment__c), 
+CONTAINS(&apos;Diet &amp; Oral medication&apos;, current_treatment__c),
+CONTAINS(&apos;Diet Control&apos;, current_treatment__c),
+CONTAINS(&apos;Medication &amp; Insulin&apos;, current_treatment__c), 
+CONTAINS(&apos;Medication only&apos;, current_treatment__c), 
+CONTAINS(&apos;Radiotherapy&apos;, current_treatment__c), 
+CONTAINS(&apos;Surgery&apos;, current_treatment__c),
+ISBLANK(current_treatment__c) 
+) )</errorConditionFormula>
+    <errorDisplayField>current_treatment__c</errorDisplayField>
+    <errorMessage>Below are the only allowed values for Current Treatment:
+Chemotherapy
+Diet &amp; Insulin
+Diet &amp; Oral medication
+Diet Control
+Medication &amp; Insulin
+Medication only
+Radiotherapy
+Surgery</errorMessage>
+</ValidationRule>

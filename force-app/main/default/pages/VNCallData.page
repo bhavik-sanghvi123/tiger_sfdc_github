@@ -1,0 +1,339 @@
+<apex:page controller="ExportVNCallController" contentType="application/vnd.ms-excel" standardStylesheets="false" showHeader="false"	>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	</head>
+    <apex:dataTable value="{!cWrapperList}" var="call" id="resultTable">
+                 <apex:column >
+                     <apex:facet name="header">Call ID</apex:facet>                     
+                     <apex:outputText value="{!call.callID}" escape="false"/>
+                 </apex:column>
+                 <apex:column >
+                     <apex:facet name="header">Brand to be discussed</apex:facet>
+                     <apex:outputText value="{!call.brandToBeDiscussed}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Campaign name</apex:facet>
+                     <apex:outputText value="{!call.campaignName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact ID</apex:facet>
+                     <apex:outputText value=" {!call.mainContactID}  " escape="false"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact First Name</apex:facet>
+                     <apex:outputText value="{!call.mainContactFirstName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact Last Name</apex:facet>
+                     <apex:outputText value="{!call.mainContactLastName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact Full Name</apex:facet>
+                     <apex:outputText value="{!call.mainContactFullName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact DOB</apex:facet>
+                     <apex:outputText value="{!call.mainContactDOB}"/>
+                 </apex:column>
+                <apex:column style="mso-number-format:\@">
+                     <apex:facet name="header">Main Contact Home Phone</apex:facet>
+                     <apex:outputText value=" {!call.mainContactHomePhone} " escape="false"/>
+                 </apex:column>
+                <apex:column style="mso-number-format:\@">
+                     <apex:facet name="header">Main Contact Mobile Phone</apex:facet>
+                     <apex:outputText value=" {!call.mainContactMobilePhone} " escape="false"/>
+                 </apex:column>
+                <apex:column style="mso-number-format:\@">
+                     <apex:facet name="header">Main Contact Other Phone</apex:facet>
+                     <apex:outputText value=" {!call.mainContactOtherPhone} " escape="false"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact Email</apex:facet>
+                     <apex:outputText value="{!call.mainContactEmail}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Contact EDD</apex:facet>
+                     <apex:outputText value="{!call.mainContactEDD}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address Street Line 1</apex:facet>
+                     <apex:outputText value="{!call.mainAddressStreetLine1}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address Street Line 2</apex:facet>
+                     <apex:outputText value="{!call.mainAddressStreetLine2}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address Ward</apex:facet>
+                     <apex:outputText value="{!call.mainAddressWard}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address District</apex:facet>
+                     <apex:outputText value="{!call.mainAddressDistrict}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address City</apex:facet>
+                     <apex:outputText value="{!call.mainAddressCity}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address Province</apex:facet>
+                     <apex:outputText value="{!call.mainAddressProvince}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Main Address Country</apex:facet>
+                     <apex:outputText value="{!call.mainAddressCountry}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR SFID</apex:facet>
+                     <apex:outputText value="{!call.mainBRSFID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Brand ID</apex:facet>
+                     <apex:outputText value="{!call.mainBRBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Brand Name</apex:facet>
+                     <apex:outputText value="{!call.mainBRBrandName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Curr Brand ID</apex:facet>
+                     <apex:outputText value="{!call.mainBRCurrBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Curr Brand Name</apex:facet>
+                     <apex:outputText value="{!call.mainBRCurrBrandName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Prev Brand ID</apex:facet>
+                     <apex:outputText value="{!call.mainBRPrevBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main BR Prev Brand Name</apex:facet>
+                     <apex:outputText value="{!call.mainBRPrevBrandName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Existing Main Brand Switch Reason</apex:facet>
+                     <apex:outputText value="{!call.mainBrandSwitchReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact ID</apex:facet>
+                     <apex:outputText value="{!call.callRgrdContactID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact First Name</apex:facet>
+                     <apex:outputText value="{!call.callRgrdFirstName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact Last Name</apex:facet>
+                     <apex:outputText value="{!call.callRgrdLastName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact DOB</apex:facet>
+                     <apex:outputText value="{!call.callRgrdDOB}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Brand ID</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Brand Name</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRBrandName}"/>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR SFID</apex:facet>
+                     <apex:outputText value="{!call.callRgrdContactBRSFID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Curr Brand ID</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRCurrBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Curr Brand Name</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRCurrBrandName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Prev Brand ID</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRPrevBrandID}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact BR Prev Brand Name</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBRPrevBrandName}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Rgrd Contact Brand Switch Reason</apex:facet>
+                     <apex:outputText value="{!call.callRgrdBrandSwitchReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Outcome</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Product Discussed</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Product Discussed 2</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Uncontactable Reason</apex:facet>
+                    <apex:outputText value="{!call.uncontactableReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Successful Reason</apex:facet>
+                    <apex:outputText value="{!call.callRgrdBrandSwitchReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Unsuccessful Reason</apex:facet>
+                    <apex:outputText value="{!call.successfulReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Invalid Reason</apex:facet> 
+                    <apex:outputText value="{!call.invalidReason}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Subject</apex:facet>
+                    <apex:outputText value="{!call.subject}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Note</apex:facet>
+                    <apex:outputText value="{!call.callNote}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Call Completed Date (External)</apex:facet>
+                    <apex:outputText value="{!call.callCompletedExternal}"/>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Create Order</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Payment Method</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Type</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Start Date</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Description</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Product Code 1</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Quantity 1</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">Order Product Category 1</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Product Code 2</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Quantity 2</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">Order Product Category 2</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Product Code 3</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Order Quantity 3</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">Order Product Category 3</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Create New Child</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child First Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child Last Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child Full Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child DOB</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child BR Brand ID</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child Curr Brand ID</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">New Child Prev Brand ID</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Child BR Type</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">New Child BR Status</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Create New Adult</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult First Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult Last Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult Full Name</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult DOB</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult BR Brand ID</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult Curr Brand ID</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult Prev Brand ID</apex:facet>
+                 </apex:column>
+                <apex:column style="mso-number-format:\@">
+                     <apex:facet name="header">New Adult Home Phone</apex:facet>
+                 </apex:column>
+                <apex:column style="mso-number-format:\@">
+                     <apex:facet name="header">New Adult Mobile Phone</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Adult Email</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">New Adult BR Type</apex:facet>
+                 </apex:column>
+       		    <apex:column >
+                     <apex:facet name="header">New Adult BR Status</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">Create New Address</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address Street Line 1</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address Street Line 2</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address Ward</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address District</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address City</apex:facet>
+                 </apex:column>
+                <apex:column >
+                     <apex:facet name="header">New Address Province</apex:facet>
+                 </apex:column>
+        		<apex:column >
+                     <apex:facet name="header">Call Status</apex:facet>
+                 </apex:column>
+        </apex:dataTable>
+</apex:page>

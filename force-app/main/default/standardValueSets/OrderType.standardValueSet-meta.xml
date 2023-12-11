@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Telesales - Outbound</fullName>
+        <default>true</default>
+        <label>Telesales - Outbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Telesales - Inbound</fullName>
+        <default>false</default>
+        <label>Telesales - Inbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sample Request</fullName>
+        <default>false</default>
+        <label>Sample Request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trade</fullName>
+        <default>false</default>
+        <label>Trade</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social</fullName>
+        <default>false</default>
+        <label>Social</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Owned</fullName>
+        <default>false</default>
+        <label>eCommerce - Owned</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eCommerce - Third Party</fullName>
+        <default>false</default>
+        <label>eCommerce - Third Party</label>
+    </standardValue>
+    <standardValue>
+        <fullName>QR Scan</fullName>
+        <default>false</default>
+        <label>QR Scan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Loyalty Redemption</fullName>
+        <default>false</default>
+        <label>Loyalty Redemption</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Loyalty Coupon Redemption</fullName>
+        <default>false</default>
+        <label>Loyalty Coupon Redemption</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Return</fullName>
+        <default>false</default>
+        <label>Sales Return</label>
+    </standardValue>
+</StandardValueSet>
