@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Address_is_Required</fullName>
+    <active>false</active>
+    <description>Delivery Address is only mandatory for MY</description>
+    <errorConditionFormula>AND(
+$RecordType.Name = &quot;Redeem&quot;,
+$UserRole.Name = &quot;ANI - Malaysia&quot;,
+OR(
+ISBLANK(DeliveryAddress__c)))</errorConditionFormula>
+    <errorDisplayField>DeliveryAddress__c</errorDisplayField>
+    <errorMessage>You must enter a value</errorMessage>
+</ValidationRule>

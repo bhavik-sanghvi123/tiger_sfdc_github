@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>When_Type_is_Sales_Return_Parent_Order</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+            ISPICKVAL(Type, &quot;Sales Return&quot;),
+            ISBLANK(Parent_Order__c)
+        )</errorConditionFormula>
+    <errorMessage>&quot;A Parent Order should be inputted since a Sales Return can only be made upon a Parent Order.&quot;</errorMessage>
+</ValidationRule>

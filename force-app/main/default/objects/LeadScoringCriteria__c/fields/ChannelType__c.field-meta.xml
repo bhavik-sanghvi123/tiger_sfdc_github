@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChannelType__c</fullName>
+    <description>Channel Type of the CR</description>
+    <externalId>false</externalId>
+    <label>Channel Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Social</fullName>
+                <default>false</default>
+                <label>Social</label>
+            </value>
+            <value>
+                <fullName>Trade</fullName>
+                <default>false</default>
+                <label>Trade</label>
+            </value>
+            <value>
+                <fullName>Web</fullName>
+                <default>false</default>
+                <label>Web</label>
+            </value>
+            <value>
+                <fullName>Other - Online</fullName>
+                <default>false</default>
+                <label>Other - Online</label>
+            </value>
+            <value>
+                <fullName>Other - Offline</fullName>
+                <default>false</default>
+                <label>Other - Offline</label>
+            </value>
+            <value>
+                <fullName>MMC</fullName>
+                <default>false</default>
+                <label>MMC</label>
+            </value>
+            <value>
+                <fullName>MKT</fullName>
+                <default>false</default>
+                <label>MKT</label>
+            </value>
+            <value>
+                <fullName>Ethical</fullName>
+                <default>false</default>
+                <label>Ethical</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

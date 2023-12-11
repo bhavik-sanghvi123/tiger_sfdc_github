@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderCacellationReason__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Select the detailed classification of the reasons from a set of market-specific &quot;Order Cancellation Reason&quot; values, managed by each affiliate team individually</description>
+    <externalId>false</externalId>
+    <label>Order Cancellation Reason</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Affiliate_Value__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>OrderCancellationReason</value>
+        </filterItems>
+        <filterItems>
+            <field>Affiliate_Value__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Affiliate_Value__c</referenceTo>
+    <relationshipLabel>Orders</relationshipLabel>
+    <relationshipName>Orders</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

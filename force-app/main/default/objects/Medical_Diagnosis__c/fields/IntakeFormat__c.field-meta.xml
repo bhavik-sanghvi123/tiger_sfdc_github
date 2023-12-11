@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IntakeFormat__c</fullName>
+    <externalId>false</externalId>
+    <label>Intake Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ayurvedic</fullName>
+                <default>false</default>
+                <label>Ayurvedic</label>
+            </value>
+            <value>
+                <fullName>Chyawanprash</fullName>
+                <default>false</default>
+                <label>Chyawanprash</label>
+            </value>
+            <value>
+                <fullName>Tonic</fullName>
+                <default>false</default>
+                <label>Tonic</label>
+            </value>
+            <value>
+                <fullName>Tablets</fullName>
+                <default>false</default>
+                <label>Tablets</label>
+            </value>
+            <value>
+                <fullName>MFD</fullName>
+                <default>false</default>
+                <label>MFD</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Household_and_OrderedBy_Household</fullName>
+    <active>true</active>
+    <description>Order account and Orderedby account should be the same</description>
+    <errorConditionFormula>AND( ISPICKVAL(Account.Market__c, &apos;SG&apos;), AccountId != OrderedBy__r.AccountId)</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Order Household and OrderedBy Household should be the same</errorMessage>
+</ValidationRule>

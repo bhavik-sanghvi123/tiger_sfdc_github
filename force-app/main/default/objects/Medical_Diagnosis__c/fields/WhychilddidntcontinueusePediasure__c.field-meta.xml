@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhychilddidntcontinueusePediasure__c</fullName>
+    <externalId>false</externalId>
+    <label>Why child didn&apos;t continue use Pediasure</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>太甜</fullName>
+                <default>false</default>
+                <label>太甜</label>
+            </value>
+            <value>
+                <fullName>小孩不喝，小孩不愛喝</fullName>
+                <default>false</default>
+                <label>小孩不喝，小孩不愛喝</label>
+            </value>
+            <value>
+                <fullName>只是想試試</fullName>
+                <default>false</default>
+                <label>只是想試試</label>
+            </value>
+            <value>
+                <fullName>效過不如預期, 效果不彰</fullName>
+                <default>false</default>
+                <label>效過不如預期, 效果不彰</label>
+            </value>
+            <value>
+                <fullName>和一般奶粉/目前使用奶粉沒有差異</fullName>
+                <default>false</default>
+                <label>和一般奶粉/目前使用奶粉沒有差異</label>
+            </value>
+            <value>
+                <fullName>認為透過飲食調整即可，不需使用到營養品</fullName>
+                <default>false</default>
+                <label>認為透過飲食調整即可，不需使用到營養品</label>
+            </value>
+            <value>
+                <fullName>價格因素, 太貴</fullName>
+                <default>false</default>
+                <label>價格因素, 太貴</label>
+            </value>
+            <value>
+                <fullName>試用後有不適狀況(便秘、拉肚子、過敏、脹氣...etc)</fullName>
+                <default>false</default>
+                <label>試用後有不適狀況(便秘、拉肚子、過敏、脹氣...etc)</label>
+            </value>
+            <value>
+                <fullName>原用奶粉尚未用完/ 家中還有奶粉</fullName>
+                <default>false</default>
+                <label>原用奶粉尚未用完/ 家中還有奶粉</label>
+            </value>
+            <value>
+                <fullName>試用量不足以評估，放棄購買</fullName>
+                <default>false</default>
+                <label>試用量不足以評估，放棄購買</label>
+            </value>
+            <value>
+                <fullName>之後再購買</fullName>
+                <default>false</default>
+                <label>之後再購買</label>
+            </value>
+            <value>
+                <fullName>其他(請註明)</fullName>
+                <default>false</default>
+                <label>其他(請註明)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consume_Dairy_Products__c</fullName>
+    <description>Consumption of milk/ curd/ cheese/ yogurt /cottage cheese or paneer</description>
+    <externalId>false</externalId>
+    <label>Consume Dairy Products</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes, more than one product, twice a day</fullName>
+                <default>false</default>
+                <label>Yes, more than one product, twice a day</label>
+            </value>
+            <value>
+                <fullName>Yes, one product, twice a day</fullName>
+                <default>false</default>
+                <label>Yes, one product, twice a day</label>
+            </value>
+            <value>
+                <fullName>Yes, more than one product, once a day</fullName>
+                <default>false</default>
+                <label>Yes, more than one product, once a day</label>
+            </value>
+            <value>
+                <fullName>Yes, one product, once a day</fullName>
+                <default>false</default>
+                <label>Yes, one product, once a day</label>
+            </value>
+            <value>
+                <fullName>Sometimes in a week</fullName>
+                <default>false</default>
+                <label>Sometimes in a week</label>
+            </value>
+            <value>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+                <label>Monthly</label>
+            </value>
+            <value>
+                <fullName>Occasionally</fullName>
+                <default>false</default>
+                <label>Occasionally</label>
+            </value>
+            <value>
+                <fullName>No not all</fullName>
+                <default>false</default>
+                <label>No not all</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

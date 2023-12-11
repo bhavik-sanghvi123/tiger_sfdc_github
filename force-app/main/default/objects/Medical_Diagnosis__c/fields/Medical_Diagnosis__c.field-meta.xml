@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Medical_Diagnosis__c</fullName>
+    <externalId>false</externalId>
+    <label>Medical Diagnosis</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Bed Ridden- Old Age</fullName>
+                <default>false</default>
+                <label>Bed Ridden- Old Age</label>
+            </value>
+            <value>
+                <fullName>Cancer (All types of Cancer)</fullName>
+                <default>false</default>
+                <label>Cancer (All types of Cancer)</label>
+            </value>
+            <value>
+                <fullName>Child with Special Needs</fullName>
+                <default>false</default>
+                <label>Child with Special Needs</label>
+            </value>
+            <value>
+                <fullName>Constipation</fullName>
+                <default>false</default>
+                <label>Constipation</label>
+            </value>
+            <value>
+                <fullName>Crying</fullName>
+                <default>false</default>
+                <label>Crying</label>
+            </value>
+            <value>
+                <fullName>C-section</fullName>
+                <default>false</default>
+                <label>C-section</label>
+            </value>
+            <value>
+                <fullName>Diarrhea</fullName>
+                <default>false</default>
+                <label>Diarrhea</label>
+            </value>
+            <value>
+                <fullName>Eye, Ears, Nose, Throat Condition</fullName>
+                <default>false</default>
+                <label>Eye, Ears, Nose, Throat Condition</label>
+            </value>
+            <value>
+                <fullName>Family History of Diabetes</fullName>
+                <default>false</default>
+                <label>Family History of Diabetes</label>
+            </value>
+            <value>
+                <fullName>Flatulence</fullName>
+                <default>false</default>
+                <label>Flatulence</label>
+            </value>
+            <value>
+                <fullName>For Normal &amp; healthy person</fullName>
+                <default>false</default>
+                <label>For Normal &amp; healthy person</label>
+            </value>
+            <value>
+                <fullName>Gastrointestinal Disease</fullName>
+                <default>false</default>
+                <label>Gastrointestinal Disease</label>
+            </value>
+            <value>
+                <fullName>Geriatric Conditions (Alzheimer/Parkinson Disease)</fullName>
+                <default>false</default>
+                <label>Geriatric Conditions (Alzheimer/Parkinson Disease)</label>
+            </value>
+            <value>
+                <fullName>Gestational diabetes</fullName>
+                <default>false</default>
+                <label>Gestational diabetes</label>
+            </value>
+            <value>
+                <fullName>Haemotological Diseases</fullName>
+                <default>false</default>
+                <label>Haemotological Diseases</label>
+            </value>
+            <value>
+                <fullName>Heart Disease</fullName>
+                <default>false</default>
+                <label>Heart Disease</label>
+            </value>
+            <value>
+                <fullName>Hypercholesterolemia (High Cholestrol)</fullName>
+                <default>false</default>
+                <label>Hypercholesterolemia (High Cholestrol)</label>
+            </value>
+            <value>
+                <fullName>Hypertension (High Blood pressure)</fullName>
+                <default>false</default>
+                <label>Hypertension (High Blood pressure)</label>
+            </value>
+            <value>
+                <fullName>Insulin Dependant (Type 1 Diabetes)</fullName>
+                <default>false</default>
+                <label>Insulin Dependant (Type 1 Diabetes)</label>
+            </value>
+            <value>
+                <fullName>Muscle Disease</fullName>
+                <default>false</default>
+                <label>Muscle Disease</label>
+            </value>
+            <value>
+                <fullName>Muscle Mass Loss</fullName>
+                <default>false</default>
+                <label>Muscle Mass Loss</label>
+            </value>
+            <value>
+                <fullName>Neurological Disease</fullName>
+                <default>false</default>
+                <label>Neurological Disease</label>
+            </value>
+            <value>
+                <fullName>Non-Insulin Dependant (Type 2 Diabetes)</fullName>
+                <default>false</default>
+                <label>Non-Insulin Dependant (Type 2 Diabetes)</label>
+            </value>
+            <value>
+                <fullName>Osteopenia</fullName>
+                <default>false</default>
+                <label>Osteopenia</label>
+            </value>
+            <value>
+                <fullName>Osteoporosis</fullName>
+                <default>false</default>
+                <label>Osteoporosis</label>
+            </value>
+            <value>
+                <fullName>Post- Surgery</fullName>
+                <default>false</default>
+                <label>Post- Surgery</label>
+            </value>
+            <value>
+                <fullName>Prediabetes</fullName>
+                <default>false</default>
+                <label>Prediabetes</label>
+            </value>
+            <value>
+                <fullName>Renal Disease (CAPD)</fullName>
+                <default>false</default>
+                <label>Renal Disease (CAPD)</label>
+            </value>
+            <value>
+                <fullName>Renal Disease (Hemodialysis)</fullName>
+                <default>false</default>
+                <label>Renal Disease (Hemodialysis)</label>
+            </value>
+            <value>
+                <fullName>Renal Disease (Pre-Dialysis)</fullName>
+                <default>false</default>
+                <label>Renal Disease (Pre-Dialysis)</label>
+            </value>
+            <value>
+                <fullName>Respiratory Disease</fullName>
+                <default>false</default>
+                <label>Respiratory Disease</label>
+            </value>
+            <value>
+                <fullName>Stomachache</fullName>
+                <default>false</default>
+                <label>Stomachache</label>
+            </value>
+            <value>
+                <fullName>Stroke</fullName>
+                <default>false</default>
+                <label>Stroke</label>
+            </value>
+            <value>
+                <fullName>Stunted</fullName>
+                <default>false</default>
+                <label>Stunted</label>
+            </value>
+            <value>
+                <fullName>Tube Feeding</fullName>
+                <default>false</default>
+                <label>Tube Feeding</label>
+            </value>
+            <value>
+                <fullName>Underweight</fullName>
+                <default>false</default>
+                <label>Underweight</label>
+            </value>
+            <value>
+                <fullName>Vaginal birth</fullName>
+                <default>false</default>
+                <label>Vaginal birth</label>
+            </value>
+            <value>
+                <fullName>Vomiting</fullName>
+                <default>false</default>
+                <label>Vomiting</label>
+            </value>
+            <value>
+                <fullName>Weight Management</fullName>
+                <default>false</default>
+                <label>Weight Management</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

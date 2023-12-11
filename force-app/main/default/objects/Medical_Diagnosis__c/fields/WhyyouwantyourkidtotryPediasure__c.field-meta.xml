@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhyyouwantyourkidtotryPediasure__c</fullName>
+    <externalId>false</externalId>
+    <label>Why you want your kid to try Pediasure</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>小孩偏挑食, 補充營養</fullName>
+                <default>false</default>
+                <label>小孩偏挑食, 補充營養</label>
+            </value>
+            <value>
+                <fullName>小孩瘦小</fullName>
+                <default>false</default>
+                <label>小孩瘦小</label>
+            </value>
+            <value>
+                <fullName>只是想試試, 想試喝看看</fullName>
+                <default>false</default>
+                <label>只是想試試, 想試喝看看</label>
+            </value>
+            <value>
+                <fullName>小孩矮小</fullName>
+                <default>false</default>
+                <label>小孩矮小</label>
+            </value>
+            <value>
+                <fullName>小孩容易生病或提及任何疾病因素 (心臟病, 腸病毒, 常感冒…etc)</fullName>
+                <default>false</default>
+                <label>小孩容易生病或提及任何疾病因素 (心臟病, 腸病毒, 常感冒…etc)</label>
+            </value>
+            <value>
+                <fullName>早產兒</fullName>
+                <default>false</default>
+                <label>早產兒</label>
+            </value>
+            <value>
+                <fullName>食慾不佳</fullName>
+                <default>false</default>
+                <label>食慾不佳</label>
+            </value>
+            <value>
+                <fullName>小孩喜愛喝小安素</fullName>
+                <default>false</default>
+                <label>小孩喜愛喝小安素</label>
+            </value>
+            <value>
+                <fullName>有新口味</fullName>
+                <default>false</default>
+                <label>有新口味</label>
+            </value>
+            <value>
+                <fullName>聽說比較不甜</fullName>
+                <default>false</default>
+                <label>聽說比較不甜</label>
+            </value>
+            <value>
+                <fullName>其他 (請註明)</fullName>
+                <default>false</default>
+                <label>其他 (請註明)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Day_Before_Shipment_Day__c</fullName>
+    <description>Triggers a Status update to &apos;Activated&apos; the day before shipment..</description>
+    <externalId>false</externalId>
+    <formula>OR(
+ AND(WEEKDAY(PreferredDeliveryDate__c) = 2, PreferredDeliveryDate__c - TODAY() = 3),
+ AND(
+  AND(WEEKDAY(PreferredDeliveryDate__c) &gt;= 3, WEEKDAY(PreferredDeliveryDate__c) &lt;= 6),
+  PreferredDeliveryDate__c - TODAY() = 1
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Day Before Shipment Day</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

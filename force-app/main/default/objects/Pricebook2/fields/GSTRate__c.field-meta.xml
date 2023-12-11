@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSTRate__c</fullName>
+    <externalId>false</externalId>
+    <formula>if (ISPICKVAL(Market__c, &apos;MY&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.MY.GSTRate__c, 
+if (ISPICKVAL(Market__c, &apos;PH&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.PH.GSTRate__c, 
+if (ISPICKVAL(Market__c, &apos;SG&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.SG.GSTRate__c, 
+if (ISPICKVAL(Market__c, &apos;TH&apos;), 
+$CustomMetadata.AffiliateMetadata__mdt.TH.GSTRate__c, 
+if (ISPICKVAL(Market__c, &apos;VN&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.VN.GSTRate__c,
+if (ISPICKVAL(Market__c, &apos;ANZ&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.ANZ.GSTRate__c,
+if (ISPICKVAL(Market__c, &apos;IN&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.IN.GSTRate__c,
+if (ISPICKVAL(Market__c, &apos;ID&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.ID.GSTRate__c,
+if (ISPICKVAL(Market__c, &apos;TW&apos;), 
+    $CustomMetadata.AffiliateMetadata__mdt.TW.GSTRate__c,
+    0)))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>GST Rate</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

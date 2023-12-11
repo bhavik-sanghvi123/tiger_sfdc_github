@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChildFeedingConcern__c</fullName>
+    <externalId>false</externalId>
+    <label>Child Feeding Concern</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes Picky Eater</fullName>
+                <default>false</default>
+                <label>Yes Picky Eater</label>
+            </value>
+            <value>
+                <fullName>Yes Poor Appetite</fullName>
+                <default>false</default>
+                <label>Yes Poor Appetite</label>
+            </value>
+            <value>
+                <fullName>Yes Junk Foods</fullName>
+                <default>false</default>
+                <label>Yes Junk Foods</label>
+            </value>
+            <value>
+                <fullName>All of the Above</fullName>
+                <default>false</default>
+                <label>All of the Above</label>
+            </value>
+            <value>
+                <fullName>No Concern</fullName>
+                <default>false</default>
+                <label>No Concern</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

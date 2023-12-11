@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SupplementIfAny__c</fullName>
+    <externalId>false</externalId>
+    <label>Supplement If Any</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Boost</fullName>
+                <default>false</default>
+                <label>Boost</label>
+            </value>
+            <value>
+                <fullName>Bournvita</fullName>
+                <default>false</default>
+                <label>Bournvita</label>
+            </value>
+            <value>
+                <fullName>Bournvita Women</fullName>
+                <default>false</default>
+                <label>Bournvita Women</label>
+            </value>
+            <value>
+                <fullName>Complan</fullName>
+                <default>false</default>
+                <label>Complan</label>
+            </value>
+            <value>
+                <fullName>Ensure</fullName>
+                <default>false</default>
+                <label>Ensure</label>
+            </value>
+            <value>
+                <fullName>Ensure Diabetes Care</fullName>
+                <default>false</default>
+                <label>Ensure Diabetes Care</label>
+            </value>
+            <value>
+                <fullName>Horlicks</fullName>
+                <default>false</default>
+                <label>Horlicks</label>
+            </value>
+            <value>
+                <fullName>Horlicks Lite</fullName>
+                <default>false</default>
+                <label>Horlicks Lite</label>
+            </value>
+            <value>
+                <fullName>Horlicks Protein+</fullName>
+                <default>false</default>
+                <label>Horlicks Protein+</label>
+            </value>
+            <value>
+                <fullName>Protinex</fullName>
+                <default>false</default>
+                <label>Protinex</label>
+            </value>
+            <value>
+                <fullName>Woman&apos;s Horlicks</fullName>
+                <default>false</default>
+                <label>Woman&apos;s Horlicks</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

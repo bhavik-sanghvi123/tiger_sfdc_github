@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Available_For_Promo__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Determines if this product can be used as a promo.</description>
+    <externalId>false</externalId>
+    <label>Available For Promo</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tax_Id_Number_Only</fullName>
+    <active>true</active>
+    <description>Checks if TaxId__c field contains numbers only.</description>
+    <errorConditionFormula>AND(
+            NOT( ISNUMBER( TaxId__c ) ),
+            NOT( ISBLANK( TaxId__c ) ),
+            TEXT( Account.Market__c) = $Label.MarketTW
+        )</errorConditionFormula>
+    <errorDisplayField>TaxId__c</errorDisplayField>
+    <errorMessage>Tax Id should contain numbers only.</errorMessage>
+</ValidationRule>

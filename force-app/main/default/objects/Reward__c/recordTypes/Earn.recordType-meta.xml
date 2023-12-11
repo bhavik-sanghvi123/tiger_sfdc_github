@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Earn</fullName>
+    <active>true</active>
+    <label>Earn</label>
+    <picklistValues>
+        <picklist>DeliveryStatus__c</picklist>
+        <values>
+            <fullName>Cancelled Before Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled Upon Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out For Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transferred</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_up_call_Eligible__c</fullName>
+    <externalId>false</externalId>
+    <formula>NOT(ISBLANK(Days_till_next_call_from_last_order__c))</formula>
+    <label>Follow-up call Eligible</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

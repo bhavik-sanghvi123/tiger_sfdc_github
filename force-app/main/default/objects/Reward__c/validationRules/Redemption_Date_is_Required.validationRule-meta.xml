@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Redemption_Date_is_Required</fullName>
+    <active>true</active>
+    <description>Redemption Date is Required for Redeem record type</description>
+    <errorConditionFormula>IF( 
+AND(RecordType.DeveloperName == &apos;Redeem&apos;, ISNULL(RedemptionDate__c )), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>RedemptionDate__c</errorDisplayField>
+    <errorMessage>You must enter a value</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blood_Glucose_Value</fullName>
+    <active>true</active>
+    <description>Available only if Diabetic Stage is Diabetes or Pre-Diabetes</description>
+    <errorConditionFormula>AND(
+    BloodGlucoseValues__c &gt; 0,
+    NOT(ISPICKVAL(DiabeticStage__c, &quot;Diabetic&quot;)),
+    NOT(ISPICKVAL(DiabeticStage__c, &quot;Prediabetic&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>BloodGlucoseValues__c</errorDisplayField>
+    <errorMessage>Can only be filled if Diabetic stage is Diabetic or Prediabetic</errorMessage>
+</ValidationRule>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NoChargeReason__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason for No Charge</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Educational Use</fullName>
+                <default>false</default>
+                <label>Educational Use</label>
+            </value>
+            <value>
+                <fullName>Evaluation</fullName>
+                <default>false</default>
+                <label>Evaluation</label>
+            </value>
+            <value>
+                <fullName>Product / Service Complaint</fullName>
+                <default>false</default>
+                <label>Product / Service Complaint</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderStatusComplete</fullName>
+    <active>true</active>
+    <description>Order Status = Complete, Order End Date should be Mandatory.</description>
+    <errorConditionFormula>AND(
+OR(
+ISPICKVAL( Status , &quot;Completed&quot;),
+ISPICKVAL( Status , &quot;Cancelled - Upon Delivery&quot;), 
+ISPICKVAL( Status , &quot;Cancelled - Before Delivery&quot;), 
+ISPICKVAL( Status , &quot;Cancelled - New Order Created&quot;), 
+ISPICKVAL( Status , &quot;Cancelled - Abandoned&quot;)
+), 
+ISBLANK( EndDate ),
+To_be_archived__c = false
+
+)</errorConditionFormula>
+    <errorDisplayField>EndDate</errorDisplayField>
+    <errorMessage>For completed or cancelled orders, Order End Date is required.</errorMessage>
+</ValidationRule>

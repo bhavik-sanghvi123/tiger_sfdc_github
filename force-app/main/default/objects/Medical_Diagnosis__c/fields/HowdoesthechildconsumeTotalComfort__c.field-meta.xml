@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HowdoesthechildconsumeTotalComfort__c</fullName>
+    <externalId>false</externalId>
+    <label>How does child consume Total Comfort?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>單獨使用親護,</fullName>
+                <default>false</default>
+                <label>單獨使用親護,</label>
+            </value>
+            <value>
+                <fullName>親護搭配母乳使用,</fullName>
+                <default>false</default>
+                <label>親護搭配母乳使用,</label>
+            </value>
+            <value>
+                <fullName>親護混合其他嬰兒奶粉使用(請紀錄品牌及混用原因)</fullName>
+                <default>false</default>
+                <label>親護混合其他嬰兒奶粉使用(請紀錄品牌及混用原因)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

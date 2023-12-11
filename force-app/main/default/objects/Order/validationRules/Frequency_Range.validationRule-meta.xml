@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Frequency_Range</fullName>
+    <active>true</active>
+    <description>Display an error if Frequency is less than 1 and more than 15.</description>
+    <errorConditionFormula>OR(Frequency__c  &lt; 1, Frequency__c  &gt; 15)</errorConditionFormula>
+    <errorDisplayField>Frequency__c</errorDisplayField>
+    <errorMessage>Frequency must be between 1-15.</errorMessage>
+</ValidationRule>

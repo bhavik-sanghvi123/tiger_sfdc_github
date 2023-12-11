@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChronicDisease__c</fullName>
+    <externalId>false</externalId>
+    <label>Chronic Disease</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Addison&apos;s disease</fullName>
+                <default>false</default>
+                <label>Addison&apos;s disease</label>
+            </value>
+            <value>
+                <fullName>Asthma</fullName>
+                <default>false</default>
+                <label>Asthma</label>
+            </value>
+            <value>
+                <fullName>Bipolar Mood Disorder</fullName>
+                <default>false</default>
+                <label>Bipolar Mood Disorder</label>
+            </value>
+            <value>
+                <fullName>Bronchiectasis</fullName>
+                <default>false</default>
+                <label>Bronchiectasis</label>
+            </value>
+            <value>
+                <fullName>Cardiac failure</fullName>
+                <default>false</default>
+                <label>Cardiac failure</label>
+            </value>
+            <value>
+                <fullName>Cardiomyopathy</fullName>
+                <default>false</default>
+                <label>Cardiomyopathy</label>
+            </value>
+            <value>
+                <fullName>Chronic obstructive pulmonary disorder</fullName>
+                <default>false</default>
+                <label>Chronic obstructive pulmonary disorder</label>
+            </value>
+            <value>
+                <fullName>Chronic renal disease</fullName>
+                <default>false</default>
+                <label>Chronic renal disease</label>
+            </value>
+            <value>
+                <fullName>Coronary artery disease</fullName>
+                <default>false</default>
+                <label>Coronary artery disease</label>
+            </value>
+            <value>
+                <fullName>Crohn&apos;s disease</fullName>
+                <default>false</default>
+                <label>Crohn&apos;s disease</label>
+            </value>
+            <value>
+                <fullName>Diabetes insipidus</fullName>
+                <default>false</default>
+                <label>Diabetes insipidus</label>
+            </value>
+            <value>
+                <fullName>Diabetes mellitus types 1 &amp; 2</fullName>
+                <default>false</default>
+                <label>Diabetes mellitus types 1 &amp; 2</label>
+            </value>
+            <value>
+                <fullName>Dysrhythmias</fullName>
+                <default>false</default>
+                <label>Dysrhythmias</label>
+            </value>
+            <value>
+                <fullName>Epilepsy</fullName>
+                <default>false</default>
+                <label>Epilepsy</label>
+            </value>
+            <value>
+                <fullName>Glaucoma</fullName>
+                <default>false</default>
+                <label>Glaucoma</label>
+            </value>
+            <value>
+                <fullName>Haemophilia</fullName>
+                <default>false</default>
+                <label>Haemophilia</label>
+            </value>
+            <value>
+                <fullName>Hyperlipidaemia</fullName>
+                <default>false</default>
+                <label>Hyperlipidaemia</label>
+            </value>
+            <value>
+                <fullName>Hypertension</fullName>
+                <default>false</default>
+                <label>Hypertension</label>
+            </value>
+            <value>
+                <fullName>Hypothyroidism</fullName>
+                <default>false</default>
+                <label>Hypothyroidism</label>
+            </value>
+            <value>
+                <fullName>Multiple sclerosis</fullName>
+                <default>false</default>
+                <label>Multiple sclerosis</label>
+            </value>
+            <value>
+                <fullName>Parkinson&apos;s disease</fullName>
+                <default>false</default>
+                <label>Parkinson&apos;s disease</label>
+            </value>
+            <value>
+                <fullName>Rheumatoid arthritis</fullName>
+                <default>false</default>
+                <label>Rheumatoid arthritis</label>
+            </value>
+            <value>
+                <fullName>Schizophrenia</fullName>
+                <default>false</default>
+                <label>Schizophrenia</label>
+            </value>
+            <value>
+                <fullName>Systemic lupus erythematosus</fullName>
+                <default>false</default>
+                <label>Systemic lupus erythematosus</label>
+            </value>
+            <value>
+                <fullName>Ulcerative colitis</fullName>
+                <default>false</default>
+                <label>Ulcerative colitis</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

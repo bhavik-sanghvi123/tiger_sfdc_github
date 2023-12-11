@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Pediasure_Lead_Scoring</fullName>
+    <columns>NAME</columns>
+    <columns>Market__c</columns>
+    <columns>KeyBrand__c</columns>
+    <columns>Object__c</columns>
+    <columns>RecordType__c</columns>
+    <columns>Trigger_Field__c</columns>
+    <columns>Field__c</columns>
+    <columns>Comparison__c</columns>
+    <columns>Binary_Value__c</columns>
+    <columns>Number_Value__c</columns>
+    <columns>Range_Min__c</columns>
+    <columns>Range_Max__c</columns>
+    <columns>Text_Value__c</columns>
+    <columns>Score__c</columns>
+    <columns>Days_to_Reset__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>KeyBrand__c</field>
+        <operation>equals</operation>
+        <value>Pediasure</value>
+    </filters>
+    <filters>
+        <field>Market__c</field>
+        <operation>equals</operation>
+        <value>PH</value>
+    </filters>
+    <label>PH Pediasure Lead Scoring</label>
+</ListView>

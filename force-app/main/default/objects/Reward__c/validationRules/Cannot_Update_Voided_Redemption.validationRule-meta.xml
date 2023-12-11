@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Update_Voided_Redemption</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( isVoid__c ,
+ OR(ISCHANGED( Quantity__c ), ISCHANGED( ProductForRedemption__c )  )
+)</errorConditionFormula>
+    <errorMessage>Unable to save record - Redemption is already voided.</errorMessage>
+</ValidationRule>

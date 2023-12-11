@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Product_Restricted</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(!ISNEW(),
+ !ISPICKVAL( Order.Status , &apos;Draft&apos;),
+ !ISPICKVAL( Order.Status , &apos;Submitted&apos;),
+ OR( 
+CONTAINS($Profile.Name, &apos;ANI Call Center Agent&apos;), 
+CONTAINS($Profile.Name, &apos;ANI Customer Service Agent&apos;)) 
+)</errorConditionFormula>
+    <errorMessage>Order Products are restricted once Order Status is Transferred and beyond.</errorMessage>
+</ValidationRule>

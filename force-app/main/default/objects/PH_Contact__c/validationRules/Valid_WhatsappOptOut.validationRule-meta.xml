@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_WhatsappOptOut</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;true&apos;, LOWER(contact_whatsappoptout__c) ), 
+CONTAINS(&apos;false&apos;, LOWER(contact_whatsappoptout__c) ), 
+ISBLANK(contact_whatsappoptout__c) 
+) )</errorConditionFormula>
+    <errorMessage>Only True,False or blank are allowed</errorMessage>
+</ValidationRule>

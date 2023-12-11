@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Order_Cancelled__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( (ISPICKVAL( Status , &quot;Cancelled - New Order Created&quot;) || ISPICKVAL(Status, &quot;Cancelled Before Delivery&quot;) || ISPICKVAL(Status, &quot;Cancelled - Upon Delivery&quot;) || ISPICKVAL(Status, &quot;Cancelled Abandoned&quot;)  ), 1, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Order Cancelled</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

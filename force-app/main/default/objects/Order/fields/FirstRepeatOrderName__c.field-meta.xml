@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FirstRepeatOrderName__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>[9-Jul-21 KSK] Used in TW Market Data Migration; Dynamics CRM</description>
+    <externalId>false</externalId>
+    <label>First Repeat Order Name</label>
+    <referenceTo>Order</referenceTo>
+    <relationshipLabel>Orders (First Repeat Order Name)</relationshipLabel>
+    <relationshipName>Orders</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

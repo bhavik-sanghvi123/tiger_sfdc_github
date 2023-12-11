@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_Relation_Type</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;Lead&apos;, br_relationtype__c ), 
+CONTAINS(&apos;User&apos;, br_relationtype__c )
+) )</errorConditionFormula>
+    <errorMessage>Only Lead, User are allowed</errorMessage>
+</ValidationRule>

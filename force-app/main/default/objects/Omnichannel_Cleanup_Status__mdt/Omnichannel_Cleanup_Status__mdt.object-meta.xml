@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>List of status to include for OmniChannel_Cleaup batch job</description>
+    <label>Omnichannel Cleanup Status</label>
+    <pluralLabel>Omnichannel Cleanup Statuses</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

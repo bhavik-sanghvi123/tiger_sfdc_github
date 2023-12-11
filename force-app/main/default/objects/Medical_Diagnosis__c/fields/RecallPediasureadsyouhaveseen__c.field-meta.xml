@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecallPediasureadsyouhaveseen__c</fullName>
+    <externalId>false</externalId>
+    <label>Recall Pediasure ads you have seen?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>小安素 提供均衡完整營養</fullName>
+                <default>false</default>
+                <label>小安素 提供均衡完整營養</label>
+            </value>
+            <value>
+                <fullName>小安素 含31種必需營養素</fullName>
+                <default>false</default>
+                <label>小安素 含31種必需營養素</label>
+            </value>
+            <value>
+                <fullName>小安素 有新升級配方</fullName>
+                <default>false</default>
+                <label>小安素 有新升級配方</label>
+            </value>
+            <value>
+                <fullName>小安素含維生素K2、精胺酸</fullName>
+                <default>false</default>
+                <label>小安素含維生素K2、精胺酸</label>
+            </value>
+            <value>
+                <fullName>全新小安素 成長加速度</fullName>
+                <default>false</default>
+                <label>全新小安素 成長加速度</label>
+            </value>
+            <value>
+                <fullName>小安素啟動全方位守護</fullName>
+                <default>false</default>
+                <label>小安素啟動全方位守護</label>
+            </value>
+            <value>
+                <fullName>無添加蔗糖 新上市</fullName>
+                <default>false</default>
+                <label>無添加蔗糖 新上市</label>
+            </value>
+            <value>
+                <fullName>牛奶口味</fullName>
+                <default>false</default>
+                <label>牛奶口味</label>
+            </value>
+            <value>
+                <fullName>其他,請說明(需有備註欄)</fullName>
+                <default>false</default>
+                <label>其他,請說明(需有備註欄)</label>
+            </value>
+            <value>
+                <fullName>小安素 增強保護力</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>小安素 增強保護力</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

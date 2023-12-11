@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Required_Rewards_Points</fullName>
+    <active>true</active>
+    <description>Reward points is required when &quot;Available for Reward Redemption&quot; is true</description>
+    <errorConditionFormula>AND( AvailableForRewardRedemption__c = TRUE,   ISBLANK(RewardsPointsRequired__c)   )</errorConditionFormula>
+    <errorMessage>Rewards Points Required must be filled in for Product with &apos;Available for Reward Redemption&apos; checkbox set to &apos;True&apos;</errorMessage>
+</ValidationRule>

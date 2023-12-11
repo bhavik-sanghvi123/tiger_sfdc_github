@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderCode__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL( Type , &apos;Telesales - Outbound&apos;) , &apos;TELEO&apos;,
+            IF( ISPICKVAL( Type , &apos;Telesales - Inbound&apos;) , &apos;TELEI&apos;,
+            IF( ISPICKVAL( Type , &apos;Sample Request&apos;) , &apos;SMPL&apos;,
+            IF( ISPICKVAL( Type , &apos;Trade&apos;) , &apos;TRD&apos;,
+            IF( ISPICKVAL( Type , &apos;Social&apos;) , &apos;SOC&apos;,
+            IF( ISPICKVAL( Type , &apos;eCommerce - Owned&apos;) , &apos;ECOMO&apos;,
+            IF( ISPICKVAL( Type , &apos;eCommerce - Third Party&apos;) , &apos;ECOMT&apos;,
+            IF( ISPICKVAL( Type , &apos;Sales Return&apos;) , &apos;SALRT&apos;,
+            IF( ISPICKVAL( Type , &apos;Other&apos;) , &apos;OTH&apos;,
+
+            &apos;&apos;
+            )))))))))
+        &amp; &apos;-&apos; &amp; TEXT(Account.Market__c)&amp; &apos;-&apos; &amp; LPAD(TEXT(DAY  ( DATEVALUE(CreatedDate) )),2,&quot;0&quot;)&amp; &apos;-&apos; &amp;LPAD(TEXT(MONTH (DATEVALUE(CreatedDate))),2,&quot;0&quot;)&amp; &apos;-&apos; &amp;TEXT(YEAR(DATEVALUE(CreatedDate))) &amp; &apos;-&apos; &amp;  MID(OrderNumber, 3, LEN(OrderNumber))</formula>
+    <label>Order Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

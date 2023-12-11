@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Agent_Unable_to_change_list_price</fullName>
+    <active>true</active>
+    <description>[12-Aug-21 Khai] If the agent profile = TW Call Center Agent, user is unable to change list price of unit product.
+         Can be further enhanced to include more profiles</description>
+    <errorConditionFormula>$Profile.Name = &quot;TW - ANI Call Center Agent&quot;
+            &amp;&amp;
+        UnitPrice  &lt;&gt;  PricebookEntry.UnitPrice</errorConditionFormula>
+    <errorDisplayField>UnitPrice</errorDisplayField>
+    <errorMessage>User is unable to change the list price from the price book!</errorMessage>
+</ValidationRule>

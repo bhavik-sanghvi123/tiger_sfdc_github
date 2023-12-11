@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DoesmomknowbenefitsofTotalComfort__c</fullName>
+    <externalId>false</externalId>
+    <label>Does mom know benefits of Total Comfort?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>水解蛋白配方</fullName>
+                <default>false</default>
+                <label>水解蛋白配方</label>
+            </value>
+            <value>
+                <fullName>低適乳糖配方</fullName>
+                <default>false</default>
+                <label>低適乳糖配方</label>
+            </value>
+            <value>
+                <fullName>不清楚</fullName>
+                <default>false</default>
+                <label>不清楚</label>
+            </value>
+            <value>
+                <fullName>其他(請註明)</fullName>
+                <default>false</default>
+                <label>其他(請註明)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

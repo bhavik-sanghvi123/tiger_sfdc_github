@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insufficient_Points_Based_on_Reward_Pts</fullName>
+    <active>true</active>
+    <description>Points Amount should be less than the related Contact&apos;s Reward Points</description>
+    <errorConditionFormula>IF(AND(ISNEW(), RecordType.DeveloperName == &apos;Redeem&apos;,
+PointsAmount__c &gt; Contact__r.RewardPoints__c),
+TRUE, FALSE)</errorConditionFormula>
+    <errorMessage>Unable to save record - Insufficient points on Contact&apos;s Reward Points Balance</errorMessage>
+</ValidationRule>

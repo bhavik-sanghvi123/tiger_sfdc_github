@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Binary_Value__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Binary value for Data Field: Binary and Is Null</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Binary Value</label>
+    <type>Checkbox</type>
+</CustomField>

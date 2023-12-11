@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_Gender</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT( OR( CONTAINS(&apos;male&apos;, LOWER(contact_gender__c) ), 
+CONTAINS(&apos;female&apos;, LOWER(contact_gender__c) ), 
+CONTAINS(&apos;n/a&apos;, LOWER(contact_gender__c) ), 
+ISBLANK(contact_gender__c) 
+) )</errorConditionFormula>
+    <errorMessage>Only Male|Female|N/A are allowed</errorMessage>
+</ValidationRule>

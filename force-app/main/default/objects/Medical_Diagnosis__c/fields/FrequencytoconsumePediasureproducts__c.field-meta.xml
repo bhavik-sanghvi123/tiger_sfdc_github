@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FrequencytoconsumePediasureproducts__c</fullName>
+    <externalId>false</externalId>
+    <label>Frequency to consume Pediasure products?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1天不到1次 (如: 2天1次…)</fullName>
+                <default>false</default>
+                <label>1天不到1次 (如: 2天1次…)</label>
+            </value>
+            <value>
+                <fullName>1次</fullName>
+                <default>false</default>
+                <label>1次</label>
+            </value>
+            <value>
+                <fullName>2次</fullName>
+                <default>false</default>
+                <label>2次</label>
+            </value>
+            <value>
+                <fullName>3次及3次以上</fullName>
+                <default>false</default>
+                <label>3次及3次以上</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

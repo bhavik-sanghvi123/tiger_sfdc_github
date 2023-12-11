@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RepeatOrder__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>[9-Jul-21 KSK] Used in TW Market Data Migration; Dynamics CRM</description>
+    <externalId>false</externalId>
+    <label>Repeat Order</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

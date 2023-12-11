@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgentOrderStatusValidation</fullName>
+    <active>true</active>
+    <description>Order Status cannot be updated if you are not the owner</description>
+    <errorConditionFormula>AND( 
+OR(
+    CONTAINS($Profile.Name, &quot;ANI Call Center Agent&quot;), 
+    CONTAINS($Profile.Name, &quot;ANI Customer Service Agent&quot;)
+    ), 
+NOT(CONTAINS($Profile.Name, &quot;TW -&quot;) ),
+OwnerId != $User.Id,
+ISCHANGED(Status)
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Order Status cannot be updated if you are not the owner</errorMessage>
+</ValidationRule>

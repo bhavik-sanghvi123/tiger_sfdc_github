@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhichformofPediasureisused__c</fullName>
+    <externalId>false</externalId>
+    <label>Which form of Pediasure is used?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>小安素水</fullName>
+                <default>false</default>
+                <label>小安素水</label>
+            </value>
+            <value>
+                <fullName>小安素粉 (香草口味)</fullName>
+                <default>false</default>
+                <label>小安素粉 (香草口味)</label>
+            </value>
+            <value>
+                <fullName>小安素粉 (牛奶口味)</fullName>
+                <default>false</default>
+                <label>小安素粉 (牛奶口味)</label>
+            </value>
+            <value>
+                <fullName>小安素粉</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>小安素粉</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

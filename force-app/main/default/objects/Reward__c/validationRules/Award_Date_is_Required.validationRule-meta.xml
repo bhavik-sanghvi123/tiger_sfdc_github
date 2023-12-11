@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Award_Date_is_Required</fullName>
+    <active>true</active>
+    <description>Award Date is required for Earn record type.</description>
+    <errorConditionFormula>IF( 
+AND(RecordType.DeveloperName == &apos;Earn&apos;, ISNULL(AwardDate__c)), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>AwardDate__c</errorDisplayField>
+    <errorMessage>You must enter a value</errorMessage>
+</ValidationRule>

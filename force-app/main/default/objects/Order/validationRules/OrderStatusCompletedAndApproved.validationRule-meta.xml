@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderStatusCompletedAndApproved</fullName>
+    <active>true</active>
+    <description>Orders from ANZ should be approved before completed</description>
+    <errorConditionFormula>AND(
+ISPICKVAL( Status , &quot;Completed&quot;),ApprovalStatus__c != &apos;Approved&apos;,  Is_Asset_Order__c == True)</errorConditionFormula>
+    <errorDisplayField>ApprovalStatus__c</errorDisplayField>
+    <errorMessage>Order Status can only be changed to Completed if Approval Status is Approved</errorMessage>
+</ValidationRule>
